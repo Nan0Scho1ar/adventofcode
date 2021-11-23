@@ -16,7 +16,7 @@
   View on GitHub</a>&ensp;
 #+end_export
 
-Nan0Scho1ar's solutions to the advent of code problems
+Nan0Scho1ar's solutions to the [[https://adventofcode.com/][Advent of Code]] problems.
 * Solutions
 ** 2015
 *** Day 1:
@@ -165,12 +165,12 @@ Specifically, they need you to find the two entries that sum to ~2020~ and then 
 
 For example, suppose your expense report contained the following:
 
-1721
-979
-366
-299
-675
-1456
+~1721~
+~979~
+~366~
+~299~
+~675~
+~1456~
 
 In this list, the two entries that sum to ~2020~ are ~1721~ and ~299~. Multiplying them together produces ~1721 * 299 = 514579~, so the correct answer is ~514579~.
 
