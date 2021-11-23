@@ -240,7 +240,7 @@ In your expense report, what is the product of the three entries that sum to 202
 
 ***** Python
 #+begin_src python  :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/aoc2020-1-2.py :results output
-def fix_expense_report(data):
+def fix_expense_report_2(data):
     for i in data:
         for j in data:
             for k in data:
@@ -249,8 +249,8 @@ def fix_expense_report(data):
 
 data1 = [int(x) for x in sample_data.split()]
 data2 = [int(x) for x in input_data.split()]
-print(fix_expense_report(data1))
-print(fix_expense_report(data2))
+print(fix_expense_report_2(data1))
+print(fix_expense_report_2(data2))
 #+end_src
 
 #+RESULTS:
