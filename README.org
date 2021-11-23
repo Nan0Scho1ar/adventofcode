@@ -202,11 +202,14 @@ def fix_expense_report(data):
             if i + j == 2020:
                 return i * j
 
-data = [int(x) for x in input_data.split()]
-print(fix_expense_report(data))
+data1 = [int(x) for x in sample_data.split()]
+data2 = [int(x) for x in input_data.split()]
+print(fix_expense_report(data1))
+print(fix_expense_report(data2))
 #+end_src
 
 #+RESULTS:
+: 514579
 : 365619
 
 **** Part 2
