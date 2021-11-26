@@ -328,7 +328,7 @@ check_passwords(data2)
 #+RESULTS:
 : 2
 : 636
-**** TODO Part 2
+**** Part 2
 While it appears you validated the passwords correctly, they don't seem to be what the Official Toboggan Corporate Authentication System is expecting.
 
 The shopkeeper suddenly realizes that he just accidentally explained the password policy rules from his old job at the sled rental place down the street! The Official Toboggan Corporate Policy actually works a little differently.
@@ -370,9 +370,9 @@ def check_passwords(input):
     for parts in [line.split() for line in input.split("\n") if line != ""]:
         first = int(parts[0].split("-")[0]) - 1
         second = int(parts[0].split("-")[1]) - 1
-        letter = parts[1][0]
+        char = parts[1][0]
         seq = parts[2]
-        if ((seq[first] == letter) ^ (seq[second] == letter)):
+        if ((seq[first] == char) ^ (seq[second] == char)):
             num += 1
     return num
 
