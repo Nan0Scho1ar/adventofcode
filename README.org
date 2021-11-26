@@ -295,8 +295,6 @@ How many passwords are valid according to their policies?
 
 (displayln (check_passwords sample_data))
 (displayln (check_passwords input_data))
-
-
 #+end_src
 
 #+RESULTS:
@@ -321,8 +319,6 @@ data1 = [[part for part in line.split()] for line in sample_data.split("\n")]
 data2 = [[part for part in line.split()] for line in input_data.split("\n")][:-1]
 check_passwords(data1)
 check_passwords(data2)
-#print((data1))
-#print((data2))
 #+end_src
 
 #+RESULTS:
@@ -378,8 +374,6 @@ def check_passwords(input):
 
 check_passwords(sample_data)
 check_passwords(input_data)
-#print((data1))
-#print((data2))
 #+end_src
 
 #+RESULTS:
