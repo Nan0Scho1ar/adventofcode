@@ -279,22 +279,9 @@ In the above example, 2 passwords are valid. The middle password, cdefg, is not;
 
 How many passwords are valid according to their policies?
 ***** Racket
-#+begin_src racket :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2.rkt :results output
+#+begin_src racket :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2-1.rkt :results output
 (define count-substring
   (compose length regexp-match*))
-
-;; (define (check_passwords data)
-;;   (define num 0)
-;;   (for ([line (string-split data "\n")])
-;;     (define l (string-split line))
-;;     (define min (string->number (car (string-split (car l) "-"))))
-;;     (define max (string->number(cadr (string-split (car l) "-"))))
-;;     (define char (car (string-split (cadr l) ":")))
-;;     (define str (caddr l))
-;;     (define cnt (count-substring char str))
-;;     (when (and (>= cnt min) (<= cnt max))
-;;       (set! num (+ num 1))))
-;;   num)
 
 (define (check_passwords data)
   (apply +
@@ -303,10 +290,8 @@ How many passwords are valid according to their policies?
            (define min (string->number (car (string-split (car l) "-"))))
            (define max (string->number (cadr (string-split (car l) "-"))))
            (define char (car (string-split (cadr l) ":")))
-           (define str (caddr l))
-           (define cnt (count-substring char str))
-           (if (and (>= cnt min) (<= cnt max))
-               1 0))))
+           (define cnt (count-substring char (caddr l)))
+           (if (and (>= cnt min) (<= cnt max)) 1 0))))
 
 (displayln (check_passwords sample_data))
 (displayln (check_passwords input_data))
@@ -319,7 +304,7 @@ How many passwords are valid according to their policies?
 : 636
 
 ***** Python
-#+begin_src python  :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2.py :results output
+#+begin_src python  :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2-1.py :results output
 def check_passwords(data):
     num = 0
     for line in data:
@@ -358,58 +343,48 @@ Given the same example list from above:
 How many passwords are valid according to the new interpretation of the policies?
 
 ***** Racket
-#+begin_src racket :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2.rkt :results output
+Here I decided to use ~count identity~ rather than summing up the list with ~apply +~
+#+begin_src racket :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2-2.rkt :results output
 (define (check_passwords data)
-  (for ([line data])
-    (displayln (car line))))
+  (count identity
+         (for/list ([line (string-split data "\n")])
+           (define l (string-split line))
+           (define i1 (string->number (car (string-split (car l) "-"))))
+           (define i2 (string->number (cadr (string-split (car l) "-"))))
+           (define char (car (string-split (cadr l) ":")))
+           (xor (equal? (substring (caddr l) (- i1 1) i1) char)
+                (equal? (substring (caddr l) (- i2 1) i2) char)))))
 
-(define (prepare_data data)
-  (for/list ([line (string-split data "\n")])
-       (string-split line)))
-
-
-(define data1 (prepare_data sample_data))
-; (define data2 (prepare_data input_data))
-
-(print (check_passwords data1))
-
-;; (check_passwords data1)
-;; (displayln (data1))
-;; (displayln (data2))
-
+(displayln (check_passwords sample_data))
+(displayln (check_passwords input_data))
 #+end_src
 
 #+RESULTS:
-: 1-3
-: 1-3
-: 2-9
-: #<void>
+: 1
+: 588
 
 ***** Python
-#+begin_src python  :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2.py :results output
-def check_passwords(data):
+#+begin_src python  :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2-2.py :results output
+def check_passwords(input):
     num = 0
-    for line in data:
-        min = int(line[0].split("-")[0])
-        max = int(line[0].split("-")[1])
-        letter = line[1][0]
-        seq = line[2]
-        count = seq.count(letter)
-        if count >= min and count <= max:
+    for parts in [line.split() for line in input.split("\n") if line != ""]:
+        first = int(parts[0].split("-")[0]) - 1
+        second = int(parts[0].split("-")[1]) - 1
+        letter = parts[1][0]
+        seq = parts[2]
+        if ((seq[first] == letter) ^ (seq[second] == letter)):
             num += 1
     return num
 
-data1 = [[part for part in line.split()] for line in sample_data.split("\n")]
-data2 = [[part for part in line.split()] for line in input_data.split("\n")][:-1]
-check_passwords(data1)
-check_passwords(data2)
+check_passwords(sample_data)
+check_passwords(input_data)
 #print((data1))
 #print((data2))
 #+end_src
 
 #+RESULTS:
-: 2
-: 636
+: 1
+: 588
 *** Day 3:
 *** Day 4:
 *** Day 5:
