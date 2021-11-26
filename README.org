@@ -355,8 +355,8 @@ Here I decided to use ~count identity~ rather than summing up the list with ~app
            (xor (equal? (substring (caddr l) (- i1 1) i1) char)
                 (equal? (substring (caddr l) (- i2 1) i2) char)))))
 
-(displayln (check_passwords sample_data))
-(displayln (check_passwords input_data))
+(check_passwords sample_data)
+(check_passwords input_data)
 #+end_src
 
 #+RESULTS:
@@ -385,6 +385,21 @@ check_passwords(input_data)
 #+RESULTS:
 : 1
 : 588
+
+***** Python list comprehension one-liner
+Here is a cursed one liner which does the same thing as above
+#+begin_src python  :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/aoc2020-2-2.py :results output
+def check_passwords(input):
+    return sum([1 if ((parts[2][int(parts[0].split("-")[0]) - 1] == parts[1][0]) ^ (parts[2][int(parts[0].split("-")[1]) - 1] == parts[1][0])) else 0 for parts in [line.split() for line in input.split("\n") if line != ""]])
+
+check_passwords(sample_data)
+check_passwords(input_data)
+#+end_src
+
+#+RESULTS:
+: 1
+: 588
+
 *** Day 3:
 *** Day 4:
 *** Day 5:
