@@ -36,42 +36,58 @@ For example:
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS:
+: TODO
+
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-01 :var input_data=input-2016-01 :tangle /tmp/advent_of_code/aoc2016-01-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 02: Bathroom Security
 **** Part 1
@@ -108,42 +124,54 @@ Your puzzle input is the instructions from the document you found at the front d
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-02 :var input_data=input-2016-02 :tangle /tmp/advent_of_code/aoc2016-02-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 03: Squares With Three Sides
 **** Part 1
@@ -155,42 +183,54 @@ In your puzzle input, ~how many~ of the listed triangles are ~possible~?
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-03 :var input_data=input-2016-03 :tangle /tmp/advent_of_code/aoc2016-03-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 04: Security Through Obscurity
 **** Part 1
@@ -208,42 +248,54 @@ What is the ~sum of the sector IDs of the real rooms~?
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-04 :var input_data=input-2016-04 :tangle /tmp/advent_of_code/aoc2016-04-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 05: How About a Nice Game of Chess?
 **** Part 1
@@ -261,42 +313,54 @@ Given the actual Door ID, ~what is the password~?
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-05 :var input_data=input-2016-05 :tangle /tmp/advent_of_code/aoc2016-05-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 06: Signals and Noise
 **** Part 1
@@ -329,42 +393,54 @@ Given the recording in your puzzle input, ~what is the error-corrected version~ 
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-06 :var input_data=input-2016-06 :tangle /tmp/advent_of_code/aoc2016-06-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 07: Internet Protocol Version 7
 **** Part 1
@@ -381,42 +457,54 @@ For example:
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-07 :var input_data=input-2016-07 :tangle /tmp/advent_of_code/aoc2016-07-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 08: Two-Factor Authentication
 **** Part 1
@@ -465,42 +553,54 @@ There seems to be an intermediate check of the voltage used by the display: afte
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-08 :var input_data=input-2016-08 :tangle /tmp/advent_of_code/aoc2016-08-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 09: Explosives in Cyberspace
 **** Part 1
@@ -520,42 +620,54 @@ What is the ~decompressed length~ of the file (your puzzle input)? Don't count w
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-09 :var input_data=input-2016-09 :tangle /tmp/advent_of_code/aoc2016-09-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 10: Balance Bots
 **** Part 1
@@ -586,42 +698,54 @@ Based on your instructions, ~what is the number of the bot~ that is responsible 
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-10 :var input_data=input-2016-10 :tangle /tmp/advent_of_code/aoc2016-10-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 11: Radioisotope Thermoelectric Generators
 **** Part 1
@@ -758,42 +882,54 @@ In your situation, what is the ~minimum number of steps~ required to bring all o
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-11 :var input_data=input-2016-11 :tangle /tmp/advent_of_code/aoc2016-11-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 12: Leonardo's Monorail
 **** Part 1
@@ -826,42 +962,54 @@ After executing the assembunny code in your puzzle input, ~what value is left in
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-12 :var input_data=input-2016-12 :tangle /tmp/advent_of_code/aoc2016-12-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 13: A Maze of Twisty Little Cubicles
 **** Part 1
@@ -911,42 +1059,54 @@ What is the ~fewest number of steps required~ for you to reach 31,39?
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-13 :var input_data=input-2016-13 :tangle /tmp/advent_of_code/aoc2016-13-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 14: One-Time Pad
 **** Part 1
@@ -970,42 +1130,54 @@ Given the actual salt in your puzzle input, ~what index~ produces your 64th one-
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-14 :var input_data=input-2016-14 :tangle /tmp/advent_of_code/aoc2016-14-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 15: Timing is Everything
 **** Part 1
@@ -1029,42 +1201,54 @@ However, your situation has more than two discs; you've noted their positions in
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-15 :var input_data=input-2016-15 :tangle /tmp/advent_of_code/aoc2016-15-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 16: Dragon Checksum
 **** Part 1
@@ -1111,42 +1295,54 @@ The first disk you have to fill has length 272. Using the initial state in your 
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-16 :var input_data=input-2016-16 :tangle /tmp/advent_of_code/aoc2016-16-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 17: Two Steps Forward
 **** Part 1
@@ -1182,42 +1378,54 @@ Given your vault's passcode, ~what is the shortest path~ (the actual path, not j
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-17 :var input_data=input-2016-17 :tangle /tmp/advent_of_code/aoc2016-17-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 18: Like a Rogue
 **** Part 1
@@ -1277,42 +1485,54 @@ Starting with the map in your puzzle input, in a total of 40 rows (including the
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-18 :var input_data=input-2016-18 :tangle /tmp/advent_of_code/aoc2016-18-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 19: An Elephant Named Joseph
 **** Part 1
@@ -1341,42 +1561,54 @@ With the number of Elves given in your puzzle input, ~which Elf gets all the pre
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-19 :var input_data=input-2016-19 :tangle /tmp/advent_of_code/aoc2016-19-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 20: Firewall Rules
 **** Part 1
@@ -1396,42 +1628,54 @@ Given the list of blocked IPs you retrieved from the firewall (your puzzle input
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-20 :var input_data=input-2016-20 :tangle /tmp/advent_of_code/aoc2016-20-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 21: Scrambled Letters and Hash
 **** Part 1
@@ -1461,42 +1705,54 @@ Now, you just need to generate a new scrambled password and you can access the s
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-21 :var input_data=input-2016-21 :tangle /tmp/advent_of_code/aoc2016-21-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 22: Grid Computing
 **** Part 1
@@ -1518,42 +1774,54 @@ To do this, you'd like to count the number of ~viable pairs~ of nodes.  A viable
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-22 :var input_data=input-2016-22 :tangle /tmp/advent_of_code/aoc2016-22-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 23: Safe Cracking
 **** Part 1
@@ -1597,42 +1865,54 @@ The rest of the electronics seem to place the keypad entry (the number of eggs, 
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-23 :var input_data=input-2016-23 :tangle /tmp/advent_of_code/aoc2016-23-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 24: Air Duct Spelunking
 **** Part 1
@@ -1663,42 +1943,54 @@ Given your actual map, and starting from location 0, what is the ~fewest number 
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-24 :var input_data=input-2016-24 :tangle /tmp/advent_of_code/aoc2016-24-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 *** Day 25: Clock Signal
 **** Part 1
@@ -1720,42 +2012,54 @@ The code takes a value (via register a) that describes the signal to generate, b
 
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-1.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 **** Part 2
 ***** Description
 Complete part 1 before continuing
 ***** TODO Racket
 #+begin_src racket :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.rkt :results output :cache yes
+(displayln "TODO")
 #+end_src
 ***** TODO Python
 #+begin_src python :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.py :results output :cache yes
+print("TODO")
 #+end_src
 ***** TODO Rust
 #+begin_src rust :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.rs :results output :cache yes
+fn main() {println!("TODO");}
 #+end_src
 ***** TODO Bash
 #+begin_src bash :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.sh :results output :cache yes
+echo "TODO"
 #+end_src
 ***** TODO Awk
 #+begin_src awk :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.awk :results output :cache yes
+BEGIN {print "TODO"}
 #+end_src
 ***** TODO Perl
 #+begin_src perl :var sample_data=sample-2016-25 :var input_data=input-2016-25 :tangle /tmp/advent_of_code/aoc2016-25-2.pl :results output :cache yes
+print("TODO\n")
 #+end_src
 * Inputs
 ** 2016
