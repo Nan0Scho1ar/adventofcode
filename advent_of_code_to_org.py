@@ -37,8 +37,8 @@ def get_description(year, day):
     lines = "\n".join(["{} ".format(t) for t in text])
     lines = re.sub("<p>|</p>|<ul>|</ul>|<code>|</code>|<h2>|<article class=\"day-desc\">|</article>", "", lines)
     lines = re.sub("<em>|</em>|<li>|</li>", "~", lines)
-    lines = re.sub("<pre>", "\n#+begin_src text\n", lines)
-    lines = re.sub("</pre>", "\n#+end_src\n", lines)
+    lines = re.sub("<pre>", "\n#+begin_example\n", lines)
+    lines = re.sub("</pre>", "\n#+end_example\n", lines)
     lines = re.sub("</h2>", "\n", lines)
     return lines
 

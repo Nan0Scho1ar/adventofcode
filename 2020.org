@@ -2,6 +2,7 @@
 #+STARTUP: inlineimages
 #+LANGUAGE: en
 #+EXPORT_FILE_NAME: 2020.html
+#+PROPERTY: header-args    :cache yes
 #+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
 #+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
 #+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
@@ -28,15 +29,14 @@ Before you leave, the Elves in accounting just need you to fix your ~expense rep
 Specifically, they need you to ~find the two entries that sum to 2020~ and then multiply those two numbers together.
 For example, suppose your expense report contained the following:
 
-#+begin_src text
+#+begin_example text
 1721
 979
 366
 299
 675
 1456
-
-#+end_src
+#+end_example
 
 In this list, the two entries that sum to 2020 are 1721 and 299. Multiplying them together produces 1721 * 299 = 514579, so the correct answer is ~514579~.
 Of course, your expense report is much larger. ~Find the two entries that sum to 2020; what do you get if you multiply them together?~
@@ -75,25 +75,40 @@ print(fix_expense_report(data2))
 #+end_src
 
 #+RESULTS:
-: 514579
-: 365619
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[0eb44c1e1c1343404a436967e61470ee563c5d22]:
+: cargobSOEow
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[aecd3a96232175128df436300f97320c27b00620]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[c8d300f6aba47d8f25f65be8c9117cac20174e48]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[43524999575c7b5188723a673e8e1bb49b613643]:
+: TODO
+
 *** Part 2
 **** Description
 The Elves in accounting are thankful for your help; one of them even offers you a starfish coin they had left over from a past vacation. They offer you a second one if you can find three numbers in your expense report that meet the same criteria.
@@ -136,25 +151,39 @@ print(fix_expense_report_2(data2))
 #+end_src
 
 #+RESULTS:
-: 241861950
-: 236873508
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[dc3deda8216c051424f2b9ca750c4e90d2bdddb8]:
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[c407bd5695f58f16a2f4143ef4c57acda99159e6]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[d0283a4f13e63235d2053cafc21f527e7686caec]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-01 :var input_data=input-2020-01 :tangle /tmp/advent_of_code/aoc2020-01-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[7392295fb5cfc70a652e3af4b4d4012d8a5694a2]:
+: TODO
+
 ** Day 02: Password Philosophy
 *** Part 1
 **** Description
@@ -163,12 +192,12 @@ Their password database seems to be a little corrupted: some of the passwords wo
 To try to debug the problem, they have created a list (your puzzle input) of ~passwords~ (according to the corrupted database) and ~the corporate policy when that password was set~.
 For example, suppose you have the following list:
 
-#+begin_src text
+#+begin_example
 1-3 a: abcde
 1-3 b: cdefg
 2-9 c: ccccccccc
 
-#+end_src
+#+end_example
 
 Each line gives the password policy and then the password. The password policy indicates the lowest and highest number of times a given letter must appear for the password to be valid. For example, 1-3 a means that the password must contain a at least 1 time and at most 3 times.
 In the above example, ~2~ passwords are valid. The middle password, cdefg, is not; it contains no instances of b, but needs at least 1. The first and third passwords are valid: they contain one a or nine c, both within the limits of their respective policies.
@@ -218,25 +247,40 @@ check_passwords(data2)
 #+end_src
 
 #+RESULTS:
-: 2
-: 636
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[92ed527382156ad53453459cdc5fb38c1aee4015]:
+: cargonD8Om0
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[c5230a137635ae6d765b4276b00c9c15440a2250]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[84840ea5ff169787a49c41f27011d195ff328d35]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[9862dee663b94c34fd2f24ce5193d098df289344]:
+: TODO
+
 *** Part 2
 **** Description
 While it appears you validated the passwords correctly, they don't seem to be what the Official Toboggan Corporate Authentication System is expecting.
@@ -295,31 +339,46 @@ check_passwords(input_data)
 #+end_src
 
 #+RESULTS:
-: 1
-: 588
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[24065540ebeb6544eaf13dcfdb0fc16c18b5017c]:
+: cargoGKedHL
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[d17a049a9b02061ab76803962baf8c07d185d43e]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[32f597150533897c4839693d96519a64d94e8f76]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-02 :var input_data=input-2020-02 :tangle /tmp/advent_of_code/aoc2020-02-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[a19595ddb09d6fd0090fa7d59581f605934e8eb6]:
+: TODO
+
 ** Day 03: Toboggan Trajectory
 *** Part 1
 **** Description
 Due to the local geology, trees in this area only grow on exact integer coordinates in a grid. You make a map (your puzzle input) of the open squares (.) and trees (#) you can see. For example:
 
-#+begin_src text
+#+begin_example
 ..##.......
 #...#...#..
 .#....#..#.
@@ -332,11 +391,11 @@ Due to the local geology, trees in this area only grow on exact integer coordina
 #...##....#
 .#..#...#.#
 
-#+end_src
+#+end_example
 
 These aren't the only trees, though; due to something you read about once involving arboreal genetics and biome stability, the same pattern repeats to the right many times:
 
-#+begin_src text
+#+begin_example
 ~..##.......~..##.........##.........##.........##.........##.......  ---&gt;
 ~#...#...#..~#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
 ~.#....#..#.~.#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
@@ -349,14 +408,14 @@ These aren't the only trees, though; due to something you read about once involv
 ~#...##....#~#...##....##...##....##...##....##...##....##...##....#
 ~.#..#...#.#~.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#  ---&gt;
 
-#+end_src
+#+end_example
 
 You start on the open square (.) in the top-left corner and need to reach the bottom (below the bottom-most row on your map).
 The toboggan can only follow a few specific slopes (you opted for a cheaper model that prefers rational numbers); start by ~counting all the trees~ you would encounter for the slope ~right 3, down 1~:
 From your starting position at the top-left, check the position that is right 3 and down 1. Then, check the position that is right 3 and down 1 from there, and so on until you go past the bottom of the map.
 The locations you'd check in the above example are marked here with ~O~ where there was an open square and ~X~ where there was a tree:
 
-#+begin_src text
+#+begin_example
 ..##.........##.........##.........##.........##.........##.......  ---&gt;
 #..~O~#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
 .#....~X~..#..#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
@@ -369,12 +428,13 @@ The locations you'd check in the above example are marked here with ~O~ where th
 #...##....##...##....##...#~X~....##...##....##...##....##...##....#
 .#..#...#.#.#..#...#.#.#..#...~X~.#.#..#...#.#.#..#...#.#.#..#...#.#  ---&gt;
 
-#+end_src
+#+end_example
 
 In this example, traversing the map using this slope would cause you to encounter ~7~ trees.
 Starting at the top-left corner of your map and following a slope of right 3 and down 1, ~how many trees would you encounter?~
 
 **** Racket
+Slowly refining the racket solutions
 #+begin_src racket :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-1.rkt :results output:cache yes
 (define (count_trees lines [idx 0])
   (if (empty? lines) 0
@@ -421,25 +481,40 @@ count_trees(input_data[:-1])
 #+end_src
 
 #+RESULTS:
-: 7
-: 193
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[36908ac5c9bda46865d988cdd95e8847c3352d93]:
+: cargoCBVEvP
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[2342f96c50d997554c438793d783055e8648768c]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[4342ea8be67b7f3798269eac52ad805d2e0f8edf]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[0ec83c3cd5bda7a095797b8004d3aa033340f6f8]:
+: TODO
+
 *** Part 2
 **** Description
 Time to check the rest of the slopes - you need to minimize the probability of a sudden arboreal stop, after all.
@@ -509,25 +584,40 @@ mul_slopes(input_data[:-1], slopes)
 #+end_src
 
 #+RESULTS:
-: 336
-: 1355323200
+: None
 
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[78f94ef641b23ab935da49286bc5f90dc6706572]:
+: cargoRy70OB
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[50056738ec5ce13d03fa5c2a717da6915a2f145d]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[c29e9aed10fa0c3f11d36ae74328d881c3300cc1]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-03 :var input_data=input-2020-03 :tangle /tmp/advent_of_code/aoc2020-03-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[f8c26ff8a2d761f008cdbd808d8e7f722a96f732]:
+: TODO
+
 ** Day 04: Passport Processing
 *** Part 1
 **** Description
@@ -547,7 +637,7 @@ The automatic passport scanners are slow because they're having trouble ~detecti
 Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
 Here is an example batch file containing four passports:
 
-#+begin_src text
+#+begin_example
 ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
@@ -562,7 +652,7 @@ hgt:179cm
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in
 
-#+end_src
+#+end_example
 
 The first passport is ~valid~ - all eight fields are present. The second passport is ~invalid~ - it is missing hgt (the Height field).
 The third passport is interesting; the ~only missing field~ is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing cid fields.  Treat this "passport" as ~valid~.
@@ -572,55 +662,232 @@ Count the number of ~valid~ passports - those that have all required fields. Tre
 
 **** TODO Racket
 #+begin_src racket :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.rkt :results output :cache yes
-(displayln "TODO")
-#+end_src
-**** TODO Python
+(define (count-valid lines keys)
+  (count identity
+         (for/list ([line lines])
+           (for/and ([key keys])
+             (string-contains? line key)))))
+
+(define (count-valid2 lines keys)
+  (for/sum ([line (in-list lines)])
+    (if (for/and ([key (in-list keys)])
+          (string-contains? line key))
+        1
+        0)))
+
+(define (count-valid3 lines keys)
+  (length (for/list ([line lines]
+                     #:when (andmap (λ (k) (string-contains? line k)) keys))
+            line)))
+
+(define keys '("byr:" "iyr:" "eyr:" "hgt:" "hcl:" "ecl:" "pid:"))
+(count-valid3 (string-split sample_data "\n\n") keys)
+;(print keys)
+;(print
+        #+end_src
+
+#+RESULTS[37b8316436b4588ab944d9a37348cfe65c24f157]:
+: 2
+
+**** Python
 #+begin_src python :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.py :results output :cache yes
-print("TODO")
+def count_valid(lines, keys):
+    return sum(all([(k in line) for k in keys]) for line in lines)
+
+keys = ["byr:", "iyr:", "eyr:", "hgt:", "hcl:", "ecl:", "pid:"]
+print(count_valid(sample_data.split("\n\n"), keys))
+print(count_valid(input_data.split("\n\n"), keys))
 #+end_src
+
+#+RESULTS[f8560a4c89ec4638ccccefdeca563e3061f94c3e]:
+: 2
+: 230
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[194d5c00a7b55ecce95f64a472fcc3af8bc289fa]:
+: cargoxhwvR9
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[d004b9669bb64dfa5b5893cefc596b4a5d97d4de]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[ba6bb5f4f628cc593565e22bd20c99f82cde0fde]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[514f647a3b694ae573a72ac3f024c6b03289bdd9]:
+: TODO
+
 *** Part 2
 **** Description
-Complete part 1 before continuing
-**** TODO Racket
+The line is moving more quickly now, but you overhear airport security talking about how passports with invalid data are getting through. Better add some data validation, quick!
+
+You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:
+
+#+begin_example
+byr (Birth Year) - four digits; at least 1920 and at most 2002.
+iyr (Issue Year) - four digits; at least 2010 and at most 2020.
+eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
+hgt (Height) - a number followed by either cm or in:
+If cm, the number must be at least 150 and at most 193.
+If in, the number must be at least 59 and at most 76.
+hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
+ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+pid (Passport ID) - a nine-digit number, including leading zeroes.
+cid (Country ID) - ignored, missing or not.
+#+end_example
+Your job is to count the passports where all required fields are both present and valid according to the above rules. Here are some example values:
+
+#+begin_example
+byr valid:   2002
+byr invalid: 2003
+
+hgt valid:   60in
+hgt valid:   190cm
+hgt invalid: 190in
+hgt invalid: 190
+
+hcl valid:   #123abc
+hcl invalid: #123abz
+hcl invalid: 123abc
+
+ecl valid:   brn
+ecl invalid: wat
+
+pid valid:   000000001
+pid invalid: 0123456789
+#+end_example
+Here are some invalid passports:
+
+#+begin_example
+eyr:1972 cid:100
+hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
+
+iyr:2019
+hcl:#602927 eyr:1967 hgt:170cm
+ecl:grn pid:012533040 byr:1946
+
+hcl:dab227 iyr:2012
+ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277
+
+hgt:59cm ecl:zzz
+eyr:2038 hcl:74454a iyr:2023
+pid:3556412378 byr:2007
+Here are some valid passports:
+
+pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+hcl:#623a2f
+
+eyr:2029 ecl:blu cid:129 byr:1989
+iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm
+
+hcl:#888785
+hgt:164cm byr:2001 iyr:2015 cid:88
+pid:545766238 ecl:hzl
+eyr:2022
+
+iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
+#+end_example
+Count the number of valid passports - those that have all required fields and valid values. Continue to treat cid as optional. In your batch file, how many passports are valid?
+**** Racket
 #+begin_src racket :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.rkt :results output :cache yes
-(displayln "TODO")
+;; Between two numbers (inclusive)
+(define (between? num start end)
+  (and (>= num start) (<= num end)))
+
+(define (count-valid data)
+  (define keys '("byr:" "iyr:" "eyr:" "hgt:" "hcl:" "ecl:" "pid:"))
+  (length
+   (for/list ([line (string-split data "\n\n")]
+              #:when (and
+                      (andmap (λ (k) (string-contains? line k)) keys)
+                      (validate line)))
+     line)))
+
+(define (validate line)
+  (for/and ([item (string-split (string-replace line "\n" " ") " ")])
+    (let ([key (car (string-split item ":"))]
+          [val (cadr (string-split item ":"))])
+      (match key
+        ["byr" (between? (string->number val) 1920 2002)]
+        ["iyr" (between? (string->number val) 2010 2020)]
+        ["eyr" (between? (string->number val) 2020 2030)]
+        ["hgt" (cond [(regexp-match? #rx"^[0-9]*cm$" val)
+                      (between? (string->number (string-trim val "cm")) 150 193)]
+                     [(regexp-match? #rx"^[0-9]*in$" val)
+                      (between? (string->number (string-trim val "in")) 59 76)]
+                     [else #f])]
+        ["hcl" (regexp-match? #rx"^#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]$" val)]
+        ["ecl" (regexp-match? #rx"^amb$|^blu$|^brn$|^gry$|^grn$|^hzl$|^oth$" val)]
+        ["pid" (regexp-match? #rx"^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$" val)]
+        ["cid" #t]))))
+
+
+(count-valid sample_data)
+(count-valid input_data)
 #+end_src
+
+#+RESULTS[68741cb4c1023c153547f078dd9b220648d6cf63]:
+: 2
+: 156
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[3a56a95ff96b467092ec841356617cb854f2428f]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[7a5e6e672ea5c9d022ab229b4e56abfbe862cfaf]:
+: cargoasL0HF
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[aee1d98a623e28c5cb6209866fcf52e01dadcad1]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[f5460f9c9178fe5d8b1d104c86306899212db15d]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[c7dc9d380de5d1d5363264941e28bbebf673c0bf]:
+: TODO
+
 ** Day 05: Binary Boarding
 *** Part 1
 **** Description
@@ -660,26 +927,50 @@ As a sanity check, look through your list of boarding passes. ~What is the highe
 #+begin_src racket :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[afab6bd7753279af813d2e886b0389769ccc635c]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[7e445b48ecf2f1e1c281d45a305bf48408927f85]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[7ad326e038387b14c4bf9cfada2b4bdd99f9d633]:
+: cargosnmkrB
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[32def00d7c16f2d331afa35c40ae9f077d074dd0]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[d9a865674e491840c35806d4fafe0138732df86f]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[80c4f2eccab0a59a0998b8f3fb382ff710afeb3d]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -687,43 +978,67 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ff7c41f0075abf854c92361ac4fb4074eb902726]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[5e5578520ad7503f4f563f17b90ba228f5e7c341]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[7508dfaf99cca92d72de3a7176b38ea0351484e7]:
+: cargou92RFX
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[28b7ce9b6f0995292c4902c0669db0c6d9cd7253]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[1b013c301de9536e5eccbe10cf48c0e0ac9375ae]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-05 :var input_data=input-2020-05 :tangle /tmp/advent_of_code/aoc2020-05-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[e83a5cae50a23308775b79e8c95e929694b80779]:
+: TODO
+
 ** Day 06: Custom Customs
 *** Part 1
 **** Description
 The form asks a series of 26 yes-or-no questions marked a through z. All you need to do is identify the questions for which ~anyone in your group~ answers "yes". Since your group is just you, this doesn't take very long.
 However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer "yes", one per line.  For example:
 
-#+begin_src text
+#+begin_example
 abcx
 abcy
 abcz
 
-#+end_src
+#+end_example
 
 In this group, there are ~6~ questions to which anyone answered "yes": a, b, c, x, y, and z. (Duplicate answers to the same question don't count extra; each question counts at most once.)
 Another group asks for your help, then another, and eventually you've collected answers from every group on the plane (your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's answers are on a single line. For example:
 
-#+begin_src text
+#+begin_example
 abc
 
 a
@@ -740,7 +1055,7 @@ a
 
 b
 
-#+end_src
+#+end_example
 
 This list represents answers from five groups:
 
@@ -757,26 +1072,50 @@ For each group, count the number of questions to which anyone answered "yes". ~W
 #+begin_src racket :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[1d2a1223583cf265a933a8f5dd52ebab123e5061]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[2fc93722704c117b2185be43442b4d7f761071ee]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[92dc7d4d0cdf728837bd5d28d5804267b01851d2]:
+: cargog8kC7F
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[f8c9737b3d6c0cb88deb50234fe8ef56db866b89]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[34ebade1fd576aa96379547bd353ea8d4eb741a9]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[828cb23deb99ff182b746d9b10e9ec11dd96fc52]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -784,33 +1123,57 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[0739f99540aa517d51374de75e671b2698b70b52]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[bc0d122db2df408fc5600396eaa72fcbb4ae4721]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[31e6307adbc1b2ed0263c171b0a5bac79052e8fc]:
+: cargoQ1b5Kq
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[ed248d6e0e5c5b9c1202720a68a898a8ed455822]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[173de73415714b1b8794ac6d69f6bdbcc44844cd]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-06 :var input_data=input-2020-06 :tangle /tmp/advent_of_code/aoc2020-06-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[6ebf5917b7d9d92a88c77132c34ef5ce8b59b15f]:
+: TODO
+
 ** Day 07: Handy Haversacks
 *** Part 1
 **** Description
 Due to recent aviation regulations, many rules (your puzzle input) are being enforced about bags and their contents; bags must be color-coded and must contain specific quantities of other color-coded bags. Apparently, nobody responsible for these regulations considered how long they would take to enforce!
 For example, consider the following rules:
 
-#+begin_src text
+#+begin_example
 light red bags contain 1 bright white bag, 2 muted yellow bags.
 dark orange bags contain 3 bright white bags, 4 muted yellow bags.
 bright white bags contain 1 shiny gold bag.
@@ -821,7 +1184,7 @@ vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
 faded blue bags contain no other bags.
 dotted black bags contain no other bags.
 
-#+end_src
+#+end_example
 
 These rules specify the required contents for 9 bag types. In this example, every faded blue bag is empty, every vibrant plum bag contains 11 bags (5 faded blue and 6 dotted black), and so on.
 You have a ~shiny gold~ bag. If you wanted to carry it in at least one other bag, how many different bag colors would be valid for the outermost bag? (In other words: how many colors can, eventually, contain at least one shiny gold bag?)
@@ -839,26 +1202,50 @@ So, in this example, the number of bag colors that can eventually contain at lea
 #+begin_src racket :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[4f74af2f9f7415c632bd81784c1278257e9314e6]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ac616101c449952e0321463625abf2beb89b3df9]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[e11eb8dfc4e29509de1b39843a6ad63114fe04e7]:
+: cargoIVoKLC
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[b32c7c8b731cde0e929f22fc05b700d69f0f6040]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[fd1f0d6ae2a70f1d55b53843da3593870778270c]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[3a587840be823e33d244c1c9c86b0a5ce718fe09]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -866,26 +1253,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ec43ab9eac921fd775db341d586fa29dc15e99e4]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[21d6b431f308b29adeaf6eb558559b0c128d73cb]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[69371e930a6bc9f9c9774f42d34120ec4d770318]:
+: cargo8PpKzB
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[f56fc3ec652907807988da0bb9fab57c8e8a262b]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[716ca68f64574391336576f8cc49fe545ff02711]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-07 :var input_data=input-2020-07 :tangle /tmp/advent_of_code/aoc2020-07-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[f6fa0eb94f457d9be5ea7f15a09988ea2506da06]:
+: TODO
+
 ** Day 08: Handheld Halting
 *** Part 1
 **** Description
@@ -899,7 +1310,7 @@ The boot code is represented as a text file with one ~instruction~ per line of t
 
 For example, consider the following program:
 
-#+begin_src text
+#+begin_example
 nop +0
 acc +1
 jmp +4
@@ -910,11 +1321,11 @@ acc +1
 jmp -4
 acc +6
 
-#+end_src
+#+end_example
 
 These instructions are visited in this order:
 
-#+begin_src text
+#+begin_example
 nop +0  | 1
 acc +1  | 2, 8(!)
 jmp +4  | 3
@@ -925,7 +1336,7 @@ acc +1  | 4
 jmp -4  | 5
 acc +6  |
 
-#+end_src
+#+end_example
 
 First, the nop +0 does nothing. Then, the accumulator is increased from 0 to 1 (acc +1) and jmp +4 sets the next instruction to the other acc +1 near the bottom. After it increases the accumulator from 1 to 2, jmp -4 executes, setting the next instruction to the only acc +3. It sets the accumulator to 5, and jmp -3 causes the program to continue back at the first acc +1.
 This is an ~infinite loop~: with this sequence of jumps, the program will run forever. The moment the program tries to run any instruction a second time, you know it will never terminate.
@@ -936,26 +1347,50 @@ Run your copy of the boot code. Immediately before any instruction is executed a
 #+begin_src racket :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[1e2da22ae47b8aafffd0dd5e46462627b4099b1f]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[6cb21e9b5ec93a1aa056f88bf5415f3fc4574c3a]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[9e1ab14794309bde0cc1f291650ecee9289eef8d]:
+: cargokWMPav
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[cc0a6008ac977f988e08d54ba2eb6384f90833f0]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[996a76dd3f3f6eafded176b60ac90788bf3399b1]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[50484d096e754e8665c5579c464bbe0306c41583]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -963,26 +1398,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[c8dc92f89a51d493f3c0edbd011cbb9e91710ded]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[1de73039bb8fda961b1f1b8f6f43d48a6e414e6a]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[9d52510a987bf47b0fa9148c0fdf5fba6cdad029]:
+: cargo6ZD6QK
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[7cccaf1d5c2259e6fd3985d4ca0d3f7e912ed46c]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[56ba198c67e1dfe3c1080a24a614ef2bd98f6d6c]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-08 :var input_data=input-2020-08 :tangle /tmp/advent_of_code/aoc2020-08-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[c29f3e612f28e91953a79d17350fa9fadf0ae6b3]:
+: TODO
+
 ** Day 09: Encoding Error
 *** Part 1
 **** Description
@@ -1004,7 +1463,7 @@ Suppose the 26th number is 45, and the first number (no longer an option, as it 
 
 Here is a larger example which only considers the previous ~5~ numbers (and has a preamble of length 5):
 
-#+begin_src text
+#+begin_example
 35
 20
 15
@@ -1026,7 +1485,7 @@ Here is a larger example which only considers the previous ~5~ numbers (and has 
 309
 576
 
-#+end_src
+#+end_example
 
 In this example, after the 5-number preamble, almost every number is the sum of two of the previous 5 numbers; the only number that does not follow this rule is ~127~.
 The first step of attacking the weakness in the XMAS data is to find the first number in the list (after the preamble) which is ~not~ the sum of two of the 25 numbers before it. ~What is the first number that does not have this property?~
@@ -1035,26 +1494,50 @@ The first step of attacking the weakness in the XMAS data is to find the first n
 #+begin_src racket :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[8bac1bc198a8435c1e39acf071d7b4a66dad25da]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ce2de6f430f6e436bf61034e16ec01bc81dce0b4]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[8d2a1cfbfa71c2bba77419d4d4e878540ac18e12]:
+: cargoU5DSou
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[fb8e2eee01f331777911380bbc53c75e17f0cd95]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[f6228a6427fb0f278b9121cc106cccf446c27d45]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[8ecfb9ffff9ce0219edc406a83d0e20f2fe7c259]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1062,26 +1545,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[1dd0f10fa244d3660d83638803ecb981c97d3de3]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[09032551f117b6ed6b140b1b9bb09c6eef13f511]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[b75a7238c4bedc1b83c3249824f179d904382f88]:
+: cargokEL8qb
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[96fd17ab145d1598dd8933e650229dad61e195b5]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[45ce6fd517a9185b982e8fcc28e84a76a6365834]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-09 :var input_data=input-2020-09 :tangle /tmp/advent_of_code/aoc2020-09-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[cf2843fb5c5036de77d45c99890a84b789e0b591]:
+: TODO
+
 ** Day 10: Adapter Array
 *** Part 1
 **** Description
@@ -1094,7 +1601,7 @@ Since you have some time to kill, you might as well test all of your adapters. W
 If you ~use every adapter in your bag~ at once, what is the distribution of joltage differences between the charging outlet, the adapters, and your device?
 For example, suppose that in your bag, you have adapters with the following joltage ratings:
 
-#+begin_src text
+#+begin_example
 16
 10
 15
@@ -1107,7 +1614,7 @@ For example, suppose that in your bag, you have adapters with the following jolt
 12
 4
 
-#+end_src
+#+end_example
 
 With these adapters, your device's built-in joltage adapter would be rated for 19 + 3 = ~22~ jolts, 3 higher than the highest-rated adapter.
 Because adapters can only connect to a source 1-3 jolts lower than its rating, in order to use every adapter, you'd need to choose them like this:
@@ -1124,7 +1631,7 @@ Because adapters can only connect to a source 1-3 jolts lower than its rating, i
 In this example, when using every adapter, there are ~7~ differences of 1 jolt and ~5~ differences of 3 jolts.
 Here is a larger example:
 
-#+begin_src text
+#+begin_example
 28
 33
 18
@@ -1157,7 +1664,7 @@ Here is a larger example:
 10
 3
 
-#+end_src
+#+end_example
 
 In this larger example, in a chain that uses all of the adapters, there are ~22~ differences of 1 jolt and ~10~ differences of 3 jolts.
 Find a chain that uses all of your adapters to connect the charging outlet to your device's built-in adapter and count the joltage differences between the charging outlet, the adapters, and your device. ~What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?~
@@ -1166,26 +1673,50 @@ Find a chain that uses all of your adapters to connect the charging outlet to yo
 #+begin_src racket :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[b1cbebd5a43b6dfd9c17da1f1e3bb5ed2900ff08]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[62dc59bf9aabd27abbfec8528bfc9c6a1e9c81d6]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[c3f3a315e1d7b63ca086638e64e79dd6c2cfa099]:
+: cargoa5EBuQ
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[b1769c21423d226047e2b711eecf070f1e08fab8]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[35b75761f3237768b80c5bf7282e3029d9642ff6]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[7b870b90cbac8925ca3d65a351b36dd4b2dc23d9]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1193,33 +1724,57 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[8f978b0c312e1eb8ad870cf0d170e854a572031a]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[74224101ed15b55b7b93261efe964347c25922c9]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[1a5eb0aa1408e9dbc5becb7b193202c3a97b923e]:
+: cargoqSTRIT
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[9d17c392f0e4829efcbcd35adb7f59e18b367493]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[786d425a23c36f1ec7781250c9e7e1b87141ca77]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-10 :var input_data=input-2020-10 :tangle /tmp/advent_of_code/aoc2020-10-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[cb2d2bfcedca9b22b1b147ab0db7c82c6fc552ba]:
+: TODO
+
 ** Day 11: Seating System
 *** Part 1
 **** Description
 By modeling the process people use to choose (or abandon) their seat in the waiting area, you're pretty sure you can predict the best place to sit. You make a quick map of the seat layout (your puzzle input).
 The seat layout fits neatly on a grid. Each position is either floor (.), an empty seat (L), or an occupied seat (#). For example, the initial seat layout might look like this:
 
-#+begin_src text
+#+begin_example
 L.LL.LL.LL
 LLLLLLL.LL
 L.L.L..L..
@@ -1231,7 +1786,7 @@ LLLLLLLLLL
 L.LLLLLL.L
 L.LLLLL.LL
 
-#+end_src
+#+end_example
 
 Now, you just need to model the people who will be arriving shortly. Fortunately, people are entirely predictable and always follow a simple set of rules. All decisions are based on the ~number of occupied seats~ adjacent to a given seat (one of the eight positions immediately up, down, left, right, or diagonal from the seat). The following rules are applied to every seat simultaneously:
 
@@ -1242,7 +1797,7 @@ Now, you just need to model the people who will be arriving shortly. Fortunately
 <span title="Floor... floor never changes.">Floor (.) never changes</span>; seats don't move, and nobody sits on the floor.
 After one round of these rules, every seat in the example layout becomes occupied:
 
-#+begin_src text
+#+begin_example
 #.##.##.##
 #######.##
 #.#.#..#..
@@ -1254,11 +1809,11 @@ After one round of these rules, every seat in the example layout becomes occupie
 #.######.#
 #.#####.##
 
-#+end_src
+#+end_example
 
 After a second round, the seats with four or more occupied adjacent seats become empty again:
 
-#+begin_src text
+#+begin_example
 #.LL.L#.##
 #LLLLLL.L#
 L.L.L..L..
@@ -1270,11 +1825,11 @@ L.L.L..L..
 #.LLLLLL.L
 #.#LLLL.##
 
-#+end_src
+#+end_example
 
 This process continues for three more rounds:
 
-#+begin_src text
+#+begin_example
 #.##.L#.##
 #L###LL.L#
 L.#.#..#..
@@ -1286,10 +1841,10 @@ L.#.#..#..
 #.LL###L.L
 #.#L###.##
 
-#+end_src
+#+end_example
 
 
-#+begin_src text
+#+begin_example
 #.#L.L#.##
 #LLL#LL.L#
 L.L.L..#..
@@ -1301,10 +1856,10 @@ L.L.L..#..
 #.LLLLLL.L
 #.#L#L#.##
 
-#+end_src
+#+end_example
 
 
-#+begin_src text
+#+begin_example
 #.#L.L#.##
 #LLL#LL.L#
 L.#.L..#..
@@ -1316,7 +1871,7 @@ L.#.L..#..
 #.LLLLLL.L
 #.#L#L#.##
 
-#+end_src
+#+end_example
 
 At this point, something interesting happens: the chaos stabilizes and further applications of these rules cause no seats to change state! Once people stop moving around, you count ~37~ occupied seats.
 Simulate your seating area by applying the seating rules repeatedly until no seats change state. ~How many seats end up occupied?~
@@ -1325,26 +1880,50 @@ Simulate your seating area by applying the seating rules repeatedly until no sea
 #+begin_src racket :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[53a4beb4461d9134ae3f393839473d58d128220a]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[2368c22d0e2ba9e3201bc697bdb33073c7bb3f3e]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[680484bf075db11c782e9de1a3e47b21f6f8c307]:
+: cargouwXXd0
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[7f66c3aa95e230595bd375dcce1dd77b3305c5ec]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[99db2375f333d6c6bb85d935076a662ba382d310]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[d43de42f1eee42d7f82f7c1f49a919ec9e2756e1]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1352,26 +1931,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[2c072a4c47e54f61cee2d541886a39d344ca73a7]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[32854c5288ee9bd86cb6e7bd6e8c6c22a75fbd5f]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[eba14b745c28669de1a4e36b0ba9baf2e5d4c881]:
+: cargoDCZqau
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[8b9f0f473da8fe9b5c38ba5c72b89e5943a25f99]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[7c3b7e9056c7b4179fcf9d6361d4a0db80f97433]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-11 :var input_data=input-2020-11 :tangle /tmp/advent_of_code/aoc2020-11-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[5f9bdd58a8e2f3892699dd6aee6be37ddee8b0d4]:
+: TODO
+
 ** Day 12: Rain Risk
 *** Part 1
 **** Description
@@ -1389,14 +1992,14 @@ The navigation instructions (your puzzle input) consists of a sequence of single
 The ship starts by facing ~east~. Only the L and R actions change the direction the ship is facing. (That is, if the ship is facing east and the next instruction is N10, the ship would move north 10 units, but would still move east if the following action were F.)
 For example:
 
-#+begin_src text
+#+begin_example
 F10
 N3
 F7
 R90
 F11
 
-#+end_src
+#+end_example
 
 These instructions would be handled as follows:
 
@@ -1413,26 +2016,50 @@ Figure out where the navigation instructions lead. ~What is the Manhattan distan
 #+begin_src racket :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[fea1a4ede6202e9cb9d9826ad3cf799751b8c5ac]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[4b3fef2e4c605087b359f38de8cab1620091d094]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[c3a1c4b6313f5cd087938f6ea1651ca1d4be270b]:
+: cargocTMV4R
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[742de7d06ff9e1c049378f6f84ad0c65c3b4e7c8]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[18ba27d087b59a23970e8321c3c0e112ee2481af]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[0147336e5098b94fb363ac6e5fd21238561d1dd7]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1440,26 +2067,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ccae4fb2e7b85ccac1733118dd154ded95613ed0]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[9370b7ccc5d70df7ab88615e9a7a4c60733d97f1]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[364c735abe3bf99db5aaa2bba11336b970e796db]:
+: cargozCOHcv
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[d07e524cd1588de3bd8a1cf1f5a2538a98e61e87]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[061cd814286f2e6f1b40934d032b2bcef3f0ea78]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-12 :var input_data=input-2020-12 :tangle /tmp/advent_of_code/aoc2020-12-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[a52bd3c7f1ebc8de7d07f3c3c3359436dc731249]:
+: TODO
+
 ** Day 13: Shuttle Search
 *** Part 1
 **** Description
@@ -1470,15 +2121,15 @@ Your notes (your puzzle input) consist of two lines.  The first line is your est
 To save time once you arrive, your goal is to figure out ~the earliest bus you can take to the airport~. (There will be exactly one such bus.)
 For example, suppose you have the following notes:
 
-#+begin_src text
+#+begin_example
 939
 7,13,x,x,59,x,31,19
 
-#+end_src
+#+end_example
 
 Here, the earliest timestamp you could depart is 939, and the bus IDs in service are 7, 13, 59, 31, and 19. Near timestamp 939, these bus IDs depart at the times marked D:
 
-#+begin_src text
+#+begin_example
 time   bus 7   bus 13  bus 59  bus 31  bus 19
 929      .       .       .       .       .
 930      .       .       .       D       .
@@ -1502,7 +2153,7 @@ time   bus 7   bus 13  bus 59  bus 31  bus 19
 948      .       .       .       .       .
 949      .       D       .       .       .
 
-#+end_src
+#+end_example
 
 The earliest bus you could take is bus ID 59. It doesn't depart until timestamp 944, so you would need to wait 944 - 939 = 5 minutes before it departs. Multiplying the bus ID by the number of minutes you'd need to wait gives ~295~.
 ~What is the ID of the earliest bus you can take to the airport multiplied by the number of minutes you'll need to wait for that bus?~
@@ -1511,26 +2162,50 @@ The earliest bus you could take is bus ID 59. It doesn't depart until timestamp 
 #+begin_src racket :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[c08c714f1eb75d88c6d6e59fd67cf9e93bb77cec]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[cc257b40d2029ab892414e5da94abfa88fa00f75]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[3676da6aae0cb27a80ee29d12163d42fa6c3f9bf]:
+: cargowZXuRB
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[4cd1ee18aacbaea962d5751ad0ecb0465bdea15e]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[ca4c028b38e8b13e889d370eff5c6e1b5c2d436f]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[9045a7203caacf27c590d958a13231ab478524e6]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1538,26 +2213,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[30f31551cd0df248b3f8b9a3876885a259b658d2]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[16ef99d6da31236d2ab4f1eb1b8722e594764600]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[c1ff7776d970fe9d0d52c8c1d21510186704f334]:
+: cargoRTYmdy
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[a05a3e0af444be99a2791f1bae2dc1555b13b573]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[52209508f8d9c08d42d9954d6471229c10f12054]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-13 :var input_data=input-2020-13 :tangle /tmp/advent_of_code/aoc2020-13-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[eff3fdefc43c2699ac7cc045c92c3b1c76a51d23]:
+: TODO
+
 ** Day 14: Docking Data
 *** Part 1
 **** Description
@@ -1566,41 +2265,41 @@ The initialization program (your puzzle input) can either update the bitmask or 
 The bitmask is always given as a string of 36 bits, written with the most significant bit (representing 2^35) on the left and the least significant bit (2^0, that is, the 1s bit) on the right. The current bitmask is applied to values immediately before they are written to memory: a 0 or 1 overwrites the corresponding bit in the value, while an X leaves the bit in the value unchanged.
 For example, consider the following program:
 
-#+begin_src text
+#+begin_example
 mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
 mem[8] = 11
 mem[7] = 101
 mem[8] = 0
 
-#+end_src
+#+end_example
 
 This program starts by specifying a bitmask (mask = ....). The mask it specifies will overwrite two bits in every written value: the 2s bit is overwritten with 0, and the 64s bit is overwritten with 1.
 The program then attempts to write the value 11 to memory address 8. By expanding everything out to individual bits, the mask is applied as follows:
 
-#+begin_src text
+#+begin_example
 value:  000000000000000000000000000000001011  (decimal 11)
 mask:   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
 result: 00000000000000000000000000000~1~0010~0~1  (decimal 73)
 
-#+end_src
+#+end_example
 
 So, because of the mask, the value 73 is written to memory address 8 instead. Then, the program tries to write 101 to address 7:
 
-#+begin_src text
+#+begin_example
 value:  000000000000000000000000000001100101  (decimal 101)
 mask:   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
 result: 00000000000000000000000000000~1~1001~0~1  (decimal 101)
 
-#+end_src
+#+end_example
 
 This time, the mask has no effect, as the bits it overwrote were already the values the mask tried to set. Finally, the program tries to write 0 to address 8:
 
-#+begin_src text
+#+begin_example
 value:  000000000000000000000000000000000000  (decimal 0)
 mask:   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
 result: 00000000000000000000000000000~1~0000~0~0  (decimal 64)
 
-#+end_src
+#+end_example
 
 64 is written to address 8 instead, overwriting the value that was there previously.
 To initialize your ferry's docking program, you need the sum of all values left in memory after the initialization program completes. (The entire 36-bit address space begins initialized to the value 0 at every address.) In the above example, only two values in memory are not zero - 101 (at address 7) and 64 (at address 8) - producing a sum of ~165~.
@@ -1610,26 +2309,50 @@ Execute the initialization program. ~What is the sum of all values left in memor
 #+begin_src racket :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[dc5bef6b23710b84895c3158c025bd1d7a635982]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[900200a45c40c6bf9d3c9415cbba46aa939d193b]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[b14a4a2da359566548c94c2fa3a41a0733b28196]:
+: cargo48iFAs
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[f235fe8d8a94eea719f8e3df2448b7cca31fb40d]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[49ae4162717a2205f26405b2865b1fcb672af054]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[3391a5585331ec2d82c04377ab6eb408f24696fb]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1637,26 +2360,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[a52644ba91c3ed95263513dda6752fd8aa9d2b5c]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[2741a9d8d1247a3a761b00ad560498a7d529aa12]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[0b35faab820c0d8a105319ce03d2d3452ed5bb3e]:
+: cargoLifVNT
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[9f5bf62c4def2ce7c013f5ff68644a97b99b44a8]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[6a62c38f98e55f88a60f18a05bcefb27f6dbd50f]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-14 :var input_data=input-2020-14 :tangle /tmp/advent_of_code/aoc2020-14-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[c356839ac7e90672fc83e2b8842b25ce4ae8c90b]:
+: TODO
+
 ** Day 15: Rambunctious Recitation
 *** Part 1
 **** Description
@@ -1697,26 +2444,50 @@ Given your starting numbers, ~what will be the 2020th number spoken?~
 #+begin_src racket :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[633fee70690058c044aa0934d42d13e795515663]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[430d518bebb1e48cceed0c9e4b808bf37fe1ffd1]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[64c12ade38d5345ab96d5cce256228f37ac42528]:
+: cargo3twSqw
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[09fcc39ad5103bd3400dedf342dbed6f733705aa]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[5078d65d5c8710988047f2e356443d258e43ce95]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[d51896d7c0a5b333f85a49bc1471377cb49c5df4]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1724,26 +2495,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[c9f17a361d2bf7ebe17f0ccc7834352f9cc24860]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ad9fdc2bd30690cd720c552215cacbdfd52c39c4]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[d9a71e904f7cc7b8fb6cb45fb464a0860b1ee5cc]:
+: cargoTpBqNK
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[0a4e9a50d2bfc7f2cce5fc4e505fecbc9dcebd00]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[f50c1327e78317968752251a4d7f0de192daebf5]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-15 :var input_data=input-2020-15 :tangle /tmp/advent_of_code/aoc2020-15-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[8cef62c1f46bc0fc4a370fa9409e3c2b7438afec]:
+: TODO
+
 ** Day 16: Ticket Translation
 *** Part 1
 **** Description
@@ -1752,7 +2547,7 @@ You collect the ~rules for ticket fields~, the ~numbers on your ticket~, and the
 The ~rules for ticket fields~ specify a list of fields that exist ~somewhere~ on the ticket and the ~valid ranges of values~ for each field. For example, a rule like class: 1-3 or 5-7 means that one of the fields in every ticket is named class and can be any value in the ranges 1-3 or 5-7 (inclusive, such that 3 and 5 are both valid in this field, but 4 is not).
 Each ticket is represented by a single line of comma-separated values. The values are the numbers on the ticket in the order they appear; every ticket has the same format. For example, consider this ticket:
 
-#+begin_src text
+#+begin_example
 .--------------------------------------------------------.
 | ????: 101    ?????: 102   ??????????: 103     ???: 104 |
 |                                                        |
@@ -1760,13 +2555,13 @@ Each ticket is represented by a single line of comma-separated values. The value
 | ??: 401  ??: 402           ???? ????: 403    ????????? |
 '--------------------------------------------------------'
 
-#+end_src
+#+end_example
 
 Here, ? represents text in a language you don't understand. This ticket might be represented as 101,102,103,104,301,302,303,401,402,403; of course, the actual train tickets you're looking at are ~much~ more complicated. In any case, you've extracted just the numbers in such a way that the first number is always the same specific field, the second number is always a different specific field, and so on - you just don't know what each position actually means!
 Start by determining which tickets are ~completely invalid~; these are tickets that contain values which ~aren't valid for any field~. Ignore ~your ticket~ for now.
 For example, suppose you have the following notes:
 
-#+begin_src text
+#+begin_example
 class: 1-3 or 5-7
 row: 6-11 or 33-44
 seat: 13-40 or 45-50
@@ -1780,7 +2575,7 @@ nearby tickets:
 ~55~,2,20
 38,6,~12~
 
-#+end_src
+#+end_example
 
 It doesn't matter which position corresponds to which field; you can identify invalid ~nearby tickets~ by considering only whether tickets contain ~values that are not valid for any field~. In this example, the values on the first ~nearby ticket~ are all valid for at least one field. This is not true of the other three ~nearby tickets~: the values 4, 55, and 12 are are not valid for any field. Adding together all of the invalid values produces your ~ticket scanning error rate~: 4 + 55 + 12 = ~71~.
 Consider the validity of the ~nearby tickets~ you scanned. ~What is your ticket scanning error rate?~
@@ -1789,26 +2584,50 @@ Consider the validity of the ~nearby tickets~ you scanned. ~What is your ticket 
 #+begin_src racket :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ca8008eca8d09d3a017e69e41fc0879af21ee319]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[b2ff00d6a629fb4e03aebe0c7e6416e0f38abcf6]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[153d28f38b7e63980a8e05862e9037ef751de95d]:
+: cargoVu00xg
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[635baf85bb3c42a7b4e20f57e8c382e0e60755d5]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[bdbc4d22a3d4ab66d6031fe5d7fa2a6bd91e715e]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[cb0ed9b43cf77f9b0af4803575bd62e8b72d517c]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -1816,26 +2635,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[d9b337e12297c6505af74b34c27416227cb9a9a4]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[96cef01aa8cc01e8619be11d074c9f3f4a3a790f]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[4544845be1a666ccdc7d6a73687f961ccc791585]:
+: cargo0WqCGo
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[949437e97ce28c9e14732acd0638b33849b7bb21]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[61d29f66be15ea4e363fc1497b59b40ab344b6fd]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-16 :var input_data=input-2020-16 :tangle /tmp/advent_of_code/aoc2020-16-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[d6684e9a11a865dc9c82095682a80192ce185f03]:
+: TODO
+
 ** Day 17: Conway Cubes
 *** Part 1
 **** Description
@@ -1852,17 +2695,17 @@ During a cycle, ~all~ cubes ~simultaneously~ change their state according to the
 The engineers responsible for this experimental energy source would like you to simulate the pocket dimension and determine what the configuration of cubes should be at the end of the six-cycle boot process.
 For example, consider the following initial state:
 
-#+begin_src text
+#+begin_example
 .#.
 ..#
 ###
 
-#+end_src
+#+end_example
 
 Even though the pocket dimension is 3-dimensional, this initial state represents a small 2-dimensional slice of it. (In particular, this initial state defines a 3x3x1 region of the 3-dimensional space.)
 Simulating a few cycles from this initial state produces the following configurations, where the result of each cycle is shown layer-by-layer at each given z coordinate (and the frame of view follows the active cells in each cycle):
 
-#+begin_src text
+#+begin_example
 Before any cycles:
 
 z=0
@@ -1974,7 +2817,7 @@ z=2
 .......
 .......
 
-#+end_src
+#+end_example
 
 After the full six-cycle boot process completes, ~112~ cubes are left in the ~active~ state.
 Starting with your given initial configuration, simulate six cycles. ~How many cubes are left in the active state after the sixth cycle?~
@@ -1983,26 +2826,50 @@ Starting with your given initial configuration, simulate six cycles. ~How many c
 #+begin_src racket :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[36859dcc4fab1bd02f22751736b6554698c51699]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[8ee62846ea7a0c49cacef1433e331e2a30d20ee6]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[ba149d5d3bf2edb7a705a93ea8b085da32b9b33b]:
+: cargoOK0HFe
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[eea3d31e2e613d920f88ad15518e986feb4d5c44]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[18bc2a8083303f210b5389bd1d50817b3faea7ff]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[3b5767e4d4078efa52d2c71eb2761c1b460c2f60]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2010,26 +2877,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[0cebe53e8891a01c447f4e41e3973b1298bb5554]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[9b6752445efedda4aa4077251968dd71a09acc92]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[ca80c27e39613490508ef4fe53d45aba2477f8c7]:
+: cargopznjbi
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[663217a5f0d146810697264363eddb5ca18df753]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[2bd85a85891c6fdbf7ae18ec3958ffa7bde5585e]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-17 :var input_data=input-2020-17 :tangle /tmp/advent_of_code/aoc2020-17-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[e956a908c84c14f37cd4ff53fca6e3e923fae68c]:
+: TODO
+
 ** Day 18: Operation Order
 *** Part 1
 **** Description
@@ -2038,7 +2929,7 @@ The homework (your puzzle input) consists of a series of expressions that consis
 However, the rules of ~operator precedence~ have changed. Rather than evaluating multiplication before addition, the operators have the ~same precedence~, and are evaluated left-to-right regardless of the order in which they appear.
 For example, the steps to evaluate the expression 1 + 2 * 3 + 4 * 5 + 6 are as follows:
 
-#+begin_src text
+#+begin_example
 ~1 + 2~ * 3 + 4 * 5 + 6
   ~3   * 3~ + 4 * 5 + 6
       ~9   + 4~ * 5 + 6
@@ -2046,11 +2937,11 @@ For example, the steps to evaluate the expression 1 + 2 * 3 + 4 * 5 + 6 are as f
              ~65   + 6~
                  ~71~
 
-#+end_src
+#+end_example
 
 Parentheses can override this order; for example, here is what happens if parentheses are added to form 1 + (2 * 3) + (4 * (5 + 6)):
 
-#+begin_src text
+#+begin_example
 1 + ~(2 * 3)~ + (4 * (5 + 6))
 ~1 +    6~    + (4 * (5 + 6))
      7      + (4 * ~(5 + 6)~)
@@ -2058,7 +2949,7 @@ Parentheses can override this order; for example, here is what happens if parent
      ~7      +     44~
             ~51~
 
-#+end_src
+#+end_example
 
 Here are a few more examples:
 
@@ -2073,26 +2964,50 @@ Before you can help with the homework, you need to understand it yourself. ~Eval
 #+begin_src racket :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[fbdd4134eae74347d30be9da56cd91ea884317a6]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[a50770a55e0daa6d2a30f03f27f8f5ea15f8f62a]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[fd38ead7f8d2a958e9724fb96796530eb75b83a8]:
+: cargoSU4jYf
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[c387c6a95f7d090f7ec55bdbfef69af6643e1aff]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[3f13d2af69deb36664aa1336582f67911a92e883]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[fc30dc00a8ca22808f50c368063f56d765c2ab2a]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2100,39 +3015,63 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[f40eb84ddbcc0b9ff88c4065cf1ddea99f3770a9]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[0a95ca4cf956d096d2ea59129518fddfd65f5e62]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[d0097918f235c8247d08568023faa4f760bb35ac]:
+: cargoAxZE2H
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[267e015cd059ff9a70a0ac83a57909684438d420]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[388f30c8ad6330a0e735d36d694c7ffc555bae69]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-18 :var input_data=input-2020-18 :tangle /tmp/advent_of_code/aoc2020-18-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[594a6db3181079971d3770d6053d3c20ebd31902]:
+: TODO
+
 ** Day 19: Monster Messages
 *** Part 1
 **** Description
 They sent you a list of ~the rules valid messages should obey~ and a list of ~received messages~ they've collected so far (your puzzle input).
 The ~rules for valid messages~ (the top part of your puzzle input) are numbered and build upon each other. For example:
 
-#+begin_src text
+#+begin_example
 0: 1 2
 1: "a"
 2: 1 3 | 3 1
 3: "b"
 
-#+end_src
+#+end_example
 
 Some rules, like 3: "b", simply match a single character (in this case, b).
 The remaining rules list the sub-rules that must be followed; for example, the rule 0: 1 2 means that to match rule 0, the text being checked must match rule 1, and the text after the part that matched rule 1 must then match rule 2.
@@ -2140,7 +3079,7 @@ Some of the rules have multiple lists of sub-rules separated by a pipe (|). This
 Fortunately, there are no loops in the rules, so the list of possible matches will be finite. Since rule 1 matches a and rule 3 matches b, rule 2 matches either ab or ba. Therefore, rule 0 matches aab or aba.
 Here's a more interesting example:
 
-#+begin_src text
+#+begin_example
 0: 4 1 5
 1: 2 3 | 3 2
 2: 4 4 | 5 5
@@ -2148,14 +3087,14 @@ Here's a more interesting example:
 4: "a"
 5: "b"
 
-#+end_src
+#+end_example
 
 Here, because rule 4 matches a and rule 5 matches b, rule 2 matches two letters that are the same (aa or bb), and rule 3 matches two letters that are different (ab or ba).
 Since rule 1 matches rules 2 and 3 once each in either order, it must match two pairs of letters, one pair with matching letters and one pair with different letters. This leaves eight possibilities: aaab, aaba, bbab, bbba, abaa, abbb, baaa, or babb.
 Rule 0, therefore, matches a (rule 4), then any of the eight options from rule 1, then b (rule 5): aaaabb, aaabab, abbabb, abbbab, aabaab, aabbbb, abaaab, or ababbb.
 The ~received messages~ (the bottom part of your puzzle input) need to be checked against the rules so you can determine which are valid and which are corrupted. Including the rules and the messages together, this might look like:
 
-#+begin_src text
+#+begin_example
 0: 4 1 5
 1: 2 3 | 3 2
 2: 4 4 | 5 5
@@ -2169,7 +3108,7 @@ abbbab
 aaabbb
 aaaabbb
 
-#+end_src
+#+end_example
 
 Your goal is to determine ~the number of messages that completely match rule 0~. In the above example, ababbb and abbbab match, but bababa, aaabbb, and aaaabbb do not, producing the answer ~2~. The whole message must match all of rule 0; there can't be extra unmatched characters in the message. (For example, aaaabbb might appear to match rule 0 above, but it has an extra unmatched b on the end.)
 ~How many messages completely match rule 0?~
@@ -2178,26 +3117,50 @@ Your goal is to determine ~the number of messages that completely match rule 0~.
 #+begin_src racket :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[11f975bc3b770cd165c086c7f5bb4c07fc90ef68]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[a38bb494a7a37c2e44efed37b50dcad12d0681dd]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[5c0b3c38f46e62f4ba39dff3b2b2ab761cf0bf9e]:
+: cargoih8XCP
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[1a5622608d3c3b3e386c4110c38aed49c6993779]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[6897c803a427b0adc47f505064a58e2832e53bed]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[92c2c01d226e35098fea88cc81274e19ba5dbd65]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2205,26 +3168,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[833faba238973bb9780e71dd2f8bceb16b6dd187]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[f11cc95c79e94500639d1a375b3a0734f0f8f9fa]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[af3e0b2f6c3b9a8f9e466a50128b434c2101590e]:
+: cargoaNFLpD
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[cc18d4ca9dc664149a1b7d6373a25d7ed7015d2c]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[cfc2d485f12bca443b327bfaa2f31a460060f21a]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-19 :var input_data=input-2020-19 :tangle /tmp/advent_of_code/aoc2020-19-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[0b13124ac8a5df50784a0a26d4b7783fd8406289]:
+: TODO
+
 ** Day 20: Jurassic Jigsaw
 *** Part 1
 **** Description
@@ -2234,7 +3221,7 @@ Worse yet, the camera array appears to be malfunctioning: each image tile has be
 To show how the tiles should be reassembled, each tile's image data includes a border that should line up exactly with its adjacent tiles. All tiles have this border, and the border lines up exactly when the tiles are both oriented correctly. Tiles at the edge of the image also have this border, but the outermost edges won't line up with any other tiles.
 For example, suppose you have the following nine tiles:
 
-#+begin_src text
+#+begin_example
 Tile 2311:
 ..##.#..#.
 ##..#.....
@@ -2343,11 +3330,11 @@ Tile 3079:
 ..#.......
 ..#.###...
 
-#+end_src
+#+end_example
 
 By rotating, flipping, and rearranging them, you can find a square arrangement that causes all adjacent borders to line up:
 
-#+begin_src text
+#+begin_example
 #...##.#.. ..###..### #.#.#####.
 ..#.#..#.# ###...#.#. .#..######
 .###....#. ..#....#.. ..#.......
@@ -2381,16 +3368,16 @@ By rotating, flipping, and rearranging them, you can find a square arrangement t
 #...###... ..##...#.. ...#..####
 ..#.#....# ##.#.#.... ...##.....
 
-#+end_src
+#+end_example
 
 For reference, the IDs of the above tiles are:
 
-#+begin_src text
+#+begin_example
 ~1951~    2311    ~3079~
 2729    1427    2473
 ~2971~    1489    ~1171~
 
-#+end_src
+#+end_example
 
 To check that you've assembled the image correctly, multiply the IDs of the four corner tiles together. If you do this with the assembled tiles from the example above, you get 1951 * 3079 * 2971 * 1171 = ~20899048083289~.
 Assemble the tiles into an image. ~What do you get if you multiply together the IDs of the four corner tiles?~
@@ -2399,26 +3386,50 @@ Assemble the tiles into an image. ~What do you get if you multiply together the 
 #+begin_src racket :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[4e870612c2b4a68e13ed7202a8435650a0a84f47]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[4e546b5192773d7d56414d9ccfeb5ded45f3bc01]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[0c3ba1d06bf1ba056b3a9e596a389ad632f1e0f5]:
+: cargosDTHI9
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[fb1146424365a9f8e00da8ca3ec4f8bcb2e1c54f]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[4723b254bbb7899027769e2a7cd622d0fc835a38]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[ade9fd19d5531a53672aa56044481b429577a8f1]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2426,26 +3437,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[7bbcba27db0f1b709146cd5e33002f894eec34de]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ea1dda958b6645f4541a2920098683e9036bdee0]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[bb631708f6c7f4a64b447fe33551794863788bfc]:
+: cargo21iqwu
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[328dfd27fa67fee13552b22f2f21a3b1f0a4728b]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[0d16db1ba80d8eb88b38df4f6ad74e7f629e517a]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-20 :var input_data=input-2020-20 :tangle /tmp/advent_of_code/aoc2020-20-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[2edb57de587d53ea078e5e4ced0643a79aad15cd]:
+: TODO
+
 ** Day 21: Allergen Assessment
 *** Part 1
 **** Description
@@ -2454,13 +3489,13 @@ You start by compiling a list of foods (your puzzle input), one food per line. E
 Each allergen is found in exactly one ingredient. Each ingredient contains zero or one allergen. ~Allergens aren't always marked~; when they're listed (as in (contains nuts, shellfish) after an ingredients list), the ingredient that contains each listed allergen will be ~somewhere in the corresponding ingredients list~. However, even if an allergen isn't listed, the ingredient that contains that allergen could still be present: maybe they forgot to label it, or maybe it was labeled in a language you don't know.
 For example, consider the following list of foods:
 
-#+begin_src text
+#+begin_example
 mxmxvkd kfcds sqjhc nhms (contains dairy, fish)
 trh fvjkl sbzzf mxmxvkd (contains dairy)
 sqjhc fvjkl (contains soy)
 sqjhc mxmxvkd sbzzf (contains fish)
 
-#+end_src
+#+end_example
 
 The first food in the list has four ingredients (written in a language you don't understand): mxmxvkd, kfcds, sqjhc, and nhms. While the food might contain other allergens, a few allergens the food definitely contains are listed afterward: dairy and fish.
 The first step is to determine which ingredients ~can't possibly~ contain any of the allergens in any food in your list. In the above example, none of the ingredients kfcds, nhms, sbzzf, or trh can contain an allergen. Counting the number of times any of these ingredients appear in any ingredients list produces ~5~: they all appear once each except sbzzf, which appears twice.
@@ -2470,26 +3505,50 @@ Determine which ingredients cannot possibly contain any of the allergens in your
 #+begin_src racket :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[12b09e1d0c9bc573c2c861f96f391bda2caeb8c2]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[11154ab73c66cadbb5594272f0695d25988162cd]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[f33b9278a9f3941188803691ee8cf4654865493b]:
+: cargoybEyOP
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[2e9da43e86ef638cfa61ccdfade894592afc06d7]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[c6f62fc6d4d5b6c969d07e04cc0cd6e1c9c0d6d7]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[c40a7afcb89a6fdc39a5e402b2164b50802f8b7e]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2497,26 +3556,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[69760596393c7690d718efb0123dace130823232]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ac46ac434f405a645a6d39c676756310366bac0c]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[f8180e4f31c55360933f8a88a953bbd81e629bcc]:
+: cargo99Kd9j
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[7fa480b690dc195de6493363d9c76c58674fd408]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[7fb543bd26fc3771e22f0ba490665b39fe7a1f99]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-21 :var input_data=input-2020-21 :tangle /tmp/advent_of_code/aoc2020-21-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[4fb373b5066754c2e200d9f1a724a4fbae0e3ca6]:
+: TODO
+
 ** Day 22: Crab Combat
 *** Part 1
 **** Description
@@ -2524,7 +3607,7 @@ Fortunately, it doesn't take long to teach the crab the rules.
 Before the game starts, split the cards so each player has their own deck (your puzzle input). Then, the game consists of a series of ~rounds~: both players draw their top card, and the player with the higher-valued card wins the round. The winner keeps both cards, placing them on the bottom of their own deck so that the winner's card is above the other card. If this causes a player to have all of the cards, they win, and the game ends.
 For example, consider the following starting decks:
 
-#+begin_src text
+#+begin_example
 Player 1:
 9
 2
@@ -2539,12 +3622,12 @@ Player 2:
 7
 10
 
-#+end_src
+#+end_example
 
 This arrangement means that player 1's deck contains 5 cards, with 9 on top and 1 on the bottom; player 2's deck also contains 5 cards, with 5 on top and 10 on the bottom.
 The first round begins with both players drawing the top card of their decks: 9 and 5. Player 1 has the higher card, so both cards move to the bottom of player 1's deck such that 9 is above 5. In total, it takes 29 rounds before a player has all of the cards:
 
-#+begin_src text
+#+begin_example
 -- Round 1 --
 Player 1's deck: 9, 2, 6, 3, 1
 Player 2's deck: 5, 8, 4, 7, 10
@@ -2608,11 +3691,11 @@ Player 2 wins the round!
 Player 1's deck:
 Player 2's deck: 3, 2, 10, 6, 8, 5, 9, 4, 7, 1
 
-#+end_src
+#+end_example
 
 Once the game ends, you can calculate the winning player's ~score~. The bottom card in their deck is worth the value of the card multiplied by 1, the second-from-the-bottom card is worth the value of the card multiplied by 2, and so on. With 10 cards, the top card is worth the value on the card multiplied by 10. In this example, the winning player's score is:
 
-#+begin_src text
+#+begin_example
    3 * 10
 +  2 *  9
 + 10 *  8
@@ -2625,7 +3708,7 @@ Once the game ends, you can calculate the winning player's ~score~. The bottom c
 +  1 *  1
 = 306
 
-#+end_src
+#+end_example
 
 So, once the game ends, the winning player's score is ~306~.
 Play the small crab in a game of Combat using the two decks you just dealt. ~What is the winning player's score?~
@@ -2634,26 +3717,50 @@ Play the small crab in a game of Combat using the two decks you just dealt. ~Wha
 #+begin_src racket :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ad1a2f07fc891cef270fdcb43324d5bf7a514807]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[200575c0a21351e6712e8b3a46e0a269651e3f07]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[87f449f5ea47246ed5a87202cd2162ca0f512320]:
+: cargoZXCb27
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[1fdb461c046e4fe18980a47402b762f2648bb217]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[7f12668c0e8322cf57c01b19139b91aa05cb9334]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[1188bbea0febd67433acbff20119e74558ce2d39]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2661,26 +3768,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[caac111195926c0d2e2621fa5941e985ef62bbad]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[ece183110977a65ce2f060988740e1bc8f74a276]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[1f12a7c1387cc805a861f2931a75f4a3c2cd1129]:
+: cargoi0dyCY
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[e9eec3859a4e8eeadf4ee73c2bc50e230b3b1cb3]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[bdb22214e62a2d81d20cd8661b09c8cb7ca0ca2b]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-22 :var input_data=input-2020-22 :tangle /tmp/advent_of_code/aoc2020-22-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[4472abe61eea3171e1b1dec213042715af1e0862]:
+: TODO
+
 ** Day 23: Crab Cups
 *** Part 1
 **** Description
@@ -2695,7 +3826,7 @@ Each ~move~, the crab does the following actions:
 
 For example, suppose your cup labeling were 389125467. If the crab were to do merely 10 moves, the following changes would occur:
 
-#+begin_src text
+#+begin_example
 -- move 1 --
 cups: (3) 8  9  1  2  5  4  6  7
 pick up: 8, 9, 1
@@ -2749,7 +3880,7 @@ destination: 3
 -- final --
 cups:  5 (8) 3  7  4  1  9  2  6
 
-#+end_src
+#+end_example
 
 In the above example, the cups' values are the labels as they appear moving clockwise around the circle; the ~current cup~ is marked with ( ).
 After the crab is done, what order will the cups be in? Starting ~after the cup labeled 1~, collect the other cups' labels clockwise into a single string with no extra characters; each number except 1 should appear exactly once. In the above example, after 10 moves, the cups clockwise from 1 are labeled 9, 2, 6, 5, and so on, producing ~92658374~. If the crab were to complete all 100 moves, the order after cup 1 would be ~67384529~.
@@ -2759,26 +3890,50 @@ Using your labeling, simulate 100 moves. ~What are the labels on the cups after 
 #+begin_src racket :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[2ddc8a5b7a830b80b89f7aec688a6d7b0aa81a05]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[0981e7e505f51ee8fd556cb8c9ae128d842a27fa]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[24abd236da7b9b2b22c8702cd4bb297317791cf8]:
+: cargofKTpO2
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[ff356c6eafb3847085a800f92e32c2c8dae45ca3]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[44989eab441b8639fe13e6729377c46cc14da68e]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[7b025c48df805285e2cf05d5fee01d2e3b0ec616]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2786,26 +3941,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[ec347ebee73eb35230948814aa08a421a6009d46]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[f2d5fbb63ec5f70cf6e89b216673baa30ec78bee]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[b6035542a9e72dc014111a13070a77b1b4f3e354]:
+: cargoAh1Are
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[cdca1a6a8743386e6a6153afdd5de4e12e64c706]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[5dc6df96885d37e26ce23326fbbe9bbbfbd733d2]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-23 :var input_data=input-2020-23 :tangle /tmp/advent_of_code/aoc2020-23-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[4f51bd00a6b7e88925cc02b2c34a3eb7e63d3771]:
+: TODO
+
 ** Day 24: Lobby Layout
 *** Part 1
 **** Description
@@ -2817,7 +3996,7 @@ Because the tiles are hexagonal, every tile has ~six neighbors~: east, southeast
 Each time a tile is identified, it flips from white to black or from black to white. Tiles might be flipped more than once. For example, a line like esew flips a tile immediately adjacent to the reference tile, and a line like nwwswee flips the reference tile itself.
 Here is a larger example:
 
-#+begin_src text
+#+begin_example
 sesenwnenenewseeswwswswwnenewsewsw
 neeenesenwnwwswnenewnwwsewnenwseswesw
 seswneswswsenwwnwse
@@ -2839,7 +4018,7 @@ eneswnwswnwsenenwnwnwwseeswneewsenese
 neswnwewnwnwseenwseesewsenwsweewe
 wseweeenwnesenwwwswnew
 
-#+end_src
+#+end_example
 
 In the above example, 10 tiles are flipped once (to black), and 5 more are flipped twice (to black, then back to white). After all of these instructions have been followed, a total of ~10~ tiles are ~black~.
 Go through the renovation crew's list and determine which tiles they need to flip. After all of the instructions have been followed, ~how many tiles are left with the black side up?~
@@ -2848,26 +4027,50 @@ Go through the renovation crew's list and determine which tiles they need to fli
 #+begin_src racket :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[22cc1af195f26193bc302fe9f86d415c313001d4]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[1c44b5ec3361dc8cf5447ed1fc3f1208a9f0a911]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[78b995a3938f396d73fd69222340fe03cf3765ac]:
+: cargo3tnv9t
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[0d41bd7983f2052df1b8a173c816d30a637ec6d6]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[b0672d769fab896dac7204af088435bfeab6dc33]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[9821826fbf8d60431516e22fb0886fc5687aefe0]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2875,26 +4078,50 @@ Complete part 1 before continuing
 #+begin_src racket :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[9653a2d6245dc2e13b71fa8fb74da9cd478898a1]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[8efb55573a66b95e77ceabd1495b8ec059685006]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[475b29f0b0f912e880a0c826cafb7f86e4a52b85]:
+: cargoS21kVr
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[ede5f0eaa6fc584aea7f93bee52a9dcd39392dfa]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[5f430ed63f3c56a5fe48ad43205568878bead516]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-24 :var input_data=input-2020-24 :tangle /tmp/advent_of_code/aoc2020-24-2.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[0954425136a8f500b233427d18519ed6f4f6fa4b]:
+: TODO
+
 ** Day 25: Combo Breaker
 *** Part 1
 **** Description
@@ -2928,26 +4155,50 @@ At this point, you can use either device's loop size with the other device's pub
 #+begin_src racket :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.rkt :results output :cache yes
 (displayln "TODO")
 #+end_src
+
+#+RESULTS[cd9035171c85523e5edf1f89f9fc548ff45cb3c6]:
+: TODO
+
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.py :results output :cache yes
 print("TODO")
 #+end_src
+
+#+RESULTS[fda1e53e50d55350ead8f6ec898345d573f9eafb]:
+: TODO
+
 **** TODO Rust
 #+begin_src rust :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.rs :results output :cache yes
 fn main() {println!("TODO");}
 #+end_src
+
+#+RESULTS[a817e99fa62f2a5508dc536220311c10a12daf50]:
+: cargosTYiYg
+
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[35273dc13666fb5abc17b53c7130a924703cd9df]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
+
+#+RESULTS[984206910e0f51f241f57d03be7ac206a6fe57d5]:
+: TODO
+
 **** TODO Perl
 #+begin_src perl :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-1.pl :results output :cache yes
 print("TODO\n");
 #+end_src
+
+#+RESULTS[17319886ea30220eeb1d31d7f4197fcf2eb9967d]:
+: TODO
+
 *** Part 2
 **** Description
 Complete part 1 before continuing
@@ -2956,14 +4207,15 @@ Complete part 1 before continuing
 (displayln "TODO")
 #+end_src
 
-#+RESULTS[dc541e8b05a8204de709eb357059d5b3f66914d4]:
+#+RESULTS[41986b29056552d1ba5f0a8b43a0ea3337609046]:
+: TODO
 
 **** TODO Python
 #+begin_src python :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-2.py :results output :cache yes
 print("TODO")
 #+end_src
 
-#+RESULTS[8c5636620027dc6bb115d848ea2a7f5b1454c1eb]:
+#+RESULTS[1b327d0cc947119d03ecfa4514e10f7bf2f8768f]:
 : TODO
 
 **** TODO Rust
@@ -2971,19 +4223,23 @@ print("TODO")
 fn main() {println!("TODO");}
 #+end_src
 
-#+RESULTS:
-: TODO
+#+RESULTS[b6e27e86c89a83825b35691c07a385cf156c449c]:
+: cargoiRLaw9
 
 **** TODO Bash
 #+begin_src bash :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-2.sh :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[ae254d87f81c45ca3a1b5afd1542cc403e66f2df]:
+: TODO
+
 **** TODO Awk
 #+begin_src awk :var sample_data=sample-2020-25 :var input_data=input-2020-25 :tangle /tmp/advent_of_code/aoc2020-25-2.awk :results output :cache yes
 BEGIN {print "TODO"}
 #+end_src
 
-#+RESULTS[73bcbb3ac0a9708bda4f595a62c085aab71145eb]:
+#+RESULTS[47e8aebad6072be97c47b3cd6180d9b2fc17d030]:
 : TODO
 
 **** TODO Perl
@@ -2991,7 +4247,7 @@ BEGIN {print "TODO"}
 print("TODO\n");
 #+end_src
 
-#+RESULTS[a009a7beff1e9e00b21d4bb4e16b453b88b77908]:
+#+RESULTS[752f0678d6aff0398824e4c8fe2029ca94d27db6]:
 : TODO
 
 * Inputs
@@ -5397,17 +6653,2355 @@ echo ".#..............##....#.#.####.
 .....#...#.###...#..#........#."
 #+end_src
 
+#+RESULTS[d09123d964f940025fcb663e6651a550f7282240]: input-2020-03
+#+begin_example
+.#..............##....#.#.####.
+##..........#.....##...........
+.......#....##...........#.#...
+.........#.#...#..........#....
+.........#..#................##
+..#...#..#..#...........#......
+...................#...##..##..
+........#.....##...#.#.#...#...
+#..#.##......#.#..#..........#.
+......#.#...#.#...#........##.#
+.....#.####........#...........
+...###..#............#.........
+.....#.......##......#...#.....
+#......##......................
+......#..............#.........
+..##...#....###.##.............
+#...#..........#.#.........#...
+...........#........#...#......
+.....##.........#......#..#....
+#..............#....#.....#....
+.#......#....#...#............#
+.####..........##..#.#.........
+....#...#......................
+....................#....#.#...
+..........###.#...............#
+.#...........#...##............
+.#.#..#.....#...#....#.......#.
+.##........#..#....#...........
+.........#.....#......###......
+..............#..#.......#.....
+........#..#.#...........#..#..
+#.........#......#.....##.#.#..
+........#.#.#....#.............
+........#........#.#.##........
+#......#.#..........#..#.......
+..#....#...##......###..#..#...
+............#..#.#.........#...
+....#.#...........#..........##
+.......#.#.#..#......#...#.....
+..#.........##.#.........#...#.
+......#....#.#....#........#.#.
+.#....###....#..............#..
+.#....#.......#....#..#.....#..
+.....#.....#...................
+..#.....#......#......#........
+......##.##...#...#...#...#.##.
+##...#....#...#..#...#...#.....
+..#.....#...#...##.##...#......
+.....#.............##...#......
+.....................#.##..#...
+#...#....#....#........#.....#.
+..#...#.........#...#..#.....#.
+#.#......#...................#.
+..#...........##...............
+..#....#........#..#...........
+...........#...................
+.............###......#....#...
+...........#...#....#..#....#..
+.....##............#.#.......#.
+.....#..#....#...#....#........
+...............##........#.#...
+.........#...#.#....#.......#..
+#..#.......#.......#...#.......
+..#...........................#
+......#.......#..#......#......
+.#.......#..................##.
+..#.........#..#.##.#....#...##
+...#..#....#...#....#.#........
+.#...#........##..#..#.......#.
+.....#........#....#....#..#...
+............#...........#......
+..###.......#..#....#......#...
+.....#...#.......#..#..........
+..#........##.#....##..........
+#....#.............#..##......#
+....#.................##.......
+...#.......#........#....##.#.#
+##..##..#.....#.....#..........
+...#...............#....#..#...
+.#...##....#....#.....#....##..
+...#.....#......#......#.......
+#.....#.......##.....#..#....##
+.....#.#...##.#......##....#.#.
+..........#....#.#...#.........
+.#..##...#.....................
+...........##..#...#....#......
+...#......#........#.......#...
+.#......#..#........#.....#..#.
+.......#........##..#.##....#..
+.##..........#..#...#.....#....
+.....##...............#.#......
+..##.....#..#......#..##.#.#...
+....#......#.##...........#....
+#.#..#.......#......#.#........
+...#.#..#....#............#..#.
+...#..........###....#....#...#
+........##...#.......#..#....#.
+..#...#.....#..#........##.....
+...#..#.##.#.#.##..............
+.......#...#.........#.....#..#
+..#.....#.#..........#..#......
+......#..........#......#.....#
+.#...........#........#......##
+..##............#......#...#..#
+#..................#...........
+#....#..#.........#........#..#
+..#.#....###..#...#...##...##..
+...#....#..#.....#.............
+.#........##.##...#....#...#...
+.........#.......##.#.....##...
+#.#.....##...#........#...#...#
+.....#.#.##...#.....#.##..#....
+........#...##...#...#.#..#..#.
+.##....#.##...#.......#........
+...#..#................#..#....
+....#.......#......#...#.##....
+#......###..#...#......#.......
+..#...#...##...........##......
+.......#...#..##....##......#..
+....#.#.............#.#...##..#
+..........#........#...#......#
+............#.#.#....###.......
+#..#...#.#.####...#..#...#.....
+.##.......#.##...#.............
+#..#...........#.#.##.......#..
+...#..#.#...#...###..#.#..#.#..
+..#...#.....#..#....#....#.....
+.........##.......#............
+.........##.##......###........
+.............#.#....#..#.....#.
+...#....#.#.......#......##....
+............#..................
+....##...#..........#...#..#...
+#..#....#.....#.......#.##.#..#
+.....#.........##.............#
+#.....#.#...#............##..##
+..............#....#.....#.....
+.#....###..#.#.....###.#..#....
+.....#....##...#....#......#...
+..........#...#....#...........
+............#....#..#.........#
+..##.....#.#...#.......#...#...
+...#...#..#......##...#.....##.
+......#.##............##.#....#
+....#......#...##.....#.....###
+.#.###...............#...#.#...
+..#....................##...#..
+.......#.....##...........#....
+#.........#....#....#....#....#
+..#.#..##.#.#..................
+.....#.......#................#
+...........#.......#........#..
+#...#.........#.#.....#.....#..
+..........#..#...........#.....
+#..#.##..##..#.#.##.........#..
+#..#..#....##..#.........#.....
+#.#.......................#.#..
+.##......#.#...#......#....#...
+..#.#................#..##.....
+.......#..................#...#
+.....#.........##.#....#.......
+#..........#..#.#..........#..#
+..#..#.....#.........#...#.....
+..............#.....#..#...#.##
+...............................
+...#............##......#.....#
+.......#..#.............#.#....
+...........#..........#........
+...#.####..#......#...#....#...
+##......#.##.....#.............
+....#.........#...#...........#
+...#........#.......#.#..#.#.#.
+..#.......#.........#....#.....
+................#.#.#.##...#..#
+#.##...#...#..#.....#.....#..#.
+...............#...........#...
+.....##.#...............##...#.
+.#..##.##......................
+.......#.........#..#..#.......
+...#......#..................#.
+...#.#..#....#....#............
+...........#...#..#....##......
+.....#...#..#.#....#....#....#.
+.......#...#...#.#.#...........
+....#......#......#...##..#....
+##...#.#.....#..#.##...........
+#.#..#.....#..#................
+...#..#.#......#.#...........##
+##....#...#.....###..#...#....#
+...#.....#.#.#......##...#...#.
+............#.......#..........
+....#..........###.......#.....
+.................##..##....#...
+...........#........##..#......
+...#.#...#.....#........#...#..
+#...#.#......#.#...........#...
+..#..........#....#..........#.
+..#................#...........
+#...#.#....#.#.......#.........
+.#...........##..#....#....#..#
+.##........#.....#...#..#....#.
+......#......#...#.............
+.......#..#...#.##....#..#.#...
+.......#......#....#....#.#.#..
+..........##.....#....##.#.....
+.........##..#...#.....#..#....
+...#....#..........#..#...#..#.
+.......#.....##.#..#.....#...#.
+#...#......#......#...#........
+#..#....#.#......#......#......
+.......#.##....................
+...##...#.....#......##......#.
+.#...................###.......
+....#........###...#........#..
+...#............#.....#..#.....
+..................#......#....#
+..##......#..##..##......#.#...
+........##....##.......#...#...
+.#.#....#.....#.....#....#....#
+...##.#.............#....##....
+.........#.....#...#......#....
+..#.....#............#....##...
+..##.....#.....##.##...........
+#....#.#.......#..#......#.....
+##.......#.....#.....####....#.
+##...#.......#...#.....#.......
+#.....#..##.##...##..#.....#..#
+..........#......#..#.#........
+..##.#......#..............#...
+.#...#..........#.......#....#.
+..#....##...#...........#....#.
+..#.........#..#......#......#.
+.##....#......#.#.........#..##
+.......#...#....##............#
+.##.................#.#........
+...#.#...#..#..#.....#.#.......
+.#.#.......#...................
+..#..#.....#......#.....##..##.
+.#........#.##......#..........
+....##...#............#.#....#.
+.......#.#..#....##.#....#....#
+......####...#..#.....#........
+..........#..#.........#.#..#.#
+..........##.........#.##......
+.##..#.#.....#.....#....#......
+............#..#...............
+.....##.........#...#...##...##
+........#.##.#...#.....#....#.#
+#......##.#.##..........##.....
+#..#..#........#.........#..#..
+...............#.#..##.........
+.#.......##.#..#....#...#....##
+.#..##.....##......#....#...#.#
+........#...#.........#.....#.#
+...........#............#...#..
+................#...........#..
+..............##........#....#.
+..........#.....##.....#..#....
+#......#....###..#..#..........
+.....#.#.....##....#.#.......#.
+...#...#...............#.#.....
+.............#.......#.........
+.....#.....#..#......#.....#...
+.........#.................#.##
+.#.....#.##..#.................
+..#......#.......#.....#...#..#
+..#..#.#.#...#.......#.##......
+..........#..#.........#.......
+.#..........#...#....#..#...##.
+.#.#.#.###.....#...#.#.#.......
+....##............#............
+.#.#.............#..#......#.#.
+.#.#..........##..#.....#..#.#.
+...........#.##..#...#.#.....#.
+...........#..#....#...........
+..#................#.#...#....#
+...............##........##....
+....#.............#........#...
+...#......#.#.#........#.......
+#..............#..##.#..##.....
+.#.#.###................##.....
+.............#..#.........#....
+.......##..#............#...#..
+...#...#...........#.....#.....
+........#......#.#.#......#..#.
+#.##.......#......#..#..#.#....
+...#........#...........#...#..
+..#...........#.........#......
+.............#....#....#.......
+....#.........#........#......#
+..#............##..#.........#.
+.#...#...#..#...#........#..#..
+...#....##..............#......
+...........#...#....#.#.##..###
+..#....#......#.........#..#...
+.......#...#...................
+.#...#.#...................#...
+.#.....##.#.......#.#.#...##..#
+.....#..#.#.........#...#..##..
+.#..#.##.#......#......#.#...#.
+......#..#....##..#....##....##
+#...#......##........##........
+.#.........###................#
+.................#..###..#.#...
+..#.#........#..#........#...#.
+#.#....#....#..#...#.#......#..
+.#.#.............###.........#.
+.....#...............##...#...#
+..............#...#........#..#
+...................#..#.......#
+#......................#.....#.
+...#.........#..##...#...#.##..
+.....#..........#.........#....
+.....#...#............#..#.....
+.............#............#....
+...#.........#.................
+#...........#.#...............#
+.....#...#.....#..#.##.......##
+...#....#.#...........#........
+.........................#.#...
+.#..#...........#.#........#...
+.............#.#.....#..#....#.
+.....#...#.###...#..#........#.
+#+end_example
+
 ** Day 04: Passport Processing
 *** Sample
 #+NAME: sample-2020-04
 #+begin_src bash :results output :cache yes
-echo "TODO"
+echo "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+byr:1937 iyr:2017 cid:147 hgt:183cm
+
+iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+hcl:#cfa07d byr:1929
+
+hcl:#ae17e1 iyr:2013
+eyr:2024
+ecl:brn pid:760753108 byr:1931
+hgt:179cm
+
+hcl:#cfa07d eyr:2025 pid:166559648
+iyr:2011 ecl:brn hgt:59in"
 #+end_src
+
+#+RESULTS[375497e1efd60a1cda633960224c32af6dd21f70]: sample-2020-04
+#+begin_example
+ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+byr:1937 iyr:2017 cid:147 hgt:183cm
+
+iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+hcl:#cfa07d byr:1929
+
+hcl:#ae17e1 iyr:2013
+eyr:2024
+ecl:brn pid:760753108 byr:1931
+hgt:179cm
+
+hcl:#cfa07d eyr:2025 pid:166559648
+iyr:2011 ecl:brn hgt:59in
+#+end_example
+
 *** Input
 #+NAME: input-2020-04
 #+begin_src bash :results output :cache yes
-echo "TODO"
+echo "hgt:176cm
+iyr:2013
+hcl:#fffffd ecl:amb
+byr:2000
+eyr:2034
+cid:89 pid:934693255
+
+hcl:#b5c3db ecl:grn hgt:155cm pid:#baec97 iyr:2017
+byr:1939
+eyr:2020
+
+pid:526669252 eyr:1972
+hgt:152cm ecl:dne byr:1960 hcl:z iyr:2023
+
+eyr:2028 hcl:#c0946f hgt:73in byr:1926 ecl:#473aaf iyr:2016 pid:565318180
+
+pid:472686027 ecl:oth iyr:2019
+cid:277 byr:1940
+eyr:2030 hgt:170cm
+hcl:#62e117
+
+ecl:oth
+iyr:2017
+pid:938461813 hcl:#733820 byr:1959 hgt:159cm eyr:2022
+
+iyr:2011 eyr:2021 hcl:z
+ecl:hzl byr:2002 pid:17324328 cid:140
+hgt:186cm
+
+byr:2022 pid:3164234967 iyr:1984
+hgt:76cm hcl:6b3837
+ecl:#fa362b
+eyr:2037
+
+hcl:z eyr:1945
+pid:9247286687 hgt:75cm
+iyr:1934 cid:326 ecl:zzz
+byr:2005
+
+byr:2005
+ecl:lzr
+eyr:2021 pid:152cm
+cid:254 iyr:2020 hcl:z hgt:157cm
+
+iyr:2020 eyr:2020 hcl:#18171d ecl:gry pid:914128753 hgt:168cm
+byr:2002
+
+hcl:#7d3b0c hgt:160cm eyr:2020 iyr:2015
+pid:054067854 ecl:brn byr:2023
+
+hcl:#cfa07d hgt:157cm
+byr:1994 eyr:2027 pid:344443856
+iyr:2016
+
+pid:762423097
+iyr:2014 hcl:#a97842 ecl:brn hgt:180cm byr:1927 eyr:2021
+
+pid:6645616064 hcl:#ceb3a1 byr:2030
+eyr:2032 hgt:158cm iyr:2012
+ecl:#e9619e
+
+eyr:2022
+ecl:brn
+byr:1986
+hgt:161cm cid:99 pid:288726584 hcl:#6b5442 iyr:2019
+
+cid:75
+pid:117771843
+hgt:184cm byr:1937 ecl:brn
+hcl:#d88fd9
+iyr:2015 eyr:2027
+
+iyr:2016 hcl:#fffffd hgt:170cm eyr:2022 ecl:oth pid:629454113
+byr:1952
+
+hcl:#c0946f iyr:2018 hgt:189cm
+byr:1971 ecl:oth eyr:2029
+pid:800207810
+
+eyr:2022 hcl:#7d3b0c pid:969986413
+byr:1978 iyr:2020 hgt:186cm
+ecl:gry
+
+hgt:171cm byr:1949 hcl:#341e13
+ecl:amb eyr:2030 pid:359107274 iyr:2013
+
+pid:839751525 eyr:2024 byr:1921
+iyr:2012 ecl:amb hcl:#b0ed6f hgt:154cm
+
+pid:32592758
+byr:2009
+hgt:107 iyr:2019 hcl:#866857
+eyr:2036 ecl:amb
+
+eyr:2040 hcl:#733820 cid:199
+byr:2027
+pid:7791792988 ecl:blu iyr:2026
+hgt:63cm
+
+iyr:2011 cid:119 pid:344693475
+ecl:grn hgt:160cm eyr:2029 hcl:#346973 byr:1996
+
+hgt:161in byr:2025 cid:167 iyr:2024 eyr:2040 pid:034804648
+hcl:#efcc98 ecl:oth
+
+ecl:#ba14f0 iyr:1935
+hgt:60cm
+byr:2003 eyr:1987
+hcl:8e509b pid:161cm
+
+iyr:2018 pid:620508652 ecl:amb eyr:2023 hgt:183cm hcl:#a97842
+byr:1967 cid:117
+
+eyr:2022 ecl:amb
+pid:476049089 iyr:2012
+hgt:165cm
+byr:1955 hcl:#602927
+
+byr:2014 hcl:z iyr:2029 cid:279 pid:28914607 hgt:75cm ecl:xry
+
+hgt:156cm eyr:2023 iyr:2011 ecl:oth hcl:#7d3b0c pid:561313217 byr:1952
+
+iyr:2011 byr:1935
+hcl:#cfa07d ecl:oth pid:830614209
+eyr:2028 hgt:173cm
+
+iyr:2012 cid:210 eyr:2022
+pid:652810130 hcl:#18171d ecl:grn byr:1960 hgt:152cm
+
+eyr:2026 pid:815848563 hgt:75in iyr:2019 ecl:gry byr:1947
+hcl:#cfa07d
+
+cid:181 iyr:2012
+eyr:2024 byr:1934 hcl:#c0946f
+hgt:165cm ecl:oth pid:232944581
+
+cid:135 iyr:2020
+byr:1971 hcl:#733820 pid:531877857 hgt:179cm eyr:2027 ecl:amb
+
+byr:1987 hcl:936807 eyr:2032 ecl:#4bec4a pid:605628619 cid:180 hgt:150in
+iyr:2015
+
+hcl:b62ef0 ecl:#092141
+pid:876635399 byr:1944 hgt:158cm iyr:2017 eyr:1924
+
+iyr:2016 pid:7039815301 byr:2014 hgt:150 eyr:2032 ecl:blu hcl:z
+
+byr:1979 eyr:2030 iyr:1978 hgt:63 pid:1554613758 hcl:z ecl:amb
+
+hgt:70cm hcl:e45897 iyr:2020 eyr:1977 ecl:dne pid:2878189427 byr:1973
+
+iyr:2003
+hcl:#cfa07d
+pid:260517078
+byr:2030 hgt:175cm eyr:2020
+ecl:brn
+
+pid:460604681 eyr:2022
+cid:138 iyr:2016 hgt:163cm
+byr:1922
+hcl:#ceb3a1 ecl:oth
+
+hgt:167cm byr:2009 eyr:1975 cid:295 pid:174cm iyr:2029
+hcl:z
+
+hgt:67in ecl:grn
+eyr:2023
+cid:122 pid:281246917 byr:1990 iyr:2011 hcl:#866857
+
+ecl:#ed7ddc byr:1922 cid:234 hcl:e61b1e iyr:1932 eyr:1996 pid:31344005 hgt:62cm
+
+byr:1949
+cid:275 iyr:2017 ecl:grn
+hgt:164cm eyr:2027 hcl:#18171d
+pid:751342937
+
+ecl:blu hgt:162cm
+pid:432600613 byr:1923 eyr:2029 iyr:2011 hcl:#623a2f cid:315
+
+iyr:2020
+hcl:#b2bb11 pid:055891584 ecl:grn
+hgt:67in
+eyr:2029 byr:1937
+
+iyr:2012
+hcl:#a97842 pid:325640714 ecl:blu hgt:185cm eyr:2024 byr:1971
+
+hcl:#b6652a pid:485327267
+ecl:brn hgt:155cm eyr:2028
+iyr:2019
+
+pid:902164867 hgt:77 cid:283 eyr:2027
+iyr:2020 ecl:hzl byr:1935 hcl:#efcc98
+
+ecl:grn
+hcl:#ceb3a1 byr:1977 hgt:165cm
+pid:850700221 eyr:2030
+iyr:2012
+
+byr:1989 ecl:brn eyr:2026 pid:919138357 iyr:2016
+hcl:#623a2f cid:319 hgt:161cm
+
+iyr:2017
+byr:1973 pid:293382118 hcl:#341e13 cid:143 ecl:hzl
+hgt:166cm eyr:2022
+
+pid:517102798
+hcl:f9d9dd
+eyr:1933 iyr:2019 hgt:164cm
+byr:2017 ecl:utc
+
+eyr:2023 pid:757868802 hcl:#18171d cid:244
+hgt:156cm
+ecl:blu iyr:2015 byr:1926
+
+eyr:2022
+iyr:2020
+hgt:158cm ecl:grn
+byr:1988
+pid:979194751 hcl:#888785
+
+eyr:2039
+pid:3867868142 byr:1936 ecl:dne iyr:2022 hcl:4b43b8
+hgt:115 cid:241
+
+iyr:2015 eyr:2026
+hcl:#ceb3a1 pid:539099924
+cid:234
+ecl:brn
+byr:1920 hgt:163cm
+
+cid:259 iyr:2020
+pid:949453818 eyr:2022 hgt:181cm
+byr:1997 ecl:blu hcl:#18171d
+
+byr:2016
+iyr:2012
+ecl:utc
+hgt:68in eyr:1993
+pid:1542134802 hcl:486699
+cid:239
+
+iyr:2018
+hgt:154cm ecl:brn byr:1970
+eyr:2021 pid:581775861 hcl:#888785
+
+iyr:2012
+eyr:2027 hgt:67cm hcl:#efcc98 ecl:zzz pid:312104916 byr:2020
+
+hcl:#b6652a ecl:hzl eyr:2023 iyr:2012 pid:513268492
+hgt:159cm
+
+hgt:162in hcl:z
+byr:2029
+eyr:2023 ecl:#e2e7ab iyr:2016 pid:65979982
+
+cid:84 hgt:71in ecl:blu pid:982719716
+eyr:2020 iyr:2014
+
+eyr:2028 hgt:181cm
+ecl:hzl pid:255796693 hcl:#341e13 byr:1994 iyr:2011 cid:218
+
+ecl:blu
+byr:2029 iyr:2017 pid:468504566 eyr:2020 hcl:z hgt:163cm
+
+hgt:158cm
+eyr:2025 ecl:hzl cid:295 pid:601339484
+hcl:#7d3b0c byr:1991 iyr:2013
+
+eyr:2028
+iyr:2018 pid:2236240873
+hgt:172cm
+ecl:#0e337e hcl:#b6652a cid:108 byr:1930
+
+ecl:gry hcl:#888785
+eyr:2020 pid:442479017 iyr:2016
+
+iyr:2014 ecl:grn
+cid:313 eyr:2023
+hgt:183cm
+byr:1976
+pid:499580308 hcl:#53efe6
+
+eyr:2034
+cid:235 hcl:8f3cf5
+byr:2027
+hgt:161in pid:3259965094 ecl:xry iyr:2026
+
+eyr:1978 byr:1925 iyr:2018 hgt:170cm ecl:#0c94e8
+pid:562699017 hcl:#816949
+
+eyr:2023 hcl:#866857 hgt:179cm
+pid:785862442 iyr:2014 cid:165 ecl:amb byr:1939
+
+hgt:187cm
+pid:64469711 ecl:gry eyr:2023 cid:225 hcl:#341e13 iyr:2011 byr:1958
+
+hgt:162cm byr:2028 ecl:#37e345
+eyr:2037 hcl:19fb3d
+iyr:2021
+pid:#87921a
+
+eyr:2027 hcl:#18171d
+byr:2002 ecl:gry iyr:2014
+pid:561506850 hgt:177cm
+
+hgt:64cm pid:#a92686
+eyr:2029 cid:122
+byr:2026
+iyr:2017 hcl:z ecl:grn
+
+eyr:2028 byr:2007 hgt:155cm ecl:#86fa1b hcl:#733820 pid:562889497
+iyr:2019
+
+pid:880698787
+byr:1992
+hcl:#7d3b0c hgt:163cm ecl:hzl
+iyr:2011 eyr:2021
+
+eyr:2020 byr:1994 iyr:2011 hgt:186cm pid:841855425 hcl:#cfa07d ecl:gry
+
+byr:1923 iyr:2015 ecl:amb pid:414655744
+hcl:#b6652a
+hgt:159cm
+eyr:2026
+
+hgt:171cm ecl:amb pid:363065723 iyr:2020
+cid:66 hcl:#b6652a eyr:2021
+byr:1960
+
+eyr:2002
+hcl:2627b2 ecl:#1bf21d pid:168cm byr:2024 iyr:2020
+hgt:186in
+
+iyr:2011 byr:1924 eyr:2024
+hcl:#b6652a ecl:brn
+pid:794477411 hgt:162in
+
+hcl:z hgt:67cm
+byr:2025
+pid:582569979
+iyr:2013
+ecl:oth eyr:2025
+
+cid:50 hcl:931e2c
+hgt:172in eyr:1994 iyr:2023
+ecl:#cd2204
+byr:2015
+pid:157cm
+
+hgt:173cm eyr:2028
+ecl:amb pid:569607283
+byr:1942
+iyr:2019
+cid:228
+hcl:#866857
+
+cid:109
+ecl:oth eyr:1933 byr:1982 pid:173cm hcl:#b6652a hgt:174cm
+iyr:2023
+
+cid:69 hcl:#9ad05b pid:341135641
+byr:1968 ecl:brn
+iyr:2012 hgt:156cm
+eyr:2020
+
+hgt:176cm
+byr:1954 ecl:blu
+eyr:2020
+pid:478462637 iyr:2019
+hcl:#888785
+
+iyr:2026 hgt:193in
+byr:2018 pid:162cm hcl:605e7f eyr:1948 ecl:utc
+
+byr:1962
+eyr:2022 pid:445346117 iyr:2019 hgt:158cm hcl:#623a2f ecl:hzl
+
+cid:278 hgt:187cm eyr:2024 iyr:2016 byr:1964
+ecl:grn pid:450739552 hcl:#733820
+
+ecl:grn byr:2000 eyr:2023
+pid:344489911 hcl:#7d3b0c iyr:2011 hgt:177cm
+
+iyr:2015 hgt:180cm cid:190 hcl:#a97842 pid:359774842 eyr:2029 byr:2002 ecl:amb
+
+eyr:2027 iyr:2015 ecl:hzl
+pid:082733109
+byr:1975 hgt:191cm cid:251 hcl:#888785
+
+hcl:#c0946f iyr:2015
+hgt:167cm byr:1990 ecl:amb pid:168cm eyr:2023
+
+ecl:gry eyr:2028
+byr:1934 iyr:2013 hcl:#6b5442
+pid:424412120 hgt:173cm
+
+pid:273352568
+eyr:2024
+iyr:2013 byr:1926 hcl:#602927
+ecl:brn hgt:180cm
+
+hcl:#7d3b0c hgt:70in ecl:amb iyr:2019
+byr:1937
+eyr:2030 pid:309011548
+
+ecl:grn
+hgt:64in pid:796889811 hcl:#18171d
+byr:1929 eyr:2027
+
+ecl:amb hcl:#888785
+pid:412449028 cid:316 byr:1982
+iyr:2019 eyr:2030 hgt:193cm
+
+eyr:1927
+hcl:z hgt:158cm byr:1930
+ecl:lzr iyr:2018
+cid:197
+pid:0906120002
+
+ecl:grn byr:1970 hgt:181cm
+pid:376212702 eyr:2030 iyr:2017 cid:266 hcl:#f8b0f5
+
+iyr:2018 hgt:73in pid:652356158 hcl:#c0946f
+ecl:grn byr:1973
+
+cid:170 hcl:#b6652a byr:2011
+ecl:gry iyr:2025 pid:#b6e567 hgt:67cm eyr:2016
+
+hgt:192cm ecl:amb eyr:2026 pid:201824712 hcl:#888785 byr:1966 iyr:2019
+
+iyr:2013 byr:1995 eyr:2028 hcl:#b6652a ecl:brn cid:53 pid:705606447 hgt:176cm
+
+hcl:#341e13 byr:1951
+hgt:161cm pid:231973770 iyr:2015 ecl:hzl
+eyr:2030
+
+cid:210 ecl:brn iyr:2017 eyr:2030
+hgt:176cm hcl:#efcc98
+byr:1965
+
+eyr:2020 hcl:#7d3b0c
+pid:872088079 ecl:oth iyr:2017 byr:1920
+hgt:180cm
+
+hcl:#0b540c iyr:2019
+byr:1938
+hgt:153cm ecl:gry pid:236785988
+eyr:2020
+
+eyr:2020 hgt:184cm iyr:2019
+pid:673186642 ecl:oth byr:1977 hcl:#866857
+
+eyr:2025
+ecl:gry hcl:#341e13 byr:1970 iyr:2010 pid:972122542 hgt:184cm
+
+ecl:grn byr:1992 hgt:71in
+iyr:2014 cid:254 hcl:#fffffd pid:749733013
+eyr:2026
+
+cid:98 ecl:amb eyr:2022
+hgt:169cm pid:022677680
+byr:1937 iyr:2014 hcl:#e62c71
+
+hgt:192cm
+iyr:2015
+eyr:2028 ecl:oth pid:6000619833 hcl:#c0946f
+byr:1930
+
+byr:1938 hcl:#efcc98 hgt:178cm iyr:1953 eyr:2038
+ecl:brn pid:#cdc55a
+
+hgt:66in byr:1951 iyr:2016 hcl:#18171d
+eyr:2027
+ecl:lzr pid:834188980
+
+iyr:2012 eyr:2025
+hcl:#7d3b0c pid:330325803 cid:166 hgt:186cm byr:1938
+ecl:amb
+
+iyr:2015 hcl:#602927 cid:268 eyr:2021
+ecl:amb hgt:186cm pid:318676962
+
+hcl:#3d6f3c iyr:2014 pid:665730784 cid:191 hgt:150cm byr:1981 ecl:oth eyr:2024
+
+ecl:grn hcl:#733820
+eyr:2028 iyr:2010
+hgt:162cm byr:1944 pid:872962499
+
+eyr:2028 byr:1974
+ecl:brn
+iyr:2010 hcl:#18171d hgt:160cm
+
+hcl:#602927
+byr:1959 eyr:2027 iyr:2016 ecl:brn hgt:169cm pid:078503025
+
+hcl:#623a2f pid:326300051 hgt:153cm
+byr:1973 iyr:2012
+ecl:gry eyr:2026
+
+hgt:151cm
+byr:1966 eyr:2029 pid:026952622 hcl:#18171d ecl:gry iyr:2010
+
+hcl:#7d3b0c byr:1974 pid:444713591 iyr:2017 eyr:2030
+hgt:165cm ecl:oth
+
+iyr:2026 pid:184cm
+ecl:gmt hcl:z hgt:71cm
+eyr:2029
+
+cid:310 hcl:#fffffd byr:1998
+pid:450705840 iyr:2015
+ecl:grn eyr:2021 hgt:165cm
+
+byr:1939 hcl:#623a2f ecl:gry hgt:69in pid:539812641 eyr:2027 iyr:2013
+
+pid:207645014
+iyr:2015
+cid:314 ecl:oth
+byr:1942
+eyr:2027 hgt:186cm hcl:#fffffd
+
+ecl:#fb7e3d eyr:2031 iyr:1956
+hgt:188 pid:160cm hcl:z byr:2027
+
+byr:1972 iyr:2020 eyr:2026 hcl:#b6652a pid:289088329 hgt:65in ecl:gry
+
+eyr:2027
+hgt:59cm
+byr:2022
+pid:938063769 ecl:zzz iyr:2028 hcl:23c762
+
+byr:2004 hgt:74 iyr:2017
+eyr:2040 ecl:blu pid:4611117799 cid:73 hcl:z
+
+ecl:brn byr:1962 cid:321
+iyr:2019 eyr:2026
+hgt:159cm
+hcl:#667310 pid:439864945
+
+iyr:2026 eyr:2039 pid:633263851 cid:321 ecl:lzr hgt:166cm
+byr:2023 hcl:fc3c63
+
+byr:1961 iyr:2010 ecl:blu
+eyr:2023 pid:245858010
+
+hgt:193cm pid:821303249 eyr:2020 hcl:#6b5442 cid:130 byr:1946
+
+eyr:2026 ecl:brn
+hcl:#733820 byr:1983 hgt:182cm pid:727380954 cid:188 iyr:2015
+
+hgt:152cm cid:206 iyr:2012 byr:1947 hcl:#888785 ecl:gry
+pid:720312394 eyr:2023
+
+hgt:150cm ecl:gry pid:863712648
+iyr:2019 cid:349 byr:1976 hcl:#602927 eyr:2022
+
+hgt:164in pid:953500867
+eyr:2021
+iyr:2014
+hcl:z cid:343 ecl:amb
+
+byr:1981 pid:529710230 iyr:2013 eyr:2023
+hcl:#c0946f ecl:amb
+hgt:151cm
+
+pid:706204190 hgt:154cm cid:317
+hcl:#602927 byr:1949 ecl:blu iyr:2010 eyr:2028
+
+iyr:2019 hcl:#0219e6
+pid:850093151 ecl:gry
+eyr:2030
+byr:1938 hgt:177cm
+
+ecl:brn hcl:#efcc98 eyr:2029 byr:1963
+hgt:185cm pid:611279647 iyr:2011
+
+ecl:blu eyr:2022 byr:1941 hgt:167cm
+iyr:2012 hcl:#7d3b0c pid:415739564
+cid:193
+
+eyr:2027 ecl:blu byr:1968 pid:479994566
+hcl:#733820 hgt:151cm
+iyr:2011
+
+pid:263729839 hgt:189cm eyr:2030 ecl:gry byr:2001 hcl:#602927
+
+byr:1985
+ecl:amb pid:672663977 cid:139
+hgt:159cm hcl:#733820 iyr:2018 eyr:2020
+
+byr:1998
+hcl:#cfa07d eyr:2023 pid:255046063 iyr:2011 ecl:blu hgt:177cm
+
+ecl:oth
+byr:1980 pid:253747166 eyr:2029
+hcl:#6b5442 hgt:186cm
+
+eyr:2030 hcl:#866857
+hgt:165cm
+ecl:amb
+iyr:2017 pid:241240220 cid:164 byr:2001
+
+byr:1994 hcl:#b6652a iyr:2015
+pid:753831241
+hgt:175cm
+eyr:2027 ecl:blu
+
+hcl:#b6652a pid:471594512
+byr:1961 ecl:hzl hgt:175cm
+iyr:2020 eyr:2025
+
+byr:1987 pid:112366159
+eyr:2028 hcl:22b2d7
+hgt:64in cid:222
+ecl:#b40dca iyr:2019
+
+iyr:2015 hcl:e1ed55 hgt:160in ecl:utc byr:2015 eyr:2036
+
+byr:1935
+hcl:#7d3b0c hgt:152cm ecl:gry
+pid:160090332 iyr:2020 eyr:2020
+
+pid:552779024 byr:1998 hgt:185cm ecl:gry eyr:2026 iyr:2013 hcl:#d46cd6
+
+ecl:oth pid:311860969
+cid:57
+hgt:60in
+eyr:2026
+hcl:#ceb3a1
+byr:1961 iyr:2011
+
+eyr:2021 hgt:162cm cid:240
+pid:259997995
+hcl:#efcc98
+ecl:gry byr:1962 iyr:2017
+
+hcl:#866857
+iyr:2016
+eyr:2029
+ecl:blu byr:1927 cid:249 pid:665324615 hgt:65in
+
+byr:1931
+cid:331
+hgt:66in
+ecl:grn iyr:2020 hcl:#efcc98 eyr:2025 pid:175780921
+
+hgt:98
+eyr:2040 ecl:blu byr:2029
+iyr:1967 hcl:0d76e9
+pid:#c9053a cid:296
+
+pid:370918950
+hcl:#602927
+byr:1938
+hgt:178cm iyr:2018 eyr:2030
+ecl:oth
+
+hgt:185cm
+eyr:1984 ecl:oth pid:851080398
+hcl:z byr:2027 iyr:2017
+
+pid:095078224 byr:1957 hcl:#45bcf4 ecl:#f643f9 hgt:63cm eyr:2036 iyr:1978
+
+hcl:z
+eyr:2023 ecl:oth hgt:162cm
+iyr:2016 byr:1938 pid:#fdcddf
+
+hcl:#341e13 iyr:2013 hgt:189cm
+pid:982271041 ecl:brn
+byr:1930 eyr:2030
+
+eyr:2026
+iyr:2012 hcl:#cfa07d cid:59 pid:105862717 ecl:blu
+hgt:159cm byr:1943
+
+ecl:hzl
+pid:604172804 iyr:2016 hgt:174cm cid:79 eyr:2025
+hcl:#733820 byr:1994
+
+iyr:2011 pid:452628771 ecl:gry hgt:182cm hcl:#623a2f
+eyr:2023
+byr:1986
+
+hcl:#341e13 iyr:2010 byr:1946 eyr:2021
+cid:350 pid:049684494 hgt:180cm
+ecl:grn
+
+iyr:2020
+hgt:173cm pid:384503937
+byr:1986
+hcl:#341e13
+cid:113
+eyr:2025 ecl:amb
+
+hgt:180cm byr:1949
+hcl:#733820 iyr:2010 eyr:2030
+cid:123 pid:065609606 ecl:oth
+
+iyr:2010 eyr:2028
+pid:231750173
+hgt:63in ecl:brn
+byr:1948 hcl:#18171d
+
+iyr:2020 hcl:#623a2f
+ecl:gry
+byr:1922 pid:961213634 eyr:2022 hgt:177cm
+
+hcl:#18171d eyr:2020 iyr:2014 byr:1983
+pid:183568344 hgt:72in
+ecl:gry
+
+eyr:2023 pid:102781246 ecl:brn
+hcl:#888785 byr:1929 hgt:167cm iyr:2010
+
+pid:362873066 byr:1994 hcl:#de545f iyr:2018 hgt:177cm ecl:blu cid:86
+eyr:2024
+
+hcl:842f2d iyr:1983
+byr:1954 eyr:2037
+ecl:lzr pid:3915492573 hgt:166cm
+
+ecl:grn
+hcl:#fffffd iyr:2014
+hgt:173cm
+byr:1939
+pid:930650489
+eyr:2025
+
+eyr:2028 ecl:brn hcl:#7d3b0c hgt:166cm byr:1938 pid:992958531 iyr:2011
+
+pid:101149939 eyr:2024 iyr:2018 hgt:165cm
+ecl:hzl
+hcl:#ceb3a1 cid:176
+
+cid:62
+pid:651390352 hcl:#efcc98
+iyr:2018
+eyr:2027
+ecl:brn
+hgt:66in byr:1953
+
+hcl:#623a2f byr:1978
+iyr:2013
+hgt:180cm eyr:2027 ecl:amb pid:836425641
+
+pid:557464096 hgt:155cm ecl:blu cid:142 byr:1936 iyr:2010
+hcl:#cfa07d eyr:2027
+
+ecl:gry iyr:2024 hcl:#341e13 pid:442593279 cid:314 hgt:186cm byr:1960
+eyr:2022
+
+cid:123 iyr:2014
+byr:2000
+pid:878733390 eyr:2021 ecl:hzl hgt:162cm
+
+byr:1959 cid:259
+pid:722895016
+ecl:brn iyr:2018 eyr:2027 hgt:185cm
+
+pid:163697814 ecl:hzl
+iyr:2013 byr:1932
+hgt:68in cid:286 eyr:2025 hcl:#efcc98
+
+byr:1927
+hgt:72cm ecl:oth
+eyr:2021 hcl:#99e959
+pid:669724466 iyr:2010
+
+byr:1943 iyr:2011 eyr:2024 pid:384419879 ecl:hzl hcl:#7d3b0c hgt:170cm
+
+pid:137944386 ecl:gry
+byr:1953 hcl:#733820 iyr:2013 eyr:2025 hgt:184cm
+
+iyr:2017 eyr:2023 pid:288078785
+hgt:179cm
+byr:1993 hcl:#602927 ecl:hzl
+
+ecl:brn
+hgt:187cm eyr:2024 byr:1971 iyr:2020 hcl:#b6652a pid:622975646
+cid:290
+
+pid:371817422 ecl:blu byr:1964
+iyr:2018
+eyr:2021 cid:176
+hgt:153cm hcl:#888785
+
+byr:2002
+cid:256 iyr:2014 eyr:2024 ecl:blu hcl:#18171d hgt:187cm
+pid:050022911
+
+hgt:178cm pid:211144001 eyr:2027 iyr:2013
+byr:1947
+hcl:#7d3b0c ecl:grn
+
+eyr:2025 ecl:blu pid:046417901 byr:1950
+iyr:2015 hgt:165cm
+hcl:#7d3b0c cid:128
+
+ecl:hzl eyr:2029
+iyr:2015
+hgt:171cm hcl:#341e13
+pid:561680375 byr:1997
+
+byr:1948 iyr:2023 pid:17288381 hcl:6a34a3 ecl:#671ece eyr:2001
+cid:152
+
+eyr:2036 hgt:141 iyr:1957 byr:1987 hcl:z
+pid:86986187 ecl:utc
+
+eyr:2024 hcl:#b6652a iyr:2017 ecl:blu byr:1988 cid:348 hgt:152cm pid:068684272
+
+iyr:2011 pid:989825275
+cid:78 hcl:#341e13 byr:1983 ecl:blu hgt:158cm eyr:2020
+
+ecl:grn hgt:187cm eyr:2027 iyr:2015
+hcl:#866857 pid:240650427
+byr:1940
+cid:91
+
+hcl:#888785 cid:185 byr:1925
+hgt:155cm iyr:2015 ecl:blu eyr:2027 pid:851697441
+
+iyr:2016 ecl:oth pid:056439470 byr:1985 eyr:2026
+hgt:154cm hcl:#282539
+
+ecl:hzl hcl:#a97842
+iyr:1944
+pid:118846711 eyr:2026 byr:1922 hgt:185cm
+
+iyr:2020 hcl:#733820
+pid:854531642 hgt:165cm
+ecl:hzl eyr:2022
+
+iyr:2014
+byr:1957 hcl:#7fa674 hgt:189cm
+eyr:2023 pid:740871941 ecl:brn
+
+ecl:amb cid:349 hgt:170cm
+byr:1952 hcl:#ceb3a1 iyr:2020
+eyr:2026
+pid:730499325
+
+eyr:2027 ecl:amb
+byr:1975 pid:985687961
+hcl:z hgt:157cm
+iyr:2013
+cid:133
+
+ecl:blu
+hgt:193cm iyr:2015 hcl:#10f2ba byr:1989 pid:939704495 eyr:2021
+
+ecl:oth eyr:2025 hgt:69in iyr:2014 cid:258 pid:477970733 byr:1984 hcl:#b6652a
+
+hcl:z byr:2013
+ecl:zzz
+pid:1904741884 hgt:180 cid:138 eyr:1985 iyr:1935
+
+eyr:2025
+iyr:2026 hgt:190in pid:#43ca33
+ecl:#3e1ef1 hcl:#7d3b0c byr:2030
+
+eyr:2029 hgt:191cm
+byr:1986 hcl:#ceb3a1 cid:327 pid:795060714 iyr:2012 ecl:hzl
+
+eyr:2025 iyr:2017 ecl:grn
+hcl:z
+pid:8886398 hgt:174cm byr:2016
+
+hcl:#a97842
+eyr:2021 ecl:grn iyr:2013 pid:565234133 byr:1998
+hgt:161cm
+
+eyr:2029 hgt:163cm byr:1933 cid:86 iyr:2011
+ecl:grn
+hcl:#fffffd
+pid:818769307
+
+hgt:190cm eyr:2030 hcl:#af5b5d iyr:2011 ecl:brn pid:359524299 byr:1969
+
+ecl:amb iyr:2011 eyr:2022
+cid:141
+byr:1978 hgt:69in hcl:#fffffd pid:013006109
+
+ecl:blu hgt:164cm iyr:2019 eyr:2027 pid:899103430 hcl:#cfa07d
+byr:1976
+
+eyr:1938
+ecl:#a03c41 pid:708735698
+iyr:2030
+hgt:184cm hcl:#b6652a byr:2013
+
+ecl:hzl byr:1997 hcl:#a97842 cid:60 pid:172cm
+eyr:2023 hgt:161in iyr:1936
+
+ecl:hzl
+byr:1938 pid:094889181
+hgt:162cm iyr:2020
+eyr:2028
+hcl:#623a2f
+
+hgt:162cm cid:86
+hcl:#623a2f pid:738174580 ecl:brn byr:1980 eyr:2028 iyr:2014
+
+byr:2007 hgt:150in hcl:z
+eyr:2032
+ecl:#114f3b
+iyr:2030 pid:5129772
+
+ecl:hzl iyr:2017
+hcl:#18171d
+pid:696283412 byr:1976 hgt:168cm
+eyr:2028
+
+eyr:1922 ecl:#84b0d4 byr:2013 hcl:#ceb3a1 pid:150cm iyr:2030
+hgt:71cm
+
+hgt:164cm byr:1949 ecl:gry eyr:2026
+hcl:#623a2f
+
+ecl:oth
+iyr:2013 hgt:166cm hcl:#50e385
+pid:478852286
+eyr:2030 byr:1930
+
+cid:129
+iyr:2020 byr:1978 pid:907580992 eyr:1955
+hcl:#602927
+ecl:grn hgt:165cm
+
+ecl:blu iyr:2018 byr:1953
+hgt:177cm pid:126681706 eyr:2025 hcl:#c0946f
+
+byr:1984 pid:275799917
+ecl:oth hcl:#623a2f cid:348 iyr:2020
+hgt:189cm eyr:2024
+
+iyr:2016
+ecl:hzl byr:1954
+hcl:#623a2f pid:810508839 eyr:2026
+hgt:185cm
+
+byr:1967
+eyr:2021 hcl:#ceb3a1
+pid:406634908 hgt:158cm iyr:2018 ecl:hzl
+
+iyr:2019 eyr:2030 pid:995681076 hcl:#341e13
+cid:101 hgt:162cm ecl:blu byr:1925
+
+eyr:2026 pid:272513479 hcl:#b6652a byr:1973 iyr:2016 ecl:amb hgt:182cm
+
+pid:298704871 eyr:2024 hcl:#efcc98 byr:1959
+iyr:2014 hgt:191cm ecl:grn
+
+hgt:193cm pid:750729809 ecl:oth
+cid:324
+iyr:2011 hcl:#efcc98 byr:1954 eyr:2020
+
+byr:1966 iyr:2019 eyr:2025 ecl:#2df4b6
+hgt:184cm pid:#fc17f4 cid:161 hcl:#602927
+
+byr:1955 hcl:299464 ecl:amb
+hgt:157cm iyr:2017 eyr:2021
+pid:239450987
+
+hgt:172cm
+ecl:hzl
+pid:839804598
+hcl:#341e13 eyr:2030 byr:1964 iyr:2013
+
+iyr:2018 hgt:152cm byr:1948 hcl:#623a2f pid:400121515
+ecl:blu
+eyr:2020
+
+cid:296
+ecl:grn
+byr:1960 iyr:2028 pid:#1f4b95 eyr:2033 hcl:#602927
+hgt:66cm
+
+iyr:1933 ecl:#232e20 pid:#d03ca7
+eyr:2030 hcl:598ed6 hgt:154in byr:2011
+
+cid:247 ecl:grn iyr:2014
+hgt:178cm
+byr:1992 hcl:#602927 eyr:2021
+pid:678964478
+
+iyr:2010 pid:623705680
+ecl:hzl hgt:181cm byr:1980 hcl:#341e13 eyr:2028"
 #+end_src
+
+#+RESULTS[866743bab2463fa3b76f5b77b022e8f8d5d194be]: input-2020-04
+#+begin_example
+hgt:176cm
+iyr:2013
+hcl:#fffffd ecl:amb
+byr:2000
+eyr:2034
+cid:89 pid:934693255
+
+hcl:#b5c3db ecl:grn hgt:155cm pid:#baec97 iyr:2017
+byr:1939
+eyr:2020
+
+pid:526669252 eyr:1972
+hgt:152cm ecl:dne byr:1960 hcl:z iyr:2023
+
+eyr:2028 hcl:#c0946f hgt:73in byr:1926 ecl:#473aaf iyr:2016 pid:565318180
+
+pid:472686027 ecl:oth iyr:2019
+cid:277 byr:1940
+eyr:2030 hgt:170cm
+hcl:#62e117
+
+ecl:oth
+iyr:2017
+pid:938461813 hcl:#733820 byr:1959 hgt:159cm eyr:2022
+
+iyr:2011 eyr:2021 hcl:z
+ecl:hzl byr:2002 pid:17324328 cid:140
+hgt:186cm
+
+byr:2022 pid:3164234967 iyr:1984
+hgt:76cm hcl:6b3837
+ecl:#fa362b
+eyr:2037
+
+hcl:z eyr:1945
+pid:9247286687 hgt:75cm
+iyr:1934 cid:326 ecl:zzz
+byr:2005
+
+byr:2005
+ecl:lzr
+eyr:2021 pid:152cm
+cid:254 iyr:2020 hcl:z hgt:157cm
+
+iyr:2020 eyr:2020 hcl:#18171d ecl:gry pid:914128753 hgt:168cm
+byr:2002
+
+hcl:#7d3b0c hgt:160cm eyr:2020 iyr:2015
+pid:054067854 ecl:brn byr:2023
+
+hcl:#cfa07d hgt:157cm
+byr:1994 eyr:2027 pid:344443856
+iyr:2016
+
+pid:762423097
+iyr:2014 hcl:#a97842 ecl:brn hgt:180cm byr:1927 eyr:2021
+
+pid:6645616064 hcl:#ceb3a1 byr:2030
+eyr:2032 hgt:158cm iyr:2012
+ecl:#e9619e
+
+eyr:2022
+ecl:brn
+byr:1986
+hgt:161cm cid:99 pid:288726584 hcl:#6b5442 iyr:2019
+
+cid:75
+pid:117771843
+hgt:184cm byr:1937 ecl:brn
+hcl:#d88fd9
+iyr:2015 eyr:2027
+
+iyr:2016 hcl:#fffffd hgt:170cm eyr:2022 ecl:oth pid:629454113
+byr:1952
+
+hcl:#c0946f iyr:2018 hgt:189cm
+byr:1971 ecl:oth eyr:2029
+pid:800207810
+
+eyr:2022 hcl:#7d3b0c pid:969986413
+byr:1978 iyr:2020 hgt:186cm
+ecl:gry
+
+hgt:171cm byr:1949 hcl:#341e13
+ecl:amb eyr:2030 pid:359107274 iyr:2013
+
+pid:839751525 eyr:2024 byr:1921
+iyr:2012 ecl:amb hcl:#b0ed6f hgt:154cm
+
+pid:32592758
+byr:2009
+hgt:107 iyr:2019 hcl:#866857
+eyr:2036 ecl:amb
+
+eyr:2040 hcl:#733820 cid:199
+byr:2027
+pid:7791792988 ecl:blu iyr:2026
+hgt:63cm
+
+iyr:2011 cid:119 pid:344693475
+ecl:grn hgt:160cm eyr:2029 hcl:#346973 byr:1996
+
+hgt:161in byr:2025 cid:167 iyr:2024 eyr:2040 pid:034804648
+hcl:#efcc98 ecl:oth
+
+ecl:#ba14f0 iyr:1935
+hgt:60cm
+byr:2003 eyr:1987
+hcl:8e509b pid:161cm
+
+iyr:2018 pid:620508652 ecl:amb eyr:2023 hgt:183cm hcl:#a97842
+byr:1967 cid:117
+
+eyr:2022 ecl:amb
+pid:476049089 iyr:2012
+hgt:165cm
+byr:1955 hcl:#602927
+
+byr:2014 hcl:z iyr:2029 cid:279 pid:28914607 hgt:75cm ecl:xry
+
+hgt:156cm eyr:2023 iyr:2011 ecl:oth hcl:#7d3b0c pid:561313217 byr:1952
+
+iyr:2011 byr:1935
+hcl:#cfa07d ecl:oth pid:830614209
+eyr:2028 hgt:173cm
+
+iyr:2012 cid:210 eyr:2022
+pid:652810130 hcl:#18171d ecl:grn byr:1960 hgt:152cm
+
+eyr:2026 pid:815848563 hgt:75in iyr:2019 ecl:gry byr:1947
+hcl:#cfa07d
+
+cid:181 iyr:2012
+eyr:2024 byr:1934 hcl:#c0946f
+hgt:165cm ecl:oth pid:232944581
+
+cid:135 iyr:2020
+byr:1971 hcl:#733820 pid:531877857 hgt:179cm eyr:2027 ecl:amb
+
+byr:1987 hcl:936807 eyr:2032 ecl:#4bec4a pid:605628619 cid:180 hgt:150in
+iyr:2015
+
+hcl:b62ef0 ecl:#092141
+pid:876635399 byr:1944 hgt:158cm iyr:2017 eyr:1924
+
+iyr:2016 pid:7039815301 byr:2014 hgt:150 eyr:2032 ecl:blu hcl:z
+
+byr:1979 eyr:2030 iyr:1978 hgt:63 pid:1554613758 hcl:z ecl:amb
+
+hgt:70cm hcl:e45897 iyr:2020 eyr:1977 ecl:dne pid:2878189427 byr:1973
+
+iyr:2003
+hcl:#cfa07d
+pid:260517078
+byr:2030 hgt:175cm eyr:2020
+ecl:brn
+
+pid:460604681 eyr:2022
+cid:138 iyr:2016 hgt:163cm
+byr:1922
+hcl:#ceb3a1 ecl:oth
+
+hgt:167cm byr:2009 eyr:1975 cid:295 pid:174cm iyr:2029
+hcl:z
+
+hgt:67in ecl:grn
+eyr:2023
+cid:122 pid:281246917 byr:1990 iyr:2011 hcl:#866857
+
+ecl:#ed7ddc byr:1922 cid:234 hcl:e61b1e iyr:1932 eyr:1996 pid:31344005 hgt:62cm
+
+byr:1949
+cid:275 iyr:2017 ecl:grn
+hgt:164cm eyr:2027 hcl:#18171d
+pid:751342937
+
+ecl:blu hgt:162cm
+pid:432600613 byr:1923 eyr:2029 iyr:2011 hcl:#623a2f cid:315
+
+iyr:2020
+hcl:#b2bb11 pid:055891584 ecl:grn
+hgt:67in
+eyr:2029 byr:1937
+
+iyr:2012
+hcl:#a97842 pid:325640714 ecl:blu hgt:185cm eyr:2024 byr:1971
+
+hcl:#b6652a pid:485327267
+ecl:brn hgt:155cm eyr:2028
+iyr:2019
+
+pid:902164867 hgt:77 cid:283 eyr:2027
+iyr:2020 ecl:hzl byr:1935 hcl:#efcc98
+
+ecl:grn
+hcl:#ceb3a1 byr:1977 hgt:165cm
+pid:850700221 eyr:2030
+iyr:2012
+
+byr:1989 ecl:brn eyr:2026 pid:919138357 iyr:2016
+hcl:#623a2f cid:319 hgt:161cm
+
+iyr:2017
+byr:1973 pid:293382118 hcl:#341e13 cid:143 ecl:hzl
+hgt:166cm eyr:2022
+
+pid:517102798
+hcl:f9d9dd
+eyr:1933 iyr:2019 hgt:164cm
+byr:2017 ecl:utc
+
+eyr:2023 pid:757868802 hcl:#18171d cid:244
+hgt:156cm
+ecl:blu iyr:2015 byr:1926
+
+eyr:2022
+iyr:2020
+hgt:158cm ecl:grn
+byr:1988
+pid:979194751 hcl:#888785
+
+eyr:2039
+pid:3867868142 byr:1936 ecl:dne iyr:2022 hcl:4b43b8
+hgt:115 cid:241
+
+iyr:2015 eyr:2026
+hcl:#ceb3a1 pid:539099924
+cid:234
+ecl:brn
+byr:1920 hgt:163cm
+
+cid:259 iyr:2020
+pid:949453818 eyr:2022 hgt:181cm
+byr:1997 ecl:blu hcl:#18171d
+
+byr:2016
+iyr:2012
+ecl:utc
+hgt:68in eyr:1993
+pid:1542134802 hcl:486699
+cid:239
+
+iyr:2018
+hgt:154cm ecl:brn byr:1970
+eyr:2021 pid:581775861 hcl:#888785
+
+iyr:2012
+eyr:2027 hgt:67cm hcl:#efcc98 ecl:zzz pid:312104916 byr:2020
+
+hcl:#b6652a ecl:hzl eyr:2023 iyr:2012 pid:513268492
+hgt:159cm
+
+hgt:162in hcl:z
+byr:2029
+eyr:2023 ecl:#e2e7ab iyr:2016 pid:65979982
+
+cid:84 hgt:71in ecl:blu pid:982719716
+eyr:2020 iyr:2014
+
+eyr:2028 hgt:181cm
+ecl:hzl pid:255796693 hcl:#341e13 byr:1994 iyr:2011 cid:218
+
+ecl:blu
+byr:2029 iyr:2017 pid:468504566 eyr:2020 hcl:z hgt:163cm
+
+hgt:158cm
+eyr:2025 ecl:hzl cid:295 pid:601339484
+hcl:#7d3b0c byr:1991 iyr:2013
+
+eyr:2028
+iyr:2018 pid:2236240873
+hgt:172cm
+ecl:#0e337e hcl:#b6652a cid:108 byr:1930
+
+ecl:gry hcl:#888785
+eyr:2020 pid:442479017 iyr:2016
+
+iyr:2014 ecl:grn
+cid:313 eyr:2023
+hgt:183cm
+byr:1976
+pid:499580308 hcl:#53efe6
+
+eyr:2034
+cid:235 hcl:8f3cf5
+byr:2027
+hgt:161in pid:3259965094 ecl:xry iyr:2026
+
+eyr:1978 byr:1925 iyr:2018 hgt:170cm ecl:#0c94e8
+pid:562699017 hcl:#816949
+
+eyr:2023 hcl:#866857 hgt:179cm
+pid:785862442 iyr:2014 cid:165 ecl:amb byr:1939
+
+hgt:187cm
+pid:64469711 ecl:gry eyr:2023 cid:225 hcl:#341e13 iyr:2011 byr:1958
+
+hgt:162cm byr:2028 ecl:#37e345
+eyr:2037 hcl:19fb3d
+iyr:2021
+pid:#87921a
+
+eyr:2027 hcl:#18171d
+byr:2002 ecl:gry iyr:2014
+pid:561506850 hgt:177cm
+
+hgt:64cm pid:#a92686
+eyr:2029 cid:122
+byr:2026
+iyr:2017 hcl:z ecl:grn
+
+eyr:2028 byr:2007 hgt:155cm ecl:#86fa1b hcl:#733820 pid:562889497
+iyr:2019
+
+pid:880698787
+byr:1992
+hcl:#7d3b0c hgt:163cm ecl:hzl
+iyr:2011 eyr:2021
+
+eyr:2020 byr:1994 iyr:2011 hgt:186cm pid:841855425 hcl:#cfa07d ecl:gry
+
+byr:1923 iyr:2015 ecl:amb pid:414655744
+hcl:#b6652a
+hgt:159cm
+eyr:2026
+
+hgt:171cm ecl:amb pid:363065723 iyr:2020
+cid:66 hcl:#b6652a eyr:2021
+byr:1960
+
+eyr:2002
+hcl:2627b2 ecl:#1bf21d pid:168cm byr:2024 iyr:2020
+hgt:186in
+
+iyr:2011 byr:1924 eyr:2024
+hcl:#b6652a ecl:brn
+pid:794477411 hgt:162in
+
+hcl:z hgt:67cm
+byr:2025
+pid:582569979
+iyr:2013
+ecl:oth eyr:2025
+
+cid:50 hcl:931e2c
+hgt:172in eyr:1994 iyr:2023
+ecl:#cd2204
+byr:2015
+pid:157cm
+
+hgt:173cm eyr:2028
+ecl:amb pid:569607283
+byr:1942
+iyr:2019
+cid:228
+hcl:#866857
+
+cid:109
+ecl:oth eyr:1933 byr:1982 pid:173cm hcl:#b6652a hgt:174cm
+iyr:2023
+
+cid:69 hcl:#9ad05b pid:341135641
+byr:1968 ecl:brn
+iyr:2012 hgt:156cm
+eyr:2020
+
+hgt:176cm
+byr:1954 ecl:blu
+eyr:2020
+pid:478462637 iyr:2019
+hcl:#888785
+
+iyr:2026 hgt:193in
+byr:2018 pid:162cm hcl:605e7f eyr:1948 ecl:utc
+
+byr:1962
+eyr:2022 pid:445346117 iyr:2019 hgt:158cm hcl:#623a2f ecl:hzl
+
+cid:278 hgt:187cm eyr:2024 iyr:2016 byr:1964
+ecl:grn pid:450739552 hcl:#733820
+
+ecl:grn byr:2000 eyr:2023
+pid:344489911 hcl:#7d3b0c iyr:2011 hgt:177cm
+
+iyr:2015 hgt:180cm cid:190 hcl:#a97842 pid:359774842 eyr:2029 byr:2002 ecl:amb
+
+eyr:2027 iyr:2015 ecl:hzl
+pid:082733109
+byr:1975 hgt:191cm cid:251 hcl:#888785
+
+hcl:#c0946f iyr:2015
+hgt:167cm byr:1990 ecl:amb pid:168cm eyr:2023
+
+ecl:gry eyr:2028
+byr:1934 iyr:2013 hcl:#6b5442
+pid:424412120 hgt:173cm
+
+pid:273352568
+eyr:2024
+iyr:2013 byr:1926 hcl:#602927
+ecl:brn hgt:180cm
+
+hcl:#7d3b0c hgt:70in ecl:amb iyr:2019
+byr:1937
+eyr:2030 pid:309011548
+
+ecl:grn
+hgt:64in pid:796889811 hcl:#18171d
+byr:1929 eyr:2027
+
+ecl:amb hcl:#888785
+pid:412449028 cid:316 byr:1982
+iyr:2019 eyr:2030 hgt:193cm
+
+eyr:1927
+hcl:z hgt:158cm byr:1930
+ecl:lzr iyr:2018
+cid:197
+pid:0906120002
+
+ecl:grn byr:1970 hgt:181cm
+pid:376212702 eyr:2030 iyr:2017 cid:266 hcl:#f8b0f5
+
+iyr:2018 hgt:73in pid:652356158 hcl:#c0946f
+ecl:grn byr:1973
+
+cid:170 hcl:#b6652a byr:2011
+ecl:gry iyr:2025 pid:#b6e567 hgt:67cm eyr:2016
+
+hgt:192cm ecl:amb eyr:2026 pid:201824712 hcl:#888785 byr:1966 iyr:2019
+
+iyr:2013 byr:1995 eyr:2028 hcl:#b6652a ecl:brn cid:53 pid:705606447 hgt:176cm
+
+hcl:#341e13 byr:1951
+hgt:161cm pid:231973770 iyr:2015 ecl:hzl
+eyr:2030
+
+cid:210 ecl:brn iyr:2017 eyr:2030
+hgt:176cm hcl:#efcc98
+byr:1965
+
+eyr:2020 hcl:#7d3b0c
+pid:872088079 ecl:oth iyr:2017 byr:1920
+hgt:180cm
+
+hcl:#0b540c iyr:2019
+byr:1938
+hgt:153cm ecl:gry pid:236785988
+eyr:2020
+
+eyr:2020 hgt:184cm iyr:2019
+pid:673186642 ecl:oth byr:1977 hcl:#866857
+
+eyr:2025
+ecl:gry hcl:#341e13 byr:1970 iyr:2010 pid:972122542 hgt:184cm
+
+ecl:grn byr:1992 hgt:71in
+iyr:2014 cid:254 hcl:#fffffd pid:749733013
+eyr:2026
+
+cid:98 ecl:amb eyr:2022
+hgt:169cm pid:022677680
+byr:1937 iyr:2014 hcl:#e62c71
+
+hgt:192cm
+iyr:2015
+eyr:2028 ecl:oth pid:6000619833 hcl:#c0946f
+byr:1930
+
+byr:1938 hcl:#efcc98 hgt:178cm iyr:1953 eyr:2038
+ecl:brn pid:#cdc55a
+
+hgt:66in byr:1951 iyr:2016 hcl:#18171d
+eyr:2027
+ecl:lzr pid:834188980
+
+iyr:2012 eyr:2025
+hcl:#7d3b0c pid:330325803 cid:166 hgt:186cm byr:1938
+ecl:amb
+
+iyr:2015 hcl:#602927 cid:268 eyr:2021
+ecl:amb hgt:186cm pid:318676962
+
+hcl:#3d6f3c iyr:2014 pid:665730784 cid:191 hgt:150cm byr:1981 ecl:oth eyr:2024
+
+ecl:grn hcl:#733820
+eyr:2028 iyr:2010
+hgt:162cm byr:1944 pid:872962499
+
+eyr:2028 byr:1974
+ecl:brn
+iyr:2010 hcl:#18171d hgt:160cm
+
+hcl:#602927
+byr:1959 eyr:2027 iyr:2016 ecl:brn hgt:169cm pid:078503025
+
+hcl:#623a2f pid:326300051 hgt:153cm
+byr:1973 iyr:2012
+ecl:gry eyr:2026
+
+hgt:151cm
+byr:1966 eyr:2029 pid:026952622 hcl:#18171d ecl:gry iyr:2010
+
+hcl:#7d3b0c byr:1974 pid:444713591 iyr:2017 eyr:2030
+hgt:165cm ecl:oth
+
+iyr:2026 pid:184cm
+ecl:gmt hcl:z hgt:71cm
+eyr:2029
+
+cid:310 hcl:#fffffd byr:1998
+pid:450705840 iyr:2015
+ecl:grn eyr:2021 hgt:165cm
+
+byr:1939 hcl:#623a2f ecl:gry hgt:69in pid:539812641 eyr:2027 iyr:2013
+
+pid:207645014
+iyr:2015
+cid:314 ecl:oth
+byr:1942
+eyr:2027 hgt:186cm hcl:#fffffd
+
+ecl:#fb7e3d eyr:2031 iyr:1956
+hgt:188 pid:160cm hcl:z byr:2027
+
+byr:1972 iyr:2020 eyr:2026 hcl:#b6652a pid:289088329 hgt:65in ecl:gry
+
+eyr:2027
+hgt:59cm
+byr:2022
+pid:938063769 ecl:zzz iyr:2028 hcl:23c762
+
+byr:2004 hgt:74 iyr:2017
+eyr:2040 ecl:blu pid:4611117799 cid:73 hcl:z
+
+ecl:brn byr:1962 cid:321
+iyr:2019 eyr:2026
+hgt:159cm
+hcl:#667310 pid:439864945
+
+iyr:2026 eyr:2039 pid:633263851 cid:321 ecl:lzr hgt:166cm
+byr:2023 hcl:fc3c63
+
+byr:1961 iyr:2010 ecl:blu
+eyr:2023 pid:245858010
+
+hgt:193cm pid:821303249 eyr:2020 hcl:#6b5442 cid:130 byr:1946
+
+eyr:2026 ecl:brn
+hcl:#733820 byr:1983 hgt:182cm pid:727380954 cid:188 iyr:2015
+
+hgt:152cm cid:206 iyr:2012 byr:1947 hcl:#888785 ecl:gry
+pid:720312394 eyr:2023
+
+hgt:150cm ecl:gry pid:863712648
+iyr:2019 cid:349 byr:1976 hcl:#602927 eyr:2022
+
+hgt:164in pid:953500867
+eyr:2021
+iyr:2014
+hcl:z cid:343 ecl:amb
+
+byr:1981 pid:529710230 iyr:2013 eyr:2023
+hcl:#c0946f ecl:amb
+hgt:151cm
+
+pid:706204190 hgt:154cm cid:317
+hcl:#602927 byr:1949 ecl:blu iyr:2010 eyr:2028
+
+iyr:2019 hcl:#0219e6
+pid:850093151 ecl:gry
+eyr:2030
+byr:1938 hgt:177cm
+
+ecl:brn hcl:#efcc98 eyr:2029 byr:1963
+hgt:185cm pid:611279647 iyr:2011
+
+ecl:blu eyr:2022 byr:1941 hgt:167cm
+iyr:2012 hcl:#7d3b0c pid:415739564
+cid:193
+
+eyr:2027 ecl:blu byr:1968 pid:479994566
+hcl:#733820 hgt:151cm
+iyr:2011
+
+pid:263729839 hgt:189cm eyr:2030 ecl:gry byr:2001 hcl:#602927
+
+byr:1985
+ecl:amb pid:672663977 cid:139
+hgt:159cm hcl:#733820 iyr:2018 eyr:2020
+
+byr:1998
+hcl:#cfa07d eyr:2023 pid:255046063 iyr:2011 ecl:blu hgt:177cm
+
+ecl:oth
+byr:1980 pid:253747166 eyr:2029
+hcl:#6b5442 hgt:186cm
+
+eyr:2030 hcl:#866857
+hgt:165cm
+ecl:amb
+iyr:2017 pid:241240220 cid:164 byr:2001
+
+byr:1994 hcl:#b6652a iyr:2015
+pid:753831241
+hgt:175cm
+eyr:2027 ecl:blu
+
+hcl:#b6652a pid:471594512
+byr:1961 ecl:hzl hgt:175cm
+iyr:2020 eyr:2025
+
+byr:1987 pid:112366159
+eyr:2028 hcl:22b2d7
+hgt:64in cid:222
+ecl:#b40dca iyr:2019
+
+iyr:2015 hcl:e1ed55 hgt:160in ecl:utc byr:2015 eyr:2036
+
+byr:1935
+hcl:#7d3b0c hgt:152cm ecl:gry
+pid:160090332 iyr:2020 eyr:2020
+
+pid:552779024 byr:1998 hgt:185cm ecl:gry eyr:2026 iyr:2013 hcl:#d46cd6
+
+ecl:oth pid:311860969
+cid:57
+hgt:60in
+eyr:2026
+hcl:#ceb3a1
+byr:1961 iyr:2011
+
+eyr:2021 hgt:162cm cid:240
+pid:259997995
+hcl:#efcc98
+ecl:gry byr:1962 iyr:2017
+
+hcl:#866857
+iyr:2016
+eyr:2029
+ecl:blu byr:1927 cid:249 pid:665324615 hgt:65in
+
+byr:1931
+cid:331
+hgt:66in
+ecl:grn iyr:2020 hcl:#efcc98 eyr:2025 pid:175780921
+
+hgt:98
+eyr:2040 ecl:blu byr:2029
+iyr:1967 hcl:0d76e9
+pid:#c9053a cid:296
+
+pid:370918950
+hcl:#602927
+byr:1938
+hgt:178cm iyr:2018 eyr:2030
+ecl:oth
+
+hgt:185cm
+eyr:1984 ecl:oth pid:851080398
+hcl:z byr:2027 iyr:2017
+
+pid:095078224 byr:1957 hcl:#45bcf4 ecl:#f643f9 hgt:63cm eyr:2036 iyr:1978
+
+hcl:z
+eyr:2023 ecl:oth hgt:162cm
+iyr:2016 byr:1938 pid:#fdcddf
+
+hcl:#341e13 iyr:2013 hgt:189cm
+pid:982271041 ecl:brn
+byr:1930 eyr:2030
+
+eyr:2026
+iyr:2012 hcl:#cfa07d cid:59 pid:105862717 ecl:blu
+hgt:159cm byr:1943
+
+ecl:hzl
+pid:604172804 iyr:2016 hgt:174cm cid:79 eyr:2025
+hcl:#733820 byr:1994
+
+iyr:2011 pid:452628771 ecl:gry hgt:182cm hcl:#623a2f
+eyr:2023
+byr:1986
+
+hcl:#341e13 iyr:2010 byr:1946 eyr:2021
+cid:350 pid:049684494 hgt:180cm
+ecl:grn
+
+iyr:2020
+hgt:173cm pid:384503937
+byr:1986
+hcl:#341e13
+cid:113
+eyr:2025 ecl:amb
+
+hgt:180cm byr:1949
+hcl:#733820 iyr:2010 eyr:2030
+cid:123 pid:065609606 ecl:oth
+
+iyr:2010 eyr:2028
+pid:231750173
+hgt:63in ecl:brn
+byr:1948 hcl:#18171d
+
+iyr:2020 hcl:#623a2f
+ecl:gry
+byr:1922 pid:961213634 eyr:2022 hgt:177cm
+
+hcl:#18171d eyr:2020 iyr:2014 byr:1983
+pid:183568344 hgt:72in
+ecl:gry
+
+eyr:2023 pid:102781246 ecl:brn
+hcl:#888785 byr:1929 hgt:167cm iyr:2010
+
+pid:362873066 byr:1994 hcl:#de545f iyr:2018 hgt:177cm ecl:blu cid:86
+eyr:2024
+
+hcl:842f2d iyr:1983
+byr:1954 eyr:2037
+ecl:lzr pid:3915492573 hgt:166cm
+
+ecl:grn
+hcl:#fffffd iyr:2014
+hgt:173cm
+byr:1939
+pid:930650489
+eyr:2025
+
+eyr:2028 ecl:brn hcl:#7d3b0c hgt:166cm byr:1938 pid:992958531 iyr:2011
+
+pid:101149939 eyr:2024 iyr:2018 hgt:165cm
+ecl:hzl
+hcl:#ceb3a1 cid:176
+
+cid:62
+pid:651390352 hcl:#efcc98
+iyr:2018
+eyr:2027
+ecl:brn
+hgt:66in byr:1953
+
+hcl:#623a2f byr:1978
+iyr:2013
+hgt:180cm eyr:2027 ecl:amb pid:836425641
+
+pid:557464096 hgt:155cm ecl:blu cid:142 byr:1936 iyr:2010
+hcl:#cfa07d eyr:2027
+
+ecl:gry iyr:2024 hcl:#341e13 pid:442593279 cid:314 hgt:186cm byr:1960
+eyr:2022
+
+cid:123 iyr:2014
+byr:2000
+pid:878733390 eyr:2021 ecl:hzl hgt:162cm
+
+byr:1959 cid:259
+pid:722895016
+ecl:brn iyr:2018 eyr:2027 hgt:185cm
+
+pid:163697814 ecl:hzl
+iyr:2013 byr:1932
+hgt:68in cid:286 eyr:2025 hcl:#efcc98
+
+byr:1927
+hgt:72cm ecl:oth
+eyr:2021 hcl:#99e959
+pid:669724466 iyr:2010
+
+byr:1943 iyr:2011 eyr:2024 pid:384419879 ecl:hzl hcl:#7d3b0c hgt:170cm
+
+pid:137944386 ecl:gry
+byr:1953 hcl:#733820 iyr:2013 eyr:2025 hgt:184cm
+
+iyr:2017 eyr:2023 pid:288078785
+hgt:179cm
+byr:1993 hcl:#602927 ecl:hzl
+
+ecl:brn
+hgt:187cm eyr:2024 byr:1971 iyr:2020 hcl:#b6652a pid:622975646
+cid:290
+
+pid:371817422 ecl:blu byr:1964
+iyr:2018
+eyr:2021 cid:176
+hgt:153cm hcl:#888785
+
+byr:2002
+cid:256 iyr:2014 eyr:2024 ecl:blu hcl:#18171d hgt:187cm
+pid:050022911
+
+hgt:178cm pid:211144001 eyr:2027 iyr:2013
+byr:1947
+hcl:#7d3b0c ecl:grn
+
+eyr:2025 ecl:blu pid:046417901 byr:1950
+iyr:2015 hgt:165cm
+hcl:#7d3b0c cid:128
+
+ecl:hzl eyr:2029
+iyr:2015
+hgt:171cm hcl:#341e13
+pid:561680375 byr:1997
+
+byr:1948 iyr:2023 pid:17288381 hcl:6a34a3 ecl:#671ece eyr:2001
+cid:152
+
+eyr:2036 hgt:141 iyr:1957 byr:1987 hcl:z
+pid:86986187 ecl:utc
+
+eyr:2024 hcl:#b6652a iyr:2017 ecl:blu byr:1988 cid:348 hgt:152cm pid:068684272
+
+iyr:2011 pid:989825275
+cid:78 hcl:#341e13 byr:1983 ecl:blu hgt:158cm eyr:2020
+
+ecl:grn hgt:187cm eyr:2027 iyr:2015
+hcl:#866857 pid:240650427
+byr:1940
+cid:91
+
+hcl:#888785 cid:185 byr:1925
+hgt:155cm iyr:2015 ecl:blu eyr:2027 pid:851697441
+
+iyr:2016 ecl:oth pid:056439470 byr:1985 eyr:2026
+hgt:154cm hcl:#282539
+
+ecl:hzl hcl:#a97842
+iyr:1944
+pid:118846711 eyr:2026 byr:1922 hgt:185cm
+
+iyr:2020 hcl:#733820
+pid:854531642 hgt:165cm
+ecl:hzl eyr:2022
+
+iyr:2014
+byr:1957 hcl:#7fa674 hgt:189cm
+eyr:2023 pid:740871941 ecl:brn
+
+ecl:amb cid:349 hgt:170cm
+byr:1952 hcl:#ceb3a1 iyr:2020
+eyr:2026
+pid:730499325
+
+eyr:2027 ecl:amb
+byr:1975 pid:985687961
+hcl:z hgt:157cm
+iyr:2013
+cid:133
+
+ecl:blu
+hgt:193cm iyr:2015 hcl:#10f2ba byr:1989 pid:939704495 eyr:2021
+
+ecl:oth eyr:2025 hgt:69in iyr:2014 cid:258 pid:477970733 byr:1984 hcl:#b6652a
+
+hcl:z byr:2013
+ecl:zzz
+pid:1904741884 hgt:180 cid:138 eyr:1985 iyr:1935
+
+eyr:2025
+iyr:2026 hgt:190in pid:#43ca33
+ecl:#3e1ef1 hcl:#7d3b0c byr:2030
+
+eyr:2029 hgt:191cm
+byr:1986 hcl:#ceb3a1 cid:327 pid:795060714 iyr:2012 ecl:hzl
+
+eyr:2025 iyr:2017 ecl:grn
+hcl:z
+pid:8886398 hgt:174cm byr:2016
+
+hcl:#a97842
+eyr:2021 ecl:grn iyr:2013 pid:565234133 byr:1998
+hgt:161cm
+
+eyr:2029 hgt:163cm byr:1933 cid:86 iyr:2011
+ecl:grn
+hcl:#fffffd
+pid:818769307
+
+hgt:190cm eyr:2030 hcl:#af5b5d iyr:2011 ecl:brn pid:359524299 byr:1969
+
+ecl:amb iyr:2011 eyr:2022
+cid:141
+byr:1978 hgt:69in hcl:#fffffd pid:013006109
+
+ecl:blu hgt:164cm iyr:2019 eyr:2027 pid:899103430 hcl:#cfa07d
+byr:1976
+
+eyr:1938
+ecl:#a03c41 pid:708735698
+iyr:2030
+hgt:184cm hcl:#b6652a byr:2013
+
+ecl:hzl byr:1997 hcl:#a97842 cid:60 pid:172cm
+eyr:2023 hgt:161in iyr:1936
+
+ecl:hzl
+byr:1938 pid:094889181
+hgt:162cm iyr:2020
+eyr:2028
+hcl:#623a2f
+
+hgt:162cm cid:86
+hcl:#623a2f pid:738174580 ecl:brn byr:1980 eyr:2028 iyr:2014
+
+byr:2007 hgt:150in hcl:z
+eyr:2032
+ecl:#114f3b
+iyr:2030 pid:5129772
+
+ecl:hzl iyr:2017
+hcl:#18171d
+pid:696283412 byr:1976 hgt:168cm
+eyr:2028
+
+eyr:1922 ecl:#84b0d4 byr:2013 hcl:#ceb3a1 pid:150cm iyr:2030
+hgt:71cm
+
+hgt:164cm byr:1949 ecl:gry eyr:2026
+hcl:#623a2f
+
+ecl:oth
+iyr:2013 hgt:166cm hcl:#50e385
+pid:478852286
+eyr:2030 byr:1930
+
+cid:129
+iyr:2020 byr:1978 pid:907580992 eyr:1955
+hcl:#602927
+ecl:grn hgt:165cm
+
+ecl:blu iyr:2018 byr:1953
+hgt:177cm pid:126681706 eyr:2025 hcl:#c0946f
+
+byr:1984 pid:275799917
+ecl:oth hcl:#623a2f cid:348 iyr:2020
+hgt:189cm eyr:2024
+
+iyr:2016
+ecl:hzl byr:1954
+hcl:#623a2f pid:810508839 eyr:2026
+hgt:185cm
+
+byr:1967
+eyr:2021 hcl:#ceb3a1
+pid:406634908 hgt:158cm iyr:2018 ecl:hzl
+
+iyr:2019 eyr:2030 pid:995681076 hcl:#341e13
+cid:101 hgt:162cm ecl:blu byr:1925
+
+eyr:2026 pid:272513479 hcl:#b6652a byr:1973 iyr:2016 ecl:amb hgt:182cm
+
+pid:298704871 eyr:2024 hcl:#efcc98 byr:1959
+iyr:2014 hgt:191cm ecl:grn
+
+hgt:193cm pid:750729809 ecl:oth
+cid:324
+iyr:2011 hcl:#efcc98 byr:1954 eyr:2020
+
+byr:1966 iyr:2019 eyr:2025 ecl:#2df4b6
+hgt:184cm pid:#fc17f4 cid:161 hcl:#602927
+
+byr:1955 hcl:299464 ecl:amb
+hgt:157cm iyr:2017 eyr:2021
+pid:239450987
+
+hgt:172cm
+ecl:hzl
+pid:839804598
+hcl:#341e13 eyr:2030 byr:1964 iyr:2013
+
+iyr:2018 hgt:152cm byr:1948 hcl:#623a2f pid:400121515
+ecl:blu
+eyr:2020
+
+cid:296
+ecl:grn
+byr:1960 iyr:2028 pid:#1f4b95 eyr:2033 hcl:#602927
+hgt:66cm
+
+iyr:1933 ecl:#232e20 pid:#d03ca7
+eyr:2030 hcl:598ed6 hgt:154in byr:2011
+
+cid:247 ecl:grn iyr:2014
+hgt:178cm
+byr:1992 hcl:#602927 eyr:2021
+pid:678964478
+
+iyr:2010 pid:623705680
+ecl:hzl hgt:181cm byr:1980 hcl:#341e13 eyr:2028
+#+end_example
 
 ** Day 05: Binary Boarding
 *** Sample
@@ -5415,11 +9009,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-05
+: TODO
+
 *** Input
 #+NAME: input-2020-05
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-05
+: TODO
 
 ** Day 06: Custom Customs
 *** Sample
@@ -5427,11 +9028,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-06
+: TODO
+
 *** Input
 #+NAME: input-2020-06
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-06
+: TODO
 
 ** Day 07: Handy Haversacks
 *** Sample
@@ -5439,11 +9047,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-07
+: TODO
+
 *** Input
 #+NAME: input-2020-07
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-07
+: TODO
 
 ** Day 08: Handheld Halting
 *** Sample
@@ -5451,11 +9066,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-08
+: TODO
+
 *** Input
 #+NAME: input-2020-08
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-08
+: TODO
 
 ** Day 09: Encoding Error
 *** Sample
@@ -5463,11 +9085,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-09
+: TODO
+
 *** Input
 #+NAME: input-2020-09
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-09
+: TODO
 
 ** Day 10: Adapter Array
 *** Sample
@@ -5475,11 +9104,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-10
+: TODO
+
 *** Input
 #+NAME: input-2020-10
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-10
+: TODO
 
 ** Day 11: Seating System
 *** Sample
@@ -5487,11 +9123,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-11
+: TODO
+
 *** Input
 #+NAME: input-2020-11
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-11
+: TODO
 
 ** Day 12: Rain Risk
 *** Sample
@@ -5499,11 +9142,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-12
+: TODO
+
 *** Input
 #+NAME: input-2020-12
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-12
+: TODO
 
 ** Day 13: Shuttle Search
 *** Sample
@@ -5511,11 +9161,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-13
+: TODO
+
 *** Input
 #+NAME: input-2020-13
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-13
+: TODO
 
 ** Day 14: Docking Data
 *** Sample
@@ -5523,11 +9180,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-14
+: TODO
+
 *** Input
 #+NAME: input-2020-14
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-14
+: TODO
 
 ** Day 15: Rambunctious Recitation
 *** Sample
@@ -5535,11 +9199,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-15
+: TODO
+
 *** Input
 #+NAME: input-2020-15
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-15
+: TODO
 
 ** Day 16: Ticket Translation
 *** Sample
@@ -5547,11 +9218,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-16
+: TODO
+
 *** Input
 #+NAME: input-2020-16
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-16
+: TODO
 
 ** Day 17: Conway Cubes
 *** Sample
@@ -5559,11 +9237,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-17
+: TODO
+
 *** Input
 #+NAME: input-2020-17
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-17
+: TODO
 
 ** Day 18: Operation Order
 *** Sample
@@ -5571,11 +9256,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-18
+: TODO
+
 *** Input
 #+NAME: input-2020-18
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-18
+: TODO
 
 ** Day 19: Monster Messages
 *** Sample
@@ -5583,11 +9275,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-19
+: TODO
+
 *** Input
 #+NAME: input-2020-19
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-19
+: TODO
 
 ** Day 20: Jurassic Jigsaw
 *** Sample
@@ -5595,11 +9294,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-20
+: TODO
+
 *** Input
 #+NAME: input-2020-20
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-20
+: TODO
 
 ** Day 21: Allergen Assessment
 *** Sample
@@ -5607,11 +9313,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-21
+: TODO
+
 *** Input
 #+NAME: input-2020-21
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-21
+: TODO
 
 ** Day 22: Crab Combat
 *** Sample
@@ -5619,11 +9332,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-22
+: TODO
+
 *** Input
 #+NAME: input-2020-22
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-22
+: TODO
 
 ** Day 23: Crab Cups
 *** Sample
@@ -5631,11 +9351,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-23
+: TODO
+
 *** Input
 #+NAME: input-2020-23
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-23
+: TODO
 
 ** Day 24: Lobby Layout
 *** Sample
@@ -5643,11 +9370,18 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-24
+: TODO
+
 *** Input
 #+NAME: input-2020-24
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-24
+: TODO
 
 ** Day 25: Combo Breaker
 *** Sample
@@ -5655,11 +9389,15 @@ echo "TODO"
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
+
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: sample-2020-25
+: TODO
+
 *** Input
 #+NAME: input-2020-25
 #+begin_src bash :results output :cache yes
 echo "TODO"
 #+end_src
 
-#+RESULTS[75c216b0b2caf5bcbea35f1c7b64018441a48600]: input-2020-25
-:
+#+RESULTS[6593468eb2bb15a714d6012143f2ef33e0f12c27]: input-2020-25
+: TODO
