@@ -64,12 +64,12 @@ def new_day(year, daynum, name, desc):
             out.append("\n".join(desc.split("\n")[1:]))
         else:
             out.append("Complete part 1 before continuing")
-        out.append(src_blocks("racket", "rkt", year, day, i, '(displayln "TODO")'))
-        out.append(src_blocks("python", "py",  year, day, i, 'print("TODO")'))
-        out.append(src_blocks("rust",   "rs",  year, day, i, 'fn main() {println!("TODO");}'))
-        out.append(src_blocks("bash",   "sh",  year, day, i, 'echo "TODO"'))
-        out.append(src_blocks("awk",    "awk", year, day, i, 'BEGIN {print "TODO"}'))
-        out.append(src_blocks("perl",   "pl",  year, day, i, 'print("TODO\n")'))
+        out.append(src_blocks("racket", "rkt", year, day, i, '(displayln "TODO")\n'))
+        out.append(src_blocks("python", "py",  year, day, i, 'print("TODO")\n'))
+        out.append(src_blocks("rust",   "rs",  year, day, i, 'fn main() {println!("TODO");}\n'))
+        out.append(src_blocks("bash",   "sh",  year, day, i, 'echo "TODO"\n'))
+        out.append(src_blocks("awk",    "awk", year, day, i, 'BEGIN {print "TODO"}\n'))
+        out.append(src_blocks("perl",   "pl",  year, day, i, 'print("TODO\n")\n'))
     return "\n".join(out)
 
 def new_input(year, daynum, name):
@@ -94,4 +94,4 @@ def generate_org_file(year_start, year_stop, day_start, day_stop):
     print("\n".join(solutions) + "\n" + "\n".join(inputs))
 
 
-generate_org_file(2020,2021,1,26)
+generate_org_file(2021,2022,1,2)
