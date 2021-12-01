@@ -24,3 +24,4 @@ Nan0Scho1ar's solutions to the [[https://adventofcode.com/][Advent of Code]] pro
 [[file:./2018.org][2018]]
 [[file:./2019.org][2019]]
 [[file:./2020.org][2020]]
+[[file:./2021.org][2021]]
