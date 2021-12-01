@@ -660,7 +660,7 @@ The fourth passport is missing two fields, cid and byr. Missing cid is fine, but
 According to the above rules, your improved system would report ~2~ valid passports.
 Count the number of ~valid~ passports - those that have all required fields. Treat cid as optional. ~In your batch file, how many passports are valid?~
 
-**** TODO Racket
+**** Racket
 #+begin_src racket :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.rkt :results output :cache yes
 (define (count-valid lines keys)
   (count identity
@@ -680,14 +680,19 @@ Count the number of ~valid~ passports - those that have all required fields. Tre
                      #:when (andmap (λ (k) (string-contains? line k)) keys))
             line)))
 
+(define (count-valid4 lines keys)
+  (for/sum ([line lines] #:when (andmap (λ (k) (string-contains? line k)) keys)) 1))
+
 (define keys '("byr:" "iyr:" "eyr:" "hgt:" "hcl:" "ecl:" "pid:"))
-(count-valid3 (string-split sample_data "\n\n") keys)
+(count-valid4 (string-split sample_data "\n\n") keys)
+(count-valid4 (string-split input_data "\n\n") keys)
 ;(print keys)
 ;(print
         #+end_src
 
-#+RESULTS[37b8316436b4588ab944d9a37348cfe65c24f157]:
-: 2
+        #+RESULTS[17a95abb50d56b8fbe5f51fdee6aa98924134242]:
+        : 2
+        : 230
 
 **** Python
 #+begin_src python :var sample_data=sample-2020-04 :var input_data=input-2020-04 :tangle /tmp/advent_of_code/aoc2020-04-1.py :results output :cache yes
@@ -814,12 +819,11 @@ Count the number of valid passports - those that have all required fields and va
 
 (define (count-valid data)
   (define keys '("byr:" "iyr:" "eyr:" "hgt:" "hcl:" "ecl:" "pid:"))
-  (length
-   (for/list ([line (string-split data "\n\n")]
+   (for/sum ([line (string-split data "\n\n")]
               #:when (and
                       (andmap (λ (k) (string-contains? line k)) keys)
                       (validate line)))
-     line)))
+     1))
 
 (define (validate line)
   (for/and ([item (string-split (string-replace line "\n" " ") " ")])
@@ -844,7 +848,7 @@ Count the number of valid passports - those that have all required fields and va
 (count-valid input_data)
 #+end_src
 
-#+RESULTS[68741cb4c1023c153547f078dd9b220648d6cf63]:
+#+RESULTS[3322d958bd78b81423350bfa95a703e17b8d96e4]:
 : 2
 : 156
 

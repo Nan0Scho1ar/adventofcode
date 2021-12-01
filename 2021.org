@@ -47,10 +47,7 @@ In this example, there are ~7~ measurements that are larger than the previous me
 #+begin_src racket :var sample_data=sample-2021-01 :var input_data=input-2021-01 :tangle /tmp/advent_of_code/aoc2021-01-1.rkt :results output 
 (define (count-deeper data)
   (let ([lines (map string->number (string-split data "\n"))])
-    (for/sum ([i lines]
-              [j (cdr lines)]
-              #:when (> j i))
-      1)))
+    (for/sum ([i lines] [j (cdr lines)] #:when (> j i)) 1)))
 
 (count-deeper sample_data)
 (count-deeper input_data)
@@ -61,7 +58,7 @@ In this example, there are ~7~ measurements that are larger than the previous me
 : 1162
 
 **** Python
-Quick and dirty python solution for a fast answer
+Quick and dirty python solution for a fast answer. Before you ask, yes, I really did write ~lines[i] - lines[i-1] > 0~. You just know that ~if is_redundant == true:~ then you spent too much time typing and not enough thinking.
 #+begin_src python :var sample_data=sample-2021-01 :var input_data=input-2021-01 :tangle /tmp/advent_of_code/aoc2021-01-1.py :results output
 def count_deeper(data):
     lines = [int(i) for i in data[:-1].split("\n")]
@@ -154,7 +151,7 @@ In this example, there are 5 sums that are larger than the previous sum.
 : 1190
 
 **** Python
-Quick and dirty python solution for a fast answer
+Another quick and dirty python solution for a fast answer. Still includes the epic ~sum2 - sum1 > 0~ logic.
 #+begin_src python :var sample_data=sample-2021-01 :var input_data=input-2021-01 :tangle /tmp/advent_of_code/aoc2021-01-2.py :results output 
 def count_deeper(data):
     l = [int(i) for i in data[:-1].split("\n")]
