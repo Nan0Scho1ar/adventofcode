@@ -46,8 +46,11 @@ In this example, there are ~7~ measurements that are larger than the previous me
 **** Racket
 #+begin_src racket :var sample_data=sample-2021-01 :var input_data=input-2021-01 :tangle /tmp/advent_of_code/aoc2021-01-1.rkt :results output 
 (define (count-deeper data)
-  (let ([lines (map string->number (string-split data "\n"))])
-    (for/sum ([i lines] [j (cdr lines)] #:when (> j i)) 1)))
+  (let ([nums (map string->number (string-split data "\n"))])
+    (for/sum ([i nums]
+              [j (cdr nums)]
+              #:when (> j i))
+      1)))
 
 (count-deeper sample_data)
 (count-deeper input_data)
@@ -134,11 +137,11 @@ In this example, there are 5 sums that are larger than the previous sum.
 **** Racket
 #+begin_src racket :var sample_data=sample-2021-01 :var input_data=input-2021-01 :tangle /tmp/advent_of_code/aoc2021-01-2.rkt :results output 
 (define (count-deeper data)
-  (let ([lines (map string->number (string-split data "\n"))])
-    (for/sum ([i lines]
-              [j (cdr lines)]
-              [k (cddr lines)]
-              [l (cdddr lines)]
+  (let ([nums (map string->number (string-split data "\n"))])
+    (for/sum ([i nums]
+              [j (cdr nums)]
+              [k (cddr nums)]
+              [l (cdddr nums)]
               #:when (> (+ j k l) (+ i j k)))
       1)))
 
