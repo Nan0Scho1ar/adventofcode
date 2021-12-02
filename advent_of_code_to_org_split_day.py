@@ -54,7 +54,7 @@ def src_blocks(lang, file_suffix, year, day, part, code):
     return f"{heading}\n#+begin_src {lang} {sampledata} {inputdata} {tangle} :results output \n{code}#+end_src"
 
 def input_src_blocks(year, day):
-    src_args = ":results output :cache yes :exports none :eval never-export"
+    src_args = ":results output :cache yes :eval never-export"
     sample = f"** Sample\n#+NAME: sample-{year}-{day}\n#+begin_src bash {src_args}\necho \"TODO\"\n#+end_src\n"
     input = f"** Input\n#+NAME: input-{year}-{day}\n#+begin_src bash {src_args}\necho \"TODO\"\n#+end_src\n"
     return sample + input
@@ -99,9 +99,8 @@ def generate_org_file(year, day):
 stdin = sys.argv[1].split("-")
 year = stdin[0]
 day = stdin[1]
-with open("test.org" "a") as f:
-    f.write("[[file:./{year}/day{day}.org][{year}-{day}]]")
+with open("README.org", "a") as f:
+    f.write(f"[[file:./{year}/day{day}.org][{year}-{day}]]\n")
 
-with open(f"{year}/day{day}" "a") as f:
-
+with open(f"{year}/day{day}.org", "a") as f:
     f.write(generate_org_file(year, day))
