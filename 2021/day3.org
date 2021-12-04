@@ -46,28 +46,24 @@ The epsilon rate is calculated in a similar way; rather than use the most common
 Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them together. ~What is the power consumption of the submarine?~ (Be sure to represent your answer in decimal, not binary.)
  
 ** Racket
-#+begin_src racket :var sample_data=sample-2021-03 :var input_data=input-2021-03 :tangle /tmp/advent_of_code/aoc2021-03-1.rkt :eval never-export :results output 
+#+begin_src racket :var sample_data=sample-2021-03 :var input_data=input-2021-03 :tangle /tmp/advent_of_code/aoc2021-03-1.rkt :eval never-export :results output
 (define (get-power data)
   (for/fold ([gamma 0]
-              [epsilon 0]
-              #:result (begin
-                         (displayln gamma)
-                         (displayln epsilon)
-                         (* gamma epsilon)))
-             ([index (range 0 (string-length (car data)))])
-    (if (positive?
-         (for/sum ([line data])
-           (if (equal? (string-ref line index) #\1) 1 (- 1))))
-          (values (+ gamma (expt 2 index)) epsilon)
-          (values gamma (+ epsilon (expt 2 index))))))
+             [epsilon 0]
+             #:result (* gamma epsilon))
+            ([index (range 0 (string-length (car data)))]
+             [power (range (- (string-length (car data)) 1) -1 -1)])
+    (if (>= (/ (count (λ (x) (equal? (string-ref x index) #\1)) data)
+               (length data))
+            0.5)
+        (values (+ gamma (expt 2 power)) epsilon)
+        (values gamma (+ epsilon (expt 2 power))))))
 
 (get-power (string-split sample_data "\n"))
 #+end_src
 
 #+RESULTS:
-: 13
-: 18
-: 234
+: 198
 
 ** Python
 #+begin_src python :var sample_data=sample-2021-03 :var input_data=input-2021-03 :tangle /tmp/advent_of_code/aoc2021-03-1.py :eval never-export :results output
