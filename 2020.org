@@ -827,8 +827,7 @@ Count the number of valid passports - those that have all required fields and va
 
 (define (validate line)
   (for/and ([item (string-split (string-replace line "\n" " ") " ")])
-    (let ([key (car (string-split item ":"))]
-          [val (cadr (string-split item ":"))])
+    (match-define (list key val) (string-split item ":"))
       (match key
         ["byr" (between? (string->number val) 1920 2002)]
         ["iyr" (between? (string->number val) 2010 2020)]
@@ -841,14 +840,14 @@ Count the number of valid passports - those that have all required fields and va
         ["hcl" (regexp-match? #rx"^#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]$" val)]
         ["ecl" (regexp-match? #rx"^amb$|^blu$|^brn$|^gry$|^grn$|^hzl$|^oth$" val)]
         ["pid" (regexp-match? #rx"^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$" val)]
-        ["cid" #t]))))
+        ["cid" #t])))
 
 
 (count-valid sample_data)
 (count-valid input_data)
 #+end_src
 
-#+RESULTS[3322d958bd78b81423350bfa95a703e17b8d96e4]:
+#+RESULTS[da95e9366eee183d2abc88c975bba9715bce7719]:
 : 2
 : 156
 
