@@ -64,7 +64,7 @@ Consider only horizontal and vertical lines. ~At how many points do at least two
 #+begin_src racket :var sample_data=sample-2021-05 :var input_data=input-2021-05 :tangle /tmp/advent_of_code/aoc2021-05-1.rkt :eval never-export :results output 
 (displayln "TODO")
 #+end_src
-** TODO Python
+** Python
 #+begin_src python :var sample_data=sample-2021-05 :var input_data=input-2021-05 :tangle /tmp/advent_of_code/aoc2021-05-1.py :eval never-export :results output
 def print_board(board):
    for line in board:
@@ -117,15 +117,80 @@ print("TODO\n")
 #+end_src
 * Part 2
 ** Description
-Complete part 1 before continuing
+Unfortunately, considering only horizontal and vertical lines doesn't give you the full picture; you need to also consider diagonal lines.
+
+Because of the limits of the hydrothermal vent mapping system, the lines in your list will only ever be horizontal, vertical, or a diagonal line at exactly 45 degrees. In other words:
+
+An entry like 1,1 -> 3,3 covers points 1,1, 2,2, and 3,3.
+An entry like 9,7 -> 7,9 covers points 9,7, 8,8, and 7,9.
+Considering all lines from the above example would now produce the following diagram:
+
+1.1....11.
+.111...2..
+..2.1.111.
+...1.2.2..
+.112313211
+...1.2....
+..1...1...
+.1.....1..
+1.......1.
+222111....
+You still need to determine the number of points where at least two lines overlap. In the above example, this is still anywhere in the diagram with a 2 or larger - now a total of 12 points.
+
+Consider all of the lines. At how many points do at least two lines overlap?
 ** TODO Racket
 #+begin_src racket :var sample_data=sample-2021-05 :var input_data=input-2021-05 :tangle /tmp/advent_of_code/aoc2021-05-2.rkt :eval never-export :results output 
 (displayln "TODO")
 #+end_src
 ** TODO Python
 #+begin_src python :var sample_data=sample-2021-05 :var input_data=input-2021-05 :tangle /tmp/advent_of_code/aoc2021-05-2.py :eval never-export :results output 
-print("TODO")
+def print_board(board):
+   for line in board:
+       print("".join(["." if char == 0 else str(char) for char in line]))
+
+def count_intersections(data, boardsize):
+    positions = [[[int(i.strip()) for i in pos.split(",")] for pos in line.split("->")] for line in data.split("\n")]
+    board = [[0 for i in range(boardsize)] for i in range(boardsize)]
+    for pair in positions:
+        x1 = pair[1][1]
+        x2 = pair[0][1]
+        y1 = pair[1][0]
+        y2 = pair[0][0]
+        if x1 == x2:
+            y_start = y1 if y1 < y2 else y2
+            y_stop = y2 if y1 < y2 else y1
+            for y in range(y_start, y_stop+1):
+                board[x1][y] += 1
+        elif y1 == y2:
+            x_start = x1 if x1 < x2 else x2
+            x_stop = x2 if x1 < x2 else x1
+            for x in range(x_start, x_stop+1):
+                board[x][y1] += 1
+        else:
+            y_dir = 1 if y1 < y2 else -1
+            x_dir = 1 if x1 < x2 else -1
+            for x, y in zip(range(x1, x2+x_dir, x_dir), range(y1, y2+y_dir, y_dir)):
+                board[x][y] += 1
+    return sum([len([i for i in row if i > 1]) for row in board])
+
+count_intersections(sample_data[:-1], 10)
+count_intersections(input_data[:-1], 1000)
 #+end_src
+
+#+RESULTS:
+: 12
+: 21373
+
+1.1....11.
+.111...2..
+..2.1.111.
+...1.2.2..
+.112313211
+...1.2....
+..1...1...
+.1.....1..
+1.......1.
+222111....
 ** TODO Rust
 #+begin_src rust :var sample_data=sample-2021-05 :var input_data=input-2021-05 :tangle /tmp/advent_of_code/aoc2021-05-2.rs :eval never-export :results output 
 fn main() {println!("TODO");}

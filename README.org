@@ -29,3 +29,7 @@ Nan0Scho1ar's solutions to the [[https://adventofcode.com/][Advent of Code]] pro
 [[file:./2021/day3.org][2021-3]]
 [[file:./2021/day4.org][2021-4]]
 [[file:./2021/day5.org][2021-5]]
+[[file:./2021/day6.org][2021-6]]
+[[file:./2021/day7.org][2021-7]]
+[[file:./2021/day8.org][2021-8]]
+[[file:./2021/day9.org][2021-9]]

@@ -1,0 +1,100 @@
+#+TITLE: Day 9: Smoke Basin
+#+STARTUP: inlineimages
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: Day9.html
+#+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
+#+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
+#+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
+#+HTML_HEAD:
+#+begin_export html
+<a href="https://github.com/Nan0Scho1ar/adventofcode"
+   style="font-family: 'Open Sans'; background-image: none; color: inherit;
+          text-decoration: none; position: relative; top: clamp(-26px, calc(1280px - 100vw), 0px); opacity: 0.7;">
+   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOEMwIDExLjU0IDIuMjkgMTQuNTMgNS40NyAxNS41OUM1Ljg3IDE1LjY2IDYuMDIgMTUuNDIgNi4wMiAxNS4yMUM2LjAyIDE1LjAyIDYuMDEgMTQuMzkgNi4wMSAxMy43MkM0IDE0LjA5IDMuNDggMTMuMjMgMy4zMiAxMi43OEMzLjIzIDEyLjU1IDIuODQgMTEuODQgMi41IDExLjY1QzIuMjIgMTEuNSAxLjgyIDExLjEzIDIuNDkgMTEuMTJDMy4xMiAxMS4xMSAzLjU3IDExLjcgMy43MiAxMS45NEM0LjQ0IDEzLjE1IDUuNTkgMTIuODEgNi4wNSAxMi42QzYuMTIgMTIuMDggNi4zMyAxMS43MyA2LjU2IDExLjUzQzQuNzggMTEuMzMgMi45MiAxMC42NCAyLjkyIDcuNThDMi45MiA2LjcxIDMuMjMgNS45OSAzLjc0IDUuNDNDMy42NiA1LjIzIDMuMzggNC40MSAzLjgyIDMuMzFDMy44MiAzLjMxIDQuNDkgMy4xIDYuMDIgNC4xM0M2LjY2IDMuOTUgNy4zNCAzLjg2IDguMDIgMy44NkM4LjcgMy44NiA5LjM4IDMuOTUgMTAuMDIgNC4xM0MxMS41NSAzLjA5IDEyLjIyIDMuMzEgMTIuMjIgMy4zMUMxMi42NiA0LjQxIDEyLjM4IDUuMjMgMTIuMyA1LjQzQzEyLjgxIDUuOTkgMTMuMTIgNi43IDEzLjEyIDcuNThDMTMuMTIgMTAuNjUgMTEuMjUgMTEuMzMgOS40NyAxMS41M0M5Ljc2IDExLjc4IDEwLjAxIDEyLjI2IDEwLjAxIDEzLjAxQzEwLjAxIDE0LjA4IDEwIDE0Ljk0IDEwIDE1LjIxQzEwIDE1LjQyIDEwLjE1IDE1LjY3IDEwLjU1IDE1LjU5QzEzLjcxIDE0LjUzIDE2IDExLjUzIDE2IDhDMTYgMy41OCAxMi40MiAwIDggMFoiIHRyYW5zZm9ybT0ic2NhbGUoNjQpIiBmaWxsPSIjMUIxRjIzIi8+Cjwvc3ZnPgo="
+       class="invertible" alt="GitHub Octicon"
+       style="height: 1em; position: relative; top: 0.1em;">
+  View on GitHub</a>&ensp;
+#+end_export
+
+* Part 1
+** Description
+If you can model how the smoke flows through the caves, you might be able to avoid it and be that much safer. The submarine generates a heightmap of the floor of the nearby caves for you (your puzzle input).
+Smoke flows to the lowest point of the area it's in. For example, consider the following heightmap:
+
+#+begin_example
+2~1~9994321~0~
+3987894921
+98~5~6789892
+8767896789
+989996~5~678
+
+#+end_example
+
+Each number corresponds to the height of a particular location, where 9 is the highest and 0 is the lowest a location can be.
+Your first goal is to find the ~low points~ - the locations that are lower than any of its adjacent locations. Most locations have four adjacent locations (up, down, left, and right); locations on the edge or corner of the map have three or two adjacent locations, respectively. (Diagonal locations do not count as adjacent.)
+In the above example, there are ~four~ low points, all highlighted: two are in the first row (a 1 and a 0), one is in the third row (a 5), and one is in the bottom row (also a 5). All other locations on the heightmap have some lower adjacent location, and so are not low points.
+The ~risk level~ of a low point is ~1 plus its height~. In the above example, the risk levels of the low points are 2, 1, 6, and 6. The sum of the risk levels of all low points in the heightmap is therefore ~15~.
+Find all of the low points on your heightmap. ~What is the sum of the risk levels of all low points on your heightmap?~
+ 
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-1.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Part 2
+** Description
+Complete part 1 before continuing
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-09 :var input_data=input-2021-09 :tangle /tmp/advent_of_code/aoc2021-09-2.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Inputs
+** Sample
+#+NAME: sample-2021-09
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src
+** Input
+#+NAME: input-2021-09
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src

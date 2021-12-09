@@ -84,7 +84,32 @@ To guarantee victory against the giant squid, figure out which board will win fi
  
 ** TODO Racket
 #+begin_src racket :var sample_data=sample-2021-04 :var input_data=input-2021-04 :tangle /tmp/advent_of_code/aoc2021-04-1.rkt :eval never-export :results output 
-(displayln "TODO")
+;; def bingo_time(data):
+    ;; win_conds = [31, 992, 31744, 1015808, 32505856, 1082401, 2164802, 4329604, 8659208, 17318416]
+    ;; nums = data[0].split(",")
+    ;; boards = [[b for b in board.replace("\n", " ").replace("  ", " ").split(" ") if b != ""] for board in data[1:]]
+    ;; states = [0 for board in boards]
+    ;; for i in nums:
+        ;; for b, board in enumerate(boards):
+            ;; try:
+                ;; idx = board.index(i)
+                ;; states[b] += (1 << idx)
+                ;; for cond in win_conds:
+                    ;; if states[b] & cond == cond:
+                        ;; return int(i) * sum([int(num) for j, num in enumerate(board) if states[b] & (1 << j) == 0])
+            ;; except:
+                ;; continue
+
+(define (bingo-time data)
+  (let ([winconds '(31 992 31744 1015808 32505856 1082401 2164802 4329604 8659208 17318416)]
+        [inputs (string-split (car data) ",")]
+        [boards (for/list ([boardlist (cdr data)])
+                  )])
+    ))
+
+;;
+;; print(bingo_time(sample_data.split("\n\n")))
+;; print(bingo_time(input_data.split("\n\n")))
 #+end_src
 ** Python
 #+begin_src python :var sample_data=sample-2021-04 :var input_data=input-2021-04 :tangle /tmp/advent_of_code/aoc2021-04-1.py :eval never-export :results output
@@ -148,26 +173,21 @@ print(bingo_time(input_data))
 
 def bingo_time(data):
     win_conds = [31, 992, 31744, 1015808, 32505856, 1082401, 2164802, 4329604, 8659208, 17318416]
-    nums = data[0].split(",")
     boards = [[b for b in board.replace("\n", " ").replace("  ", " ").split(" ") if b != ""] for board in data[1:]]
     states = [0 for board in boards]
-    for i in nums:
-        for b, board in enumerate(boards):
-            try:
-                idx = board.index(i)
-                states[b] += (1 << idx)
-                for cond in win_conds:
-                    if states[b] & cond == cond:
-                        return int(i) * sum([int(num) for j, num in enumerate(board) if states[b] & (1 << j) == 0])
-            except:
-                continue
+    for i in data[0].split(","):
+        for b, board in enumerate([b for b in boards if i in b]):
+            states[b] += (1 << board.index(i))
+            if any([True for cond in win_conds if states[b] & cond == cond]):
+                return int(i) * sum([int(num) for j, num in enumerate(board) if states[b] & (1 << j) == 0])
 
-print(bingo_time(sample_data.split("\n\n")))
-print(bingo_time(input_data.split("\n\n")))
+bingo_time(sample_data.split("\n\n"))
+bingo_time(input_data.split("\n\n"))
 #+end_src
 
 #+RESULTS:
 : 4512
+: 48493
 
 ** TODO Rust
 #+begin_src rust :var sample_data=sample-2021-04 :var input_data=input-2021-04 :tangle /tmp/advent_of_code/aoc2021-04-1.rs :eval never-export :results output 

@@ -1,0 +1,130 @@
+#+TITLE: Day 6: Lanternfish
+#+STARTUP: inlineimages
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: Day6.html
+#+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
+#+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
+#+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
+#+HTML_HEAD:
+#+begin_export html
+<a href="https://github.com/Nan0Scho1ar/adventofcode"
+   style="font-family: 'Open Sans'; background-image: none; color: inherit;
+          text-decoration: none; position: relative; top: clamp(-26px, calc(1280px - 100vw), 0px); opacity: 0.7;">
+   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOEMwIDExLjU0IDIuMjkgMTQuNTMgNS40NyAxNS41OUM1Ljg3IDE1LjY2IDYuMDIgMTUuNDIgNi4wMiAxNS4yMUM2LjAyIDE1LjAyIDYuMDEgMTQuMzkgNi4wMSAxMy43MkM0IDE0LjA5IDMuNDggMTMuMjMgMy4zMiAxMi43OEMzLjIzIDEyLjU1IDIuODQgMTEuODQgMi41IDExLjY1QzIuMjIgMTEuNSAxLjgyIDExLjEzIDIuNDkgMTEuMTJDMy4xMiAxMS4xMSAzLjU3IDExLjcgMy43MiAxMS45NEM0LjQ0IDEzLjE1IDUuNTkgMTIuODEgNi4wNSAxMi42QzYuMTIgMTIuMDggNi4zMyAxMS43MyA2LjU2IDExLjUzQzQuNzggMTEuMzMgMi45MiAxMC42NCAyLjkyIDcuNThDMi45MiA2LjcxIDMuMjMgNS45OSAzLjc0IDUuNDNDMy42NiA1LjIzIDMuMzggNC40MSAzLjgyIDMuMzFDMy44MiAzLjMxIDQuNDkgMy4xIDYuMDIgNC4xM0M2LjY2IDMuOTUgNy4zNCAzLjg2IDguMDIgMy44NkM4LjcgMy44NiA5LjM4IDMuOTUgMTAuMDIgNC4xM0MxMS41NSAzLjA5IDEyLjIyIDMuMzEgMTIuMjIgMy4zMUMxMi42NiA0LjQxIDEyLjM4IDUuMjMgMTIuMyA1LjQzQzEyLjgxIDUuOTkgMTMuMTIgNi43IDEzLjEyIDcuNThDMTMuMTIgMTAuNjUgMTEuMjUgMTEuMzMgOS40NyAxMS41M0M5Ljc2IDExLjc4IDEwLjAxIDEyLjI2IDEwLjAxIDEzLjAxQzEwLjAxIDE0LjA4IDEwIDE0Ljk0IDEwIDE1LjIxQzEwIDE1LjQyIDEwLjE1IDE1LjY3IDEwLjU1IDE1LjU5QzEzLjcxIDE0LjUzIDE2IDExLjUzIDE2IDhDMTYgMy41OCAxMi40MiAwIDggMFoiIHRyYW5zZm9ybT0ic2NhbGUoNjQpIiBmaWxsPSIjMUIxRjIzIi8+Cjwvc3ZnPgo="
+       class="invertible" alt="GitHub Octicon"
+       style="height: 1em; position: relative; top: 0.1em;">
+  View on GitHub</a>&ensp;
+#+end_export
+
+* Part 1
+** Description
+A massive school of glowing <a href="https://en.wikipedia.org/wiki/Lanternfish" target="_blank">lanternfish</a> swims past. They must spawn quickly to reach such large numbers - maybe ~exponentially~ quickly? You should model their growth rate to be sure.
+Although you know nothing about this specific species of lanternfish, you make some guesses about their attributes. Surely, <span title="I heard you like lanternfish.">each lanternfish creates a new lanternfish</span> once every ~7~ days.
+However, this process isn't necessarily synchronized between every lanternfish - one lanternfish might have 2 days left until it creates another lanternfish, while another might have 4. So, you can model each fish as a single number that represents ~the number of days until it creates a new lanternfish~.
+Furthermore, you reason, a ~new~ lanternfish would surely need slightly longer before it's capable of producing more lanternfish: two more days for its first cycle.
+So, suppose you have a lanternfish with an internal timer value of 3:
+
+~After one day, its internal timer would become 2.~
+~After another day, its internal timer would become 1.~
+~After another day, its internal timer would become 0.~
+~After another day, its internal timer would reset to 6, and it would create a ~new~ lanternfish with an internal timer of 8.~
+~After another day, the first lanternfish would have an internal timer of 5, and the second lanternfish would have an internal timer of 7.~
+
+A lanternfish that creates a new fish resets its timer to 6, ~not 7~ (because 0 is included as a valid timer value). The new lanternfish starts with an internal timer of 8 and does not start counting down until the next day.
+Realizing what you're trying to do, the submarine automatically produces a list of the ages of several hundred nearby lanternfish (your puzzle input). For example, suppose you were given the following list:
+
+#+begin_example
+3,4,3,1,2
+#+end_example
+
+This list means that the first fish has an internal timer of 3, the second fish has an internal timer of 4, and so on until the fifth fish, which has an internal timer of 2. Simulating these fish over several days would proceed as follows:
+
+#+begin_example
+Initial state: 3,4,3,1,2
+After  1 day:  2,3,2,0,1
+After  2 days: 1,2,1,6,0,8
+After  3 days: 0,1,0,5,6,7,8
+After  4 days: 6,0,6,4,5,6,7,8,8
+After  5 days: 5,6,5,3,4,5,6,7,7,8
+After  6 days: 4,5,4,2,3,4,5,6,6,7
+After  7 days: 3,4,3,1,2,3,4,5,5,6
+After  8 days: 2,3,2,0,1,2,3,4,4,5
+After  9 days: 1,2,1,6,0,1,2,3,3,4,8
+After 10 days: 0,1,0,5,6,0,1,2,2,3,7,8
+After 11 days: 6,0,6,4,5,6,0,1,1,2,6,7,8,8,8
+After 12 days: 5,6,5,3,4,5,6,0,0,1,5,6,7,7,7,8,8
+After 13 days: 4,5,4,2,3,4,5,6,6,0,4,5,6,6,6,7,7,8,8
+After 14 days: 3,4,3,1,2,3,4,5,5,6,3,4,5,5,5,6,6,7,7,8
+After 15 days: 2,3,2,0,1,2,3,4,4,5,2,3,4,4,4,5,5,6,6,7
+After 16 days: 1,2,1,6,0,1,2,3,3,4,1,2,3,3,3,4,4,5,5,6,8
+After 17 days: 0,1,0,5,6,0,1,2,2,3,0,1,2,2,2,3,3,4,4,5,7,8
+After 18 days: 6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7,8,8,8,8
+
+#+end_example
+
+Each day, a 0 becomes a 6 and adds a new 8 to the end of the list, while each other number decreases by 1 if it was present at the start of the day.
+In this example, after 18 days, there are a total of 26 fish. After 80 days, there would be a total of ~5934~.
+Find a way to simulate lanternfish. ~How many lanternfish would there be after 80 days?~
+ 
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Part 2
+** Description
+Complete part 1 before continuing
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Inputs
+** Sample
+#+NAME: sample-2021-06
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src
+** Input
+#+NAME: input-2021-06
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src
