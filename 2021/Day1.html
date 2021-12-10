@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2021-12-11 Sat 00:04 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 1: Sonar Sweep</title>
+<meta name="author" content="Nan0Scho1ar" />
+<meta name="generator" content="org mode" />
+<meta name="theme-color" content="#77aa99" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Day 1: Sonar Sweep" />
+<meta property="og:image" content="https://n0s1.net/resources/org/nib.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="Green fountain pen nib" />
+<meta property="og:article:author:first_name" content="Nan0Scho1ar" />
+<meta property="og:article:published_time" content="2021-12-11T00:00:00+1000" />
+<meta property="og:article:modified_time" content="2021-12-11T00:04:44+1000" />
+<script>
+// @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+function copyPreToClipbord(btn) {
+    const pre = btn.parentElement.parentElement.getElementsByTagName("PRE")[0];
+    const range = document.createRange();
+    range.selectNodeContents(pre);
+    range.setEnd(pre.childNodes[pre.childNodes.length-1], 0);
+    window.getSelection().addRange(range);
+    var successful = document.execCommand('copy');
+    window.getSelection().removeRange(range);
+}
+window.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById("text-table-of-contents")) {
+        const sections = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        const activate = (entry) => {
+            entry.classList.add('active');
+            if (["LI", "UL"].includes(entry.parentElement.tagName)) {
+                activate(entry.parentElement);
+            }
+        };
+        const activateLast = () => {
+            document.querySelectorAll('#text-table-of-contents li.active, #text-table-of-contents ul.active').forEach(a => {
+                a.classList.remove('active')
+            });
+            let mostRecent = { section: sections[0], bottom: -Infinity };
+            const windowHeight = window.innerHeight;
+            sections.forEach((section) => {
+                const bounds = section.getBoundingClientRect()
+                if ( bounds.bottom > mostRecent.bottom && bounds.top < windowHeight ) {
+                    mostRecent = { section, bottom: bounds.bottom };
+                }
+            })
+            activate(document.querySelector(`#text-table-of-contents li a[href="#${mostRecent.section.getAttribute('id')}"]`).parentElement);
+        }
+        const observer = new IntersectionObserver(entries => {
+            activateLast();
+        });
+        sections.forEach((section) => {
+            observer.observe(section);
+        });}
+});
+// @license-end
+</script>
+<style>
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}b{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}button{-webkit-appearance:button}button::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring{outline:1px dotted ButtonText}details{display:block}summary{display:list-item}
+/*! end normalise.css */
+#page{--accent: #002642;--accent-dark: #00151c;--code-foreground: #2c3e50;--code-background: #efefef;--code-func: #6c3163;--code-const: #4e3163;--code-regex: #655370;--back-white: #fff;--back-light: #f0eeed;--back-medium: #c8c8c8;--text-light: #7b7b7b;--text-gray: #444;--text-medium: #222;--text-dark: #000;--switch-icon: "🌚";--switch-shadow-color: #373d4e;--switch-text: "dark mode?"}#theme-switch:checked~#page{--accent: #002642;--accent-dark: #daf1ff;--code-foreground: #a1a8ae;--code-background: #222;--code-func: #bd56ad;--code-const: #8755ab;--code-regex: #a184b3;--back-white: #000;--back-light: #181818;--back-medium: #444;--text-light: #7b7b7b;--text-gray: #c8c8c8;--text-medium: #ddd;--text-dark: #efefef;--switch-icon: "🌝";--switch-shadow-color: #fce477;--switch-text: "light mode?"}#theme-switch:checked~#page img.invertible,#theme-switch:checked~#page object.invertible[type="image/svg+xml"]{filter:invert(90%) hue-rotate(180deg) sepia(1%)}#theme-switch{display:none}#switch-label{position:fixed;bottom:4rem;left:3rem}#switch-label::before{content:var(--switch-icon);font-size:20px;transition:text-shadow .2s}#switch-label::after{content:var(--switch-text);color:var(--switch-shadow-color);font-size:12px;visibility:hidden;margin-left:.5em;z-index:1;position:fixed;bottom:calc(4rem - 25px);left:calc(3rem - 10px)}@media (max-width:1000px){#switch-label{left:auto;bottom:auto;right:1vw;top:1vh}#switch-label::after{position:fixed;top:calc(1vh + 3px);right:calc(1vw + 30px);left:auto;bottom:auto}}#switch-label:hover::before,#theme-switch:focus~#page #switch-label::before{text-shadow:0 0 15px var(--switch-shadow-color)}#switch-label:hover::after,#theme-switch:focus~#page #switch-label::after{visibility:visible}::selection{background:var(--back-medium)}.pace .pace-progress{background-color:var(--accent)!important}body,html{height:100%}body{display:flex;flex-direction:column;font-size:16px;font-family:"Merriweather",serif}#page{color:var(--text-dark);background-color:var(--back-light);transition-property:color,background-color;transition-duration:100ms}#content,.page-header,header{margin:32px;flex:1 0 auto}#content{margin-top:4rem;min-height:calc(100vh - 4rem - 48px)}.clearfix::after{clear:both}.clearfix::after,.clearfix::before{content:" ";display:table}.page-header{margin-top:80px;margin-left:0!important}.page-header h1{font-size:40px;margin-bottom:10px;margin-top:10px;text-transform:none}.page-header h1 .subtitle{font-size:24px;color:var(--text-light);margin:0}.page-meta,figure figcaption .figure-number,header .site-nav{font-family:"Open Sans",sans;font-weight:400;font-style:normal;font-size:12px;line-height:1.9;color:var(--text-light)}header .site-nav{font-weight:700;line-height:2;margin-top:22px}header .site-nav a{color:var(--text-light);text-decoration:none;margin-left:10px}header .site-nav a:hover{color:var(--text-gray)}header .site-nav a.active{border-bottom:solid;border-bottom-width:2px}header .site-nav a:first-child{margin-left:0}header>div{display:inherit}.site-title{font-size:16px}.site-title span{display:none!important}.site-title ul{display:block!important;list-style:none;padding:0;margin:0}.site-title ul img{border-radius:2px;max-width:32px}.site-header nav a{color:var(--text-light);font-family:"Open Sans",sans;font-size:12px;font-weight:700;text-transform:uppercase}.site-header nav a:hover{border:0;color:var(--accent)}@media (max-width:1000px){header *{display:inline}}@media (min-width:1000px){#content,.page-header,header{max-width:720px;margin-left:164px}header .site-title{float:left}header .site-nav{float:right;margin-top:0}}@media (min-width:2800px){#content,.page-header,header{margin-left:auto;margin-right:auto}}#content .page-intro{font-family:"Open Sans",sans;font-weight:400;font-size:15px;line-height:1.6;color:var(--text-gray);margin-bottom:40px}#content dd,#content li,#content p{line-height:1.9}#footer{margin-top:70px;height:10px;background:var(--accent-dark)}.archive-item{margin:50px 0}.archive-item .archive-title{font-size:25px;margin:5px 0}.archive-item .archive-title,.archive-item .archive-title:hover{background:0 0;text-shadow:none;text-decoration:none}#postamble,details.code[open] summary .lang{display:none}aside{background-color:var(--code-background);border-radius:5px;margin:20px 0;padding:5px 20px 10px}#footnotes li,#footnotes p,.org-ref-bib,.org-ref-bib-h1,aside,aside p,blockquote footer{font-family:"Open Sans",sans;font-weight:400;color:var(--text-gray)}aside,aside p{font-size:15px;line-height:1.6!important}aside pre{font-size:12px;border:0;padding-left:0}@media (min-width:1280px){aside{float:right;clear:right;background-color:var(--back-white);max-width:45%!important;margin-right:-52%}aside::before{content:''}}blockquote{border-left-style:solid;border-width:0 0 0 1px;border-left-color:var(--back-medium);margin:20px 0;padding:0 0 0 15px}blockquote p{display:inline;font-size:13px}blockquote footer{font-style:normal;font-size:12px;line-height:1.9;color:var(--text-light);text-transform:none}div.info{background:rgba(58,129,195,.15);border-left:4px solid rgba(58,129,195,.45);margin:1.8rem 0 1.25rem 15px;padding:.8em;line-height:1.4;text-align:center;position:relative;clear:both}div.error p,div.info p,div.success p,div.warning p{margin:0}div.error::before,div.info::before,div.success::before,div.warning::before{color:var(--back-white);align-items:flex-end;top:-1rem;font-weight:700;font-size:1.4rem;display:inline-flex;justify-content:center;position:absolute;left:-1.2rem;text-align:center}div.info::before{content:"i";background:rgba(58,129,195,.8);-webkit-clip-path:circle(50% at 50% 50%);clip-path:circle(50% at 50% 50%);width:30px;height:30px;line-height:1.3}div.success{background:rgba(45,149,116,.15);border-left:4px solid rgba(45,149,116,.45)}div.error::before,div.success::before,div.warning::before{width:35px}div.success::before{content:"✔";background:rgba(45,149,116,.8);-webkit-clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);height:35px;line-height:1.5}div.error,div.success,div.warning{margin:1.8rem 0 1.25rem 15px;padding:.8em;line-height:1.4;text-align:center;position:relative;clear:both}div.warning{background:rgba(220,117,47,.15);border-left:4px solid rgba(220,117,47,.45)}div.error::before,div.warning::before{content:"!";line-height:1.1}div.warning::before{background:rgba(220,117,47,.8);-webkit-clip-path:polygon(50% 0,0 100%,100% 100%);clip-path:polygon(50% 0,0 100%,100% 100%);height:35px}div.error{background:rgba(186,47,89,.15);border-left:4px solid rgba(186,47,89,.45)}div.error::before{background:rgba(186,47,89,.8);-webkit-clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);height:30px}#footnotes li,#footnotes p,.org-ref-bib,.org-ref-bib-h1{line-height:1.6}.org-ref-bib-h1{margin-top:70px;padding-top:30px;border-top-style:solid;border-width:1px 0 0;border-color:var(--back-light);font-size:20px}#footnotes li,#footnotes p,.org-ref-bib{font-size:15px}.org-ref-bib li>a:nth-child(2),.org-ref-bib li>a:nth-child(2):hover{background:0 0;text-shadow:none;text-decoration:none}.org-ref-bib .bib-link{font-family:"Open Sans",sans;font-weight:400;font-style:normal;font-size:12px;line-height:1.9;color:var(--text-light);background:0 0;text-shadow:none;text-decoration:none}pre.example,pre.src{border-left-style:solid;border-width:0 0 0 1px;border-left-color:var(--back-medium);margin:20px 0;padding:0 0 0 15px;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:14px;line-height:1.9;overflow-x:visible;box-shadow:none;white-space:pre-wrap;position:relative}pre.example{border-left-style:dotted;border-width:0 0 0 2px}pre.src::before{display:inline-block;position:absolute;background-color:transparent;top:unset;bottom:-16px;left:20px;padding:0;border:0;font-size:80%;font-style:italic;color:var(--text-light)}pre.src:empty{display:none}code{color:var(--code-foreground);padding:0 5px}kbd{display:inline-block;padding:.25em .35em;font:80% SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:80%;color:var(--text-gray);vertical-align:middle;background-color:var(--back-light);border:1px solid #91959a88;border-radius:.35em;box-shadow:inset 0 -1px 0 #91959a88}li code{font-size:14px}code,dl li p,li p code,ol li p,ul li p{font-size:15px}details.code{position:relative}details.code summary{position:relative;left:-3px;padding-left:10px;padding-bottom:4px;margin-left:-10px;z-index:1;outline:0;font-family:"Open Sans",sans;font-weight:400;font-style:normal;font-size:12px;line-height:1.9;color:var(--text-light)}details.code summary .name{font-size:14px;color:var(--text-medium);margin-right:.7em}code,details.code summary .lang{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace}details.code summary .lang{font-style:italic}details.code summary::marker{color:var(--back-medium)}details.code[open] summary{margin-bottom:-32px}details.code[open] summary.named{margin-bottom:-26px}details.code:not([open]) summary{margin-bottom:-5px}p+details.code{margin-top:-20px}li p+details.code{margin-top:-5px}.example,.src{color:var(--code-foreground)}.example .org-keyword,.src .org-keyword{color:#3a81c3}.example .org-variable-name,.src .org-variable-name{color:#715ab1}.example .org-rainbow-delimiters-depth-1,.example .org-rainbow-delimiters-depth-2,.example .org-rainbow-delimiters-depth-3,.example .org-rainbow-delimiters-depth-4,.example .org-rainbow-delimiters-depth-5,.example .org-rainbow-delimiters-depth-6,.example .org-rainbow-delimiters-depth-7,.example .org-rainbow-delimiters-depth-8,.example .org-rainbow-delimiters-depth-9,.src .org-rainbow-delimiters-depth-1,.src .org-rainbow-delimiters-depth-2,.src .org-rainbow-delimiters-depth-3,.src .org-rainbow-delimiters-depth-4,.src .org-rainbow-delimiters-depth-5,.src .org-rainbow-delimiters-depth-6,.src .org-rainbow-delimiters-depth-7,.src .org-rainbow-delimiters-depth-8,.src .org-rainbow-delimiters-depth-9{color:#555}.example .org-string,.src .org-string{color:#2d9574}.example .org-comment,.example .org-comment-delimiter,.src .org-comment,.src .org-comment-delimiter{color:#555}.example .org-function-name,.src .org-function-name{color:var(--code-func)}.example .org-constant,.example .org-highlight-numbers-number,.src .org-constant,.src .org-highlight-numbers-number{color:var(--code-const)}.gutter{position:absolute;top:0;left:-2.5rem;width:2rem;padding-right:.3rem;padding-top:5px;height:calc(100% - 10px);z-index:1;transition:opacity 200ms;opacity:0;font-size:15px}.gutter:hover{opacity:1}.gutter *{display:block;width:100%;text-align:right;padding:0;margin:0;color:var(--text-light)}#content .page-intro p a:hover:visited,#content .page-intro p a:visited,#footnotes a:hover:visited,#footnotes a:visited,.gutter :hover{color:var(--text-gray)}.gutter :active{font-weight:700}.gutter a{text-decoration:none;font-size:110%}.gutter button{background:0 0;border:0}pre.src-asymptote::before{content:'Asymptote'}pre.src-authinfo::before{content:'Authinfo'}pre.src-awk::before{content:'Awk'}pre.src-C::before{content:'C'}pre.src-clojure::before{content:'Clojure'}pre.src-css::before{content:'CSS'}pre.src-D::before{content:'D'}pre.src-ditaa::before{content:'ditaa'}pre.src-dot::before{content:'Graphviz'}pre.src-calc::before{content:'Emacs Calc'}pre.src-emacs-lisp::before{content:'Emacs Lisp'}pre.src-fortran::before{content:'Fortran'}pre.src-gnuplot::before{content:'gnuplot'}pre.src-haskell::before{content:'Haskell'}pre.src-hledger::before{content:'hledger'}pre.src-java::before{content:'Java'}pre.src-js::before{content:'Javascript'}pre.src-latex::before{content:'LaTeX'}pre.src-ledger::before{content:'Ledger'}pre.src-lisp::before{content:'Lisp'}pre.src-lilypond::before{content:'Lilypond'}pre.src-lua::before{content:'Lua'}pre.src-matlab::before{content:'MATLAB'}pre.src-mscgen::before{content:'Mscgen'}pre.src-ocaml::before{content:'Objective Caml'}pre.src-octave::before{content:'Octave'}pre.src-org::before{content:'Org mode'}pre.src-oz::before{content:'OZ'}pre.src-plantuml::before{content:'Plantuml'}pre.src-processing::before{content:'Processing.js'}pre.src-python::before{content:'Python'}pre.src-R::before{content:'R'}pre.src-ruby::before{content:'Ruby'}pre.src-sass::before{content:'Sass'}pre.src-scheme::before{content:'Scheme'}pre.src-screen::before{content:'Gnu Screen'}pre.src-sed::before{content:'Sed'}pre.src-sh::before{content:'shell'}pre.src-sql::before{content:'SQL'}pre.src-sqlite::before{content:'SQLite'}pre.src-forth::before{content:'Forth'}pre.src-io::before{content:'IO'}pre.src-J::before{content:'J'}pre.src-makefile::before{content:'Makefile'}pre.src-maxima::before{content:'Maxima'}pre.src-perl::before{content:'Perl'}pre.src-picolisp::before{content:'Pico Lisp'}pre.src-scala::before{content:'Scala'}pre.src-shell::before{content:'Shell Script'}pre.src-systemd::before{content:'Systemd'}pre.src-ebnf2ps::before{content:'ebfn2ps'}pre.src-cpp::before{content:'C++'}pre.src-abc::before{content:'ABC'}pre.src-coq::before{content:'Coq'}pre.src-groovy::before{content:'Groovy'}pre.src-bash::before{content:'bash'}pre.src-csh::before{content:'csh'}pre.src-ash::before{content:'ash'}pre.src-dash::before{content:'dash'}pre.src-ksh::before{content:'ksh'}pre.src-mksh::before{content:'mksh'}pre.src-posh::before{content:'posh'}pre.src-ada::before{content:'Ada'}pre.src-asm::before{content:'Assembler'}pre.src-caml::before{content:'Caml'}pre.src-delphi::before{content:'Delphi'}pre.src-html::before{content:'HTML'}pre.src-idl::before{content:'IDL'}pre.src-mercury::before{content:'Mercury'}pre.src-metapost::before{content:'MetaPost'}pre.src-modula-2::before{content:'Modula-2'}pre.src-pascal::before{content:'Pascal'}pre.src-ps::before{content:'PostScript'}pre.src-prolog::before{content:'Prolog'}pre.src-simula::before{content:'Simula'}pre.src-tcl::before{content:'tcl'}pre.src-tex::before{content:'LaTeX'}pre.src-plain-tex::before{content:'TeX'}pre.src-verilog::before{content:'Verilog'}pre.src-vhdl::before{content:'VHDL'}pre.src-nxml::before,pre.src-xml::before{content:'XML'}pre.src-conf::before{content:'Configuration File'}.dropcap{float:left;font-size:55px;font-style:normal;line-height:.1;margin-right:.2em;margin-top:.5em;padding:0}figure,th.org-center,th.org-left,th.org-right{text-align:center}#footnotes,figure figcaption{margin-top:10px;font-family:"Open Sans",sans;font-weight:400;font-size:15px;line-height:1.6;color:var(--text-gray)}img.zoomTarget:hover{cursor:default!important}img,object[type="image/svg+xml"]{filter:invert(7%) sepia(4%);max-width:100%}.org-svg{width:90%}#footnotes{margin-top:70px;padding-top:30px;border-top-style:solid;border-width:1px 0 0;border-color:var(--back-light)}#footnotes h2.footnotes{margin-top:0;margin-bottom:30px;font-family:"Open Sans",sans;font-size:18px;letter-spacing:5px;display:none}#footnotes .footnum{color:var(--text-dark)}h1,h2,h3,h4,h5,h6{font-family:"et-book",serif;font-weight:400;margin-bottom:0;margin-top:60px;padding-left:30px;margin-left:-30px;position:relative}h1>a[aria-hidden=true],h2>a[aria-hidden=true],h3>a[aria-hidden=true],h4>a[aria-hidden=true],h5>a[aria-hidden=true],h6>a[aria-hidden=true]{color:var(--back-medium);position:relative;top:.06em;line-height:1;font-size:110%;padding-left:.2em;text-decoration:none;visibility:hidden}h1>a[aria-hidden=true]:hover,h2>a[aria-hidden=true]:hover,h3>a[aria-hidden=true]:hover,h4>a[aria-hidden=true]:hover,h5>a[aria-hidden=true]:hover,h6>a[aria-hidden=true]:hover{color:var(--text-light)}h1:hover>a[aria-hidden=true],h2:hover>a[aria-hidden=true],h3:hover>a[aria-hidden=true],h4:hover>a[aria-hidden=true],h5:hover>a[aria-hidden=true],h6:hover>a[aria-hidden=true]{visibility:visible}h1{font-size:40px}.outline-2 h2,h2{font-size:30px}h3{font-size:24px}h4,h5,h6{font-size:20px}h4,h6{font-style:italic}h5{font-variant:small-caps}h6{font-size:18px}.section-number-1,.section-number-2,.section-number-3,.section-number-4,.section-number-5,.section-number-6{font-family:"Open Sans",sans;font-weight:400;font-style:normal;font-size:inherit;color:var(--text-light);line-height:1}@media (min-width:1000px){.section-number-1,.section-number-2,.section-number-3,.section-number-4,.section-number-5,.section-number-6{position:absolute;transform:translateX(-100%) translateX(-10px)}}.outline-text-2:-moz-only-whitespace+.outline-3>h3,.outline-text-2:empty+.outline-3>h3{margin-top:20px}.outline-text-3:-moz-only-whitespace+.outline-4>h4,.outline-text-3:empty+.outline-4>h4,.outline-text-4:-moz-only-whitespace+.outline-5>h5,.outline-text-4:empty+.outline-5>h5{margin-top:15px}.outline-text-5:-moz-only-whitespace+.outline-6>h6,.outline-text-5:empty+.outline-6>h6{margin-top:10px}hr{border:0;border-top-style:solid;border-top-width:1px;color:var(--back-medium);margin-bottom:30px;margin-top:40px}a{color:inherit}dl a,figcaption a,li a,p a,table a{border-radius:1px}.page-tags a,dl a,figcaption a,li a,p a,table a{background-image:linear-gradient(var(--text-dark),var(--text-dark));background-size:1px 1px;background-repeat:repeat-x;background-position:0 95%;text-decoration:none}#content .page-intro p a::selection,#footnotes a::selection,.page-tags a::selection,dl a::selection,figcaption a::selection,li a::selection,p a::selection,table a::selection{background:var(--back-medium)}#content .page-intro p a *,#content .page-intro p a :after,#content .page-intro p a :before,#content .page-intro p a:after,#content .page-intro p a:before,#footnotes a *,#footnotes a :after,#footnotes a :before,#footnotes a:after,#footnotes a:before,.page-tags a *,.page-tags a :after,.page-tags a :before,.page-tags a:after,.page-tags a:before,dl a *,dl a :after,dl a :before,dl a:after,dl a:before,figcaption a *,figcaption a :after,figcaption a :before,figcaption a:after,figcaption a:before,li a *,li a :after,li a :before,li a:after,li a:before,p a *,p a :after,p a :before,p a:after,p a:before,table a *,table a :after,table a :before,table a:after,table a:before{text-shadow:none}.page-tags a:visited,dl a:visited,figcaption a:visited,li a:visited,p a:visited,table a:visited{color:var(--text-dark)}.page-tags a:hover,dl a:hover,figcaption a:hover,li a:hover,p a:hover,table a:hover{opacity:.9;filter:drop-shadow(1px 1px 1px var(--back-white));background-image:linear-gradient(var(--text-dark),var(--text-dark));background-repeat:repeat-x;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23000000' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E")!important;background-position:0 100%;background-size:.8em auto;text-decoration:none}.page-tags a:hover::selection,.page-tags a[href^="#"]::selection,.page-tags a[href^="#"]:hover::selection,dl a:hover::selection,dl a[href^="#"]::selection,dl a[href^="#"]:hover::selection,figcaption a:hover::selection,figcaption a[href^="#"]::selection,figcaption a[href^="#"]:hover::selection,li a:hover::selection,li a[href^="#"]::selection,li a[href^="#"]:hover::selection,p a:hover::selection,p a[href^="#"]::selection,p a[href^="#"]:hover::selection,table a:hover::selection,table a[href^="#"]::selection,table a[href^="#"]:hover::selection{background:var(--back-white)}.page-tags a[href^="#"],dl a[href^="#"],figcaption a[href^="#"],li a[href^="#"],p a[href^="#"],table a[href^="#"]{background-image:linear-gradient(var(--text-gray),var(--text-gray));background-size:1px 1px;background-repeat:repeat-x;background-position:0 95%}.page-tags a[href^="#"]:hover,dl a[href^="#"]:hover,figcaption a[href^="#"]:hover,li a[href^="#"]:hover,p a[href^="#"]:hover,table a[href^="#"]:hover{opacity:.9;filter:drop-shadow(1px 1px 1px var(--back-white));background-image:linear-gradient(var(--text-medium),var(--text-medium));background-size:1px 1px;background-repeat:repeat-x;background-position:0 95%}#theme-switch:checked~#page #breadcrumbs a:hover,#theme-switch:checked~#page #crosslinks a:not(.highlight):hover,#theme-switch:checked~#page .page-tags a:hover,#theme-switch:checked~#page dl a:hover,#theme-switch:checked~#page figcaption a:hover,#theme-switch:checked~#page li a:hover,#theme-switch:checked~#page p a:hover,#theme-switch:checked~#page table a:hover{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E")}:target::before{content:"🠖";position:absolute;left:-7rem;top:calc(.5em - 2rem);line-height:1;color:#e65353aa;font-size:3rem;font-style:normal}@media (max-width:1000px){:target::before{content:"🠔";left:unset;right:0}}#content .page-intro p a,#content .page-intro p a:hover,#footnotes a,#footnotes a:hover{background-image:linear-gradient(var(--text-gray),var(--text-gray));background-size:1px 1px;background-repeat:repeat-x;background-position:0 95%;border-radius:1px;text-decoration:none}#content .page-intro p a:hover::selection,#footnotes a:hover::selection{background:var(--back-medium)}#content .page-intro p a:hover *,#content .page-intro p a:hover :after,#content .page-intro p a:hover :before,#content .page-intro p a:hover:after,#content .page-intro p a:hover:before,#footnotes a:hover *,#footnotes a:hover :after,#footnotes a:hover :before,#footnotes a:hover:after,#footnotes a:hover:before{text-shadow:none}.btn,.btn:hover{background-image:none}.btn{padding:7px 14px;border-style:solid;border-width:1px;border-color:var(--back-light);border-radius:1px;font-family:"Open Sans",sans;font-variant:all-small-caps;font-size:14px;font-style:normal;letter-spacing:2px;cursor:pointer}.btn:hover{background-color:var(--back-light)}.btn.disabled,div.link-preview small{color:var(--text-light)}.btn.disabled:hover{cursor:default}.btn.small{border-style:solid;border-width:1px;border-color:var(--back-light);border-radius:1px;font-family:"Open Sans",sans;font-variant:all-small-caps;font-size:12px;font-style:normal;letter-spacing:2px;background-image:none;padding:3px 9px}.btn.small:hover{background-color:var(--back-light);background-image:none}.btn.highlight,.btn.primary{text-shadow:none;text-decoration:none}.btn.highlight{color:var(--text-dark);background-color:#ff0}.btn.primary{color:var(--back-white);background-color:var(--accent)}.btn.primary:hover,.done.active:hover,.page-tags a.active:hover,.tag>span.active:hover,.todo.active:hover{background-color:var(--back-light);background-image:none;color:var(--text-dark)}.image-link,.image-link:hover{background:0 0;text-shadow:none;text-decoration:none}div.link-preview{border:1px solid var(--back-medium);border-radius:.5em;overflow:hidden;position:relative;max-height:5em;padding-left:.5em}div.link-preview a{color:initial;text-decoration:none}div.link-preview img{border-right:1px solid var(--back-medium);float:left;height:5em;margin-left:-.5em;margin-right:.5em}div.link-preview p{margin:0;font-size:10pt}div.link-preview p b{font-size:11pt}div.link-preview small{float:right;font-family:sans;margin:.45em .6em}dl,ol,ul{list-style:none;list-style-position:outside;padding:0}dl dt::before,dl li::before,ol dt::before,ol li::before,ul dt::before,ul li::before{display:inline-block;width:1em;font-family:"Open Sans",sans;font-weight:400;font-size:15px;line-height:1.6;color:var(--text-gray)}dl li,ol li,ul li{margin:5px 0;font-size:14px}dl dt::before,ul li::before{content:"•";margin-left:-1em}ol{counter-reset:li}ol li::before{content:counter(li);margin-left:-1.5em;margin-right:.5em;text-align:right;direction:rtl}ol li{counter-increment:li}ol ol,ul ul{padding-left:20px}ol ol ol,ul ul ul{padding-left:30px}li p:first-child{display:inline-block;margin-bottom:0}dl dt{font-weight:400;margin-bottom:10px}dl dd{font-style:italic;margin-bottom:20px}li .checkbox{display:inline-block;width:.9em;height:.9em;border-radius:3px;margin:3px;top:4px;position:relative}li.on>.checkbox{background:#2d9574;box-shadow:0 0 2px #2d9574}li.trans>.checkbox{background:#dc752f;box-shadow:0 0 2px #dc752f}li.off>.checkbox{background:#ba2f59;box-shadow:0 0 2px #ba2f59;top:6px}li.on>.checkbox::after{content:'';height:.45em;width:.225em;-webkit-transform-origin:left top;transform-origin:left top;transform:scaleX(-1) rotate(135deg);border-right:2.8px solid #fff;border-top:2.8px solid #fff;opacity:.9;left:.1em;top:.45em;position:absolute}li.trans>.checkbox::after{content:'';font-weight:700;font-size:1.6em;position:absolute;top:.2em;left:.11em;width:.35em;height:.12em;background:#fff;opacity:.9;border-radius:.1em}li.off>.checkbox::after{content:'✖';color:#fff;opacity:.9;position:relative;top:-.5rem;left:.17em;font-size:.75em}#org-div-home-and-up{display:none!important}.outline-3 h3{font-style:normal}.outline-2 .section-number-2{font-size:30px}.outline-3 .section-number-3,.outline-3 h3{font-size:24px}.done,.timestamp,.timestamp-kwd,.todo{border-radius:1px;font-family:"Open Sans",sans;font-style:normal;background-color:var(--back-white)}.timestamp,.timestamp-kwd{font-weight:400;font-size:12px;line-height:1.9;color:var(--text-light)}.done,.todo{border-color:var(--back-light);font-variant:all-small-caps;font-size:max(.4em,10px);letter-spacing:2px;background-image:none;line-height:1;white-space:nowrap;vertical-align:middle;padding:.1em .5em;background-color:transparent;border:0;font-weight:700}.page-tags a:hover{background-color:var(--back-light)}.done:hover,.tag>span:hover,.todo:hover{background-color:var(--back-light);background-image:none}.done:not(.active),.page-tags a:not(.active),.tag>span:not(.active),.todo:not(.active){border-color:var(--back-white)}.done.active,.page-tags a.active,.tag>span.active,.todo.active{text-shadow:none;text-decoration:none;color:var(--back-white);background-color:var(--code-foreground)}.outline-2,.outline-3,.outline-4{contain:layout}.outline-2 .done,.outline-2 .todo,.outline-3 .done,.outline-3 .todo,.outline-4 .done,.outline-4 .todo{font-size:18px}.todo{color:#e33}.done,.priority{color:var(--text-light)}.tag>span{border-style:solid;border-width:1px;border-color:var(--back-light);font-family:"Open Sans",sans;font-variant:all-small-caps;font-size:max(.4em,10px);font-style:normal;letter-spacing:2px;background-image:none;line-height:1;white-space:nowrap;vertical-align:middle;padding:.1em .5em;background-color:var(--back-white);border-radius:100px}.priority{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace}.footref{text-shadow:none}.footpara{display:inline}.footdef{margin-bottom:1em}td.org-right{text-align:right}td.org-left{text-align:left}div.org-center,td.org-center{text-align:center}span.acr{font-variant-caps:all-small-caps;letter-spacing:.1em}.music-track{display:flex;justify-content:center;align-items:center;flex-wrap:wrap}.music-track img{height:6rem;margin-right:2rem}.music-track a{text-decoration:none}.music-track span{min-width:35%}div.table{position:relative}div.table .gutter{left:calc(20px - 2.5rem);padding-top:18px}div.table .tabular{max-width:100%;overflow-x:auto}table,table thead{font-family:"Open Sans",sans;font-size:15px}table{border-color:var(--text-light);border-left:transparent;border-right:transparent;border-style:solid;border-width:2px;border-collapse:collapse;margin:20px;padding:20px}table thead{font-weight:400;font-style:normal;line-height:1.9;color:var(--text-light)}table thead tr th{padding:4px 10px;background-color:#9991}table thead tr:last-of-type th{border-bottom:solid 1px var(--text-light)}table td,table th,table tr{border:0}table tbody tr td{border-top:0;padding:0 10px}table tr{line-height:1.9}table caption,table caption .table-number{font-family:"Open Sans",sans;font-weight:400}table caption{margin-bottom:10px;font-size:15px;line-height:1.6;color:var(--text-gray)}table caption .table-number{font-style:normal;font-size:12px;line-height:1.9;color:var(--text-light)}::-webkit-scrollbar{width:10px;height:8px}::-webkit-scrollbar-track{background:#9992}::-webkit-scrollbar-thumb{background:#ccc}::-webkit-scrollbar-thumb:hover{background:#888}@media (min-width:1280px){#table-of-contents{position:fixed;width:18rem;right:1rem;top:0;padding:1em;line-height:1.5;margin-top:4rem}#table-of-contents h2{margin-top:0}#table-of-contents #text-table-of-contents{position:relative}#table-of-contents #text-table-of-contents::after,#table-of-contents #text-table-of-contents::before{position:absolute;content:'';width:calc(100% - 10px);height:.7rem;left:0;z-index:1}#table-of-contents #text-table-of-contents::before{top:0;background:linear-gradient(180deg,var(--back-light) 0%,var(--back-light) 35%,transparent 100%)}#table-of-contents #text-table-of-contents::after{bottom:0;background:linear-gradient(0deg,var(--back-light) 0%,var(--back-light) 35%,transparent 100%)}#table-of-contents #text-table-of-contents>ul{list-style:none;padding:0;margin:0;max-height:calc(100vh - 5rem - 50px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}#table-of-contents #text-table-of-contents>ul ul{padding-left:2em}#table-of-contents #text-table-of-contents>ul li.active>ul,#table-of-contents #text-table-of-contents>ul ul.active{display:inline-block}#table-of-contents #text-table-of-contents>ul li.active>a,#table-of-contents #text-table-of-contents>ul li.active>label a{color:var(--text-dark)}#table-of-contents #text-table-of-contents>ul li.active>input:not(:checked)~label::after{transform:rotate(90deg);top:5px;opacity:.35}#table-of-contents #text-table-of-contents>ul>li:last-child{margin-bottom:2rem}}@media (min-width:1440px){#table-of-contents{width:20rem;right:2rem}}@media (min-width:1640px){#table-of-contents{right:5rem}}@media (min-width:2000px){#table-of-contents{width:25rem}}#table-of-contents #text-table-of-contents ul{width:100%}#table-of-contents #text-table-of-contents li input[type=checkbox],#table-of-contents #text-table-of-contents>ul ul{display:none}#table-of-contents #text-table-of-contents li label{display:inline-block;width:100%;position:relative}#table-of-contents #text-table-of-contents li a{display:inline-block;color:var(--text-gray);text-decoration:none!important;text-shadow:none;background:0 0!important}#table-of-contents #text-table-of-contents li label::after{content:"\25b6";color:var(--text-gray);margin-left:.5em;font-size:10px;display:inline-block;position:absolute;top:3.4px;left:-20px;opacity:.8}#table-of-contents #text-table-of-contents li input:checked~ul{display:inline-block!important}#table-of-contents #text-table-of-contents li input:checked~label a{font-weight:700}#table-of-contents #text-table-of-contents li input:checked~label::after{transform:rotate(90deg);top:5px}#table-of-contents #text-table-of-contents li::before{content:""!important}.page-tags a{border-style:solid;border-width:1px;border-color:var(--back-light);border-radius:1px;font-family:"Open Sans",sans;font-variant:all-small-caps;font-size:max(.4em,10px);font-style:normal;letter-spacing:2px;background-image:none;white-space:nowrap;vertical-align:middle;padding:.1em .5em;background-color:var(--back-white);margin-right:5px;line-height:3em}@media print{h2{page-break-before:always}h1,h2,h3,h4,h5{page-break-after:avoid}#switch-label,#table-of-contents #text-table-of-contents li label::after{display:none}#content,#page-header{margin-top:0}#table-of-contents #text-table-of-contents>ul ul{display:inline-block}#table-of-contents #text-table-of-contents>ul a::after{content:leader(".") target-counter(attr(href),page)}img{filter:none}}@page{size:auto;margin-top:4mm;margin-bottom:4mm}
+</style>
+</head>
+<body>
+<input type='checkbox' id='theme-switch'><div id='page'><label id='switch-label' for='theme-switch'></label><div id="content">
+<header class="page-header"><div class="page-meta"><!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>--> 2021-12-11 00:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>, Nan0Scho1ar</div>
+
+<h1 class="title">Day 1: Sonar Sweep</h1>
+</header><nav id="table-of-contents">
+<h2><a href="#" style="color:inherit; text-decoration: none;">Table of Contents</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><input type='checkbox' id='toc--orgfb91a01'/><label for='toc--orgfb91a01'><a href="#orgfb91a01">1. Part 1</a></label>
+<ul>
+<li><a href="#org547d686">1.1. Description</a></li>
+<li><a href="#org876934d">1.2. Racket</a></li>
+<li><a href="#orga7616ff">1.3. Python</a></li>
+<li><a href="#org9829419">1.4. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#orge86c8be">1.5. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#org94491ef">1.6. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#org9b4cfca">1.7. <span class="todo TODO">TODO</span> Perl</a></li>
+</ul>
+</li>
+<li><input type='checkbox' id='toc--org6361da1'/><label for='toc--org6361da1'><a href="#org6361da1">2. Part 2</a></label>
+<ul>
+<li><a href="#org79017d6">2.1. Description</a></li>
+<li><a href="#org8726ee5">2.2. Racket</a></li>
+<li><a href="#org20523d4">2.3. Python</a></li>
+<li><a href="#orgd0f0609">2.4. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#orgd4fd328">2.5. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#orga7c467f">2.6. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#orgca3fccf">2.7. <span class="todo TODO">TODO</span> Perl</a></li>
+</ul>
+</li>
+<li><input type='checkbox' id='toc--org9f98865'/><label for='toc--org9f98865'><a href="#org9f98865">3. Inputs</a></label>
+<ul>
+<li><a href="#org580eb43">3.1. Sample</a></li>
+<li><a href="#org8c3157c">3.2. Input</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<a href="https://github.com/Nan0Scho1ar/adventofcode"
+   style="font-family: 'Open Sans'; background-image: none; color: inherit;
+          text-decoration: none; position: relative; top: clamp(-26px, calc(1280px - 100vw), 0px); opacity: 0.7;">
+   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOEMwIDExLjU0IDIuMjkgMTQuNTMgNS40NyAxNS41OUM1Ljg3IDE1LjY2IDYuMDIgMTUuNDIgNi4wMiAxNS4yMUM2LjAyIDE1LjAyIDYuMDEgMTQuMzkgNi4wMSAxMy43MkM0IDE0LjA5IDMuNDggMTMuMjMgMy4zMiAxMi43OEMzLjIzIDEyLjU1IDIuODQgMTEuODQgMi41IDExLjY1QzIuMjIgMTEuNSAxLjgyIDExLjEzIDIuNDkgMTEuMTJDMy4xMiAxMS4xMSAzLjU3IDExLjcgMy43MiAxMS45NEM0LjQ0IDEzLjE1IDUuNTkgMTIuODEgNi4wNSAxMi42QzYuMTIgMTIuMDggNi4zMyAxMS43MyA2LjU2IDExLjUzQzQuNzggMTEuMzMgMi45MiAxMC42NCAyLjkyIDcuNThDMi45MiA2LjcxIDMuMjMgNS45OSAzLjc0IDUuNDNDMy42NiA1LjIzIDMuMzggNC40MSAzLjgyIDMuMzFDMy44MiAzLjMxIDQuNDkgMy4xIDYuMDIgNC4xM0M2LjY2IDMuOTUgNy4zNCAzLjg2IDguMDIgMy44NkM4LjcgMy44NiA5LjM4IDMuOTUgMTAuMDIgNC4xM0MxMS41NSAzLjA5IDEyLjIyIDMuMzEgMTIuMjIgMy4zMUMxMi42NiA0LjQxIDEyLjM4IDUuMjMgMTIuMyA1LjQzQzEyLjgxIDUuOTkgMTMuMTIgNi43IDEzLjEyIDcuNThDMTMuMTIgMTAuNjUgMTEuMjUgMTEuMzMgOS40NyAxMS41M0M5Ljc2IDExLjc4IDEwLjAxIDEyLjI2IDEwLjAxIDEzLjAxQzEwLjAxIDE0LjA4IDEwIDE0Ljk0IDEwIDE1LjIxQzEwIDE1LjQyIDEwLjE1IDE1LjY3IDEwLjU1IDE1LjU5QzEzLjcxIDE0LjUzIDE2IDExLjUzIDE2IDhDMTYgMy41OCAxMi40MiAwIDggMFoiIHRyYW5zZm9ybT0ic2NhbGUoNjQpIiBmaWxsPSIjMUIxRjIzIi8+Cjwvc3ZnPgo="
+       class="invertible" alt="GitHub Octicon"
+       style="height: 1em; position: relative; top: 0.1em;">
+  View on GitHub</a>&ensp;
+
+<div id="outline-container-orgfb91a01" class="outline-2">
+<h2 id="orgfb91a01"><span class="section-number-2">1.</span> Part 1<a aria-hidden="true" href="#orgfb91a01">#</a> </h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org547d686" class="outline-3">
+<h3 id="org547d686"><span class="section-number-3">1.1.</span> Description<a aria-hidden="true" href="#org547d686">#</a> </h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Before you know it, you&rsquo;re inside a submarine the Elves keep ready for situations like this. It&rsquo;s covered in Christmas lights (because of course it is), and it even has an experimental antenna that should be able to track the keys if you can boost its signal strength high enough; there&rsquo;s a little meter that indicates the antenna&rsquo;s signal strength by displaying 0-50 &lt;em class=&ldquo;star&rdquo;&gt;stars~.
+Your instincts tell you that in order to save Christmas, you&rsquo;ll need to get all &lt;em class=&ldquo;star&rdquo;&gt;fifty stars~ by December 25th.
+Collect stars by solving puzzles.  Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first.  Each puzzle grants &lt;em class=&ldquo;star&rdquo;&gt;one star~. Good luck!
+As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
+For example, suppose you had the following report:
+</p>
+
+<details id='orgd9c9a0a' class='code' open>
+<summary></summary>
+<div class='gutter'><a href='#orgd9c9a0a'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<pre class="example" id="orgd9c9a0a">
+199
+200
+208
+210
+200
+207
+240
+269
+260
+263
+
+</pre>
+
+</details>
+
+<p>
+This report indicates that, scanning outward from the submarine, the sonar sweep found depths of 199, 200, 208, 210, and so on.
+The first order of business is to figure out how quickly the depth increases, just so you know what you&rsquo;re dealing with - you never know if the keys will get &lt;span title=&ldquo;Does this premise seem fishy to you?&rdquo;&gt;carried into deeper water&lt;/span&gt; by an ocean current or a fish or something.
+To do this, count <code>the number of times a depth measurement increases</code> from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
+</p>
+
+<details id='org45198d2' class='code' open>
+<summary></summary>
+<div class='gutter'><a href='#org45198d2'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<pre class="example" id="org45198d2">
+199 (N/A - no previous measurement)
+200 (~increased~)
+208 (~increased~)
+210 (~increased~)
+200 (decreased)
+207 (~increased~)
+240 (~increased~)
+269 (~increased~)
+260 (decreased)
+263 (~increased~)
+
+</pre>
+
+</details>
+
+<p>
+In this example, there are <code>7</code> measurements that are larger than the previous measurement.
+<code>How many measurements are larger than the previous measurement?</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org876934d" class="outline-3">
+<h3 id="org876934d"><span class="section-number-3">1.2.</span> Racket<a aria-hidden="true" href="#org876934d">#</a> </h3>
+<div class="outline-text-3" id="text-1-2">
+<details id='orgfb4bc85' class='code' open><summary><span class="lang">racket</span></summary>
+<div class='gutter'>
+<a href='#orgfb4bc85'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">count-deeper</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-variable-name">nums</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">map</span> <span class="org-builtin">string-&gt;number</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">string-split</span> data <span class="org-string">"\n"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">for/sum</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-1">[</span>i nums<span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-rainbow-delimiters-depth-1">[</span>j <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">cdr</span> nums<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-racket-keyword-argument">#:when</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">&gt;</span> j i<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>count-deeper sample_data<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>count-deeper input_data<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-orga7616ff" class="outline-3">
+<h3 id="orga7616ff"><span class="section-number-3">1.3.</span> Python<a aria-hidden="true" href="#orga7616ff">#</a> </h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Quick and dirty python solution for a fast answer. Before you ask, yes, I really did write <code>lines[i] - lines[i-1] &gt; 0</code>. You just know that <code>if is_redundant == true:</code> then you spent too much time typing and not enough thinking.
+</p>
+<details id='orga63ffe2' class='code' open><summary><span class="lang">Python</span></summary>
+<div class='gutter'>
+<a href='#orga63ffe2'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">count_deeper</span>(data):
+    <span class="org-variable-name">lines</span> = [<span class="org-builtin">int</span>(i) <span class="org-keyword">for</span> i <span class="org-keyword">in</span> data[:-<span class="org-highlight-numbers-number">1</span>].split(<span class="org-string">"\n"</span>)]
+    <span class="org-variable-name">num</span> = <span class="org-highlight-numbers-number">0</span>
+    <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(<span class="org-highlight-numbers-number">1</span>,<span class="org-builtin">len</span>(lines)):
+        <span class="org-keyword">if</span> lines[i] - lines[i-<span class="org-highlight-numbers-number">1</span>] &gt; <span class="org-highlight-numbers-number">0</span>:
+            <span class="org-variable-name">num</span> += <span class="org-highlight-numbers-number">1</span>
+    <span class="org-keyword">return</span> num
+
+<span class="org-keyword">print</span>(count_deeper(sample_data))
+<span class="org-keyword">print</span>(count_deeper(input_data))
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-org9829419" class="outline-3">
+<h3 id="org9829419"><span class="section-number-3">1.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org9829419">#</a> </h3>
+<div class="outline-text-3" id="text-1-4">
+<details id='orgeb9dd6e' class='code' open><summary><span class="lang">rust</span></summary>
+<div class='gutter'>
+<a href='#orgeb9dd6e'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-orge86c8be" class="outline-3">
+<h3 id="orge86c8be"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orge86c8be">#</a> </h3>
+<div class="outline-text-3" id="text-1-5">
+<details id='orga91971c' class='code' open><summary><span class="lang">bash</span></summary>
+<div class='gutter'>
+<a href='#orga91971c'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-org94491ef" class="outline-3">
+<h3 id="org94491ef"><span class="section-number-3">1.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#org94491ef">#</a> </h3>
+<div class="outline-text-3" id="text-1-6">
+<details id='orgbca0498' class='code' open><summary><span class="lang">Awk</span></summary>
+<div class='gutter'>
+<a href='#orgbca0498'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-org9b4cfca" class="outline-3">
+<h3 id="org9b4cfca"><span class="section-number-3">1.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#org9b4cfca">#</a> </h3>
+<div class="outline-text-3" id="text-1-7">
+<details id='org5cb19df' class='code' open><summary><span class="lang">Perl</span></summary>
+<div class='gutter'>
+<a href='#org5cb19df'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
+</pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div id="outline-container-org6361da1" class="outline-2">
+<h2 id="org6361da1"><span class="section-number-2">2.</span> Part 2<a aria-hidden="true" href="#org6361da1">#</a> </h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org79017d6" class="outline-3">
+<h3 id="org79017d6"><span class="section-number-3">2.1.</span> Description<a aria-hidden="true" href="#org79017d6">#</a> </h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Considering every single measurement isn&rsquo;t as useful as you expected: there&rsquo;s just too much noise in the data.
+</p>
+
+<p>
+Instead, consider sums of a three-measurement sliding window. Again considering the above example:
+</p>
+
+<details id='orge329205' class='code' open>
+<summary></summary>
+<div class='gutter'><a href='#orge329205'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<pre class="example" id="orge329205">
+199  A
+200  A B
+208  A B C
+210    B C D
+200  E   C D
+207  E F   D
+240  E F G
+269    F G H
+260      G H
+263        H
+</pre>
+
+</details>
+<p>
+Start by comparing the first and second three-measurement windows. The measurements in the first window are marked A (199, 200, 208); their sum is 199 + 200 + 208 = 607. The second window is marked B (200, 208, 210); its sum is 618. The sum of measurements in the second window is larger than the sum of the first, so this first comparison increased.
+</p>
+
+<p>
+Your goal now is to count the number of times the sum of measurements in this sliding window increases from the previous sum. So, compare A with B, then compare B with C, then C with D, and so on. Stop when there aren&rsquo;t enough measurements left to create a new three-measurement sum.
+</p>
+
+<p>
+In the above example, the sum of each three-measurement window is as follows:
+</p>
+
+<details id='orgc792ae2' class='code' open>
+<summary></summary>
+<div class='gutter'><a href='#orgc792ae2'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<pre class="example" id="orgc792ae2">
+A: 607 (N/A - no previous sum)
+B: 618 (increased)
+C: 618 (no change)
+D: 617 (decreased)
+E: 647 (increased)
+F: 716 (increased)
+G: 769 (increased)
+H: 792 (increased)
+</pre>
+
+</details>
+<p>
+In this example, there are 5 sums that are larger than the previous sum.
+</p>
+
+<p>
+<code>Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8726ee5" class="outline-3">
+<h3 id="org8726ee5"><span class="section-number-3">2.2.</span> Racket<a aria-hidden="true" href="#org8726ee5">#</a> </h3>
+<div class="outline-text-3" id="text-2-2">
+<details id='org8cda54e' class='code' open><summary><span class="lang">racket</span></summary>
+<div class='gutter'>
+<a href='#org8cda54e'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">count-deeper</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-variable-name">nums</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">map</span> <span class="org-builtin">string-&gt;number</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">string-split</span> data <span class="org-string">"\n"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">for/sum</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-1">[</span>i nums<span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-rainbow-delimiters-depth-1">[</span>j <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">cdr</span> nums<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-rainbow-delimiters-depth-1">[</span>k <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">cddr</span> nums<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-rainbow-delimiters-depth-1">[</span>l <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">cdddr</span> nums<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+              <span class="org-racket-keyword-argument">#:when</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">&gt;</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">+</span> j k l<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">+</span> i j k<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>count-deeper sample_data<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>count-deeper input_data<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-org20523d4" class="outline-3">
+<h3 id="org20523d4"><span class="section-number-3">2.3.</span> Python<a aria-hidden="true" href="#org20523d4">#</a> </h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Another quick and dirty python solution for a fast answer. Still includes the epic <code>sum2 - sum1 &gt; 0</code> logic.
+</p>
+<details id='orgd6c87bd' class='code' open><summary><span class="lang">Python</span></summary>
+<div class='gutter'>
+<a href='#orgd6c87bd'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">count_deeper</span>(data):
+    <span class="org-variable-name">l</span> = [<span class="org-builtin">int</span>(i) <span class="org-keyword">for</span> i <span class="org-keyword">in</span> data[:-<span class="org-highlight-numbers-number">1</span>].split(<span class="org-string">"\n"</span>)]
+    <span class="org-variable-name">num</span> = <span class="org-highlight-numbers-number">0</span>
+    <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(<span class="org-highlight-numbers-number">3</span>,<span class="org-builtin">len</span>(l)):
+        <span class="org-variable-name">sum1</span> = l[i-<span class="org-highlight-numbers-number">3</span>] + l[i-<span class="org-highlight-numbers-number">2</span>] + l[i-<span class="org-highlight-numbers-number">1</span>]
+        <span class="org-variable-name">sum2</span> = l[i-<span class="org-highlight-numbers-number">2</span>] + l[i-<span class="org-highlight-numbers-number">1</span>] + l[i]
+        <span class="org-keyword">if</span> sum2 - sum1 &gt; <span class="org-highlight-numbers-number">0</span>:
+            <span class="org-variable-name">num</span> += <span class="org-highlight-numbers-number">1</span>
+    <span class="org-keyword">return</span> num
+
+<span class="org-keyword">print</span>(count_deeper(sample_data))
+<span class="org-keyword">print</span>(count_deeper(input_data))
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-orgd0f0609" class="outline-3">
+<h3 id="orgd0f0609"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#orgd0f0609">#</a> </h3>
+<div class="outline-text-3" id="text-2-4">
+<details id='orgcd71244' class='code' open><summary><span class="lang">rust</span></summary>
+<div class='gutter'>
+<a href='#orgcd71244'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-orgd4fd328" class="outline-3">
+<h3 id="orgd4fd328"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orgd4fd328">#</a> </h3>
+<div class="outline-text-3" id="text-2-5">
+<details id='org6d7fc63' class='code' open><summary><span class="lang">bash</span></summary>
+<div class='gutter'>
+<a href='#org6d7fc63'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-orga7c467f" class="outline-3">
+<h3 id="orga7c467f"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orga7c467f">#</a> </h3>
+<div class="outline-text-3" id="text-2-6">
+<details id='org7713048' class='code' open><summary><span class="lang">Awk</span></summary>
+<div class='gutter'>
+<a href='#org7713048'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
+</pre>
+</div>
+</details>
+</div>
+</div>
+<div id="outline-container-orgca3fccf" class="outline-3">
+<h3 id="orgca3fccf"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#orgca3fccf">#</a> </h3>
+<div class="outline-text-3" id="text-2-7">
+<details id='org1523954' class='code' open><summary><span class="lang">Perl</span></summary>
+<div class='gutter'>
+<a href='#org1523954'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
+</pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f98865" class="outline-2">
+<h2 id="org9f98865"><span class="section-number-2">3.</span> Inputs<a aria-hidden="true" href="#org9f98865">#</a> </h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org580eb43" class="outline-3">
+<h3 id="org580eb43"><span class="section-number-3">3.1.</span> Sample<a aria-hidden="true" href="#org580eb43">#</a> </h3>
+<div class="outline-text-3" id="text-3-1">
+<details id='org472c69c' class='code' open><summary class='named'><span class="name">sample-2021-01</span><span class="lang">bash</span></summary>
+<div class='gutter'>
+<a href='#org472c69c'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"199</span>
+<span class="org-string">200</span>
+<span class="org-string">208</span>
+<span class="org-string">210</span>
+<span class="org-string">200</span>
+<span class="org-string">207</span>
+<span class="org-string">240</span>
+<span class="org-string">269</span>
+<span class="org-string">260</span>
+<span class="org-string">263"</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-org8c3157c" class="outline-3">
+<h3 id="org8c3157c"><span class="section-number-3">3.2.</span> Input<a aria-hidden="true" href="#org8c3157c">#</a> </h3>
+<div class="outline-text-3" id="text-3-2">
+<details id='org0f874e3' class='code' open><summary class='named'><span class="name">input-2021-01</span><span class="lang">bash</span></summary>
+<div class='gutter'>
+<a href='#org0f874e3'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"193</span>
+<span class="org-string">197</span>
+<span class="org-string">188</span>
+<span class="org-string">170</span>
+<span class="org-string">162</span>
+<span class="org-string">180</span>
+<span class="org-string">183</span>
+<span class="org-string">211</span>
+<span class="org-string">213</span>
+<span class="org-string">235</span>
+<span class="org-string">238</span>
+<span class="org-string">237</span>
+<span class="org-string">234</span>
+<span class="org-string">227</span>
+<span class="org-string">222</span>
+<span class="org-string">221</span>
+<span class="org-string">223</span>
+<span class="org-string">224</span>
+<span class="org-string">223</span>
+<span class="org-string">216</span>
+<span class="org-string">217</span>
+<span class="org-string">226</span>
+<span class="org-string">234</span>
+<span class="org-string">228</span>
+<span class="org-string">230</span>
+<span class="org-string">237</span>
+<span class="org-string">239</span>
+<span class="org-string">242</span>
+<span class="org-string">244</span>
+<span class="org-string">246</span>
+<span class="org-string">242</span>
+<span class="org-string">258</span>
+<span class="org-string">269</span>
+<span class="org-string">270</span>
+<span class="org-string">255</span>
+<span class="org-string">257</span>
+<span class="org-string">261</span>
+<span class="org-string">262</span>
+<span class="org-string">258</span>
+<span class="org-string">257</span>
+<span class="org-string">262</span>
+<span class="org-string">261</span>
+<span class="org-string">260</span>
+<span class="org-string">263</span>
+<span class="org-string">266</span>
+<span class="org-string">282</span>
+<span class="org-string">281</span>
+<span class="org-string">290</span>
+<span class="org-string">299</span>
+<span class="org-string">300</span>
+<span class="org-string">302</span>
+<span class="org-string">288</span>
+<span class="org-string">286</span>
+<span class="org-string">296</span>
+<span class="org-string">293</span>
+<span class="org-string">292</span>
+<span class="org-string">272</span>
+<span class="org-string">270</span>
+<span class="org-string">283</span>
+<span class="org-string">294</span>
+<span class="org-string">311</span>
+<span class="org-string">310</span>
+<span class="org-string">309</span>
+<span class="org-string">310</span>
+<span class="org-string">312</span>
+<span class="org-string">314</span>
+<span class="org-string">318</span>
+<span class="org-string">330</span>
+<span class="org-string">331</span>
+<span class="org-string">332</span>
+<span class="org-string">344</span>
+<span class="org-string">342</span>
+<span class="org-string">328</span>
+<span class="org-string">317</span>
+<span class="org-string">314</span>
+<span class="org-string">310</span>
+<span class="org-string">306</span>
+<span class="org-string">310</span>
+<span class="org-string">351</span>
+<span class="org-string">353</span>
+<span class="org-string">352</span>
+<span class="org-string">354</span>
+<span class="org-string">355</span>
+<span class="org-string">349</span>
+<span class="org-string">350</span>
+<span class="org-string">354</span>
+<span class="org-string">353</span>
+<span class="org-string">352</span>
+<span class="org-string">357</span>
+<span class="org-string">362</span>
+<span class="org-string">358</span>
+<span class="org-string">346</span>
+<span class="org-string">329</span>
+<span class="org-string">322</span>
+<span class="org-string">320</span>
+<span class="org-string">294</span>
+<span class="org-string">277</span>
+<span class="org-string">270</span>
+<span class="org-string">273</span>
+<span class="org-string">275</span>
+<span class="org-string">283</span>
+<span class="org-string">279</span>
+<span class="org-string">277</span>
+<span class="org-string">271</span>
+<span class="org-string">273</span>
+<span class="org-string">246</span>
+<span class="org-string">247</span>
+<span class="org-string">248</span>
+<span class="org-string">255</span>
+<span class="org-string">258</span>
+<span class="org-string">243</span>
+<span class="org-string">267</span>
+<span class="org-string">266</span>
+<span class="org-string">282</span>
+<span class="org-string">281</span>
+<span class="org-string">282</span>
+<span class="org-string">284</span>
+<span class="org-string">288</span>
+<span class="org-string">290</span>
+<span class="org-string">289</span>
+<span class="org-string">288</span>
+<span class="org-string">298</span>
+<span class="org-string">302</span>
+<span class="org-string">299</span>
+<span class="org-string">300</span>
+<span class="org-string">303</span>
+<span class="org-string">297</span>
+<span class="org-string">324</span>
+<span class="org-string">325</span>
+<span class="org-string">329</span>
+<span class="org-string">332</span>
+<span class="org-string">313</span>
+<span class="org-string">309</span>
+<span class="org-string">307</span>
+<span class="org-string">299</span>
+<span class="org-string">289</span>
+<span class="org-string">315</span>
+<span class="org-string">320</span>
+<span class="org-string">311</span>
+<span class="org-string">295</span>
+<span class="org-string">303</span>
+<span class="org-string">307</span>
+<span class="org-string">329</span>
+<span class="org-string">330</span>
+<span class="org-string">329</span>
+<span class="org-string">317</span>
+<span class="org-string">318</span>
+<span class="org-string">334</span>
+<span class="org-string">335</span>
+<span class="org-string">310</span>
+<span class="org-string">312</span>
+<span class="org-string">296</span>
+<span class="org-string">297</span>
+<span class="org-string">296</span>
+<span class="org-string">299</span>
+<span class="org-string">300</span>
+<span class="org-string">301</span>
+<span class="org-string">284</span>
+<span class="org-string">300</span>
+<span class="org-string">283</span>
+<span class="org-string">278</span>
+<span class="org-string">286</span>
+<span class="org-string">281</span>
+<span class="org-string">276</span>
+<span class="org-string">266</span>
+<span class="org-string">278</span>
+<span class="org-string">279</span>
+<span class="org-string">268</span>
+<span class="org-string">261</span>
+<span class="org-string">274</span>
+<span class="org-string">281</span>
+<span class="org-string">282</span>
+<span class="org-string">299</span>
+<span class="org-string">298</span>
+<span class="org-string">299</span>
+<span class="org-string">297</span>
+<span class="org-string">296</span>
+<span class="org-string">295</span>
+<span class="org-string">286</span>
+<span class="org-string">283</span>
+<span class="org-string">282</span>
+<span class="org-string">283</span>
+<span class="org-string">298</span>
+<span class="org-string">308</span>
+<span class="org-string">310</span>
+<span class="org-string">287</span>
+<span class="org-string">280</span>
+<span class="org-string">281</span>
+<span class="org-string">280</span>
+<span class="org-string">282</span>
+<span class="org-string">275</span>
+<span class="org-string">247</span>
+<span class="org-string">244</span>
+<span class="org-string">245</span>
+<span class="org-string">240</span>
+<span class="org-string">236</span>
+<span class="org-string">241</span>
+<span class="org-string">250</span>
+<span class="org-string">252</span>
+<span class="org-string">247</span>
+<span class="org-string">244</span>
+<span class="org-string">246</span>
+<span class="org-string">250</span>
+<span class="org-string">251</span>
+<span class="org-string">259</span>
+<span class="org-string">272</span>
+<span class="org-string">270</span>
+<span class="org-string">269</span>
+<span class="org-string">277</span>
+<span class="org-string">279</span>
+<span class="org-string">280</span>
+<span class="org-string">297</span>
+<span class="org-string">298</span>
+<span class="org-string">299</span>
+<span class="org-string">301</span>
+<span class="org-string">315</span>
+<span class="org-string">322</span>
+<span class="org-string">323</span>
+<span class="org-string">326</span>
+<span class="org-string">328</span>
+<span class="org-string">322</span>
+<span class="org-string">323</span>
+<span class="org-string">316</span>
+<span class="org-string">315</span>
+<span class="org-string">293</span>
+<span class="org-string">303</span>
+<span class="org-string">334</span>
+<span class="org-string">344</span>
+<span class="org-string">345</span>
+<span class="org-string">346</span>
+<span class="org-string">358</span>
+<span class="org-string">359</span>
+<span class="org-string">360</span>
+<span class="org-string">361</span>
+<span class="org-string">374</span>
+<span class="org-string">380</span>
+<span class="org-string">378</span>
+<span class="org-string">379</span>
+<span class="org-string">377</span>
+<span class="org-string">382</span>
+<span class="org-string">383</span>
+<span class="org-string">384</span>
+<span class="org-string">388</span>
+<span class="org-string">389</span>
+<span class="org-string">396</span>
+<span class="org-string">408</span>
+<span class="org-string">409</span>
+<span class="org-string">410</span>
+<span class="org-string">401</span>
+<span class="org-string">405</span>
+<span class="org-string">400</span>
+<span class="org-string">404</span>
+<span class="org-string">403</span>
+<span class="org-string">424</span>
+<span class="org-string">444</span>
+<span class="org-string">450</span>
+<span class="org-string">440</span>
+<span class="org-string">430</span>
+<span class="org-string">412</span>
+<span class="org-string">415</span>
+<span class="org-string">436</span>
+<span class="org-string">430</span>
+<span class="org-string">445</span>
+<span class="org-string">450</span>
+<span class="org-string">472</span>
+<span class="org-string">477</span>
+<span class="org-string">480</span>
+<span class="org-string">464</span>
+<span class="org-string">470</span>
+<span class="org-string">462</span>
+<span class="org-string">456</span>
+<span class="org-string">463</span>
+<span class="org-string">467</span>
+<span class="org-string">466</span>
+<span class="org-string">465</span>
+<span class="org-string">466</span>
+<span class="org-string">473</span>
+<span class="org-string">474</span>
+<span class="org-string">470</span>
+<span class="org-string">471</span>
+<span class="org-string">479</span>
+<span class="org-string">481</span>
+<span class="org-string">501</span>
+<span class="org-string">500</span>
+<span class="org-string">499</span>
+<span class="org-string">502</span>
+<span class="org-string">493</span>
+<span class="org-string">485</span>
+<span class="org-string">498</span>
+<span class="org-string">493</span>
+<span class="org-string">505</span>
+<span class="org-string">506</span>
+<span class="org-string">494</span>
+<span class="org-string">498</span>
+<span class="org-string">501</span>
+<span class="org-string">515</span>
+<span class="org-string">517</span>
+<span class="org-string">523</span>
+<span class="org-string">520</span>
+<span class="org-string">517</span>
+<span class="org-string">511</span>
+<span class="org-string">510</span>
+<span class="org-string">522</span>
+<span class="org-string">517</span>
+<span class="org-string">523</span>
+<span class="org-string">524</span>
+<span class="org-string">520</span>
+<span class="org-string">518</span>
+<span class="org-string">517</span>
+<span class="org-string">527</span>
+<span class="org-string">525</span>
+<span class="org-string">536</span>
+<span class="org-string">510</span>
+<span class="org-string">511</span>
+<span class="org-string">526</span>
+<span class="org-string">516</span>
+<span class="org-string">522</span>
+<span class="org-string">524</span>
+<span class="org-string">543</span>
+<span class="org-string">539</span>
+<span class="org-string">540</span>
+<span class="org-string">547</span>
+<span class="org-string">560</span>
+<span class="org-string">577</span>
+<span class="org-string">591</span>
+<span class="org-string">592</span>
+<span class="org-string">593</span>
+<span class="org-string">596</span>
+<span class="org-string">597</span>
+<span class="org-string">598</span>
+<span class="org-string">581</span>
+<span class="org-string">575</span>
+<span class="org-string">576</span>
+<span class="org-string">586</span>
+<span class="org-string">585</span>
+<span class="org-string">598</span>
+<span class="org-string">599</span>
+<span class="org-string">603</span>
+<span class="org-string">600</span>
+<span class="org-string">602</span>
+<span class="org-string">603</span>
+<span class="org-string">604</span>
+<span class="org-string">595</span>
+<span class="org-string">600</span>
+<span class="org-string">621</span>
+<span class="org-string">601</span>
+<span class="org-string">604</span>
+<span class="org-string">607</span>
+<span class="org-string">621</span>
+<span class="org-string">618</span>
+<span class="org-string">621</span>
+<span class="org-string">619</span>
+<span class="org-string">620</span>
+<span class="org-string">617</span>
+<span class="org-string">615</span>
+<span class="org-string">614</span>
+<span class="org-string">628</span>
+<span class="org-string">630</span>
+<span class="org-string">627</span>
+<span class="org-string">635</span>
+<span class="org-string">634</span>
+<span class="org-string">629</span>
+<span class="org-string">650</span>
+<span class="org-string">663</span>
+<span class="org-string">665</span>
+<span class="org-string">669</span>
+<span class="org-string">670</span>
+<span class="org-string">682</span>
+<span class="org-string">662</span>
+<span class="org-string">677</span>
+<span class="org-string">679</span>
+<span class="org-string">669</span>
+<span class="org-string">677</span>
+<span class="org-string">676</span>
+<span class="org-string">692</span>
+<span class="org-string">693</span>
+<span class="org-string">682</span>
+<span class="org-string">697</span>
+<span class="org-string">691</span>
+<span class="org-string">702</span>
+<span class="org-string">718</span>
+<span class="org-string">721</span>
+<span class="org-string">725</span>
+<span class="org-string">753</span>
+<span class="org-string">752</span>
+<span class="org-string">751</span>
+<span class="org-string">746</span>
+<span class="org-string">741</span>
+<span class="org-string">737</span>
+<span class="org-string">765</span>
+<span class="org-string">780</span>
+<span class="org-string">806</span>
+<span class="org-string">805</span>
+<span class="org-string">803</span>
+<span class="org-string">786</span>
+<span class="org-string">787</span>
+<span class="org-string">801</span>
+<span class="org-string">812</span>
+<span class="org-string">818</span>
+<span class="org-string">797</span>
+<span class="org-string">794</span>
+<span class="org-string">792</span>
+<span class="org-string">798</span>
+<span class="org-string">800</span>
+<span class="org-string">799</span>
+<span class="org-string">803</span>
+<span class="org-string">788</span>
+<span class="org-string">799</span>
+<span class="org-string">804</span>
+<span class="org-string">805</span>
+<span class="org-string">812</span>
+<span class="org-string">814</span>
+<span class="org-string">805</span>
+<span class="org-string">803</span>
+<span class="org-string">804</span>
+<span class="org-string">791</span>
+<span class="org-string">796</span>
+<span class="org-string">786</span>
+<span class="org-string">785</span>
+<span class="org-string">797</span>
+<span class="org-string">791</span>
+<span class="org-string">792</span>
+<span class="org-string">811</span>
+<span class="org-string">809</span>
+<span class="org-string">800</span>
+<span class="org-string">818</span>
+<span class="org-string">824</span>
+<span class="org-string">825</span>
+<span class="org-string">824</span>
+<span class="org-string">823</span>
+<span class="org-string">841</span>
+<span class="org-string">835</span>
+<span class="org-string">848</span>
+<span class="org-string">843</span>
+<span class="org-string">846</span>
+<span class="org-string">828</span>
+<span class="org-string">811</span>
+<span class="org-string">812</span>
+<span class="org-string">806</span>
+<span class="org-string">795</span>
+<span class="org-string">798</span>
+<span class="org-string">802</span>
+<span class="org-string">809</span>
+<span class="org-string">827</span>
+<span class="org-string">838</span>
+<span class="org-string">837</span>
+<span class="org-string">836</span>
+<span class="org-string">833</span>
+<span class="org-string">812</span>
+<span class="org-string">814</span>
+<span class="org-string">817</span>
+<span class="org-string">816</span>
+<span class="org-string">827</span>
+<span class="org-string">826</span>
+<span class="org-string">829</span>
+<span class="org-string">831</span>
+<span class="org-string">829</span>
+<span class="org-string">831</span>
+<span class="org-string">832</span>
+<span class="org-string">817</span>
+<span class="org-string">830</span>
+<span class="org-string">827</span>
+<span class="org-string">828</span>
+<span class="org-string">829</span>
+<span class="org-string">832</span>
+<span class="org-string">836</span>
+<span class="org-string">835</span>
+<span class="org-string">837</span>
+<span class="org-string">840</span>
+<span class="org-string">833</span>
+<span class="org-string">831</span>
+<span class="org-string">833</span>
+<span class="org-string">832</span>
+<span class="org-string">833</span>
+<span class="org-string">835</span>
+<span class="org-string">840</span>
+<span class="org-string">868</span>
+<span class="org-string">882</span>
+<span class="org-string">886</span>
+<span class="org-string">883</span>
+<span class="org-string">873</span>
+<span class="org-string">893</span>
+<span class="org-string">891</span>
+<span class="org-string">897</span>
+<span class="org-string">898</span>
+<span class="org-string">897</span>
+<span class="org-string">898</span>
+<span class="org-string">895</span>
+<span class="org-string">889</span>
+<span class="org-string">890</span>
+<span class="org-string">892</span>
+<span class="org-string">880</span>
+<span class="org-string">901</span>
+<span class="org-string">890</span>
+<span class="org-string">889</span>
+<span class="org-string">891</span>
+<span class="org-string">894</span>
+<span class="org-string">899</span>
+<span class="org-string">927</span>
+<span class="org-string">928</span>
+<span class="org-string">927</span>
+<span class="org-string">918</span>
+<span class="org-string">937</span>
+<span class="org-string">935</span>
+<span class="org-string">931</span>
+<span class="org-string">929</span>
+<span class="org-string">935</span>
+<span class="org-string">939</span>
+<span class="org-string">937</span>
+<span class="org-string">936</span>
+<span class="org-string">935</span>
+<span class="org-string">944</span>
+<span class="org-string">928</span>
+<span class="org-string">930</span>
+<span class="org-string">926</span>
+<span class="org-string">927</span>
+<span class="org-string">933</span>
+<span class="org-string">935</span>
+<span class="org-string">959</span>
+<span class="org-string">961</span>
+<span class="org-string">947</span>
+<span class="org-string">955</span>
+<span class="org-string">961</span>
+<span class="org-string">960</span>
+<span class="org-string">956</span>
+<span class="org-string">968</span>
+<span class="org-string">973</span>
+<span class="org-string">978</span>
+<span class="org-string">977</span>
+<span class="org-string">980</span>
+<span class="org-string">994</span>
+<span class="org-string">996</span>
+<span class="org-string">974</span>
+<span class="org-string">978</span>
+<span class="org-string">997</span>
+<span class="org-string">1000</span>
+<span class="org-string">1009</span>
+<span class="org-string">1021</span>
+<span class="org-string">1038</span>
+<span class="org-string">1006</span>
+<span class="org-string">1009</span>
+<span class="org-string">997</span>
+<span class="org-string">999</span>
+<span class="org-string">1008</span>
+<span class="org-string">1004</span>
+<span class="org-string">1008</span>
+<span class="org-string">1010</span>
+<span class="org-string">1011</span>
+<span class="org-string">1010</span>
+<span class="org-string">1024</span>
+<span class="org-string">999</span>
+<span class="org-string">1000</span>
+<span class="org-string">999</span>
+<span class="org-string">1001</span>
+<span class="org-string">1011</span>
+<span class="org-string">1010</span>
+<span class="org-string">996</span>
+<span class="org-string">1024</span>
+<span class="org-string">1028</span>
+<span class="org-string">1021</span>
+<span class="org-string">1022</span>
+<span class="org-string">1038</span>
+<span class="org-string">1042</span>
+<span class="org-string">1044</span>
+<span class="org-string">1043</span>
+<span class="org-string">1081</span>
+<span class="org-string">1075</span>
+<span class="org-string">1072</span>
+<span class="org-string">1068</span>
+<span class="org-string">1069</span>
+<span class="org-string">1068</span>
+<span class="org-string">1067</span>
+<span class="org-string">1068</span>
+<span class="org-string">1070</span>
+<span class="org-string">1057</span>
+<span class="org-string">1054</span>
+<span class="org-string">1053</span>
+<span class="org-string">1038</span>
+<span class="org-string">1039</span>
+<span class="org-string">1064</span>
+<span class="org-string">1063</span>
+<span class="org-string">1064</span>
+<span class="org-string">1063</span>
+<span class="org-string">1061</span>
+<span class="org-string">1068</span>
+<span class="org-string">1053</span>
+<span class="org-string">1034</span>
+<span class="org-string">1056</span>
+<span class="org-string">1054</span>
+<span class="org-string">1055</span>
+<span class="org-string">1050</span>
+<span class="org-string">1040</span>
+<span class="org-string">1038</span>
+<span class="org-string">1036</span>
+<span class="org-string">1030</span>
+<span class="org-string">1011</span>
+<span class="org-string">1033</span>
+<span class="org-string">1035</span>
+<span class="org-string">1036</span>
+<span class="org-string">1049</span>
+<span class="org-string">1044</span>
+<span class="org-string">1038</span>
+<span class="org-string">1054</span>
+<span class="org-string">1062</span>
+<span class="org-string">1096</span>
+<span class="org-string">1097</span>
+<span class="org-string">1091</span>
+<span class="org-string">1092</span>
+<span class="org-string">1091</span>
+<span class="org-string">1090</span>
+<span class="org-string">1093</span>
+<span class="org-string">1102</span>
+<span class="org-string">1126</span>
+<span class="org-string">1124</span>
+<span class="org-string">1125</span>
+<span class="org-string">1160</span>
+<span class="org-string">1159</span>
+<span class="org-string">1162</span>
+<span class="org-string">1161</span>
+<span class="org-string">1145</span>
+<span class="org-string">1136</span>
+<span class="org-string">1137</span>
+<span class="org-string">1133</span>
+<span class="org-string">1134</span>
+<span class="org-string">1141</span>
+<span class="org-string">1143</span>
+<span class="org-string">1142</span>
+<span class="org-string">1122</span>
+<span class="org-string">1103</span>
+<span class="org-string">1099</span>
+<span class="org-string">1100</span>
+<span class="org-string">1097</span>
+<span class="org-string">1096</span>
+<span class="org-string">1107</span>
+<span class="org-string">1105</span>
+<span class="org-string">1103</span>
+<span class="org-string">1111</span>
+<span class="org-string">1150</span>
+<span class="org-string">1138</span>
+<span class="org-string">1140</span>
+<span class="org-string">1119</span>
+<span class="org-string">1088</span>
+<span class="org-string">1091</span>
+<span class="org-string">1089</span>
+<span class="org-string">1075</span>
+<span class="org-string">1079</span>
+<span class="org-string">1083</span>
+<span class="org-string">1085</span>
+<span class="org-string">1082</span>
+<span class="org-string">1076</span>
+<span class="org-string">1088</span>
+<span class="org-string">1086</span>
+<span class="org-string">1088</span>
+<span class="org-string">1083</span>
+<span class="org-string">1082</span>
+<span class="org-string">1088</span>
+<span class="org-string">1091</span>
+<span class="org-string">1093</span>
+<span class="org-string">1076</span>
+<span class="org-string">1078</span>
+<span class="org-string">1082</span>
+<span class="org-string">1081</span>
+<span class="org-string">1083</span>
+<span class="org-string">1085</span>
+<span class="org-string">1087</span>
+<span class="org-string">1086</span>
+<span class="org-string">1076</span>
+<span class="org-string">1095</span>
+<span class="org-string">1113</span>
+<span class="org-string">1109</span>
+<span class="org-string">1111</span>
+<span class="org-string">1110</span>
+<span class="org-string">1118</span>
+<span class="org-string">1119</span>
+<span class="org-string">1126</span>
+<span class="org-string">1117</span>
+<span class="org-string">1111</span>
+<span class="org-string">1129</span>
+<span class="org-string">1124</span>
+<span class="org-string">1131</span>
+<span class="org-string">1135</span>
+<span class="org-string">1134</span>
+<span class="org-string">1128</span>
+<span class="org-string">1141</span>
+<span class="org-string">1130</span>
+<span class="org-string">1121</span>
+<span class="org-string">1117</span>
+<span class="org-string">1113</span>
+<span class="org-string">1105</span>
+<span class="org-string">1097</span>
+<span class="org-string">1114</span>
+<span class="org-string">1115</span>
+<span class="org-string">1114</span>
+<span class="org-string">1119</span>
+<span class="org-string">1116</span>
+<span class="org-string">1115</span>
+<span class="org-string">1113</span>
+<span class="org-string">1112</span>
+<span class="org-string">1121</span>
+<span class="org-string">1124</span>
+<span class="org-string">1127</span>
+<span class="org-string">1126</span>
+<span class="org-string">1131</span>
+<span class="org-string">1134</span>
+<span class="org-string">1129</span>
+<span class="org-string">1131</span>
+<span class="org-string">1137</span>
+<span class="org-string">1139</span>
+<span class="org-string">1143</span>
+<span class="org-string">1145</span>
+<span class="org-string">1146</span>
+<span class="org-string">1135</span>
+<span class="org-string">1137</span>
+<span class="org-string">1142</span>
+<span class="org-string">1140</span>
+<span class="org-string">1141</span>
+<span class="org-string">1144</span>
+<span class="org-string">1142</span>
+<span class="org-string">1141</span>
+<span class="org-string">1138</span>
+<span class="org-string">1144</span>
+<span class="org-string">1141</span>
+<span class="org-string">1143</span>
+<span class="org-string">1128</span>
+<span class="org-string">1104</span>
+<span class="org-string">1112</span>
+<span class="org-string">1096</span>
+<span class="org-string">1101</span>
+<span class="org-string">1100</span>
+<span class="org-string">1099</span>
+<span class="org-string">1086</span>
+<span class="org-string">1071</span>
+<span class="org-string">1058</span>
+<span class="org-string">1057</span>
+<span class="org-string">1056</span>
+<span class="org-string">1047</span>
+<span class="org-string">1040</span>
+<span class="org-string">1036</span>
+<span class="org-string">1031</span>
+<span class="org-string">1032</span>
+<span class="org-string">1038</span>
+<span class="org-string">1043</span>
+<span class="org-string">1046</span>
+<span class="org-string">1035</span>
+<span class="org-string">1051</span>
+<span class="org-string">1049</span>
+<span class="org-string">1050</span>
+<span class="org-string">1054</span>
+<span class="org-string">1042</span>
+<span class="org-string">1043</span>
+<span class="org-string">1046</span>
+<span class="org-string">1034</span>
+<span class="org-string">1031</span>
+<span class="org-string">1016</span>
+<span class="org-string">1020</span>
+<span class="org-string">1019</span>
+<span class="org-string">1010</span>
+<span class="org-string">1011</span>
+<span class="org-string">1009</span>
+<span class="org-string">1010</span>
+<span class="org-string">1007</span>
+<span class="org-string">1010</span>
+<span class="org-string">1011</span>
+<span class="org-string">1022</span>
+<span class="org-string">1044</span>
+<span class="org-string">1043</span>
+<span class="org-string">1044</span>
+<span class="org-string">1048</span>
+<span class="org-string">1030</span>
+<span class="org-string">1028</span>
+<span class="org-string">1029</span>
+<span class="org-string">1054</span>
+<span class="org-string">1048</span>
+<span class="org-string">1069</span>
+<span class="org-string">1083</span>
+<span class="org-string">1082</span>
+<span class="org-string">1092</span>
+<span class="org-string">1121</span>
+<span class="org-string">1143</span>
+<span class="org-string">1144</span>
+<span class="org-string">1145</span>
+<span class="org-string">1146</span>
+<span class="org-string">1160</span>
+<span class="org-string">1165</span>
+<span class="org-string">1172</span>
+<span class="org-string">1169</span>
+<span class="org-string">1178</span>
+<span class="org-string">1181</span>
+<span class="org-string">1180</span>
+<span class="org-string">1181</span>
+<span class="org-string">1186</span>
+<span class="org-string">1198</span>
+<span class="org-string">1199</span>
+<span class="org-string">1190</span>
+<span class="org-string">1195</span>
+<span class="org-string">1227</span>
+<span class="org-string">1223</span>
+<span class="org-string">1222</span>
+<span class="org-string">1224</span>
+<span class="org-string">1237</span>
+<span class="org-string">1235</span>
+<span class="org-string">1242</span>
+<span class="org-string">1254</span>
+<span class="org-string">1256</span>
+<span class="org-string">1263</span>
+<span class="org-string">1260</span>
+<span class="org-string">1259</span>
+<span class="org-string">1270</span>
+<span class="org-string">1269</span>
+<span class="org-string">1264</span>
+<span class="org-string">1271</span>
+<span class="org-string">1272</span>
+<span class="org-string">1270</span>
+<span class="org-string">1273</span>
+<span class="org-string">1287</span>
+<span class="org-string">1304</span>
+<span class="org-string">1291</span>
+<span class="org-string">1287</span>
+<span class="org-string">1294</span>
+<span class="org-string">1291</span>
+<span class="org-string">1292</span>
+<span class="org-string">1296</span>
+<span class="org-string">1300</span>
+<span class="org-string">1301</span>
+<span class="org-string">1296</span>
+<span class="org-string">1327</span>
+<span class="org-string">1320</span>
+<span class="org-string">1341</span>
+<span class="org-string">1346</span>
+<span class="org-string">1345</span>
+<span class="org-string">1324</span>
+<span class="org-string">1328</span>
+<span class="org-string">1314</span>
+<span class="org-string">1317</span>
+<span class="org-string">1314</span>
+<span class="org-string">1300</span>
+<span class="org-string">1303</span>
+<span class="org-string">1296</span>
+<span class="org-string">1299</span>
+<span class="org-string">1326</span>
+<span class="org-string">1325</span>
+<span class="org-string">1343</span>
+<span class="org-string">1342</span>
+<span class="org-string">1338</span>
+<span class="org-string">1330</span>
+<span class="org-string">1329</span>
+<span class="org-string">1323</span>
+<span class="org-string">1331</span>
+<span class="org-string">1349</span>
+<span class="org-string">1348</span>
+<span class="org-string">1349</span>
+<span class="org-string">1350</span>
+<span class="org-string">1341</span>
+<span class="org-string">1353</span>
+<span class="org-string">1352</span>
+<span class="org-string">1353</span>
+<span class="org-string">1354</span>
+<span class="org-string">1356</span>
+<span class="org-string">1361</span>
+<span class="org-string">1357</span>
+<span class="org-string">1384</span>
+<span class="org-string">1389</span>
+<span class="org-string">1397</span>
+<span class="org-string">1400</span>
+<span class="org-string">1399</span>
+<span class="org-string">1409</span>
+<span class="org-string">1410</span>
+<span class="org-string">1415</span>
+<span class="org-string">1431</span>
+<span class="org-string">1432</span>
+<span class="org-string">1434</span>
+<span class="org-string">1421</span>
+<span class="org-string">1423</span>
+<span class="org-string">1385</span>
+<span class="org-string">1378</span>
+<span class="org-string">1387</span>
+<span class="org-string">1385</span>
+<span class="org-string">1378</span>
+<span class="org-string">1383</span>
+<span class="org-string">1411</span>
+<span class="org-string">1422</span>
+<span class="org-string">1421</span>
+<span class="org-string">1423</span>
+<span class="org-string">1429</span>
+<span class="org-string">1430</span>
+<span class="org-string">1434</span>
+<span class="org-string">1433</span>
+<span class="org-string">1432</span>
+<span class="org-string">1423</span>
+<span class="org-string">1387</span>
+<span class="org-string">1390</span>
+<span class="org-string">1392</span>
+<span class="org-string">1387</span>
+<span class="org-string">1388</span>
+<span class="org-string">1410</span>
+<span class="org-string">1407</span>
+<span class="org-string">1410</span>
+<span class="org-string">1408</span>
+<span class="org-string">1412</span>
+<span class="org-string">1418</span>
+<span class="org-string">1424</span>
+<span class="org-string">1422</span>
+<span class="org-string">1426</span>
+<span class="org-string">1420</span>
+<span class="org-string">1422</span>
+<span class="org-string">1423</span>
+<span class="org-string">1424</span>
+<span class="org-string">1444</span>
+<span class="org-string">1445</span>
+<span class="org-string">1442</span>
+<span class="org-string">1463</span>
+<span class="org-string">1459</span>
+<span class="org-string">1463</span>
+<span class="org-string">1468</span>
+<span class="org-string">1470</span>
+<span class="org-string">1475</span>
+<span class="org-string">1473</span>
+<span class="org-string">1462</span>
+<span class="org-string">1461</span>
+<span class="org-string">1458</span>
+<span class="org-string">1469</span>
+<span class="org-string">1466</span>
+<span class="org-string">1451</span>
+<span class="org-string">1453</span>
+<span class="org-string">1461</span>
+<span class="org-string">1474</span>
+<span class="org-string">1477</span>
+<span class="org-string">1475</span>
+<span class="org-string">1476</span>
+<span class="org-string">1470</span>
+<span class="org-string">1469</span>
+<span class="org-string">1467</span>
+<span class="org-string">1476</span>
+<span class="org-string">1484</span>
+<span class="org-string">1507</span>
+<span class="org-string">1505</span>
+<span class="org-string">1501</span>
+<span class="org-string">1481</span>
+<span class="org-string">1482</span>
+<span class="org-string">1483</span>
+<span class="org-string">1477</span>
+<span class="org-string">1488</span>
+<span class="org-string">1516</span>
+<span class="org-string">1505</span>
+<span class="org-string">1514</span>
+<span class="org-string">1504</span>
+<span class="org-string">1503</span>
+<span class="org-string">1487</span>
+<span class="org-string">1505</span>
+<span class="org-string">1513</span>
+<span class="org-string">1515</span>
+<span class="org-string">1512</span>
+<span class="org-string">1504</span>
+<span class="org-string">1506</span>
+<span class="org-string">1513</span>
+<span class="org-string">1521</span>
+<span class="org-string">1563</span>
+<span class="org-string">1562</span>
+<span class="org-string">1567</span>
+<span class="org-string">1568</span>
+<span class="org-string">1558</span>
+<span class="org-string">1557</span>
+<span class="org-string">1539</span>
+<span class="org-string">1514</span>
+<span class="org-string">1516</span>
+<span class="org-string">1524</span>
+<span class="org-string">1523</span>
+<span class="org-string">1524</span>
+<span class="org-string">1525</span>
+<span class="org-string">1516</span>
+<span class="org-string">1515</span>
+<span class="org-string">1517</span>
+<span class="org-string">1510</span>
+<span class="org-string">1488</span>
+<span class="org-string">1468</span>
+<span class="org-string">1467</span>
+<span class="org-string">1474</span>
+<span class="org-string">1473</span>
+<span class="org-string">1474</span>
+<span class="org-string">1478</span>
+<span class="org-string">1477</span>
+<span class="org-string">1476</span>
+<span class="org-string">1503</span>
+<span class="org-string">1529</span>
+<span class="org-string">1536</span>
+<span class="org-string">1560</span>
+<span class="org-string">1570</span>
+<span class="org-string">1581</span>
+<span class="org-string">1600</span>
+<span class="org-string">1601</span>
+<span class="org-string">1602</span>
+<span class="org-string">1605</span>
+<span class="org-string">1625</span>
+<span class="org-string">1629</span>
+<span class="org-string">1620</span>
+<span class="org-string">1609</span>
+<span class="org-string">1583</span>
+<span class="org-string">1599</span>
+<span class="org-string">1590</span>
+<span class="org-string">1592</span>
+<span class="org-string">1590</span>
+<span class="org-string">1592</span>
+<span class="org-string">1557</span>
+<span class="org-string">1554</span>
+<span class="org-string">1557</span>
+<span class="org-string">1535</span>
+<span class="org-string">1519</span>
+<span class="org-string">1529</span>
+<span class="org-string">1521</span>
+<span class="org-string">1520</span>
+<span class="org-string">1527</span>
+<span class="org-string">1537</span>
+<span class="org-string">1543</span>
+<span class="org-string">1539</span>
+<span class="org-string">1538</span>
+<span class="org-string">1511</span>
+<span class="org-string">1504</span>
+<span class="org-string">1523</span>
+<span class="org-string">1524</span>
+<span class="org-string">1529</span>
+<span class="org-string">1532</span>
+<span class="org-string">1530</span>
+<span class="org-string">1529</span>
+<span class="org-string">1536</span>
+<span class="org-string">1537</span>
+<span class="org-string">1511</span>
+<span class="org-string">1512</span>
+<span class="org-string">1536</span>
+<span class="org-string">1535</span>
+<span class="org-string">1526</span>
+<span class="org-string">1517</span>
+<span class="org-string">1515</span>
+<span class="org-string">1502</span>
+<span class="org-string">1503</span>
+<span class="org-string">1506</span>
+<span class="org-string">1479</span>
+<span class="org-string">1482</span>
+<span class="org-string">1480</span>
+<span class="org-string">1486</span>
+<span class="org-string">1488</span>
+<span class="org-string">1486</span>
+<span class="org-string">1477</span>
+<span class="org-string">1493</span>
+<span class="org-string">1489</span>
+<span class="org-string">1477</span>
+<span class="org-string">1478</span>
+<span class="org-string">1473</span>
+<span class="org-string">1472</span>
+<span class="org-string">1473</span>
+<span class="org-string">1472</span>
+<span class="org-string">1464</span>
+<span class="org-string">1466</span>
+<span class="org-string">1467</span>
+<span class="org-string">1468</span>
+<span class="org-string">1469</span>
+<span class="org-string">1470</span>
+<span class="org-string">1485</span>
+<span class="org-string">1483</span>
+<span class="org-string">1485</span>
+<span class="org-string">1475</span>
+<span class="org-string">1480</span>
+<span class="org-string">1481</span>
+<span class="org-string">1465</span>
+<span class="org-string">1474</span>
+<span class="org-string">1477</span>
+<span class="org-string">1478</span>
+<span class="org-string">1479</span>
+<span class="org-string">1478</span>
+<span class="org-string">1471</span>
+<span class="org-string">1470</span>
+<span class="org-string">1502</span>
+<span class="org-string">1518</span>
+<span class="org-string">1534</span>
+<span class="org-string">1497</span>
+<span class="org-string">1496</span>
+<span class="org-string">1490</span>
+<span class="org-string">1500</span>
+<span class="org-string">1504</span>
+<span class="org-string">1515</span>
+<span class="org-string">1516</span>
+<span class="org-string">1517</span>
+<span class="org-string">1540</span>
+<span class="org-string">1538</span>
+<span class="org-string">1537</span>
+<span class="org-string">1541</span>
+<span class="org-string">1528</span>
+<span class="org-string">1522</span>
+<span class="org-string">1526</span>
+<span class="org-string">1528</span>
+<span class="org-string">1529</span>
+<span class="org-string">1523</span>
+<span class="org-string">1497</span>
+<span class="org-string">1503</span>
+<span class="org-string">1492</span>
+<span class="org-string">1491</span>
+<span class="org-string">1497</span>
+<span class="org-string">1486</span>
+<span class="org-string">1514</span>
+<span class="org-string">1510</span>
+<span class="org-string">1514</span>
+<span class="org-string">1510</span>
+<span class="org-string">1503</span>
+<span class="org-string">1497</span>
+<span class="org-string">1490</span>
+<span class="org-string">1493</span>
+<span class="org-string">1517</span>
+<span class="org-string">1518</span>
+<span class="org-string">1517</span>
+<span class="org-string">1519</span>
+<span class="org-string">1520</span>
+<span class="org-string">1522</span>
+<span class="org-string">1523</span>
+<span class="org-string">1540</span>
+<span class="org-string">1544</span>
+<span class="org-string">1543</span>
+<span class="org-string">1545</span>
+<span class="org-string">1544</span>
+<span class="org-string">1517</span>
+<span class="org-string">1516</span>
+<span class="org-string">1531</span>
+<span class="org-string">1530</span>
+<span class="org-string">1526</span>
+<span class="org-string">1536</span>
+<span class="org-string">1533</span>
+<span class="org-string">1538</span>
+<span class="org-string">1565</span>
+<span class="org-string">1578</span>
+<span class="org-string">1577</span>
+<span class="org-string">1538</span>
+<span class="org-string">1541</span>
+<span class="org-string">1530</span>
+<span class="org-string">1528</span>
+<span class="org-string">1535</span>
+<span class="org-string">1552</span>
+<span class="org-string">1554</span>
+<span class="org-string">1557</span>
+<span class="org-string">1566</span>
+<span class="org-string">1577</span>
+<span class="org-string">1588</span>
+<span class="org-string">1614</span>
+<span class="org-string">1626</span>
+<span class="org-string">1616</span>
+<span class="org-string">1625</span>
+<span class="org-string">1627</span>
+<span class="org-string">1626</span>
+<span class="org-string">1627</span>
+<span class="org-string">1639</span>
+<span class="org-string">1644</span>
+<span class="org-string">1643</span>
+<span class="org-string">1645</span>
+<span class="org-string">1652</span>
+<span class="org-string">1618</span>
+<span class="org-string">1610</span>
+<span class="org-string">1586</span>
+<span class="org-string">1592</span>
+<span class="org-string">1587</span>
+<span class="org-string">1588</span>
+<span class="org-string">1589</span>
+<span class="org-string">1586</span>
+<span class="org-string">1585</span>
+<span class="org-string">1612</span>
+<span class="org-string">1611</span>
+<span class="org-string">1622</span>
+<span class="org-string">1644</span>
+<span class="org-string">1634</span>
+<span class="org-string">1638</span>
+<span class="org-string">1629</span>
+<span class="org-string">1625</span>
+<span class="org-string">1627</span>
+<span class="org-string">1620</span>
+<span class="org-string">1621</span>
+<span class="org-string">1622</span>
+<span class="org-string">1621</span>
+<span class="org-string">1623</span>
+<span class="org-string">1624</span>
+<span class="org-string">1622</span>
+<span class="org-string">1616</span>
+<span class="org-string">1598</span>
+<span class="org-string">1619</span>
+<span class="org-string">1620</span>
+<span class="org-string">1627</span>
+<span class="org-string">1628</span>
+<span class="org-string">1627</span>
+<span class="org-string">1605</span>
+<span class="org-string">1604</span>
+<span class="org-string">1605</span>
+<span class="org-string">1610</span>
+<span class="org-string">1617</span>
+<span class="org-string">1611</span>
+<span class="org-string">1618</span>
+<span class="org-string">1621</span>
+<span class="org-string">1620</span>
+<span class="org-string">1625</span>
+<span class="org-string">1624</span>
+<span class="org-string">1623</span>
+<span class="org-string">1622</span>
+<span class="org-string">1619</span>
+<span class="org-string">1620</span>
+<span class="org-string">1619</span>
+<span class="org-string">1622</span>
+<span class="org-string">1624</span>
+<span class="org-string">1631</span>
+<span class="org-string">1632</span>
+<span class="org-string">1634</span>
+<span class="org-string">1631</span>
+<span class="org-string">1632</span>
+<span class="org-string">1643</span>
+<span class="org-string">1648</span>
+<span class="org-string">1649</span>
+<span class="org-string">1651</span>
+<span class="org-string">1653</span>
+<span class="org-string">1642</span>
+<span class="org-string">1660</span>
+<span class="org-string">1672</span>
+<span class="org-string">1696</span>
+<span class="org-string">1694</span>
+<span class="org-string">1699</span>
+<span class="org-string">1688</span>
+<span class="org-string">1711</span>
+<span class="org-string">1728</span>
+<span class="org-string">1726</span>
+<span class="org-string">1725</span>
+<span class="org-string">1751</span>
+<span class="org-string">1750</span>
+<span class="org-string">1751</span>
+<span class="org-string">1758</span>
+<span class="org-string">1778</span>
+<span class="org-string">1771</span>
+<span class="org-string">1774</span>
+<span class="org-string">1804</span>
+<span class="org-string">1823</span>
+<span class="org-string">1803</span>
+<span class="org-string">1804</span>
+<span class="org-string">1807</span>
+<span class="org-string">1804</span>
+<span class="org-string">1795</span>
+<span class="org-string">1773</span>
+<span class="org-string">1775</span>
+<span class="org-string">1783</span>
+<span class="org-string">1773</span>
+<span class="org-string">1769</span>
+<span class="org-string">1770</span>
+<span class="org-string">1771</span>
+<span class="org-string">1772</span>
+<span class="org-string">1775</span>
+<span class="org-string">1778</span>
+<span class="org-string">1777</span>
+<span class="org-string">1782</span>
+<span class="org-string">1790</span>
+<span class="org-string">1788</span>
+<span class="org-string">1792</span>
+<span class="org-string">1790</span>
+<span class="org-string">1786</span>
+<span class="org-string">1788</span>
+<span class="org-string">1795</span>
+<span class="org-string">1793</span>
+<span class="org-string">1803</span>
+<span class="org-string">1804</span>
+<span class="org-string">1807</span>
+<span class="org-string">1811</span>
+<span class="org-string">1812</span>
+<span class="org-string">1836</span>
+<span class="org-string">1838</span>
+<span class="org-string">1829</span>
+<span class="org-string">1827</span>
+<span class="org-string">1830</span>
+<span class="org-string">1831</span>
+<span class="org-string">1830</span>
+<span class="org-string">1842</span>
+<span class="org-string">1851</span>
+<span class="org-string">1853</span>
+<span class="org-string">1850</span>
+<span class="org-string">1838</span>
+<span class="org-string">1839</span>
+<span class="org-string">1840</span>
+<span class="org-string">1841</span>
+<span class="org-string">1842</span>
+<span class="org-string">1839</span>
+<span class="org-string">1840</span>
+<span class="org-string">1834</span>
+<span class="org-string">1822</span>
+<span class="org-string">1823</span>
+<span class="org-string">1822</span>
+<span class="org-string">1821</span>
+<span class="org-string">1846</span>
+<span class="org-string">1851</span>
+<span class="org-string">1855</span>
+<span class="org-string">1853</span>
+<span class="org-string">1859</span>
+<span class="org-string">1858</span>
+<span class="org-string">1846</span>
+<span class="org-string">1848</span>
+<span class="org-string">1850</span>
+<span class="org-string">1882</span>
+<span class="org-string">1885</span>
+<span class="org-string">1894</span>
+<span class="org-string">1892</span>
+<span class="org-string">1903</span>
+<span class="org-string">1896</span>
+<span class="org-string">1875</span>
+<span class="org-string">1872</span>
+<span class="org-string">1877</span>
+<span class="org-string">1878</span>
+<span class="org-string">1872</span>
+<span class="org-string">1870</span>
+<span class="org-string">1875</span>
+<span class="org-string">1876</span>
+<span class="org-string">1877</span>
+<span class="org-string">1876</span>
+<span class="org-string">1873</span>
+<span class="org-string">1871</span>
+<span class="org-string">1881</span>
+<span class="org-string">1875</span>
+<span class="org-string">1888</span>
+<span class="org-string">1879</span>
+<span class="org-string">1877</span>
+<span class="org-string">1870</span>
+<span class="org-string">1871</span>
+<span class="org-string">1874</span>
+<span class="org-string">1879</span>
+<span class="org-string">1873</span>
+<span class="org-string">1872</span>
+<span class="org-string">1882</span>
+<span class="org-string">1884</span>
+<span class="org-string">1883</span>
+<span class="org-string">1892</span>
+<span class="org-string">1905</span>
+<span class="org-string">1911</span>
+<span class="org-string">1912</span>
+<span class="org-string">1911</span>
+<span class="org-string">1926</span>
+<span class="org-string">1930</span>
+<span class="org-string">1948</span>
+<span class="org-string">1949</span>
+<span class="org-string">1950</span>
+<span class="org-string">1949</span>
+<span class="org-string">1945</span>
+<span class="org-string">1949</span>
+<span class="org-string">1950</span>
+<span class="org-string">1961</span>
+<span class="org-string">1959</span>
+<span class="org-string">1957</span>
+<span class="org-string">1979</span>
+<span class="org-string">1980</span>
+<span class="org-string">1979</span>
+<span class="org-string">1963</span>
+<span class="org-string">1962</span>
+<span class="org-string">1964</span>
+<span class="org-string">1973</span>
+<span class="org-string">1978</span>
+<span class="org-string">1975</span>
+<span class="org-string">1966</span>
+<span class="org-string">1965</span>
+<span class="org-string">1964</span>
+<span class="org-string">1957</span>
+<span class="org-string">1958</span>
+<span class="org-string">1959</span>
+<span class="org-string">1960</span>
+<span class="org-string">1991</span>
+<span class="org-string">1997</span>
+<span class="org-string">1975</span>
+<span class="org-string">1986</span>
+<span class="org-string">1985</span>
+<span class="org-string">1982</span>
+<span class="org-string">1979</span>
+<span class="org-string">1978</span>
+<span class="org-string">1983</span>
+<span class="org-string">1989</span>
+<span class="org-string">1996</span>
+<span class="org-string">1976</span>
+<span class="org-string">1991</span>
+<span class="org-string">1996</span>
+<span class="org-string">2002</span>
+<span class="org-string">2004</span>
+<span class="org-string">2001</span>
+<span class="org-string">1998</span>
+<span class="org-string">2000</span>
+<span class="org-string">1992</span>
+<span class="org-string">2006</span>
+<span class="org-string">2007</span>
+<span class="org-string">2008</span>
+<span class="org-string">2010</span>
+<span class="org-string">2008</span>
+<span class="org-string">2010</span>
+<span class="org-string">2003</span>
+<span class="org-string">2004</span>
+<span class="org-string">2000</span>
+<span class="org-string">2002</span>
+<span class="org-string">2006</span>
+<span class="org-string">2000</span>
+<span class="org-string">2015</span>
+<span class="org-string">2021</span>
+<span class="org-string">2018</span>
+<span class="org-string">2001</span>
+<span class="org-string">1990</span>
+<span class="org-string">1993</span>
+<span class="org-string">1987</span>
+<span class="org-string">1990</span>
+<span class="org-string">1982</span>
+<span class="org-string">1992</span>
+<span class="org-string">1991</span>
+<span class="org-string">1993</span>
+<span class="org-string">1994</span>
+<span class="org-string">1995</span>
+<span class="org-string">1996</span>
+<span class="org-string">1989</span>
+<span class="org-string">1984</span>
+<span class="org-string">1989</span>
+<span class="org-string">1988</span>
+<span class="org-string">1987</span>
+<span class="org-string">1998</span>
+<span class="org-string">1990</span>
+<span class="org-string">1989</span>
+<span class="org-string">1991</span>
+<span class="org-string">1988</span>
+<span class="org-string">1993</span>
+<span class="org-string">1988</span>
+<span class="org-string">2000</span>
+<span class="org-string">2016</span>
+<span class="org-string">2024</span>
+<span class="org-string">2021</span>
+<span class="org-string">2029</span>
+<span class="org-string">2025</span>
+<span class="org-string">2019</span>
+<span class="org-string">2009</span>
+<span class="org-string">2008</span>
+<span class="org-string">2001</span>
+<span class="org-string">2009</span>
+<span class="org-string">2008</span>
+<span class="org-string">2009</span>
+<span class="org-string">1993</span>
+<span class="org-string">1990</span>
+<span class="org-string">1983</span>
+<span class="org-string">1982</span>
+<span class="org-string">1990</span>
+<span class="org-string">1991</span>
+<span class="org-string">1990</span>
+<span class="org-string">1989</span>
+<span class="org-string">1970</span>
+<span class="org-string">1962</span>
+<span class="org-string">1961</span>
+<span class="org-string">1963</span>
+<span class="org-string">1965</span>
+<span class="org-string">1969</span>
+<span class="org-string">1968</span>
+<span class="org-string">1988</span>
+<span class="org-string">1994</span>
+<span class="org-string">1995</span>
+<span class="org-string">2016</span>
+<span class="org-string">2015</span>
+<span class="org-string">2018</span>
+<span class="org-string">2017</span>
+<span class="org-string">2023</span>
+<span class="org-string">2027</span>
+<span class="org-string">2030</span>
+<span class="org-string">2020</span>
+<span class="org-string">2021</span>
+<span class="org-string">2022</span>
+<span class="org-string">2008</span>
+<span class="org-string">2010</span>
+<span class="org-string">1991</span>
+<span class="org-string">1995</span>
+<span class="org-string">1996</span>
+<span class="org-string">1995</span>
+<span class="org-string">1990</span>
+<span class="org-string">1991</span>
+<span class="org-string">1982</span>
+<span class="org-string">1986</span>
+<span class="org-string">1994</span>
+<span class="org-string">1991</span>
+<span class="org-string">1990</span>
+<span class="org-string">2005</span>
+<span class="org-string">2003</span>
+<span class="org-string">2004</span>
+<span class="org-string">2000</span>
+<span class="org-string">2008</span>
+<span class="org-string">2002</span>
+<span class="org-string">1994</span>
+<span class="org-string">1989</span>
+<span class="org-string">1992</span>
+<span class="org-string">2006</span>
+<span class="org-string">1997</span>
+<span class="org-string">1986</span>
+<span class="org-string">1982</span>
+<span class="org-string">1983</span>
+<span class="org-string">1986</span>
+<span class="org-string">1977</span>
+<span class="org-string">1974</span>
+<span class="org-string">1958</span>
+<span class="org-string">1962</span>
+<span class="org-string">1967</span>
+<span class="org-string">1970</span>
+<span class="org-string">1998</span>
+<span class="org-string">2011</span>
+<span class="org-string">2008</span>
+<span class="org-string">2009</span>
+<span class="org-string">2006</span>
+<span class="org-string">1998</span>
+<span class="org-string">1992</span>
+<span class="org-string">1997</span>
+<span class="org-string">1996</span>
+<span class="org-string">1989</span>
+<span class="org-string">1984</span>
+<span class="org-string">1990</span>
+<span class="org-string">1989</span>
+<span class="org-string">1997</span>
+<span class="org-string">1996</span>
+<span class="org-string">1966</span>
+<span class="org-string">1965</span>
+<span class="org-string">1960</span>
+<span class="org-string">1959</span>
+<span class="org-string">1928</span>
+<span class="org-string">1930</span>
+<span class="org-string">1931</span>
+<span class="org-string">1935</span>
+<span class="org-string">1929</span>
+<span class="org-string">1928</span>
+<span class="org-string">1930</span>
+<span class="org-string">1942</span>
+<span class="org-string">1929</span>
+<span class="org-string">1932</span>
+<span class="org-string">1915</span>
+<span class="org-string">1914</span>
+<span class="org-string">1888</span>
+<span class="org-string">1886</span>
+<span class="org-string">1896</span>
+<span class="org-string">1898</span>
+<span class="org-string">1886</span>
+<span class="org-string">1885</span>
+<span class="org-string">1897</span>
+<span class="org-string">1899</span>
+<span class="org-string">1910</span>
+<span class="org-string">1919</span>
+<span class="org-string">1921</span>
+<span class="org-string">1911</span>
+<span class="org-string">1904</span>
+<span class="org-string">1905</span>
+<span class="org-string">1897</span>
+<span class="org-string">1913</span>
+<span class="org-string">1925</span>
+<span class="org-string">1930</span>
+<span class="org-string">1938</span>
+<span class="org-string">1944</span>
+<span class="org-string">1946</span>
+<span class="org-string">1966</span>
+<span class="org-string">1979</span>
+<span class="org-string">1981</span>
+<span class="org-string">1984</span>
+<span class="org-string">1982</span>
+<span class="org-string">1985</span>
+<span class="org-string">2000</span>
+<span class="org-string">1992</span>
+<span class="org-string">1991</span>
+<span class="org-string">2007</span>
+<span class="org-string">2006</span>
+<span class="org-string">2008</span>
+<span class="org-string">2009</span>
+<span class="org-string">2005</span>
+<span class="org-string">2012</span>
+<span class="org-string">2008</span>
+<span class="org-string">2009</span>
+<span class="org-string">2010</span>
+<span class="org-string">2003</span>
+<span class="org-string">2007</span>
+<span class="org-string">2017</span>
+<span class="org-string">2016</span>
+<span class="org-string">2030</span>
+<span class="org-string">2028</span>
+<span class="org-string">2030</span>
+<span class="org-string">2035</span>
+<span class="org-string">2036</span>
+<span class="org-string">2033</span>
+<span class="org-string">2031</span>
+<span class="org-string">2037</span>
+<span class="org-string">2044</span>
+<span class="org-string">2042</span>
+<span class="org-string">2040</span>
+<span class="org-string">2038</span>
+<span class="org-string">2040</span>
+<span class="org-string">2031</span>
+<span class="org-string">2020</span>
+<span class="org-string">2043</span>
+<span class="org-string">2044</span>
+<span class="org-string">2061</span>
+<span class="org-string">2063</span>
+<span class="org-string">2044</span>
+<span class="org-string">2041</span>
+<span class="org-string">2043</span>
+<span class="org-string">2044</span>
+<span class="org-string">2071</span>
+<span class="org-string">2075</span>
+<span class="org-string">2081</span>
+<span class="org-string">2071</span>
+<span class="org-string">2077</span>
+<span class="org-string">2079</span>
+<span class="org-string">2080</span>
+<span class="org-string">2056</span>
+<span class="org-string">2047</span>
+<span class="org-string">2046</span>
+<span class="org-string">2060</span>
+<span class="org-string">2059</span>
+<span class="org-string">2061</span>
+<span class="org-string">2062</span>
+<span class="org-string">2082</span>
+<span class="org-string">2084</span>
+<span class="org-string">2085</span>
+<span class="org-string">2079</span>
+<span class="org-string">2090</span>
+<span class="org-string">2080</span>
+<span class="org-string">2079</span>
+<span class="org-string">2081</span>
+<span class="org-string">2071</span>
+<span class="org-string">2073</span>
+<span class="org-string">2074</span>
+<span class="org-string">2078</span>
+<span class="org-string">2086</span>
+<span class="org-string">2094</span>
+<span class="org-string">2112</span>
+<span class="org-string">2129</span>
+<span class="org-string">2125</span>
+<span class="org-string">2136</span>
+<span class="org-string">2138</span>
+<span class="org-string">2144</span>
+<span class="org-string">2142</span>
+<span class="org-string">2140</span>
+<span class="org-string">2158</span>
+<span class="org-string">2161</span>
+<span class="org-string">2149</span>
+<span class="org-string">2158</span>
+<span class="org-string">2168</span>
+<span class="org-string">2169</span>
+<span class="org-string">2165</span>
+<span class="org-string">2154</span>
+<span class="org-string">2168</span>
+<span class="org-string">2170</span>
+<span class="org-string">2163</span>
+<span class="org-string">2178</span>
+<span class="org-string">2186</span>
+<span class="org-string">2182</span>
+<span class="org-string">2189</span>
+<span class="org-string">2193</span>
+<span class="org-string">2204</span>
+<span class="org-string">2206</span>
+<span class="org-string">2219</span>
+<span class="org-string">2221</span>
+<span class="org-string">2219</span>
+<span class="org-string">2237</span>
+<span class="org-string">2247</span>
+<span class="org-string">2248</span>
+<span class="org-string">2246</span>
+<span class="org-string">2245</span>
+<span class="org-string">2269</span>
+<span class="org-string">2262</span>
+<span class="org-string">2263</span>
+<span class="org-string">2267</span>
+<span class="org-string">2271</span>
+<span class="org-string">2268</span>
+<span class="org-string">2270</span>
+<span class="org-string">2300</span>
+<span class="org-string">2305</span>
+<span class="org-string">2310</span>
+<span class="org-string">2309</span>
+<span class="org-string">2303</span>
+<span class="org-string">2306</span>
+<span class="org-string">2307</span>
+<span class="org-string">2308</span>
+<span class="org-string">2302</span>
+<span class="org-string">2301</span>
+<span class="org-string">2321</span>
+<span class="org-string">2311</span>
+<span class="org-string">2312</span>
+<span class="org-string">2314</span>
+<span class="org-string">2320</span>
+<span class="org-string">2319</span>
+<span class="org-string">2321</span>
+<span class="org-string">2326</span>
+<span class="org-string">2327</span>
+<span class="org-string">2328</span>
+<span class="org-string">2327</span>
+<span class="org-string">2311</span>
+<span class="org-string">2315</span>
+<span class="org-string">2314</span>
+<span class="org-string">2317</span>
+<span class="org-string">2327</span>
+<span class="org-string">2326</span>
+<span class="org-string">2320</span>
+<span class="org-string">2321</span>
+<span class="org-string">2319</span>
+<span class="org-string">2311</span>
+<span class="org-string">2304</span>
+<span class="org-string">2306</span>
+<span class="org-string">2314</span>
+<span class="org-string">2318</span>
+<span class="org-string">2319</span>
+<span class="org-string">2321</span>
+<span class="org-string">2307</span>
+<span class="org-string">2286</span>
+<span class="org-string">2289</span>
+<span class="org-string">2290</span>
+<span class="org-string">2294</span>
+<span class="org-string">2293</span>
+<span class="org-string">2294</span>
+<span class="org-string">2291</span>
+<span class="org-string">2290</span>
+<span class="org-string">2317</span>
+<span class="org-string">2322</span>
+<span class="org-string">2323</span>
+<span class="org-string">2329</span>
+<span class="org-string">2350</span>
+<span class="org-string">2356</span>
+<span class="org-string">2361</span>
+<span class="org-string">2376</span>
+<span class="org-string">2375</span>
+<span class="org-string">2379</span>
+<span class="org-string">2353</span>
+<span class="org-string">2347</span>
+<span class="org-string">2339</span>
+<span class="org-string">2340</span>
+<span class="org-string">2331</span>
+<span class="org-string">2332</span>
+<span class="org-string">2330</span>
+<span class="org-string">2317</span>
+<span class="org-string">2293</span>
+<span class="org-string">2296</span>
+<span class="org-string">2301</span>
+<span class="org-string">2289</span>
+<span class="org-string">2281</span>
+<span class="org-string">2280</span>
+<span class="org-string">2293</span>
+<span class="org-string">2296</span>
+<span class="org-string">2295</span>
+<span class="org-string">2302</span>
+<span class="org-string">2307</span>
+<span class="org-string">2337</span>
+<span class="org-string">2327</span>
+<span class="org-string">2344</span>
+<span class="org-string">2331</span>
+<span class="org-string">2341</span>
+<span class="org-string">2344</span>
+<span class="org-string">2335</span>
+<span class="org-string">2345</span>
+<span class="org-string">2344</span>
+<span class="org-string">2348</span>
+<span class="org-string">2352</span>
+<span class="org-string">2351</span>
+<span class="org-string">2340</span>
+<span class="org-string">2331</span>
+<span class="org-string">2332</span>
+<span class="org-string">2327</span>
+<span class="org-string">2316</span>
+<span class="org-string">2334</span>
+<span class="org-string">2335</span>
+<span class="org-string">2336</span>
+<span class="org-string">2343</span>
+<span class="org-string">2344</span>
+<span class="org-string">2349</span>
+<span class="org-string">2345</span>
+<span class="org-string">2353</span>
+<span class="org-string">2338</span>
+<span class="org-string">2339</span>
+<span class="org-string">2332</span>
+<span class="org-string">2330</span>
+<span class="org-string">2340</span>
+<span class="org-string">2337</span>
+<span class="org-string">2347</span>
+<span class="org-string">2345</span>
+<span class="org-string">2351</span>
+<span class="org-string">2352</span>
+<span class="org-string">2344</span>
+<span class="org-string">2350</span>
+<span class="org-string">2351</span>
+<span class="org-string">2356</span>
+<span class="org-string">2371</span>
+<span class="org-string">2370</span>
+<span class="org-string">2384</span>
+<span class="org-string">2383</span>
+<span class="org-string">2372</span>
+<span class="org-string">2382</span>
+<span class="org-string">2375</span>
+<span class="org-string">2376</span>
+<span class="org-string">2353</span>
+<span class="org-string">2360</span>
+<span class="org-string">2366</span>
+<span class="org-string">2344</span>
+<span class="org-string">2346</span>
+<span class="org-string">2365</span>
+<span class="org-string">2371</span>
+<span class="org-string">2378</span>
+<span class="org-string">2362</span>
+<span class="org-string">2354</span>
+<span class="org-string">2361</span>
+<span class="org-string">2356</span>
+<span class="org-string">2357</span>
+<span class="org-string">2358</span>
+<span class="org-string">2315</span>
+<span class="org-string">2324</span>
+<span class="org-string">2310</span>
+<span class="org-string">2311</span>
+<span class="org-string">2312</span>
+<span class="org-string">2291</span>
+<span class="org-string">2296</span>
+<span class="org-string">2295</span>
+<span class="org-string">2307</span>
+<span class="org-string">2304</span>
+<span class="org-string">2303</span>
+<span class="org-string">2308</span>
+<span class="org-string">2309</span>
+<span class="org-string">2299</span>
+<span class="org-string">2319</span>
+<span class="org-string">2322</span>
+<span class="org-string">2325</span>
+<span class="org-string">2327</span>
+<span class="org-string">2326</span>
+<span class="org-string">2319</span>
+<span class="org-string">2322</span>
+<span class="org-string">2319</span>
+<span class="org-string">2320</span>
+<span class="org-string">2322</span>
+<span class="org-string">2321</span>
+<span class="org-string">2323</span>
+<span class="org-string">2318</span>
+<span class="org-string">2325</span>
+<span class="org-string">2326</span>
+<span class="org-string">2312</span>
+<span class="org-string">2313</span>
+<span class="org-string">2316</span>
+<span class="org-string">2317</span>
+<span class="org-string">2338</span>
+<span class="org-string">2349</span>
+<span class="org-string">2347</span>
+<span class="org-string">2351</span>
+<span class="org-string">2352</span>
+<span class="org-string">2333</span>
+<span class="org-string">2340</span>
+<span class="org-string">2365</span>
+<span class="org-string">2357</span>
+<span class="org-string">2362</span>
+<span class="org-string">2372</span>
+<span class="org-string">2375</span>
+<span class="org-string">2376</span>
+<span class="org-string">2392</span>
+<span class="org-string">2395</span>
+<span class="org-string">2399</span>
+<span class="org-string">2407</span>
+<span class="org-string">2396</span>
+<span class="org-string">2391</span>
+<span class="org-string">2394</span>
+<span class="org-string">2401</span>
+<span class="org-string">2406</span>
+<span class="org-string">2399</span>
+<span class="org-string">2409</span>
+<span class="org-string">2421</span>
+<span class="org-string">2423</span>
+<span class="org-string">2400</span>
+<span class="org-string">2398</span>
+<span class="org-string">2399</span>
+<span class="org-string">2393</span>
+<span class="org-string">2392</span>
+<span class="org-string">2390</span>
+<span class="org-string">2382</span>
+<span class="org-string">2381</span>
+<span class="org-string">2379</span>
+<span class="org-string">2381</span>
+<span class="org-string">2390</span>
+<span class="org-string">2387</span>
+<span class="org-string">2389</span>
+<span class="org-string">2391</span>
+<span class="org-string">2393</span>
+<span class="org-string">2394</span>
+<span class="org-string">2397</span>
+<span class="org-string">2398</span>
+<span class="org-string">2399</span>
+<span class="org-string">2396</span>
+<span class="org-string">2394</span>
+<span class="org-string">2392</span>
+<span class="org-string">2400</span>
+<span class="org-string">2396</span>
+<span class="org-string">2397</span>
+<span class="org-string">2425</span>
+<span class="org-string">2416</span>
+<span class="org-string">2442</span>
+<span class="org-string">2443</span>
+<span class="org-string">2445</span>
+<span class="org-string">2442</span>
+<span class="org-string">2445</span>
+<span class="org-string">2434</span>
+<span class="org-string">2439</span>
+<span class="org-string">2440</span>
+<span class="org-string">2448</span>
+<span class="org-string">2447</span>
+<span class="org-string">2451</span>
+<span class="org-string">2442</span>
+<span class="org-string">2446</span>
+<span class="org-string">2451</span>
+<span class="org-string">2452</span>
+<span class="org-string">2453</span>
+<span class="org-string">2463</span>
+<span class="org-string">2460</span>
+<span class="org-string">2461</span>
+<span class="org-string">2466</span>
+<span class="org-string">2450</span>
+<span class="org-string">2460</span>
+<span class="org-string">2464</span>
+<span class="org-string">2465</span>
+<span class="org-string">2466</span>
+<span class="org-string">2468</span>
+<span class="org-string">2470</span>
+<span class="org-string">2477</span>
+<span class="org-string">2473</span>
+<span class="org-string">2469</span>
+<span class="org-string">2471</span>
+<span class="org-string">2476</span>
+<span class="org-string">2475</span>
+<span class="org-string">2476</span>
+<span class="org-string">2488</span>
+<span class="org-string">2489</span>
+<span class="org-string">2491</span>
+<span class="org-string">2490</span>
+<span class="org-string">2515</span>
+<span class="org-string">2533</span>
+<span class="org-string">2531</span>
+<span class="org-string">2532</span>
+<span class="org-string">2531</span>
+<span class="org-string">2533</span>
+<span class="org-string">2537</span>
+<span class="org-string">2539</span>
+<span class="org-string">2537</span>
+<span class="org-string">2533</span>
+<span class="org-string">2532</span>
+<span class="org-string">2529</span>
+<span class="org-string">2536</span>
+<span class="org-string">2535</span>
+<span class="org-string">2518</span>
+<span class="org-string">2520</span>
+<span class="org-string">2519</span>
+<span class="org-string">2517</span>
+<span class="org-string">2548</span>
+<span class="org-string">2549</span>
+<span class="org-string">2520</span>
+<span class="org-string">2521</span>
+<span class="org-string">2523</span>
+<span class="org-string">2546</span>
+<span class="org-string">2538</span>
+<span class="org-string">2543</span>
+<span class="org-string">2552</span>
+<span class="org-string">2561</span>
+<span class="org-string">2579</span>
+<span class="org-string">2581</span>
+<span class="org-string">2564</span>
+<span class="org-string">2567</span>
+<span class="org-string">2569</span>
+<span class="org-string">2570</span>
+<span class="org-string">2569</span>
+<span class="org-string">2577</span>
+<span class="org-string">2586</span>
+<span class="org-string">2587</span>
+<span class="org-string">2584</span>
+<span class="org-string">2601</span>
+<span class="org-string">2572</span>
+<span class="org-string">2579</span>
+<span class="org-string">2593</span>
+<span class="org-string">2586</span>
+<span class="org-string">2606</span>
+<span class="org-string">2604</span>
+<span class="org-string">2606</span>
+<span class="org-string">2600</span>
+<span class="org-string">2599</span>
+<span class="org-string">2602</span>
+<span class="org-string">2603</span>
+<span class="org-string">2621</span>
+<span class="org-string">2622</span>
+<span class="org-string">2623</span>
+<span class="org-string">2622</span>
+<span class="org-string">2623</span>
+<span class="org-string">2634</span>
+<span class="org-string">2646</span>
+<span class="org-string">2649</span>
+<span class="org-string">2677</span>
+<span class="org-string">2678</span>
+<span class="org-string">2679</span>
+<span class="org-string">2640</span>
+<span class="org-string">2642</span>
+<span class="org-string">2640</span>
+<span class="org-string">2648</span>
+<span class="org-string">2649</span>
+<span class="org-string">2639</span>
+<span class="org-string">2633</span>
+<span class="org-string">2636</span>
+<span class="org-string">2635</span>
+<span class="org-string">2642</span>
+<span class="org-string">2644</span>
+<span class="org-string">2643</span>
+<span class="org-string">2644</span>
+<span class="org-string">2636</span>
+<span class="org-string">2641</span>
+<span class="org-string">2642</span>
+<span class="org-string">2648</span>
+<span class="org-string">2647</span>
+<span class="org-string">2646</span>
+<span class="org-string">2658"</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>--> 2021-12-11 00:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a></p>
+<p class="author">Author: Nan0Scho1ar</p>
+<p class="date">Created: 2021-12-11 Sat 00:04</p>
+</div>
+</div>
+</body>
+</html>
