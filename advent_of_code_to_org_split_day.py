@@ -94,13 +94,14 @@ def generate_org_file(year, day):
     inputs.append(new_input(year, day, name))
     cmd = ["org_header", f"Day {day}:{name}", f"day{day}.html", "https://github.com/Nan0Scho1ar/adventofcode"]
     output = subprocess.run(cmd, check=True, stdout=subprocess.PIPE, universal_newlines=True)
-    return output.stdout + "\n" + "\n".join(solutions) + "\n" + "\n".join(inputs)
+    return (output.stdout + "\n" + "\n".join(solutions) + "\n" + "\n".join(inputs), name)
 
 stdin = sys.argv[1].split("-")
 year = stdin[0]
 day = stdin[1]
+filelines, name = generate_org_file(year, day)
 with open("README.org", "a") as f:
-    f.write(f"[[file:./{year}/day{day}.org][{year}-{day}]]\n")
+    f.write(f"[[file:./{year}/day{day}.org][Day {day}: {name}]]\n")
 
 with open(f"{year}/day{day}.org", "a") as f:
-    f.write(generate_org_file(year, day))
+    f.write(filelines)
