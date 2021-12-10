@@ -101,7 +101,7 @@ year = stdin[0]
 day = stdin[1]
 filelines, name = generate_org_file(year, day)
 with open("README.org", "a") as f:
-    f.write(f"[[file:./{year}/day{day}.org][Day {day}: {name}]]\n")
+    f.write(f"- [[file:./{year}/day{day}.org][Day {day}: {name}]]\n")
 
 with open(f"{year}/day{day}.org", "a") as f:
     f.write(filelines)
