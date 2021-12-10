@@ -92,7 +92,7 @@ def generate_org_file(year, day):
     desc = "\n".join(page_text.split("\n")[1:])
     solutions.append(new_day(year, day, name, desc))
     inputs.append(new_input(year, day, name))
-    cmd = ["org_header", f"Day {day}:{name}", f"Day{day}.html", "https://github.com/Nan0Scho1ar/adventofcode"]
+    cmd = ["org_header", f"Day {day}:{name}", f"day{day}.html", "https://github.com/Nan0Scho1ar/adventofcode"]
     output = subprocess.run(cmd, check=True, stdout=subprocess.PIPE, universal_newlines=True)
     return output.stdout + "\n" + "\n".join(solutions) + "\n" + "\n".join(inputs)
 
