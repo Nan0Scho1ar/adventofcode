@@ -68,21 +68,34 @@ Find a way to simulate lanternfish. ~How many lanternfish would there be after 8
  
 ** TODO Racket
 #+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rkt :eval never-export :results output
-(define (simulate fish duration)
-  (cond
-    [(= duration 0) fish]
-    [(= fish 0) (list (simulate 0 (- duration 6)) (simulate 0 (- duration 0)))]
-    [else (simulate 0 (- duration fish))]))
+;; Shift the entire list left putting the first elem at the end
+(define (lshift lst)
+  (append (rest lst) (list (first lst))))
 
-(define (simulate-pool data duration)
-  (length
-   (flatten
-    (for/list ([d (string-split data ",")])
-      (simulate (string->number d) duration)))))
+;; Add val to the element at a given index of a list
+(define (add-at-idx lst idx val)
+  (list-set lst idx (+ val (list-ref lst idx))))
+
+;; Convert the string of fish ages into a list of days
+(define (format-data data)
+  (for/fold ([days '(0 0 0 0 0 0 0 0 0)])
+            ([fish (map string->number (string-split data ","))])
+    (add-at-idx days fish 1)))
+
+;; Simulate the pool of fishes for a given number of days
+(define (simulate-pool data days-remaining)
+  (for/fold ([pool (format-data data)]
+             #:result (apply + pool))
+            ([i (range days-remaining 0 -1)])
+    (lshift (add-at-idx pool 7 (first pool)))))
 
 (simulate-pool sample_data 80)
 (simulate-pool input_data 80)
 #+end_src
+
+#+RESULTS:
+: 5934
+: 372300
 
 ** Python
 #+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.py :eval never-export :results output
@@ -133,42 +146,30 @@ After 256 days in the example above, there would be a total of 26984457539 lante
 How many lanternfish would there be after 256 days?
 ** TODO Racket
 #+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rkt :eval never-export :results output
+;; Shift the entire list left putting the first elem at the end
+(define (lshift lst)
+  (append (rest lst) (list (first lst))))
 
-;; 8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                 8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                             8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                 8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                         8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                             8 7 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                             8 7 6 5 4 3 2 1
-;;                                                 8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                                     8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                                         8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                                         8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
-;;                                                         8 7 6 5 4 3 2 1 6 5 4 3 2 1 6 5 4 3 2 1
+;; Add val to the element at a given index of a list
+(define (add-at-idx lst idx val)
+  (list-set lst idx (+ val (list-ref lst idx))))
 
+;; Convert the string of fish ages into a list of days
 (define (format-data data)
-  (for/list ([num (string-split data ",")])
-    (string->number num)))
+  (for/fold ([days '(0 0 0 0 0 0 0 0 0)])
+            ([fish (map string->number (string-split data ","))])
+    (add-at-idx days fish 1)))
 
-(define (offspring fish duration)
-  (let ([q (quotient duration 6)])
-    (+ 1
-       (for/sum ([i (range q)])
-         (offspring 8 (- duration 8))))))
-
-(define (simulate-pool data duration)
-  (for/list ([d data])
-    (offspring d duration)))
-
-(simulate-pool (format-data sample_data) 80)
-;; (simulate-pool (format-data input_data) 80)
-
-
+;; Simulate the pool of fishes for a given number of days
+(define (simulate-pool data days-remaining)
+  (for/fold ([pool (format-data data)]
+             #:result (apply + pool))
+            ([i (range days-remaining 0 -1)])
+    (lshift (add-at-idx pool 7 (first pool)))))
 #+end_src
 
 #+RESULTS:
-: '(71563610 71563610 71563610 71563610 71563610)
+: '(3 4 3 1 2)
 
 ** Python
 #+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.py :eval never-export :results output

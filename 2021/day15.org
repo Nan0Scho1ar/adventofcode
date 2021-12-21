@@ -1,0 +1,118 @@
+#+TITLE: Day 15: Chiton
+#+STARTUP: inlineimages
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: day15.html
+#+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
+#+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
+#+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
+#+HTML_HEAD:
+#+begin_export html
+<a href="https://github.com/Nan0Scho1ar/adventofcode"
+   style="font-family: 'Open Sans'; background-image: none; color: inherit;
+          text-decoration: none; position: relative; top: clamp(-26px, calc(1280px - 100vw), 0px); opacity: 0.7;">
+   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOEMwIDExLjU0IDIuMjkgMTQuNTMgNS40NyAxNS41OUM1Ljg3IDE1LjY2IDYuMDIgMTUuNDIgNi4wMiAxNS4yMUM2LjAyIDE1LjAyIDYuMDEgMTQuMzkgNi4wMSAxMy43MkM0IDE0LjA5IDMuNDggMTMuMjMgMy4zMiAxMi43OEMzLjIzIDEyLjU1IDIuODQgMTEuODQgMi41IDExLjY1QzIuMjIgMTEuNSAxLjgyIDExLjEzIDIuNDkgMTEuMTJDMy4xMiAxMS4xMSAzLjU3IDExLjcgMy43MiAxMS45NEM0LjQ0IDEzLjE1IDUuNTkgMTIuODEgNi4wNSAxMi42QzYuMTIgMTIuMDggNi4zMyAxMS43MyA2LjU2IDExLjUzQzQuNzggMTEuMzMgMi45MiAxMC42NCAyLjkyIDcuNThDMi45MiA2LjcxIDMuMjMgNS45OSAzLjc0IDUuNDNDMy42NiA1LjIzIDMuMzggNC40MSAzLjgyIDMuMzFDMy44MiAzLjMxIDQuNDkgMy4xIDYuMDIgNC4xM0M2LjY2IDMuOTUgNy4zNCAzLjg2IDguMDIgMy44NkM4LjcgMy44NiA5LjM4IDMuOTUgMTAuMDIgNC4xM0MxMS41NSAzLjA5IDEyLjIyIDMuMzEgMTIuMjIgMy4zMUMxMi42NiA0LjQxIDEyLjM4IDUuMjMgMTIuMyA1LjQzQzEyLjgxIDUuOTkgMTMuMTIgNi43IDEzLjEyIDcuNThDMTMuMTIgMTAuNjUgMTEuMjUgMTEuMzMgOS40NyAxMS41M0M5Ljc2IDExLjc4IDEwLjAxIDEyLjI2IDEwLjAxIDEzLjAxQzEwLjAxIDE0LjA4IDEwIDE0Ljk0IDEwIDE1LjIxQzEwIDE1LjQyIDEwLjE1IDE1LjY3IDEwLjU1IDE1LjU5QzEzLjcxIDE0LjUzIDE2IDExLjUzIDE2IDhDMTYgMy41OCAxMi40MiAwIDggMFoiIHRyYW5zZm9ybT0ic2NhbGUoNjQpIiBmaWxsPSIjMUIxRjIzIi8+Cjwvc3ZnPgo="
+       class="invertible" alt="GitHub Octicon"
+       style="height: 1em; position: relative; top: 0.1em;">
+  View on GitHub</a>&ensp;
+#+end_export
+
+* Part 1
+** Description
+The cavern is large, but has a very low ceiling, restricting your motion to two dimensions. The shape of the cavern resembles a square; a quick scan of chiton density produces a map of ~risk level~ throughout the cave (your puzzle input). For example:
+
+#+begin_example
+1163751742
+1381373672
+2136511328
+3694931569
+7463417111
+1319128137
+1359912421
+3125421639
+1293138521
+2311944581
+
+#+end_example
+
+You start in the top left position, your destination is the bottom right position, and you <span title="Can't go diagonal until we can repair the caterpillar unit. Could be the liquid helium or the superconductors.">cannot move diagonally</span>. The number at each position is its ~risk level~; to determine the total risk of an entire path, add up the risk levels of each position you ~enter~ (that is, don't count the risk level of your starting position unless you enter it; leaving it adds no risk to your total).
+Your goal is to find a path with the ~lowest total risk~. In this example, a path with the lowest total risk is highlighted here:
+
+#+begin_example
+~1~163751742
+~1~381373672
+~2136511~328
+369493~15~69
+7463417~1~11
+1319128~13~7
+13599124~2~1
+31254216~3~9
+12931385~21~
+231194458~1~
+
+#+end_example
+
+The total risk of this path is ~40~ (the starting position is never entered, so its risk is not counted).
+~What is the lowest total risk of any path from the top left to the bottom right?~
+ 
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-1.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Part 2
+** Description
+Complete part 1 before continuing
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-15 :var input_data=input-2021-15 :tangle /tmp/advent_of_code/aoc2021-15-2.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Inputs
+** Sample
+#+NAME: sample-2021-15
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src
+** Input
+#+NAME: input-2021-15
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src

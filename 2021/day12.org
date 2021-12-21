@@ -1,0 +1,193 @@
+#+TITLE: Day 12: Passage Pathing
+#+STARTUP: inlineimages
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: day12.html
+#+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
+#+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
+#+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
+#+HTML_HEAD:
+#+begin_export html
+<a href="https://github.com/Nan0Scho1ar/adventofcode"
+   style="font-family: 'Open Sans'; background-image: none; color: inherit;
+          text-decoration: none; position: relative; top: clamp(-26px, calc(1280px - 100vw), 0px); opacity: 0.7;">
+   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOEMwIDExLjU0IDIuMjkgMTQuNTMgNS40NyAxNS41OUM1Ljg3IDE1LjY2IDYuMDIgMTUuNDIgNi4wMiAxNS4yMUM2LjAyIDE1LjAyIDYuMDEgMTQuMzkgNi4wMSAxMy43MkM0IDE0LjA5IDMuNDggMTMuMjMgMy4zMiAxMi43OEMzLjIzIDEyLjU1IDIuODQgMTEuODQgMi41IDExLjY1QzIuMjIgMTEuNSAxLjgyIDExLjEzIDIuNDkgMTEuMTJDMy4xMiAxMS4xMSAzLjU3IDExLjcgMy43MiAxMS45NEM0LjQ0IDEzLjE1IDUuNTkgMTIuODEgNi4wNSAxMi42QzYuMTIgMTIuMDggNi4zMyAxMS43MyA2LjU2IDExLjUzQzQuNzggMTEuMzMgMi45MiAxMC42NCAyLjkyIDcuNThDMi45MiA2LjcxIDMuMjMgNS45OSAzLjc0IDUuNDNDMy42NiA1LjIzIDMuMzggNC40MSAzLjgyIDMuMzFDMy44MiAzLjMxIDQuNDkgMy4xIDYuMDIgNC4xM0M2LjY2IDMuOTUgNy4zNCAzLjg2IDguMDIgMy44NkM4LjcgMy44NiA5LjM4IDMuOTUgMTAuMDIgNC4xM0MxMS41NSAzLjA5IDEyLjIyIDMuMzEgMTIuMjIgMy4zMUMxMi42NiA0LjQxIDEyLjM4IDUuMjMgMTIuMyA1LjQzQzEyLjgxIDUuOTkgMTMuMTIgNi43IDEzLjEyIDcuNThDMTMuMTIgMTAuNjUgMTEuMjUgMTEuMzMgOS40NyAxMS41M0M5Ljc2IDExLjc4IDEwLjAxIDEyLjI2IDEwLjAxIDEzLjAxQzEwLjAxIDE0LjA4IDEwIDE0Ljk0IDEwIDE1LjIxQzEwIDE1LjQyIDEwLjE1IDE1LjY3IDEwLjU1IDE1LjU5QzEzLjcxIDE0LjUzIDE2IDExLjUzIDE2IDhDMTYgMy41OCAxMi40MiAwIDggMFoiIHRyYW5zZm9ybT0ic2NhbGUoNjQpIiBmaWxsPSIjMUIxRjIzIi8+Cjwvc3ZnPgo="
+       class="invertible" alt="GitHub Octicon"
+       style="height: 1em; position: relative; top: 0.1em;">
+  View on GitHub</a>&ensp;
+#+end_export
+
+* Part 1
+** Description
+Fortunately, the sensors are still mostly working, and so you build a rough map of the remaining caves (your puzzle input). For example:
+
+#+begin_example
+start-A
+start-b
+A-c
+A-b
+b-d
+A-end
+b-end
+
+#+end_example
+
+This is a list of how all of the caves are connected. You start in the cave named start, and your destination is the cave named end. An entry like b-d means that cave b is connected to cave d - that is, you can move between them.
+So, the above cave system looks roughly like this:
+
+#+begin_example
+    start
+    /   \
+c--A-----b--d
+    \   /
+     end
+
+#+end_example
+
+Your goal is to find the number of distinct ~paths~ that start at start, end at end, and don't visit small caves more than once. There are two types of caves: ~big~ caves (written in uppercase, like A) and ~small~ caves (written in lowercase, like b). It would be a waste of time to visit any small cave more than once, but big caves are large enough that it might be worth visiting them multiple times. So, all paths you find should ~visit small caves at most once~, and can ~visit big caves any number of times~.
+Given these rules, there are ~10~ paths through this example cave system:
+
+#+begin_example
+start,A,b,A,c,A,end
+start,A,b,A,end
+start,A,b,end
+start,A,c,A,b,A,end
+start,A,c,A,b,end
+start,A,c,A,end
+start,A,end
+start,b,A,c,A,end
+start,b,A,end
+start,b,end
+
+#+end_example
+
+(Each line in the above list corresponds to a single path; the caves visited by that path are listed in the order they are visited and separated by commas.)
+Note that in this cave system, cave d is never visited by any path: to do so, cave b would need to be visited twice (once on the way to cave d and a second time when returning from cave d), and since cave b is small, this is not allowed.
+Here is a slightly larger example:
+
+#+begin_example
+dc-end
+HN-start
+start-kj
+dc-start
+dc-HN
+LN-dc
+HN-end
+kj-sa
+kj-HN
+kj-dc
+
+#+end_example
+
+The 19 paths through it are as follows:
+
+#+begin_example
+start,HN,dc,HN,end
+start,HN,dc,HN,kj,HN,end
+start,HN,dc,end
+start,HN,dc,kj,HN,end
+start,HN,end
+start,HN,kj,HN,dc,HN,end
+start,HN,kj,HN,dc,end
+start,HN,kj,HN,end
+start,HN,kj,dc,HN,end
+start,HN,kj,dc,end
+start,dc,HN,end
+start,dc,HN,kj,HN,end
+start,dc,end
+start,dc,kj,HN,end
+start,kj,HN,dc,HN,end
+start,kj,HN,dc,end
+start,kj,HN,end
+start,kj,dc,HN,end
+start,kj,dc,end
+
+#+end_example
+
+Finally, this even larger example has 226 paths through it:
+
+#+begin_example
+fs-end
+he-DX
+fs-he
+start-DX
+pj-DX
+end-zg
+zg-sl
+zg-pj
+pj-he
+RW-he
+fs-DX
+pj-RW
+zg-RW
+start-pj
+he-WI
+zg-he
+pj-fs
+start-RW
+
+#+end_example
+
+~How many paths through this cave system are there that visit small caves at most once?~
+ 
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-1.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Part 2
+** Description
+Complete part 1 before continuing
+** TODO Racket
+#+begin_src racket :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.rkt :eval never-export :results output 
+(displayln "TODO")
+#+end_src
+** TODO Python
+#+begin_src python :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.py :eval never-export :results output 
+print("TODO")
+#+end_src
+** TODO Rust
+#+begin_src rust :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.rs :eval never-export :results output 
+fn main() {println!("TODO");}
+#+end_src
+** TODO Bash
+#+begin_src bash :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.sh :eval never-export :results output 
+echo "TODO"
+#+end_src
+** TODO Awk
+#+begin_src awk :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.awk :eval never-export :results output 
+BEGIN {print "TODO"}
+#+end_src
+** TODO Perl
+#+begin_src perl :var sample_data=sample-2021-12 :var input_data=input-2021-12 :tangle /tmp/advent_of_code/aoc2021-12-2.pl :eval never-export :results output 
+print("TODO\n")
+#+end_src
+* Inputs
+** Sample
+#+NAME: sample-2021-12
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src
+** Input
+#+NAME: input-2021-12
+#+begin_src bash :results output :cache yes :eval never-export
+echo "TODO"
+#+end_src

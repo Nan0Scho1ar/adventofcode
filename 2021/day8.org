@@ -87,7 +87,7 @@ Because the digits 1, 4, 7, and 8 each use a unique number of segments, you shou
  
 ** TODO Racket
 #+begin_src racket :var sample_data=sample-2021-08 :var input_data=input-2021-08 :tangle /tmp/advent_of_code/aoc2021-08-1.rkt :eval never-export :results output 
-(displayln "TODO")
+(define (count-digits)
 #+end_src
 ** TODO Python
 #+begin_src python :var sample_data=sample-2021-08 :var input_data=input-2021-08 :tangle /tmp/advent_of_code/aoc2021-08-1.py :eval never-export :results output 
@@ -140,7 +140,16 @@ print("TODO\n")
 ** Sample
 #+NAME: sample-2021-08
 #+begin_src bash :results output :cache yes :eval never-export
-echo "TODO"
+echo "be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
+edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc
+fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef | cg cg fdcagb cbg
+fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega | efabcd cedba gadfec cb
+aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga | gecf egdcabf bgf bfgea
+fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf | gebdcfa ecba ca fadegcb
+dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf | cefg dcbef fcge gbcadfe
+bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd | ed bcgafe cdgba cbgef
+egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb
+gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce"
 #+end_src
 ** Input
 #+NAME: input-2021-08
