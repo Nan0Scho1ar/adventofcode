@@ -111,10 +111,10 @@ def simulate(data, time):
     fishes = data.popleft()
     data.append(fishes) # Babies
     data[6] += fishes   # Reset parents
-    return data if time == 1 else simulate(data, time - 1)
+    return sum(data) if time == 1 else simulate(data, time - 1)
 
-sum(simulate(str_to_deque(sample_data), 80))
-sum(simulate(str_to_deque(input_data), 80))
+print(simulate(str_to_deque(sample_data), 80))
+print(simulate(str_to_deque(input_data), 80))
 #+end_src
 
 #+RESULTS:
@@ -167,13 +167,13 @@ How many lanternfish would there be after 256 days?
             ([i (range days-remaining 0 -1)])
     (lshift (add-at-idx pool 7 (first pool)))))
 
-(simulate-pool sample_data 255)
-(simulate-pool input_data 255)
+(simulate-pool sample_data 256)
+(simulate-pool input_data 256)
 #+end_src
 
 #+RESULTS:
-: 24654746147
-: 1525884027492
+: 26984457539
+: 1675781200288
 
 ** Python
 #+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.py :eval never-export :results output
@@ -189,10 +189,10 @@ def simulate(data, time):
     fishes = data.popleft()
     data.append(fishes) # Babies
     data[6] += fishes   # Reset parents
-    return data if time == 1 else simulate(data, time - 1)
+    return sum(data) if time == 1 else simulate(data, time - 1)
 
-sum(simulate(str_to_deque(sample_data), 256))
-sum(simulate(str_to_deque(input_data), 256))
+print(simulate(str_to_deque(sample_data), 256))
+print(simulate(str_to_deque(input_data), 256))
 #+end_src
 
 #+RESULTS:
