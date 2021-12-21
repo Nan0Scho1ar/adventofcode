@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-22 Wed 01:04 -->
+<!-- 2021-12-22 Wed 01:20 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 4: Giant Squid</title>
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Green fountain pen nib" />
 <meta property="og:article:author:first_name" content="Nan0Scho1ar" />
 <meta property="og:article:published_time" content="2021-12-22T00:00:00+1000" />
-<meta property="og:article:modified_time" content="2021-12-22T01:02:44+1000" />
+<meta property="og:article:modified_time" content="2021-12-22T01:20:18+1000" />
 <script>
 // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
 function copyPreToClipbord(btn) {
@@ -70,40 +70,40 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2
 </head>
 <body>
 <input type='checkbox' id='theme-switch'><div id='page'><label id='switch-label' for='theme-switch'></label><div id="content">
-<header class="page-header"><div class="page-meta"><!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/15fbaa6" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">15fbaa6</code></a>--> 2021-12-22 01:02 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/15fbaa6" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">15fbaa6</code></a>, Nan0Scho1ar</div>
+<header class="page-header"><div class="page-meta"><!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/44e9cac" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">44e9cac</code></a>--> 2021-12-22 01:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/44e9cac" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">44e9cac</code></a>, Nan0Scho1ar</div>
 
 <h1 class="title">Day 4: Giant Squid</h1>
 </header><nav id="table-of-contents">
 <h2><a href="#" style="color:inherit; text-decoration: none;">Table of Contents</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><input type='checkbox' id='toc--org606071c'/><label for='toc--org606071c'><a href="#org606071c">1. Part 1</a></label>
+<li><input type='checkbox' id='toc--org0c5d15c'/><label for='toc--org0c5d15c'><a href="#org0c5d15c">1. Part 1</a></label>
 <ul>
-<li><a href="#org599207b">1.1. Description</a></li>
-<li><a href="#orgb0b1ea8">1.2. Racket</a></li>
-<li><a href="#orgad60cdf">1.3. Python</a></li>
-<li><a href="#orgc50a6b4">1.4. Python v2</a></li>
-<li><a href="#org8dbf166">1.5. <span class="todo TODO">TODO</span> Rust</a></li>
-<li><a href="#org8d33f6c">1.6. <span class="todo TODO">TODO</span> Bash</a></li>
-<li><a href="#orgb203b33">1.7. <span class="todo TODO">TODO</span> Awk</a></li>
-<li><a href="#org3d2d2ff">1.8. <span class="todo TODO">TODO</span> Perl</a></li>
+<li><a href="#org788413f">1.1. Description</a></li>
+<li><a href="#org5efd706">1.2. Racket</a></li>
+<li><a href="#org08f07e7">1.3. Python</a></li>
+<li><a href="#org6005437">1.4. Python v2</a></li>
+<li><a href="#org3b97992">1.5. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#org81f7914">1.6. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#orgb82fb72">1.7. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#org767f3e2">1.8. <span class="todo TODO">TODO</span> Perl</a></li>
 </ul>
 </li>
-<li><input type='checkbox' id='toc--orga31979d'/><label for='toc--orga31979d'><a href="#orga31979d">2. Part 2</a></label>
+<li><input type='checkbox' id='toc--org4d5fd09'/><label for='toc--org4d5fd09'><a href="#org4d5fd09">2. Part 2</a></label>
 <ul>
-<li><a href="#org316e55f">2.1. Description</a></li>
-<li><a href="#orga5c1075">2.2. <span class="todo TODO">TODO</span> Racket</a></li>
-<li><a href="#org44e7af3">2.3. Python</a></li>
-<li><a href="#org93ec629">2.4. <span class="todo TODO">TODO</span> Rust</a></li>
-<li><a href="#orgff9a7aa">2.5. <span class="todo TODO">TODO</span> Bash</a></li>
-<li><a href="#org55a692f">2.6. <span class="todo TODO">TODO</span> Awk</a></li>
-<li><a href="#orgc74e003">2.7. <span class="todo TODO">TODO</span> Perl</a></li>
+<li><a href="#org77ee97c">2.1. Description</a></li>
+<li><a href="#orgeb8bbd3">2.2. <span class="todo TODO">TODO</span> Racket</a></li>
+<li><a href="#orgb04c562">2.3. Python</a></li>
+<li><a href="#orga4e17a9">2.4. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#org3cfa1fd">2.5. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#orgc8ee70a">2.6. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#orgf55acdb">2.7. <span class="todo TODO">TODO</span> Perl</a></li>
 </ul>
 </li>
-<li><input type='checkbox' id='toc--orgbf9af28'/><label for='toc--orgbf9af28'><a href="#orgbf9af28">3. Inputs</a></label>
+<li><input type='checkbox' id='toc--org7caaab3'/><label for='toc--org7caaab3'><a href="#org7caaab3">3. Inputs</a></label>
 <ul>
-<li><a href="#org38d775a">3.1. Sample</a></li>
-<li><a href="#org495278c">3.2. Input</a></li>
+<li><a href="#orge35bc25">3.1. Sample</a></li>
+<li><a href="#org7bf9a43">3.2. Input</a></li>
 </ul>
 </li>
 </ul>
@@ -117,12 +117,12 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2
        style="height: 1em; position: relative; top: 0.1em;">
   View on GitHub</a>&ensp;
 
-<div id="outline-container-org606071c" class="outline-2">
-<h2 id="org606071c"><span class="section-number-2">1.</span> Part 1<a aria-hidden="true" href="#org606071c">#</a> </h2>
+<div id="outline-container-org0c5d15c" class="outline-2">
+<h2 id="org0c5d15c"><span class="section-number-2">1.</span> Part 1<a aria-hidden="true" href="#org0c5d15c">#</a> </h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org599207b" class="outline-3">
-<h3 id="org599207b"><span class="section-number-3">1.1.</span> Description<a aria-hidden="true" href="#org599207b">#</a> </h3>
+<div id="outline-container-org788413f" class="outline-3">
+<h3 id="org788413f"><span class="section-number-3">1.1.</span> Description<a aria-hidden="true" href="#org788413f">#</a> </h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Maybe it wants to play &lt;a href=&ldquo;<a href="https://en.wikipedia.org/wiki/Bingo_(American_version)">https://en.wikipedia.org/wiki/Bingo_(American_version)</a>&rdquo; target=&ldquo;<sub>blank</sub>&rdquo;&gt;bingo&lt;/a&gt;?
@@ -130,11 +130,11 @@ Bingo is played on a set of boards each consisting of a 5x5 grid of numbers. Num
 The submarine has a <code>bingo subsystem</code> to help passengers (currently, you and the giant squid) pass the time. It automatically generates a random order in which to draw numbers and a random set of boards (your puzzle input). For example:
 </p>
 
-<details id='org573944b' class='code' open>
+<details id='orgb1be1c9' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#org573944b'>#</a>
+<div class='gutter'><a href='#orgb1be1c9'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="org573944b">
+<pre class="example" id="orgb1be1c9">
 7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
 
 22 13 17 11  0
@@ -163,11 +163,11 @@ The submarine has a <code>bingo subsystem</code> to help passengers (currently, 
 After the first five numbers are drawn (7, 4, 9, 5, and 11), there are no winners, but the boards are marked as follows (shown here adjacent to each other to save space):
 </p>
 
-<details id='orge9c33b7' class='code' open>
+<details id='org964abcd' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#orge9c33b7'>#</a>
+<div class='gutter'><a href='#org964abcd'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="orge9c33b7">
+<pre class="example" id="org964abcd">
 22 13 17 ~11~  0         3 15  0  2 22        14 21 17 24  ~4~
  8  2 23  ~4~ 24         ~9~ 18 13 17  ~5~        10 16 15  ~9~ 19
 21  ~9~ 14 16  ~7~        19  8  ~7~ 25 23        18  8 23 26 20
@@ -182,11 +182,11 @@ After the first five numbers are drawn (7, 4, 9, 5, and 11), there are no winner
 After the next six numbers are drawn (17, 23, 2, 0, 14, and 21), there are still no winners:
 </p>
 
-<details id='org53ce2a9' class='code' open>
+<details id='org4e2685e' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#org53ce2a9'>#</a>
+<div class='gutter'><a href='#org4e2685e'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="org53ce2a9">
+<pre class="example" id="org4e2685e">
 22 13 ~17~ ~11~  ~0~         3 15  ~0~  ~2~ 22        ~14~ ~21~ ~17~ 24  ~4~
  8  ~2~ ~23~  ~4~ 24         ~9~ 18 13 ~17~  ~5~        10 16 15  ~9~ 19
 ~21~  ~9~ ~14~ 16  ~7~        19  8  ~7~ 25 ~23~        18  8 ~23~ 26 20
@@ -201,11 +201,11 @@ After the next six numbers are drawn (17, 23, 2, 0, 14, and 21), there are still
 Finally, 24 is drawn:
 </p>
 
-<details id='org44b7d65' class='code' open>
+<details id='orgaa9019f' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#org44b7d65'>#</a>
+<div class='gutter'><a href='#orgaa9019f'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="org44b7d65">
+<pre class="example" id="orgaa9019f">
 22 13 ~17~ ~11~  ~0~         3 15  ~0~  ~2~ 22        ~14~ ~21~ ~17~ ~24~  ~4~
  8  ~2~ ~23~  ~4~ ~24~         ~9~ 18 13 ~17~  ~5~        10 16 15  ~9~ 19
 ~21~  ~9~ ~14~ 16  ~7~        19  8  ~7~ 25 ~23~        18  8 ~23~ 26 20
@@ -224,17 +224,21 @@ To guarantee victory against the giant squid, figure out which board will win fi
 </div>
 </div>
 
-<div id="outline-container-orgb0b1ea8" class="outline-3">
-<h3 id="orgb0b1ea8"><span class="section-number-3">1.2.</span> Racket<a aria-hidden="true" href="#orgb0b1ea8">#</a> </h3>
+<div id="outline-container-org5efd706" class="outline-3">
+<h3 id="org5efd706"><span class="section-number-3">1.2.</span> Racket<a aria-hidden="true" href="#org5efd706">#</a> </h3>
 <div class="outline-text-3" id="text-1-2">
-<details id='orgd9a0cde' class='code' open><summary><span class="lang">racket</span></summary>
+<p>
+Why represent the board as a matrix which I could just represent it as a bitmasked integer?
+</p>
+<details id='org0f7e011' class='code' open><summary><span class="lang">racket</span></summary>
 <div class='gutter'>
-<a href='#orgd9a0cde'>#</a>
+<a href='#org0f7e011'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">flatlist</span> a b<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">flatten</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">list</span> a b<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Parse the input string into the form (nums-called ((board1) (board2) ...))</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">prep-data</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
     <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-variable-name">cleaned</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">regexp-replaces</span> data <span class="org-highlight-quoted-quote">'</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span><span class="org-racket-selfeval">#rx</span><span class="org-string">"\n "</span> <span class="org-string">"\n"</span><span class="org-rainbow-delimiters-depth-3">]</span> <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-racket-selfeval">#rx</span><span class="org-string">"^ |  "</span> <span class="org-string">" "</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span>
            <span class="org-rainbow-delimiters-depth-4">[</span><span class="org-variable-name">chunks</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">string-split</span> cleaned <span class="org-string">"\n\n"</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -243,26 +247,31 @@ To guarantee victory against the giant squid, figure out which board will win fi
             <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">map</span> <span class="org-builtin">string-&gt;number</span>
                  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">string-split</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">string-replace</span> board <span class="org-string">"\n"</span> <span class="org-string">" "</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-string">" "</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">These are the masks which correspond to 5 in a row or column</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-variable-name">win-states</span>
   <span class="org-highlight-quoted-quote">'</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-highlight-numbers-number">31</span> <span class="org-highlight-numbers-number">992</span> <span class="org-highlight-numbers-number">31744</span> <span class="org-highlight-numbers-number">1015808</span> <span class="org-highlight-numbers-number">32505856</span> <span class="org-highlight-numbers-number">1082401</span> <span class="org-highlight-numbers-number">2164802</span> <span class="org-highlight-numbers-number">4329604</span> <span class="org-highlight-numbers-number">8659208</span> <span class="org-highlight-numbers-number">17318416</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Check if any of the boards have won. If one has, return it</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">has-winner?</span> board-states<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for*/first</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-rainbow-delimiters-depth-1">(</span>state idx<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">in-indexed</span> board-states<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span>
               <span class="org-rainbow-delimiters-depth-4">[</span>win win-states<span class="org-rainbow-delimiters-depth-4">]</span>
               <span class="org-racket-keyword-argument">#:when</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">bitwise-and</span> state win<span class="org-rainbow-delimiters-depth-1">)</span> win<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">list</span> idx state<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Calculate the score of the winning board</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">score</span> board state<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for/sum</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>num board<span class="org-rainbow-delimiters-depth-4">]</span>
             <span class="org-rainbow-delimiters-depth-4">[</span>mask <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">map</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">curry</span> <span class="org-builtin">arithmetic-shift</span> <span class="org-highlight-numbers-number">1</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">range</span> <span class="org-highlight-numbers-number">25</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span>
             <span class="org-racket-keyword-argument">#:when</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">bitwise-and</span> state mask<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-highlight-numbers-number">0</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
     num<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Set the bit at bit-idx for the element at idx in the list</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">set-bit</span> states idx bit-idx<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">list-set</span> states idx
             <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">bitwise-ior</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">list-ref</span> states idx<span class="org-rainbow-delimiters-depth-4">)</span>
                          <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">arithmetic-shift</span> <span class="org-highlight-numbers-number">1</span> bit-idx<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Call the numbers until one of the boards wins</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">find-winner</span> nums-called boards<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">for*/fold</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>states <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">build-list</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">length</span> boards<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">const</span> <span class="org-highlight-numbers-number">0</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span>
               <span class="org-rainbow-delimiters-depth-4">[</span>winner <span class="org-highlight-quoted-quote">'</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-racket-selfeval">#f</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span>
@@ -270,11 +279,14 @@ To guarantee victory against the giant squid, figure out which board will win fi
              <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>num-called nums-called<span class="org-rainbow-delimiters-depth-4">]</span>
               <span class="org-rainbow-delimiters-depth-4">[</span><span class="org-rainbow-delimiters-depth-1">(</span>board idx<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">in-indexed</span> boards<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
     <span class="org-racket-keyword-argument">#:break</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">first</span> winner<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">If the number called matches a square on the board set the</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">bit for that square, then check for a winner.</span>
     <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">member</span> num-called board<span class="org-rainbow-delimiters-depth-4">)</span>
         <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-variable-name">new-states</span> <span class="org-rainbow-delimiters-depth-3">(</span>set-bit states idx <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">index-of</span> board num-called<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
           <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">values</span> new-states <span class="org-rainbow-delimiters-depth-2">(</span>flatlist <span class="org-rainbow-delimiters-depth-3">(</span>has-winner? new-states<span class="org-rainbow-delimiters-depth-3">)</span> num-called<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
         <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-builtin">values</span> states <span class="org-rainbow-delimiters-depth-1">(</span>flatlist winner num-called<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Oh yeah! It's bingo time!</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">bingo-time</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">match-define</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">list</span> nums-called boards<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>prep-data data<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">match-define</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-builtin">list</span> winner-idx winner-state last-call<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -289,12 +301,12 @@ To guarantee victory against the giant squid, figure out which board will win fi
 </div>
 </div>
 
-<div id="outline-container-orgad60cdf" class="outline-3">
-<h3 id="orgad60cdf"><span class="section-number-3">1.3.</span> Python<a aria-hidden="true" href="#orgad60cdf">#</a> </h3>
+<div id="outline-container-org08f07e7" class="outline-3">
+<h3 id="org08f07e7"><span class="section-number-3">1.3.</span> Python<a aria-hidden="true" href="#org08f07e7">#</a> </h3>
 <div class="outline-text-3" id="text-1-3">
-<details id='org8e4159c' class='code' open><summary><span class="lang">Python</span></summary>
+<details id='org907808a' class='code' open><summary><span class="lang">Python</span></summary>
 <div class='gutter'>
-<a href='#org8e4159c'>#</a>
+<a href='#org907808a'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-python">
@@ -347,12 +359,12 @@ To guarantee victory against the giant squid, figure out which board will win fi
 </details>
 </div>
 </div>
-<div id="outline-container-orgc50a6b4" class="outline-3">
-<h3 id="orgc50a6b4"><span class="section-number-3">1.4.</span> Python v2<a aria-hidden="true" href="#orgc50a6b4">#</a> </h3>
+<div id="outline-container-org6005437" class="outline-3">
+<h3 id="org6005437"><span class="section-number-3">1.4.</span> Python v2<a aria-hidden="true" href="#org6005437">#</a> </h3>
 <div class="outline-text-3" id="text-1-4">
-<details id='orgcee6b83' class='code' open><summary><span class="lang">Python</span></summary>
+<details id='orgd8ea11a' class='code' open><summary><span class="lang">Python</span></summary>
 <div class='gutter'>
-<a href='#orgcee6b83'>#</a>
+<a href='#orgd8ea11a'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-python">
@@ -380,12 +392,12 @@ bingo_time(input_data.split(<span class="org-string">"\n\n"</span>))
 </div>
 </div>
 
-<div id="outline-container-org8dbf166" class="outline-3">
-<h3 id="org8dbf166"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org8dbf166">#</a> </h3>
+<div id="outline-container-org3b97992" class="outline-3">
+<h3 id="org3b97992"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org3b97992">#</a> </h3>
 <div class="outline-text-3" id="text-1-5">
-<details id='orgfe54223' class='code' open><summary><span class="lang">rust</span></summary>
+<details id='org892bf11' class='code' open><summary><span class="lang">rust</span></summary>
 <div class='gutter'>
-<a href='#orgfe54223'>#</a>
+<a href='#org892bf11'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
@@ -394,12 +406,12 @@ bingo_time(input_data.split(<span class="org-string">"\n\n"</span>))
 </details>
 </div>
 </div>
-<div id="outline-container-org8d33f6c" class="outline-3">
-<h3 id="org8d33f6c"><span class="section-number-3">1.6.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#org8d33f6c">#</a> </h3>
+<div id="outline-container-org81f7914" class="outline-3">
+<h3 id="org81f7914"><span class="section-number-3">1.6.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#org81f7914">#</a> </h3>
 <div class="outline-text-3" id="text-1-6">
-<details id='org753ac75' class='code' open><summary><span class="lang">bash</span></summary>
+<details id='org7c466b5' class='code' open><summary><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org753ac75'>#</a>
+<a href='#org7c466b5'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
@@ -408,12 +420,12 @@ bingo_time(input_data.split(<span class="org-string">"\n\n"</span>))
 </details>
 </div>
 </div>
-<div id="outline-container-orgb203b33" class="outline-3">
-<h3 id="orgb203b33"><span class="section-number-3">1.7.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orgb203b33">#</a> </h3>
+<div id="outline-container-orgb82fb72" class="outline-3">
+<h3 id="orgb82fb72"><span class="section-number-3">1.7.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orgb82fb72">#</a> </h3>
 <div class="outline-text-3" id="text-1-7">
-<details id='orgf594bb8' class='code' open><summary><span class="lang">Awk</span></summary>
+<details id='org102d6bf' class='code' open><summary><span class="lang">Awk</span></summary>
 <div class='gutter'>
-<a href='#orgf594bb8'>#</a>
+<a href='#org102d6bf'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
@@ -422,12 +434,12 @@ bingo_time(input_data.split(<span class="org-string">"\n\n"</span>))
 </details>
 </div>
 </div>
-<div id="outline-container-org3d2d2ff" class="outline-3">
-<h3 id="org3d2d2ff"><span class="section-number-3">1.8.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#org3d2d2ff">#</a> </h3>
+<div id="outline-container-org767f3e2" class="outline-3">
+<h3 id="org767f3e2"><span class="section-number-3">1.8.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#org767f3e2">#</a> </h3>
 <div class="outline-text-3" id="text-1-8">
-<details id='orgf2c3971' class='code' open><summary><span class="lang">Perl</span></summary>
+<details id='org1229900' class='code' open><summary><span class="lang">Perl</span></summary>
 <div class='gutter'>
-<a href='#orgf2c3971'>#</a>
+<a href='#org1229900'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
@@ -437,12 +449,12 @@ bingo_time(input_data.split(<span class="org-string">"\n\n"</span>))
 </div>
 </div>
 </div>
-<div id="outline-container-orga31979d" class="outline-2">
-<h2 id="orga31979d"><span class="section-number-2">2.</span> Part 2<a aria-hidden="true" href="#orga31979d">#</a> </h2>
+<div id="outline-container-org4d5fd09" class="outline-2">
+<h2 id="org4d5fd09"><span class="section-number-2">2.</span> Part 2<a aria-hidden="true" href="#org4d5fd09">#</a> </h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org316e55f" class="outline-3">
-<h3 id="org316e55f"><span class="section-number-3">2.1.</span> Description<a aria-hidden="true" href="#org316e55f">#</a> </h3>
+<div id="outline-container-org77ee97c" class="outline-3">
+<h3 id="org77ee97c"><span class="section-number-3">2.1.</span> Description<a aria-hidden="true" href="#org77ee97c">#</a> </h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 On the other hand, it might be wise to try a different strategy: let the giant squid win.
@@ -461,12 +473,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </p>
 </div>
 </div>
-<div id="outline-container-orga5c1075" class="outline-3">
-<h3 id="orga5c1075"><span class="section-number-3">2.2.</span> <span class="todo TODO">TODO</span> Racket<a aria-hidden="true" href="#orga5c1075">#</a> </h3>
+<div id="outline-container-orgeb8bbd3" class="outline-3">
+<h3 id="orgeb8bbd3"><span class="section-number-3">2.2.</span> <span class="todo TODO">TODO</span> Racket<a aria-hidden="true" href="#orgeb8bbd3">#</a> </h3>
 <div class="outline-text-3" id="text-2-2">
-<details id='orgf0f9daf' class='code' open><summary><span class="lang">racket</span></summary>
+<details id='org59a02a0' class='code' open><summary><span class="lang">racket</span></summary>
 <div class='gutter'>
-<a href='#orgf0f9daf'>#</a>
+<a href='#org59a02a0'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-builtin">displayln</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -475,12 +487,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </details>
 </div>
 </div>
-<div id="outline-container-org44e7af3" class="outline-3">
-<h3 id="org44e7af3"><span class="section-number-3">2.3.</span> Python<a aria-hidden="true" href="#org44e7af3">#</a> </h3>
+<div id="outline-container-orgb04c562" class="outline-3">
+<h3 id="orgb04c562"><span class="section-number-3">2.3.</span> Python<a aria-hidden="true" href="#orgb04c562">#</a> </h3>
 <div class="outline-text-3" id="text-2-3">
-<details id='org5b7a008' class='code' open><summary><span class="lang">Python</span></summary>
+<details id='orgd29bc93' class='code' open><summary><span class="lang">Python</span></summary>
 <div class='gutter'>
-<a href='#org5b7a008'>#</a>
+<a href='#orgd29bc93'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">solved</span>(board):
@@ -532,12 +544,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </div>
 </div>
 
-<div id="outline-container-org93ec629" class="outline-3">
-<h3 id="org93ec629"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org93ec629">#</a> </h3>
+<div id="outline-container-orga4e17a9" class="outline-3">
+<h3 id="orga4e17a9"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#orga4e17a9">#</a> </h3>
 <div class="outline-text-3" id="text-2-4">
-<details id='org9f95c05' class='code' open><summary><span class="lang">rust</span></summary>
+<details id='orge8ee6f2' class='code' open><summary><span class="lang">rust</span></summary>
 <div class='gutter'>
-<a href='#org9f95c05'>#</a>
+<a href='#orge8ee6f2'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
@@ -546,12 +558,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </details>
 </div>
 </div>
-<div id="outline-container-orgff9a7aa" class="outline-3">
-<h3 id="orgff9a7aa"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orgff9a7aa">#</a> </h3>
+<div id="outline-container-org3cfa1fd" class="outline-3">
+<h3 id="org3cfa1fd"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#org3cfa1fd">#</a> </h3>
 <div class="outline-text-3" id="text-2-5">
-<details id='org5c79c36' class='code' open><summary><span class="lang">bash</span></summary>
+<details id='orgfe93856' class='code' open><summary><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org5c79c36'>#</a>
+<a href='#orgfe93856'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
@@ -560,12 +572,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </details>
 </div>
 </div>
-<div id="outline-container-org55a692f" class="outline-3">
-<h3 id="org55a692f"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#org55a692f">#</a> </h3>
+<div id="outline-container-orgc8ee70a" class="outline-3">
+<h3 id="orgc8ee70a"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orgc8ee70a">#</a> </h3>
 <div class="outline-text-3" id="text-2-6">
-<details id='orgb534c20' class='code' open><summary><span class="lang">Awk</span></summary>
+<details id='org9d5a918' class='code' open><summary><span class="lang">Awk</span></summary>
 <div class='gutter'>
-<a href='#orgb534c20'>#</a>
+<a href='#org9d5a918'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
@@ -574,12 +586,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </details>
 </div>
 </div>
-<div id="outline-container-orgc74e003" class="outline-3">
-<h3 id="orgc74e003"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#orgc74e003">#</a> </h3>
+<div id="outline-container-orgf55acdb" class="outline-3">
+<h3 id="orgf55acdb"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#orgf55acdb">#</a> </h3>
 <div class="outline-text-3" id="text-2-7">
-<details id='org5216c63' class='code' open><summary><span class="lang">Perl</span></summary>
+<details id='org5f0595c' class='code' open><summary><span class="lang">Perl</span></summary>
 <div class='gutter'>
-<a href='#org5216c63'>#</a>
+<a href='#org5f0595c'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
@@ -589,16 +601,16 @@ Figure out which board will win last. Once it wins, what would its final score b
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf9af28" class="outline-2">
-<h2 id="orgbf9af28"><span class="section-number-2">3.</span> Inputs<a aria-hidden="true" href="#orgbf9af28">#</a> </h2>
+<div id="outline-container-org7caaab3" class="outline-2">
+<h2 id="org7caaab3"><span class="section-number-2">3.</span> Inputs<a aria-hidden="true" href="#org7caaab3">#</a> </h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org38d775a" class="outline-3">
-<h3 id="org38d775a"><span class="section-number-3">3.1.</span> Sample<a aria-hidden="true" href="#org38d775a">#</a> </h3>
+<div id="outline-container-orge35bc25" class="outline-3">
+<h3 id="orge35bc25"><span class="section-number-3">3.1.</span> Sample<a aria-hidden="true" href="#orge35bc25">#</a> </h3>
 <div class="outline-text-3" id="text-3-1">
-<details id='org5410fc2' class='code' open><summary class='named'><span class="name">sample-2021-04</span><span class="lang">bash</span></summary>
+<details id='org83ed26c' class='code' open><summary class='named'><span class="name">sample-2021-04</span><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org5410fc2'>#</a>
+<a href='#org83ed26c'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1</span>
@@ -625,12 +637,12 @@ Figure out which board will win last. Once it wins, what would its final score b
 </details>
 </div>
 </div>
-<div id="outline-container-org495278c" class="outline-3">
-<h3 id="org495278c"><span class="section-number-3">3.2.</span> Input<a aria-hidden="true" href="#org495278c">#</a> </h3>
+<div id="outline-container-org7bf9a43" class="outline-3">
+<h3 id="org7bf9a43"><span class="section-number-3">3.2.</span> Input<a aria-hidden="true" href="#org7bf9a43">#</a> </h3>
 <div class="outline-text-3" id="text-3-2">
-<details id='org5623048' class='code' open><summary class='named'><span class="name">input-2021-04</span><span class="lang">bash</span></summary>
+<details id='org6c3201e' class='code' open><summary class='named'><span class="name">input-2021-04</span><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org5623048'>#</a>
+<a href='#org6c3201e'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"57,9,8,30,40,62,24,70,54,73,12,3,71,95,58,88,23,81,53,80,22,45,98,37,18,72,14,20,66,0,19,31,82,34,55,29,27,96,48,28,87,83,36,26,63,21,5,46,33,86,32,56,6,38,52,16,41,74,99,77,13,35,65,4,78,91,90,43,1,2,64,60,94,85,61,84,42,76,68,10,49,89,11,17,79,69,39,50,25,51,47,93,44,92,59,75,7,97,67,15</span>
@@ -1242,9 +1254,9 @@ Figure out which board will win last. Once it wins, what would its final score b
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: <!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/15fbaa6" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">15fbaa6</code></a>--> 2021-12-22 01:02 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/15fbaa6" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">15fbaa6</code></a></p>
+<p class="date">Date: <!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/44e9cac" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">44e9cac</code></a>--> 2021-12-22 01:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/44e9cac" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">44e9cac</code></a></p>
 <p class="author">Author: Nan0Scho1ar</p>
-<p class="date">Created: 2021-12-22 Wed 01:04</p>
+<p class="date">Created: 2021-12-22 Wed 01:20</p>
 </div>
 </div>
 </body>
