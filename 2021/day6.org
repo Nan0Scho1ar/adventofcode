@@ -66,7 +66,7 @@ Each day, a 0 becomes a 6 and adds a new 8 to the end of the list, while each ot
 In this example, after 18 days, there are a total of 26 fish. After 80 days, there would be a total of ~5934~.
 Find a way to simulate lanternfish. ~How many lanternfish would there be after 80 days?~
  
-** TODO Racket
+** Racket
 #+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rkt :eval never-export :results output
 ;; Shift the entire list left putting the first elem at the end
 (define (lshift lst)
@@ -144,7 +144,7 @@ Suppose the lanternfish live forever and have unlimited food and space. Would th
 After 256 days in the example above, there would be a total of 26984457539 lanternfish!
 
 How many lanternfish would there be after 256 days?
-** TODO Racket
+** Racket
 #+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rkt :eval never-export :results output
 ;; Shift the entire list left putting the first elem at the end
 (define (lshift lst)
@@ -166,10 +166,14 @@ How many lanternfish would there be after 256 days?
              #:result (apply + pool))
             ([i (range days-remaining 0 -1)])
     (lshift (add-at-idx pool 7 (first pool)))))
+
+(simulate-pool sample_data 255)
+(simulate-pool input_data 255)
 #+end_src
 
 #+RESULTS:
-: '(3 4 3 1 2)
+: 24654746147
+: 1525884027492
 
 ** Python
 #+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.py :eval never-export :results output
