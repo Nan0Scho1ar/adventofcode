@@ -85,6 +85,7 @@ To guarantee victory against the giant squid, figure out which board will win fi
 ** Racket
 Why represent the board as a matrix which I could just represent it as a bitmasked integer?
 #+begin_src racket :var sample_data=sample-2021-04 :var input_data=input-2021-04 :tangle /tmp/advent_of_code/aoc2021-04-1.rkt :eval never-export :results output 
+;; Create a list of with two elements and then flatten it
 (define (flatlist a b)
   (flatten (list a b)))
 
