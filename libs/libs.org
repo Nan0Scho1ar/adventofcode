@@ -1,4 +1,4 @@
-#+TITLE: Advent of Code
+#+TITLE: Libs
 #+STARTUP: inlineimages
 #+LANGUAGE: en
 #+EXPORT_FILE_NAME: index.html
@@ -16,37 +16,9 @@
   View on GitHub</a>&ensp;
 #+end_export
 
-Nan0Scho1ar's solutions to the [[https://adventofcode.com/][Advent of Code]] problems.
-
-* 2015
-[[file:./2015.org][2015]]
-* 2016
-[[file:./2016.org][2016]]
-* 2017
-[[file:./2017.org][2017]]
-* 2018
-[[file:./2018.org][2018]]
-* 2019
-[[file:./2019.org][2019]]
-* 2020
-[[file:./2020.org][2020]]
-* 2021
-- [[file:./2021/day1.org][Day 1:  Sonar Sweep]]
-- [[file:./2021/day2.org][Day 2:  Dive!]]
-- [[file:./2021/day3.org][Day 3:  Binary Diagnostic]]
-- [[file:./2021/day4.org][Day 4:  Giant Squid]]
-- [[file:./2021/day5.org][Day 5:  Hydrothermal Venture]]
-- [[file:./2021/day6.org][Day 6:  Lanternfish]]
-- [[file:./2021/day7.org][Day 7:  The Treachery of Whales]]
-- [[file:./2021/day8.org][Day 8:  Seven Segment Search]]
-- [[file:./2021/day9.org][Day 9:  Smoke Basin]]
-- [[file:./2021/day10.org][Day 10:  Syntax Scoring]]
-- [[file:./2021/day11.org][Day 11:  Dumbo Octopus]]
-- [[file:./2021/day12.org][Day 12:  Passage Pathing]]
-- [[file:./2021/day13.org][Day 13:  Transparent Origami]]
-- [[file:./2021/day14.org][Day 14:  Extended Polymerization]]
-- [[file:./2021/day15.org][Day 15:  Chiton]]
-- [[file:./2021/day16.org][Day 16:  Packet Decoder]]
-
-* AOC Libs
-[[file:libs/libs.org][Helper Libs]]
+* [[File:julia/n0s1-aoc.jl][Julia]]
+#+INCLUDE: "julia/n0s1-aoc.jl" src julia
+* [[file:python/n0s1_aoc.py][Python]]
+#+INCLUDE: "python/n0s1_aoc.py" src python
+* [[file:racket/n0s1-aoc.rkt][Racket]]
+#+INCLUDE: "racket/n0s1-aoc.rkt" src racket
