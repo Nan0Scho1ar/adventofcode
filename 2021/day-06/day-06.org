@@ -1,7 +1,7 @@
-/#+TITLE: Day 6: Lanternfish
-#+STARTUP: inlineimages
+#+TITLE: Day 6: Lanternfish
+#+STARTUP: inlineimages hideblocks
 #+LANGUAGE: en
-#+EXPORT_FILE_NAME: day6.html
+#+EXPORT_FILE_NAME: index.html
 #+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
 #+macro: timezone (eval (substring (shell-command-to-string "date +%Z") 0 -1))
 #+macro: git-rev (eval (format "@@html:<a href=\"https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s\" style=\"text-decoration: none\"><code style=\"padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7\">%1$s</code></a>@@@@latex:\\href{https://github.com/Nan0Scho1ar/adventofcode/commit/%1$s}{\\normalsize\\texttt{%1$s}}@@" (substring (shell-command-to-string "git rev-parse --short HEAD") 0 -1)))
@@ -67,76 +67,9 @@ In this example, after 18 days, there are a total of 26 fish. After 80 days, the
 Find a way to simulate lanternfish. ~How many lanternfish would there be after 80 days?~
  
 ** Racket
-#+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rkt :eval never-export :results output
-;; Shift the entire list left putting the first elem at the end
-(define (lshift lst)
-  (append (rest lst) (list (first lst))))
-
-;; Add val to the element at a given index of a list
-(define (add-at-idx lst idx val)
-  (list-set lst idx (+ val (list-ref lst idx))))
-
-;; Convert the string of fish ages into a list of days
-(define (format-data data)
-  (for/fold ([days '(0 0 0 0 0 0 0 0 0)])
-            ([fish (map string->number (string-split data ","))])
-    (add-at-idx days fish 1)))
-
-;; Simulate the pool of fishes for a given number of days
-(define (simulate-pool data days-remaining)
-  (for/fold ([pool (format-data data)]
-             #:result (apply + pool))
-            ([i (range days-remaining 0 -1)])
-    (lshift (add-at-idx pool 7 (first pool)))))
-
-(simulate-pool sample_data 80)
-(simulate-pool input_data 80)
-#+end_src
-
-#+RESULTS:
-: 5934
-: 372300
-
+#+INCLUDE: "2021-06-1.rkt" src racket
 ** Python
-#+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.py :eval never-export :results output
-from collections import deque
-
-def str_to_deque(data):
-    groups = deque([0,0,0,0,0,0,0,0,0])
-    for i in data.split(","):
-        groups[int(i)] += 1
-    return groups
-
-def simulate(data, time):
-    fishes = data.popleft()
-    data.append(fishes) # Babies
-    data[6] += fishes   # Reset parents
-    return sum(data) if time == 1 else simulate(data, time - 1)
-
-print(simulate(str_to_deque(sample_data), 80))
-print(simulate(str_to_deque(input_data), 80))
-#+end_src
-
-#+RESULTS:
-: 5934
-: 372300
-
-** TODO Rust
-#+begin_src rust :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.rs :eval never-export :results output 
-fn main() {println!("TODO");}
-#+end_src
-** TODO Bash
-#+begin_src bash :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.sh :eval never-export :results output 
-echo "TODO"
-#+end_src
-** TODO Awk
-#+begin_src awk :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.awk :eval never-export :results output 
-BEGIN {print "TODO"}
-#+end_src
-** TODO Perl
-#+begin_src perl :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-1.pl :eval never-export :results output 
-print("TODO\n")
-#+end_src
+#+INCLUDE: "2021-06-1.py" src python
 * Part 2
 ** Description
 Suppose the lanternfish live forever and have unlimited food and space. Would they take over the entire ocean?
@@ -145,91 +78,6 @@ After 256 days in the example above, there would be a total of 26984457539 lante
 
 How many lanternfish would there be after 256 days?
 ** Racket
-#+begin_src racket :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rkt :eval never-export :results output
-;; Shift the entire list left putting the first elem at the end
-(define (lshift lst)
-  (append (rest lst) (list (first lst))))
-
-;; Add val to the element at a given index of a list
-(define (add-at-idx lst idx val)
-  (list-set lst idx (+ val (list-ref lst idx))))
-
-;; Convert the string of fish ages into a list of days
-(define (format-data data)
-  (for/fold ([days '(0 0 0 0 0 0 0 0 0)])
-            ([fish (map string->number (string-split data ","))])
-    (add-at-idx days fish 1)))
-
-;; Simulate the pool of fishes for a given number of days
-(define (simulate-pool data days-remaining)
-  (for/fold ([pool (format-data data)]
-             #:result (apply + pool))
-            ([i (range days-remaining 0 -1)])
-    (lshift (add-at-idx pool 7 (first pool)))))
-
-(simulate-pool sample_data 256)
-(simulate-pool input_data 256)
-#+end_src
-
-#+RESULTS:
-: 26984457539
-: 1675781200288
-
+#+INCLUDE: "2021-06-2.rkt" src racket
 ** Python
-#+begin_src python :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.py :eval never-export :results output
-from collections import deque
-
-def str_to_deque(data):
-    groups = deque([0,0,0,0,0,0,0,0,0])
-    for i in data.split(","):
-        groups[int(i)] += 1
-    return groups
-
-def simulate(data, time):
-    fishes = data.popleft()
-    data.append(fishes) # Babies
-    data[6] += fishes   # Reset parents
-    return sum(data) if time == 1 else simulate(data, time - 1)
-
-print(simulate(str_to_deque(sample_data), 256))
-print(simulate(str_to_deque(input_data), 256))
-#+end_src
-
-#+RESULTS:
-: 26984457539
-: 1675781200288
-
-** TODO Rust
-#+begin_src rust :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.rs :eval never-export :results output 
-fn main() {println!("TODO");}
-#+end_src
-** TODO Bash
-#+begin_src bash :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.sh :eval never-export :results output 
-echo "TODO"
-#+end_src
-** TODO Awk
-#+begin_src awk :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.awk :eval never-export :results output 
-BEGIN {print "TODO"}
-#+end_src
-** TODO Perl
-#+begin_src perl :var sample_data=sample-2021-06 :var input_data=input-2021-06 :tangle /tmp/advent_of_code/aoc2021-06-2.pl :eval never-export :results output 
-print("TODO\n")
-#+end_src
-* Inputs
-** Sample
-#+NAME: sample-2021-06
-#+begin_src bash :results output :cache yes :eval never-export
-echo "3,4,3,1,2"
-#+end_src
-
-#+RESULTS[4a2592496fdd219dfd611a968ad1b5446cddc6a3]: sample-2021-06
-: 3,4,3,1,2
-
-** Input
-#+NAME: input-2021-06
-#+begin_src bash :results output :cache yes :eval never-export
-echo "1,1,5,2,1,1,5,5,3,1,1,1,1,1,1,3,4,5,2,1,2,1,1,1,1,1,1,1,1,3,1,1,5,4,5,1,5,3,1,3,2,1,1,1,1,2,4,1,5,1,1,1,4,4,1,1,1,1,1,1,3,4,5,1,1,2,1,1,5,1,1,4,1,4,4,2,4,4,2,2,1,2,3,1,1,2,5,3,1,1,1,4,1,2,2,1,4,1,1,2,5,1,3,2,5,2,5,1,1,1,5,3,1,3,1,5,3,3,4,1,1,4,4,1,3,3,2,5,5,1,1,1,1,3,1,5,2,1,3,5,1,4,3,1,3,1,1,3,1,1,1,1,1,1,5,1,1,5,5,2,1,5,1,4,1,1,5,1,1,1,5,5,5,1,4,5,1,3,1,2,5,1,1,1,5,1,1,4,1,1,2,3,1,3,4,1,2,1,4,3,1,2,4,1,5,1,1,1,1,1,3,4,1,1,5,1,1,3,1,1,2,1,3,1,2,1,1,3,3,4,5,3,5,1,1,1,1,1,1,1,1,1,5,4,1,5,1,3,1,1,2,5,1,1,4,1,1,4,4,3,1,2,1,2,4,4,4,1,2,1,3,2,4,4,1,1,1,1,4,1,1,1,1,1,4,1,5,4,1,5,4,1,1,2,5,5,1,1,1,5"
-#+end_src
-
-#+RESULTS[833cb3a504af713a70e758984cc7e722eebec74d]: input-2021-06
-: 1,1,5,2,1,1,5,5,3,1,1,1,1,1,1,3,4,5,2,1,2,1,1,1,1,1,1,1,1,3,1,1,5,4,5,1,5,3,1,3,2,1,1,1,1,2,4,1,5,1,1,1,4,4,1,1,1,1,1,1,3,4,5,1,1,2,1,1,5,1,1,4,1,4,4,2,4,4,2,2,1,2,3,1,1,2,5,3,1,1,1,4,1,2,2,1,4,1,1,2,5,1,3,2,5,2,5,1,1,1,5,3,1,3,1,5,3,3,4,1,1,4,4,1,3,3,2,5,5,1,1,1,1,3,1,5,2,1,3,5,1,4,3,1,3,1,1,3,1,1,1,1,1,1,5,1,1,5,5,2,1,5,1,4,1,1,5,1,1,1,5,5,5,1,4,5,1,3,1,2,5,1,1,1,5,1,1,4,1,1,2,3,1,3,4,1,2,1,4,3,1,2,4,1,5,1,1,1,1,1,3,4,1,1,5,1,1,3,1,1,2,1,3,1,2,1,1,3,3,4,5,3,5,1,1,1,1,1,1,1,1,1,5,4,1,5,1,3,1,1,2,5,1,1,4,1,1,4,4,3,1,2,1,2,4,4,4,1,2,1,3,2,4,4,1,1,1,1,4,1,1,1,1,1,4,1,5,4,1,5,4,1,1,2,5,5,1,1,1,5
+#+INCLUDE: "2021-06-2.py" src python
