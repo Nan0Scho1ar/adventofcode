@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-11 Sat 00:04 -->
+<!-- 2021-12-22 Wed 04:15 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 1: Sonar Sweep</title>
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Green fountain pen nib" />
 <meta property="og:article:author:first_name" content="Nan0Scho1ar" />
 <meta property="og:article:published_time" content="2021-12-11T00:00:00+1000" />
-<meta property="og:article:modified_time" content="2021-12-11T00:04:44+1000" />
+<meta property="og:article:modified_time" content="2021-12-22T04:14:58+1000" />
 <script>
 // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
 function copyPreToClipbord(btn) {
@@ -70,39 +70,40 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2
 </head>
 <body>
 <input type='checkbox' id='theme-switch'><div id='page'><label id='switch-label' for='theme-switch'></label><div id="content">
-<header class="page-header"><div class="page-meta"><!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>--> 2021-12-11 00:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>, Nan0Scho1ar</div>
+<header class="page-header"><div class="page-meta"><!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/5c5d8a2" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">5c5d8a2</code></a>--> 2021-12-11 00:13 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/5c5d8a2" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">5c5d8a2</code></a>, Nan0Scho1ar</div>
 
 <h1 class="title">Day 1: Sonar Sweep</h1>
 </header><nav id="table-of-contents">
 <h2><a href="#" style="color:inherit; text-decoration: none;">Table of Contents</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><input type='checkbox' id='toc--orgfb91a01'/><label for='toc--orgfb91a01'><a href="#orgfb91a01">1. Part 1</a></label>
+<li><input type='checkbox' id='toc--org267cfed'/><label for='toc--org267cfed'><a href="#org267cfed">1. Part 1</a></label>
 <ul>
-<li><a href="#org547d686">1.1. Description</a></li>
-<li><a href="#org876934d">1.2. Racket</a></li>
-<li><a href="#orga7616ff">1.3. Python</a></li>
-<li><a href="#org9829419">1.4. <span class="todo TODO">TODO</span> Rust</a></li>
-<li><a href="#orge86c8be">1.5. <span class="todo TODO">TODO</span> Bash</a></li>
-<li><a href="#org94491ef">1.6. <span class="todo TODO">TODO</span> Awk</a></li>
-<li><a href="#org9b4cfca">1.7. <span class="todo TODO">TODO</span> Perl</a></li>
+<li><a href="#org9b4d3db">1.1. Description</a></li>
+<li><a href="#orgc11de4d">1.2. Racket</a></li>
+<li><a href="#org9526204">1.3. Python</a></li>
+<li><a href="#orga427ed9">1.4. Julia</a></li>
+<li><a href="#org958409b">1.5. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#orgd2e2c1c">1.6. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#orgde9b00f">1.7. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#org8d2a5c9">1.8. <span class="todo TODO">TODO</span> Perl</a></li>
 </ul>
 </li>
-<li><input type='checkbox' id='toc--org6361da1'/><label for='toc--org6361da1'><a href="#org6361da1">2. Part 2</a></label>
+<li><input type='checkbox' id='toc--orgbb77b7c'/><label for='toc--orgbb77b7c'><a href="#orgbb77b7c">2. Part 2</a></label>
 <ul>
-<li><a href="#org79017d6">2.1. Description</a></li>
-<li><a href="#org8726ee5">2.2. Racket</a></li>
-<li><a href="#org20523d4">2.3. Python</a></li>
-<li><a href="#orgd0f0609">2.4. <span class="todo TODO">TODO</span> Rust</a></li>
-<li><a href="#orgd4fd328">2.5. <span class="todo TODO">TODO</span> Bash</a></li>
-<li><a href="#orga7c467f">2.6. <span class="todo TODO">TODO</span> Awk</a></li>
-<li><a href="#orgca3fccf">2.7. <span class="todo TODO">TODO</span> Perl</a></li>
+<li><a href="#orgce1ee86">2.1. Description</a></li>
+<li><a href="#org0cb5dc2">2.2. Racket</a></li>
+<li><a href="#org3b3abb6">2.3. Python</a></li>
+<li><a href="#org3a8f3f3">2.4. <span class="todo TODO">TODO</span> Rust</a></li>
+<li><a href="#orgb8449fd">2.5. <span class="todo TODO">TODO</span> Bash</a></li>
+<li><a href="#org9aa6d7b">2.6. <span class="todo TODO">TODO</span> Awk</a></li>
+<li><a href="#orgdd7f51b">2.7. <span class="todo TODO">TODO</span> Perl</a></li>
 </ul>
 </li>
-<li><input type='checkbox' id='toc--org9f98865'/><label for='toc--org9f98865'><a href="#org9f98865">3. Inputs</a></label>
+<li><input type='checkbox' id='toc--orgfb2633b'/><label for='toc--orgfb2633b'><a href="#orgfb2633b">3. Inputs</a></label>
 <ul>
-<li><a href="#org580eb43">3.1. Sample</a></li>
-<li><a href="#org8c3157c">3.2. Input</a></li>
+<li><a href="#org05b229b">3.1. Sample</a></li>
+<li><a href="#org46b03a9">3.2. Input</a></li>
 </ul>
 </li>
 </ul>
@@ -116,12 +117,12 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2
        style="height: 1em; position: relative; top: 0.1em;">
   View on GitHub</a>&ensp;
 
-<div id="outline-container-orgfb91a01" class="outline-2">
-<h2 id="orgfb91a01"><span class="section-number-2">1.</span> Part 1<a aria-hidden="true" href="#orgfb91a01">#</a> </h2>
+<div id="outline-container-org267cfed" class="outline-2">
+<h2 id="org267cfed"><span class="section-number-2">1.</span> Part 1<a aria-hidden="true" href="#org267cfed">#</a> </h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org547d686" class="outline-3">
-<h3 id="org547d686"><span class="section-number-3">1.1.</span> Description<a aria-hidden="true" href="#org547d686">#</a> </h3>
+<div id="outline-container-org9b4d3db" class="outline-3">
+<h3 id="org9b4d3db"><span class="section-number-3">1.1.</span> Description<a aria-hidden="true" href="#org9b4d3db">#</a> </h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Before you know it, you&rsquo;re inside a submarine the Elves keep ready for situations like this. It&rsquo;s covered in Christmas lights (because of course it is), and it even has an experimental antenna that should be able to track the keys if you can boost its signal strength high enough; there&rsquo;s a little meter that indicates the antenna&rsquo;s signal strength by displaying 0-50 &lt;em class=&ldquo;star&rdquo;&gt;stars~.
@@ -131,11 +132,11 @@ As the submarine drops below the surface of the ocean, it automatically performs
 For example, suppose you had the following report:
 </p>
 
-<details id='orgd9c9a0a' class='code' open>
+<details id='org56a590c' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#orgd9c9a0a'>#</a>
+<div class='gutter'><a href='#org56a590c'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="orgd9c9a0a">
+<pre class="example" id="org56a590c">
 199
 200
 208
@@ -157,11 +158,11 @@ The first order of business is to figure out how quickly the depth increases, ju
 To do this, count <code>the number of times a depth measurement increases</code> from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
 </p>
 
-<details id='org45198d2' class='code' open>
+<details id='org9b31050' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#org45198d2'>#</a>
+<div class='gutter'><a href='#org9b31050'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="org45198d2">
+<pre class="example" id="org9b31050">
 199 (N/A - no previous measurement)
 200 (~increased~)
 208 (~increased~)
@@ -184,12 +185,12 @@ In this example, there are <code>7</code> measurements that are larger than the 
 </div>
 </div>
 
-<div id="outline-container-org876934d" class="outline-3">
-<h3 id="org876934d"><span class="section-number-3">1.2.</span> Racket<a aria-hidden="true" href="#org876934d">#</a> </h3>
+<div id="outline-container-orgc11de4d" class="outline-3">
+<h3 id="orgc11de4d"><span class="section-number-3">1.2.</span> Racket<a aria-hidden="true" href="#orgc11de4d">#</a> </h3>
 <div class="outline-text-3" id="text-1-2">
-<details id='orgfb4bc85' class='code' open><summary><span class="lang">racket</span></summary>
+<details id='org2af0217' class='code' open><summary><span class="lang">racket</span></summary>
 <div class='gutter'>
-<a href='#orgfb4bc85'>#</a>
+<a href='#org2af0217'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">count-deeper</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -207,15 +208,15 @@ In this example, there are <code>7</code> measurements that are larger than the 
 </div>
 </div>
 
-<div id="outline-container-orga7616ff" class="outline-3">
-<h3 id="orga7616ff"><span class="section-number-3">1.3.</span> Python<a aria-hidden="true" href="#orga7616ff">#</a> </h3>
+<div id="outline-container-org9526204" class="outline-3">
+<h3 id="org9526204"><span class="section-number-3">1.3.</span> Python<a aria-hidden="true" href="#org9526204">#</a> </h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Quick and dirty python solution for a fast answer. Before you ask, yes, I really did write <code>lines[i] - lines[i-1] &gt; 0</code>. You just know that <code>if is_redundant == true:</code> then you spent too much time typing and not enough thinking.
 </p>
-<details id='orga63ffe2' class='code' open><summary><span class="lang">Python</span></summary>
+<details id='org2198593' class='code' open><summary><span class="lang">Python</span></summary>
 <div class='gutter'>
-<a href='#orga63ffe2'>#</a>
+<a href='#org2198593'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">count_deeper</span>(data):
@@ -234,12 +235,33 @@ Quick and dirty python solution for a fast answer. Before you ask, yes, I really
 </div>
 </div>
 
-<div id="outline-container-org9829419" class="outline-3">
-<h3 id="org9829419"><span class="section-number-3">1.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org9829419">#</a> </h3>
+<div id="outline-container-orga427ed9" class="outline-3">
+<h3 id="orga427ed9"><span class="section-number-3">1.4.</span> Julia<a aria-hidden="true" href="#orga427ed9">#</a> </h3>
 <div class="outline-text-3" id="text-1-4">
-<details id='orgeb9dd6e' class='code' open><summary><span class="lang">rust</span></summary>
+<details id='org4e83c84' class='code' open><summary><span class="lang">julia</span></summary>
 <div class='gutter'>
-<a href='#orgeb9dd6e'>#</a>
+<a href='#org4e83c84'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
+<div class="org-src-container">
+<pre class="src src-julia"><span class="org-keyword">function</span> <span class="org-function-name">count_deeper</span>(data)
+    lines = [parse(Int64, i) <span class="org-keyword">for</span> i <span class="org-keyword">in</span> split(data, <span class="org-string">"\n"</span>)]
+    sum([<span class="org-highlight-numbers-number">1</span> <span class="org-keyword">for</span> i <span class="org-keyword">in</span> range(<span class="org-highlight-numbers-number">2</span>,length(lines)) <span class="org-keyword">if</span> (lines[i] <span class="org-type">-</span> lines[i<span class="org-type">-</span><span class="org-highlight-numbers-number">1</span>]) <span class="org-type">&gt;</span> <span class="org-highlight-numbers-number">0</span>])
+<span class="org-keyword">end</span>
+
+count_deeper(sample_data)
+<span class="org-comment-delimiter">#</span><span class="org-comment">println(count_deeper(input_data))</span>
+</pre>
+</div>
+</details>
+</div>
+</div>
+
+<div id="outline-container-org958409b" class="outline-3">
+<h3 id="org958409b"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org958409b">#</a> </h3>
+<div class="outline-text-3" id="text-1-5">
+<details id='org2712bd3' class='code' open><summary><span class="lang">rust</span></summary>
+<div class='gutter'>
+<a href='#org2712bd3'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
@@ -248,12 +270,12 @@ Quick and dirty python solution for a fast answer. Before you ask, yes, I really
 </details>
 </div>
 </div>
-<div id="outline-container-orge86c8be" class="outline-3">
-<h3 id="orge86c8be"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orge86c8be">#</a> </h3>
-<div class="outline-text-3" id="text-1-5">
-<details id='orga91971c' class='code' open><summary><span class="lang">bash</span></summary>
+<div id="outline-container-orgd2e2c1c" class="outline-3">
+<h3 id="orgd2e2c1c"><span class="section-number-3">1.6.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orgd2e2c1c">#</a> </h3>
+<div class="outline-text-3" id="text-1-6">
+<details id='orge68de4d' class='code' open><summary><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#orga91971c'>#</a>
+<a href='#orge68de4d'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
@@ -262,12 +284,12 @@ Quick and dirty python solution for a fast answer. Before you ask, yes, I really
 </details>
 </div>
 </div>
-<div id="outline-container-org94491ef" class="outline-3">
-<h3 id="org94491ef"><span class="section-number-3">1.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#org94491ef">#</a> </h3>
-<div class="outline-text-3" id="text-1-6">
-<details id='orgbca0498' class='code' open><summary><span class="lang">Awk</span></summary>
+<div id="outline-container-orgde9b00f" class="outline-3">
+<h3 id="orgde9b00f"><span class="section-number-3">1.7.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orgde9b00f">#</a> </h3>
+<div class="outline-text-3" id="text-1-7">
+<details id='org4e7635f' class='code' open><summary><span class="lang">Awk</span></summary>
 <div class='gutter'>
-<a href='#orgbca0498'>#</a>
+<a href='#org4e7635f'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
@@ -276,12 +298,12 @@ Quick and dirty python solution for a fast answer. Before you ask, yes, I really
 </details>
 </div>
 </div>
-<div id="outline-container-org9b4cfca" class="outline-3">
-<h3 id="org9b4cfca"><span class="section-number-3">1.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#org9b4cfca">#</a> </h3>
-<div class="outline-text-3" id="text-1-7">
-<details id='org5cb19df' class='code' open><summary><span class="lang">Perl</span></summary>
+<div id="outline-container-org8d2a5c9" class="outline-3">
+<h3 id="org8d2a5c9"><span class="section-number-3">1.8.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#org8d2a5c9">#</a> </h3>
+<div class="outline-text-3" id="text-1-8">
+<details id='orgffd0f93' class='code' open><summary><span class="lang">Perl</span></summary>
 <div class='gutter'>
-<a href='#org5cb19df'>#</a>
+<a href='#orgffd0f93'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
@@ -291,12 +313,12 @@ Quick and dirty python solution for a fast answer. Before you ask, yes, I really
 </div>
 </div>
 </div>
-<div id="outline-container-org6361da1" class="outline-2">
-<h2 id="org6361da1"><span class="section-number-2">2.</span> Part 2<a aria-hidden="true" href="#org6361da1">#</a> </h2>
+<div id="outline-container-orgbb77b7c" class="outline-2">
+<h2 id="orgbb77b7c"><span class="section-number-2">2.</span> Part 2<a aria-hidden="true" href="#orgbb77b7c">#</a> </h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org79017d6" class="outline-3">
-<h3 id="org79017d6"><span class="section-number-3">2.1.</span> Description<a aria-hidden="true" href="#org79017d6">#</a> </h3>
+<div id="outline-container-orgce1ee86" class="outline-3">
+<h3 id="orgce1ee86"><span class="section-number-3">2.1.</span> Description<a aria-hidden="true" href="#orgce1ee86">#</a> </h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Considering every single measurement isn&rsquo;t as useful as you expected: there&rsquo;s just too much noise in the data.
@@ -306,11 +328,11 @@ Considering every single measurement isn&rsquo;t as useful as you expected: ther
 Instead, consider sums of a three-measurement sliding window. Again considering the above example:
 </p>
 
-<details id='orge329205' class='code' open>
+<details id='org2233315' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#orge329205'>#</a>
+<div class='gutter'><a href='#org2233315'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="orge329205">
+<pre class="example" id="org2233315">
 199  A
 200  A B
 208  A B C
@@ -336,11 +358,11 @@ Your goal now is to count the number of times the sum of measurements in this sl
 In the above example, the sum of each three-measurement window is as follows:
 </p>
 
-<details id='orgc792ae2' class='code' open>
+<details id='orgb203ad2' class='code' open>
 <summary></summary>
-<div class='gutter'><a href='#orgc792ae2'>#</a>
+<div class='gutter'><a href='#orgb203ad2'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
-<pre class="example" id="orgc792ae2">
+<pre class="example" id="orgb203ad2">
 A: 607 (N/A - no previous sum)
 B: 618 (increased)
 C: 618 (no change)
@@ -362,12 +384,12 @@ In this example, there are 5 sums that are larger than the previous sum.
 </div>
 </div>
 
-<div id="outline-container-org8726ee5" class="outline-3">
-<h3 id="org8726ee5"><span class="section-number-3">2.2.</span> Racket<a aria-hidden="true" href="#org8726ee5">#</a> </h3>
+<div id="outline-container-org0cb5dc2" class="outline-3">
+<h3 id="org0cb5dc2"><span class="section-number-3">2.2.</span> Racket<a aria-hidden="true" href="#org0cb5dc2">#</a> </h3>
 <div class="outline-text-3" id="text-2-2">
-<details id='org8cda54e' class='code' open><summary><span class="lang">racket</span></summary>
+<details id='org63bdd21' class='code' open><summary><span class="lang">racket</span></summary>
 <div class='gutter'>
-<a href='#org8cda54e'>#</a>
+<a href='#org63bdd21'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-racket"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">count-deeper</span> data<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -387,15 +409,15 @@ In this example, there are 5 sums that are larger than the previous sum.
 </div>
 </div>
 
-<div id="outline-container-org20523d4" class="outline-3">
-<h3 id="org20523d4"><span class="section-number-3">2.3.</span> Python<a aria-hidden="true" href="#org20523d4">#</a> </h3>
+<div id="outline-container-org3b3abb6" class="outline-3">
+<h3 id="org3b3abb6"><span class="section-number-3">2.3.</span> Python<a aria-hidden="true" href="#org3b3abb6">#</a> </h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Another quick and dirty python solution for a fast answer. Still includes the epic <code>sum2 - sum1 &gt; 0</code> logic.
 </p>
-<details id='orgd6c87bd' class='code' open><summary><span class="lang">Python</span></summary>
+<details id='orgfda4375' class='code' open><summary><span class="lang">Python</span></summary>
 <div class='gutter'>
-<a href='#orgd6c87bd'>#</a>
+<a href='#orgfda4375'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">count_deeper</span>(data):
@@ -416,12 +438,12 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </div>
 </div>
 
-<div id="outline-container-orgd0f0609" class="outline-3">
-<h3 id="orgd0f0609"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#orgd0f0609">#</a> </h3>
+<div id="outline-container-org3a8f3f3" class="outline-3">
+<h3 id="org3a8f3f3"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Rust<a aria-hidden="true" href="#org3a8f3f3">#</a> </h3>
 <div class="outline-text-3" id="text-2-4">
-<details id='orgcd71244' class='code' open><summary><span class="lang">rust</span></summary>
+<details id='orgfbb792f' class='code' open><summary><span class="lang">rust</span></summary>
 <div class='gutter'>
-<a href='#orgcd71244'>#</a>
+<a href='#orgfbb792f'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-rust"><span class="org-keyword">fn</span> <span class="org-function-name">main</span>() {<span class="org-rustic-builtin-formatting-macro">println!</span>(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>);}
@@ -430,12 +452,12 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </details>
 </div>
 </div>
-<div id="outline-container-orgd4fd328" class="outline-3">
-<h3 id="orgd4fd328"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orgd4fd328">#</a> </h3>
+<div id="outline-container-orgb8449fd" class="outline-3">
+<h3 id="orgb8449fd"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Bash<a aria-hidden="true" href="#orgb8449fd">#</a> </h3>
 <div class="outline-text-3" id="text-2-5">
-<details id='org6d7fc63' class='code' open><summary><span class="lang">bash</span></summary>
+<details id='orga25c7d6' class='code' open><summary><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org6d7fc63'>#</a>
+<a href='#orga25c7d6'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>
@@ -444,12 +466,12 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </details>
 </div>
 </div>
-<div id="outline-container-orga7c467f" class="outline-3">
-<h3 id="orga7c467f"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#orga7c467f">#</a> </h3>
+<div id="outline-container-org9aa6d7b" class="outline-3">
+<h3 id="org9aa6d7b"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Awk<a aria-hidden="true" href="#org9aa6d7b">#</a> </h3>
 <div class="outline-text-3" id="text-2-6">
-<details id='org7713048' class='code' open><summary><span class="lang">Awk</span></summary>
+<details id='orgc2c3f8b' class='code' open><summary><span class="lang">Awk</span></summary>
 <div class='gutter'>
-<a href='#org7713048'>#</a>
+<a href='#orgc2c3f8b'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-awk"><span class="org-keyword">BEGIN</span> {<span class="org-preprocessor">print</span> <span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">"</span>}
@@ -458,12 +480,12 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </details>
 </div>
 </div>
-<div id="outline-container-orgca3fccf" class="outline-3">
-<h3 id="orgca3fccf"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#orgca3fccf">#</a> </h3>
+<div id="outline-container-orgdd7f51b" class="outline-3">
+<h3 id="orgdd7f51b"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Perl<a aria-hidden="true" href="#orgdd7f51b">#</a> </h3>
 <div class="outline-text-3" id="text-2-7">
-<details id='org1523954' class='code' open><summary><span class="lang">Perl</span></summary>
+<details id='org160fdda' class='code' open><summary><span class="lang">Perl</span></summary>
 <div class='gutter'>
-<a href='#org1523954'>#</a>
+<a href='#org160fdda'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-perl">print(<span class="org-string">"</span><span class="org-string"><span class="org-bold"><span class="org-warning">TODO</span></span></span><span class="org-string">\n"</span>)
@@ -473,16 +495,16 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </div>
 </div>
 </div>
-<div id="outline-container-org9f98865" class="outline-2">
-<h2 id="org9f98865"><span class="section-number-2">3.</span> Inputs<a aria-hidden="true" href="#org9f98865">#</a> </h2>
+<div id="outline-container-orgfb2633b" class="outline-2">
+<h2 id="orgfb2633b"><span class="section-number-2">3.</span> Inputs<a aria-hidden="true" href="#orgfb2633b">#</a> </h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org580eb43" class="outline-3">
-<h3 id="org580eb43"><span class="section-number-3">3.1.</span> Sample<a aria-hidden="true" href="#org580eb43">#</a> </h3>
+<div id="outline-container-org05b229b" class="outline-3">
+<h3 id="org05b229b"><span class="section-number-3">3.1.</span> Sample<a aria-hidden="true" href="#org05b229b">#</a> </h3>
 <div class="outline-text-3" id="text-3-1">
-<details id='org472c69c' class='code' open><summary class='named'><span class="name">sample-2021-01</span><span class="lang">bash</span></summary>
+<details id='orgc0c24fe' class='code' open><summary class='named'><span class="name">sample-2021-01</span><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org472c69c'>#</a>
+<a href='#orgc0c24fe'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"199</span>
@@ -501,12 +523,12 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </div>
 </div>
 
-<div id="outline-container-org8c3157c" class="outline-3">
-<h3 id="org8c3157c"><span class="section-number-3">3.2.</span> Input<a aria-hidden="true" href="#org8c3157c">#</a> </h3>
+<div id="outline-container-org46b03a9" class="outline-3">
+<h3 id="org46b03a9"><span class="section-number-3">3.2.</span> Input<a aria-hidden="true" href="#org46b03a9">#</a> </h3>
 <div class="outline-text-3" id="text-3-2">
-<details id='org0f874e3' class='code' open><summary class='named'><span class="name">input-2021-01</span><span class="lang">bash</span></summary>
+<details id='orga7e1ca3' class='code' open><summary class='named'><span class="name">input-2021-01</span><span class="lang">bash</span></summary>
 <div class='gutter'>
-<a href='#org0f874e3'>#</a>
+<a href='#orga7e1ca3'>#</a>
 <button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-type">echo</span> <span class="org-string">"193</span>
@@ -2517,9 +2539,9 @@ Another quick and dirty python solution for a fast answer. Still includes the ep
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: <!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a>--> 2021-12-11 00:04 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/2d0c367" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">2d0c367</code></a></p>
+<p class="date">Date: <!--<a href="https://github.com/Nan0Scho1ar/adventofcode/commit/5c5d8a2" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">5c5d8a2</code></a>--> 2021-12-11 00:13 AEST, <a href="https://github.com/Nan0Scho1ar/adventofcode/commit/5c5d8a2" style="text-decoration: none"><code style="padding: 0; color: var(--text-light); font-size: inherit; opacity: 0.7">5c5d8a2</code></a></p>
 <p class="author">Author: Nan0Scho1ar</p>
-<p class="date">Created: 2021-12-11 Sat 00:04</p>
+<p class="date">Created: 2021-12-22 Wed 04:15</p>
 </div>
 </div>
 </body>
