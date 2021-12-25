@@ -49,7 +49,7 @@ Your horizontal position and depth both start at 0. The steps above would then m
 After following these instructions, you would have a horizontal position of 15 and a depth of 10. (Multiplying these together produces ~150~.)
 Calculate the horizontal position and depth you would have after following the planned course. ~What do you get if you multiply your final horizontal position by your final depth?~
  
-** TODO Racket
+** Racket
 #+begin_src racket :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.rkt :eval never-export :results output
 (define (get-key kvp) (car (string-split kvp " ")))
 (define (get-val kvp) (string->number (cadr (string-split kvp " "))))
@@ -87,7 +87,7 @@ Calculate the horizontal position and depth you would have after following the p
 : 150
 : 1693300
 
-** TODO Python
+** Python
 #+begin_src python :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.py :eval never-export :results output 
 def get_pos(data):
     depth = 0
@@ -110,22 +110,6 @@ get_pos(input_data)
 : 150
 : 1693300
 
-** TODO Rust
-#+begin_src rust :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.rs :eval never-export :results output 
-fn main() {println!("TODO");}
-#+end_src
-** TODO Bash
-#+begin_src bash :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.sh :eval never-export :results output 
-echo "TODO"
-#+end_src
-** TODO Awk
-#+begin_src awk :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.awk :eval never-export :results output 
-BEGIN {print "TODO"}
-#+end_src
-** TODO Perl
-#+begin_src perl :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-1.pl :eval never-export :results output 
-print("TODO\n")
-#+end_src
 * Part 2
 ** Description
 Based on your calculations, the planned course doesn't seem to make any sense. You find the submarine manual and discover that the process is actually slightly more complicated.
@@ -151,7 +135,7 @@ After following these new instructions, you would have a horizontal position of 
 
 Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned course. What do you get if you multiply your final horizontal position by your final depth?
 
-** TODO Racket
+** Racket
 #+begin_src racket :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.rkt :eval never-export :results output 
 (define (parse-kvp kvp)
   (list (car (string-split kvp " "))
@@ -178,7 +162,7 @@ Using this new interpretation of the commands, calculate the horizontal position
 : 900
 : 1857958050
 
-** TODO Python
+** Python
 #+begin_src python :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.py :eval never-export :results output 
 def get_pos(data):
     depth = 0
@@ -203,32 +187,11 @@ print(get_pos(input_data))
 : 900
 : 1857958050
 
-** TODO Rust
-#+begin_src rust :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.rs :eval never-export :results output 
-fn main() {println!("TODO");}
-#+end_src
-** TODO Bash
-#+begin_src bash :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.sh :eval never-export :results output 
-echo "TODO"
-#+end_src
-** TODO Awk
-#+begin_src awk :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.awk :eval never-export :results output 
-BEGIN {print "TODO"}
-#+end_src
-** TODO Perl
-#+begin_src perl :var sample_data=sample-2021-02 :var input_data=input-2021-02 :tangle /tmp/advent_of_code/aoc2021-02-2.pl :eval never-export :results output 
-print("TODO\n")
-#+end_src
 * Inputs
 ** Sample
 #+NAME: sample-2021-02
 #+begin_src bash :results output :cache yes :eval never-export
-echo "forward 5
-down 5
-forward 8
-up 3
-down 8
-forward 2"
+echo ""
 #+end_src
 ** Input
 #+NAME: input-2021-02
