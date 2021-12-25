@@ -1,5 +1,5 @@
 #+TITLE: Day 1: Sonar Sweep
-#+STARTUP: inlineimages
+#+STARTUP: inlineimages hideblocks
 #+LANGUAGE: en
 #+EXPORT_FILE_NAME: index.html
 #+date: @@html:<!--@@{{{git-rev}}}@@html:-->@@@@latex:\\\Large\bfseries@@ {{{modification-time(%Y-%m-%d, t)}}} @@latex:\\\normalsize\mdseries@@{{{modification-time(%H:%M, t)}}} @@latex:\acr{\lowercase{@@{{{timezone}}}@@latex:}}\iffalse@@, {{{git-rev}}}@@latex:\fi@@
