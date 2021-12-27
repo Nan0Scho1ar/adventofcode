@@ -7,5 +7,5 @@ def best_neighbor(data):
     costs = [sum( [abs(d - i) for d in data] ) for i in range(min(data), max(data)+1)]
     return min(costs)
 
-print(best_neighbor(n0s1.file_to_string("sample-2021-01.txt")))
-print(best_neighbor(n0s1.file_to_string("input-2021-01.txt")))
+print(best_neighbor(n0s1.file_to_string("sample-2021-07.txt")))
+print(best_neighbor(n0s1.file_to_string("input-2021-07.txt")))

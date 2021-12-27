@@ -51,6 +51,8 @@ Calculate the horizontal position and depth you would have after following the p
  
 ** Racket
 #+INCLUDE: "2021-02-1.rkt" src racket
+** Racket v2
+#+INCLUDE: "2021-02-1-2.rkt" src racket
 ** Python
 #+INCLUDE: "2021-02-1.py" src python
 * Part 2

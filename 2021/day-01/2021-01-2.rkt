@@ -2,7 +2,7 @@
 (require "../../libs/racket/n0s1-aoc.rkt")
 
 (define (count-deeper data)
-  (let ([nums (map string->number (string-split data "\n"))])
+  (let ([nums (string-split-numbers data "\n")])
     (for/sum ([i nums]
               [j (cdr nums)]
               [k (cddr nums)]

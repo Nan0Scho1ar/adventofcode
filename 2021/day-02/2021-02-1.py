@@ -16,5 +16,5 @@ def get_pos(data):
             depth -= int(d[1])
     return depth * horizontal
 
-print(get_pos(n0s1.file_to_string("sample-2021-01.txt")))
-print(get_pos(n0s1.file_to_string("input-2021-01.txt")))
+print(get_pos(n0s1.file_to_string("sample-2021-02.txt")))
+print(get_pos(n0s1.file_to_string("input-2021-02.txt")))

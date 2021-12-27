@@ -1,10 +1,6 @@
 #lang racket
 (require "../../libs/racket/n0s1-aoc.rkt")
 
-;; Create a list of with two elements and then flatten it
-(define (flatlist a b)
-  (flatten (list a b)))
-
 ;; Parse the input string into the form (nums-called ((board1) (board2) ...))
 (define (prep-data data)
     (let* ([cleaned (regexp-replaces data '([#rx"\n " "\n"] [#rx"^ |  " " "]))]
@@ -21,8 +17,8 @@
 ;; Check if any of the boards have won. If one has, return it
 (define (has-winner? board-states)
   (for*/first ([(state idx) (in-indexed board-states)]
-              [win win-states]
-              #:when (= (bitwise-and state win) win))
+               [mask win-states]
+               #:when (fills-mask? state mask))
     (list idx state)))
 
 ;; Calculate the score of the winning board
@@ -32,24 +28,20 @@
             #:when (= (bitwise-and state mask) 0))
     num))
 
-;; Set the bit at bit-idx for the element at idx in the list
-(define (set-bit states idx bit-idx)
-  (list-set states idx
-            (bitwise-ior (list-ref states idx)
-                         (arithmetic-shift 1 bit-idx))))
-
 ;; Call the numbers until one of the boards wins
 (define (find-winner nums-called boards)
   (for*/fold ([states (build-list (length boards) (const 0))]
               [winner '(#f)]
               #:result winner)
              ([num-called nums-called]
-              [(board idx) (in-indexed boards)])
+              [(board board-idx) (in-indexed boards)])
     #:break (first winner)
     ;; If the number called matches a square on the board set the
     ;; bit for that square, then check for a winner.
     (if (member num-called board)
-        (let ([new-states (set-bit states idx (index-of board num-called))])
+        (let ([new-states
+               (set-bit-in-int-list
+                states board-idx (index-of board num-called))])
           (values new-states (flatlist (has-winner? new-states) num-called)))
         (values states (flatlist winner num-called)))))
 
@@ -60,8 +52,5 @@
     (find-winner nums-called boards))
   (* last-call (score (list-ref boards winner-idx) winner-state)))
 
-(bingo-time sample_data)
-(bingo-time input_data)
-(count-deeper (file->string "sample-2021-01.txt"))
-(count-deeper (file->string "input-2021-01.txt"))
-
+(bingo-time (file->string "sample-2021-04.txt"))
+(bingo-time (file->string "input-2021-04.txt"))
