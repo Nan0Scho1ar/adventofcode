@@ -24,25 +24,17 @@ defmodule Day4 do
   end
 
   def call_numbers(calls, boards) do
-    states = List.duplicate(0, length(boards))
-    |> Enum.with_index
-    |> Enum.zip(boards)
-    call_numbers(calls, states, nil)
+    call_numbers(calls, Enum.map(boards, fn b -> {0, b} end), nil)
   end
 
   def call_numbers([num | t], boards, winner) do
     try do
-      new_boards = Enum.map(boards, fn {{state, idx}, board} ->
-        match = Enum.find_index(board, fn cell -> cell == num end)
-        if match == nil do
-          {{state, idx}, board}
+      new_boards = Enum.map(boards, fn {state, board} ->
+        new_state = state + bsl(1, index_of(board, num))
+        if Enum.any?(@win_conds, fn wc -> band(new_state, wc) == wc end) do
+          throw({:winner, {num, new_state, board}})
         else
-          new_state = state + 2 ** match
-          if Enum.any?(@win_conds, fn wc -> band(new_state, wc) == wc end) do
-            throw({:winner, {num, new_state, board}})
-          else
-            {{new_state, idx}, board}
-          end
+          {new_state, board}
         end
       end)
       call_numbers(t, new_boards, winner)

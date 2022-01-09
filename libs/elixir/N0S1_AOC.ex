@@ -45,6 +45,7 @@ defmodule N0S1_AOC do
   end
 
   # convert list of bits to an integer (big endian)
+  # Should probably just use Integer.undigits
   def bitlist_to_int(bits) do
     [(length(bits) - 1)..0, bits]
     |> Enum.zip_reduce(0, fn [idx, bit], acc ->
@@ -52,6 +53,7 @@ defmodule N0S1_AOC do
     end)
   end
 
+  # Convert an int to a list of bits with length `len`
   def int_to_bitlist(int, len) do
     bits = Integer.digits(int, 2)
     if length(bits) < len do
@@ -61,5 +63,9 @@ defmodule N0S1_AOC do
     end
   end
 
+  def index_of(list, elem) do
+    idx = Enum.find_index(list, fn x -> x == elem end)
+    if idx == nil do -1 else idx end
+  end
 
 end
