@@ -117,6 +117,22 @@
 
 
 
+;; prepend to list at a given index of a list
+(define (prepend-at-idx lst idx val)
+  (list-set lst idx (cons val (list-ref lst idx))))
+
+(provide prepend-at-idx)
+
+
+;; prepend to list at a given index of a list
+(define (prepend-at-idxs lst idxs val)
+  (for/fold ([updated lst])
+            ([idx idxs])
+    (prepend-at-idx updated idx val)))
+
+(provide prepend-at-idxs)
+
+
 ;; Add val to the element at a given index of a list
 (define (add-at-idx lst idx val)
   (list-set lst idx (+ val (list-ref lst idx))))
