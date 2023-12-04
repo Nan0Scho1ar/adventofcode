@@ -1,6 +1,7 @@
 extern crate regex;
 
 use std::fs::read_to_string;
+use std::collections::HashSet;
 use regex::Regex;
 
 const LINE_LEN: usize = 141;
@@ -78,29 +79,34 @@ fn valid_neighbour_coords(pos: usize) -> Vec<usize> {
     binding.iter().filter_map(|coord| coord.flatten()).collect()
 }
 
-
-fn label_symbols(part_labels: &Vec<PartLabel>, symbols: &mut Vec<Symbol>) {
-    part_labels
-        .iter()
-        .for_each(|part_label| {
-            let neighbours: Vec<usize> = (part_label.pos_start..part_label.pos_end)
-                .flat_map(|idx| valid_neighbour_coords(idx))
-                .collect();
-
-            symbols.iter_mut()
-                   .filter(|s| neighbours.contains(&s.pos) && !s.part_ids.contains(&part_label.part_id))
-                   .for_each(|symbol| symbol.part_ids.push(part_label.part_id));
-        });
+// Create a Vector of all valid neighbour positions
+fn get_all_neighbours(label: &PartLabel) -> Vec<usize> {
+    (label.pos_start..label.pos_end)
+        .flat_map(valid_neighbour_coords)
+        .filter(|pos| !(label.pos_start..label.pos_end).contains(pos))
+        .collect::<HashSet<usize>>() // Convert to HashSet to remove duplicates
+        .into_iter()
+        .collect()
 }
 
+// Update symbols to link them with their neighbouring part labels
+fn label_symbols(part_labels: Vec<PartLabel>, symbols: &mut Vec<Symbol>) {
+    part_labels.iter()
+               .map(|label| (label.part_id, get_all_neighbours(label)))
+               .for_each(|(part_id, neighbours)| {
+                   symbols.iter_mut()
+                          .filter(|s| neighbours.contains(&s.pos))
+                          .for_each(|symbol| symbol.part_ids.push(part_id));
+               });
+}
 
 fn main() {
     let input: String = read_to_string(INPUT_FILE).expect("File not found");
 
     let part_labels = parse_labels(&input);
     let mut symbols = parse_symbols(&input);
-    
-    label_symbols(&part_labels, &mut symbols);
+
+    label_symbols(part_labels, &mut symbols);
 
     let part1: usize = symbols
         .iter()
@@ -121,5 +127,5 @@ fn main() {
         .sum();
 
     println!("Part 1: {}", part1); // Answer: 512794
-    println!("Part 2: {}", part2); // Answer: less than 67779080
+    println!("Part 2: {}", part2); // Answer: 67779080
 }
