@@ -4,7 +4,7 @@ const MAX_RED: i32 = 12;
 const MAX_GREEN: i32 = 13;
 const MAX_BLUE: i32 = 14;
 
-const INPUT_FILE: &str = "./day-02/input-2023-02.txt";
+const INPUT_FILE: &str = "./2023/day-02/input-2023-02.txt";
 
 struct Round {
     red: i32,

@@ -30,7 +30,7 @@ fn calc_sum(lines: &Vec<String>, regex: Regex) -> i32 {
 }
 
 fn main() -> io::Result<()> {
-    let input_file = File::open("day-01/input-2023-01.txt")?;
+    let input_file = File::open("2023/day-01/input-2023-01.txt")?;
     let lines = io::BufReader::new(input_file)
         .lines()
         .filter_map(|l| l.ok())

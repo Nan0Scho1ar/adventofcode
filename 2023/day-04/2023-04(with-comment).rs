@@ -3,7 +3,7 @@ extern crate fancy_regex;
 use std::fs::read_to_string;
 use fancy_regex::Regex;
 
-const INPUT_FILE: &str = "./day-04/input-2023-04.txt";
+const INPUT_FILE: &str = "./2023/day-04/input-2023-04.txt";
 const NUM_CARDS: usize = 197;
 
 fn main() {

@@ -1,0 +1,44 @@
+[package]
+name = "adventofcode"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fancy-regex = "0.14.0"
+regex = "1.11.1"
+
+# 2023
+
+[[bin]]
+name = "2023-01"
+path = "2023/day-01/2023-01.rs"
+
+[[bin]]
+name = "2023-02"
+path = "2023/day-02/2023-02.rs"
+
+[[bin]]
+name = "2023-03"
+path = "2023/day-03/2023-03.rs"
+
+[[bin]]
+name = "2023-04"
+path = "2023/day-04/2023-04.rs"
+
+# 2024
+
+[[bin]]
+name = "2024-01"
+path = "2024/day-01/2024-01.rs"
+
+[[bin]]
+name = "2024-02"
+path = "2024/day-02/2024-02.rs"
+
+[[bin]]
+name = "2024-03"
+path = "2024/day-03/2024-03.rs"
+
+[[bin]]
+name = "2024-04"
+path = "2024/day-04/2024-04.rs"

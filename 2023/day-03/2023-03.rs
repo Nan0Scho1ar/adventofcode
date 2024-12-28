@@ -6,7 +6,7 @@ use regex::Regex;
 
 const LINE_LEN: usize = 141;
 const NUM_LINES: usize = 140;
-const INPUT_FILE: &str = "./day-03/input-2023-03.txt";
+const INPUT_FILE: &str = "./2023/day-03/input-2023-03.txt";
 
 
 #[derive(Debug)]
