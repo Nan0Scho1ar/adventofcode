@@ -38,7 +38,6 @@ fn main() {
             })
         })
         .count();
-    println!("Part 1: {:#?}", part1);
 
     let part2 = (0..height)
         .flat_map(|i| {
@@ -72,6 +71,7 @@ fn main() {
             })
         }).count();
 
+    println!("Part 1: {:#?}", part1);
     println!("Part 2: {:#?}", part2);
 
 }
