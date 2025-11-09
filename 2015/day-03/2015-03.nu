@@ -9,8 +9,8 @@ def new-pos [pos, move] {
     }
 }
 
-mut pos = [0, 0]
 mut visited = []
+mut pos = [0, 0]
 
 for move in $moves {
     $pos = new-pos $pos $move
@@ -19,10 +19,9 @@ for move in $moves {
 
 print $"Part 1: ($visited | uniq | length)"
 
-mut pos = [0, 0]
 mut visited = []
-
 mut robo = false
+mut pos = [0, 0]
 mut robo_pos = [0, 0]
 
 for move in $moves {
