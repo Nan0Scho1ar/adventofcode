@@ -18,7 +18,6 @@ fn main() {
         .map(|line| line.split(",").filter_map(|s| s.parse().ok()).collect())
         .collect();
 
-
     let (clean, dirty): (Vec<_>, Vec<_>) = updates.into_iter()
         .partition(|update| {
             orderings.iter().all(|(a, b)| {
